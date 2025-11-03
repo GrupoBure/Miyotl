@@ -69,14 +69,34 @@
   right:10px;
   bottom:10px;
   z-index:2;
-  display:grid;
-  gap:8px;
-  max-width:min(40vw,280px);
-  /* si hay mucho contenido, que no se corte */
-  max-height:calc(100vh - 120px);
-  overflow:auto;
-  padding-right:4px; /* un respiro para la barra de scroll */
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-width:min(40vw,320px);
+  max-height:calc(90vh - 40px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding:6px;
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(4px);
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
 }
+
+/* para pantallas pequeñas: que los cuadros bajen debajo de la imagen */
+@media (max-width: 900px){
+  .mp-overlay{
+    position:static;
+    max-width:none;
+    max-height:none;
+    overflow:visible;
+    margin:12px auto;
+    background:transparent;
+    backdrop-filter:none;
+    box-shadow:none;
+  }
+}
+
 
 /* En pantallas chicas, coloca los banners debajo de la imagen */
 @media (max-width: 900px){
