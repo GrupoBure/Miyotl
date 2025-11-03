@@ -84,7 +84,7 @@
 
 <footer><div class="container" style="text-align:center">© <span id="year"></span> Miyotl Products · Hecho en México</div></footer>
 
-<!-- Modal (se conserva) -->
+<!-- Modal -->
 <div id="modalProd" class="modal" role="dialog" aria-modal="true">
   <div class="sheet">
     <button id="mp-close" class="btn secondary">Cerrar</button>
@@ -103,6 +103,29 @@ let PRODUCTS=[];
 
 const money=v=>{if(v===undefined||v===null||v==='')return'';const n=Number(v);return Number.isFinite(n)?n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}):(v+'');};
 
+/* === Helpers de imagen con fallback por categoría === */
+const norm = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+function fallbackByCategory(cat){
+  const c = norm(cat);
+  if (c.includes('solido') || c.includes('sólido')) return 'assets/images/102000.webp'; // barra
+  if (c.includes('shampoo') || c.includes('corporal') || c.includes('liquido') || c.includes('líquido'))
+    return 'assets/images/104000.webp'; // botella
+  return 'assets/images/102000.webp';
+}
+function handleImgError(img){
+  const base = img.dataset.base || '';
+  const step = img.dataset.step || 'webp';
+  if (step === 'webp'){ img.dataset.step='jpg'; img.src = base + '.jpg'; return; }
+  if (step === 'jpg'){ img.dataset.step='png'; img.src = base + '.png'; return; }
+  // Fallback final por categoría
+  if (img.dataset.fallback){
+    img.onerror = null;
+    img.src = img.dataset.fallback;
+    return;
+  }
+  img.onerror = null;
+}
+
 /* ---------- Tarjeta ---------- */
 function productCard(p){
   const el=document.createElement('article'); el.className='card'; el.dataset.cats=(p.cats||[]).join(',');
@@ -110,16 +133,15 @@ function productCard(p){
   const pub=money(p.precioPublico), may=money(p.precioMayoreo), dis=money(p.precioDistribuidor);
   const pubK=money(p.precioPublico_K), mayK=money(p.precioMayoreo_K), disK=money(p.precioDistribuidor_K);
 
+  const fb = fallbackByCategory(p.categoria);
+
   el.innerHTML=`
     <div class="image-wrap">
       <img src="${p.img}" alt="${p.nombre||''}" loading="lazy"
            data-base="${p.imgBase}"
            data-step="webp"
-           onerror="
-             const base=this.dataset.base||''; 
-             if(this.dataset.step==='webp'){ this.dataset.step='jpg'; this.src=base+'.jpg'; }
-             else if(this.dataset.step==='jpg'){ this.dataset.step='png'; this.src=base+'.png'; }
-             else { this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 800 800%27><rect width=%27800%27 height=%27800%27 rx=%2730%27 ry=%2730%27 fill=%27%23f6e9f4%27 stroke=%27%23e067c6%27 stroke-width=%273%27/><text x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27%23999%27 font-family=%27Inter,Arial%27 font-size=%2750%27>Sin imagen</text></svg>'; }">
+           data-fallback="${fb}"
+           onerror="handleImgError(this)">
       ${p.etiqueta?`<div class="badge">${p.etiqueta}</div>`:''}
     </div>
 
@@ -154,7 +176,7 @@ function render(filter='all'){
 }
 btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');render(b.dataset.filter);});
 
-/* ---------- Modal (igual) ---------- */
+/* ---------- Modal ---------- */
 const modalProd=document.getElementById('modalProd'),
       mpClose=document.getElementById('mp-close'),
       mpImg=document.getElementById('mp-img'),
@@ -163,7 +185,15 @@ const modalProd=document.getElementById('modalProd'),
 const overlayCard=(t,h)=>`<div class="overlay-card"><span class="overlay-pill">${t}</span><div>${h}</div></div>`;
 function openProduct(p){
   const arr=v=>Array.isArray(v)?v:(v?[v]:[]);
-  mpImg.src=p.img; mpImg.alt=p.nombre||'';
+  // set imagen con mismo esquema de fallback:
+  const fb = fallbackByCategory(p.categoria);
+  mpImg.dataset.base = p.imgBase;
+  mpImg.dataset.step = 'webp';
+  mpImg.dataset.fallback = fb;
+  mpImg.onerror = () => handleImgError(mpImg);
+  mpImg.src = p.img;
+  mpImg.alt = p.nombre||'';
+
   let html='';
   if(arr(p.ingredientes).length) html+=overlayCard('Ingredientes',`<ul style="margin:0 0 0 16px">${arr(p.ingredientes).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
   if(arr(p.beneficios).length)   html+=overlayCard('Beneficios',  `<ul style="margin:0 0 0 16px">${arr(p.beneficios).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
@@ -179,17 +209,13 @@ mpClose.onclick=()=>modalProd.classList.remove('open');
   const toArray=v=>Array.isArray(v)?v.filter(Boolean):(typeof v==='string'?(v.includes('|||')?v.split('|||').map(x=>x.trim()).filter(Boolean):v.includes(',')?v.split(',').map(x=>x.trim()).filter(Boolean):(v.trim()?[v.trim()]:[])):[]);
   const toSlug=s=>(s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
 
-  // ID canon: id -> codigo -> slug(nombre)
   const getId = row => {
     const raw = (row.id ?? row.codigo ?? '').toString().trim();
     return raw || toSlug(row.nombre||'');
   };
-
-  // Base de imagen por ID: assets/images/<ID>
   const imgBaseById = row => {
     const id = getId(row);
     if (!id) return 'assets/images/placeholder';
-    // si 'img' es URL absoluta, se respeta
     if (/^https?:\/\//i.test(row.img||'')) return row.img;
     return `assets/images/${id}`;
   };
@@ -211,21 +237,16 @@ mpClose.onclick=()=>modalProd.classList.remove('open');
       const cats=toArray(row.cats).map(mapCat).filter(Boolean);
       const base=imgBaseById(row);
       return {
-        // clave principal por ID
         id: getId(row),
-
         codigo: row.codigo ?? '',
         nombre: row.nombre || 'Producto',
-
         imgBase: /^https?:\/\//i.test(base) ? base.replace(/\.(webp|png|jpg|jpeg)$/i,'') : base,
         img: /^https?:\/\//i.test(base) ? base : `${base}.webp`,
-
         cats,
         beneficios: toArray(row.beneficios),
         avisos: toArray(row.avisos || row.notaAdvertencia),
         ingredientes: toArray(row.ingredientes),
         etiqueta: row.etiqueta ?? '',
-
         precioPublico: row.precioPublico ?? '',
         precioMayoreo: row.precioMayoreo ?? '',
         precioDistribuidor: row.precioDistribuidor ?? '',
@@ -247,5 +268,6 @@ document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
+
 
 
