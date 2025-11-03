@@ -47,104 +47,81 @@
     .kilo .title{grid-column:1/-1}
     .empty{margin:26px auto;max-width:860px;padding:12px 14px;border:1px dashed #d3a7c7;border-radius:12px;color:#6b3e64;background:#fff9fd;text-align:center;font-weight:700}
 
+    /* ================= MODAL ================= */
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55);padding:20px;z-index:1000}
     .modal.open{display:flex}
-    #modalProd .sheet{background:transparent;box-shadow:none;padding:0;border-radius:0;position:relative}
-#modalProd .img-max{
-  position:relative;
-  max-width:min(92vw,1000px);
-  width:100%;
-  margin:0 auto;
-  border-radius:18px;
-  /* recorta la imagen para respetar las esquinas redondeadas  */
-  overflow:hidden;
-  box-shadow:0 12px 40px rgba(0,0,0,.45);
-  border:2px solid var(--rose);
-  background:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
 
+    /* NUEVO: el modal se vuelve un grid (imagen | columna de info) */
+    #modalProd .sheet{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 360px;
+      gap:16px;
+      align-items:start;
+      max-width:min(1200px,95vw);
+      width:100%;
+    }
 
-#modalProd .img-max img{
-  display:block;
-  max-width:100%;
-  max-height:80vh;   /* clave: no excede el alto visible */
-  width:auto;        /* conserva proporción */
-  height:auto;
-  border-radius:18px; /* por si acaso, iguala el redondeado */
-}
+    /* contenedor de la imagen */
+    #modalProd .img-max{
+      position:relative;
+      width:100%;
+      border-radius:18px;
+      overflow:hidden;                 /* respeta las esquinas */
+      box-shadow:0 12px 40px rgba(0,0,0,.45);
+      border:2px solid var(--rose);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:200px;
+    }
+    #modalProd .img-max img{
+      display:block;
+      max-width:100%;
+      max-height:80vh;                 /* no se sale del alto visible */
+      width:auto;
+      height:auto;
+      border-radius:18px;
+    }
 
-    #mp-close{position:absolute;top:-12px;right:-12px;z-index:3;background:#fff;color:var(--ink);border:2px solid var(--rose);border-radius:999px;padding:8px 12px;font-weight:900;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25)}
-/* Columna fija sobre el modal, no se recorta y puede hacer scroll */
-.mp-overlay{
-  position:fixed;
-  right:24px;
-  bottom:24px;
-  z-index:1100;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  width:min(36vw,360px);
-  max-height:min(80vh,620px);
-  overflow:auto;
-  padding-right:2px; /* para que no tape la barra de scroll */
-}
+    /* botón cerrar */
+    #mp-close{
+      position:absolute;top:-12px;right:-12px;z-index:3;
+      background:#fff;color:var(--ink);
+      border:2px solid var(--rose);border-radius:999px;
+      padding:8px 12px;font-weight:900;cursor:pointer;
+      box-shadow:0 6px 16px rgba(0,0,0,.25)
+    }
 
+    /* Columna de detalles: scroll dentro de su propio panel */
+    .mp-overlay{
+      position:relative;               /* ya NO fixed */
+      display:flex;flex-direction:column;gap:12px;
+      width:100%;
+      max-height:80vh;
+      overflow:auto;                   /* si se llena, hace scroll aquí */
+      padding-right:2px;
+    }
+    .overlay-card{
+      position:relative;background:#fff;border:2px solid var(--rose);
+      border-radius:12px;padding:8px 10px 10px;
+      box-shadow:0 6px 18px rgba(0,0,0,.25);
+      max-height:none;overflow:visible;font-size:12px;color:#4b4b4b
+    }
+    .overlay-pill{
+      position:absolute;left:8px;top:-12px;background:#D874C3;
+      color:#fff;border:none;border-radius:14px;padding:4px 10px;
+      font-weight:800;font-size:11px
+    }
 
-/* para pantallas pequeñas: que los cuadros bajen debajo de la imagen */
-@media (max-width: 900px){
-  .mp-overlay{
-    position:static;
-    max-width:none;
-    max-height:none;
-    overflow:visible;
-    margin:12px auto;
-    background:transparent;
-    backdrop-filter:none;
-    box-shadow:none;
-  }
-}
-
-
-/* En pantallas chicas, coloca los banners debajo de la imagen */
-@media (max-width: 900px){
-  .mp-overlay{
-    position:static;
-    max-width:none;
-    max-height:none;
-    overflow:visible;
-    margin:12px;
-  }
-}
-
-.overlay-card{
-  position:relative;
-  background:#fff;
-  border:2px solid var(--rose);
-  border-radius:12px;
-  padding:8px 10px 10px;
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
-  /* que crezca natural; el scroll lo maneja la columna */
-  max-height:none;
-  overflow:visible;
-  font-size:12px;
-  color:#4b4b4b;
-}
-
-    .overlay-pill{position:absolute;left:8px;top:-12px;background:#D874C3;color:#fff;border:none;border-radius:14px;padding:4px 10px;font-weight:800;font-size:11px}
+    /* En pantallas chicas: stack (imagen arriba, info abajo) */
+    @media (max-width: 900px){
+      #modalProd .sheet{grid-template-columns:1fr}
+      .mp-overlay{max-height:none;overflow:visible}
+    }
 
     footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
-    @media (max-width: 900px){
-  .mp-overlay{
-    right:12px;
-    left:12px;
-    width:auto;
-    max-height:70vh;   /* un poco menos de alto en móvil */
-  }
-}
-
   </style>
 </head>
 <body>
@@ -182,8 +159,8 @@
     <button id="mp-close" class="btn secondary">Cerrar</button>
     <div class="img-max">
       <img id="mp-img" alt="">
-      <div id="mp-overlay" class="mp-overlay" aria-hidden="true" style="display:none"></div>
     </div>
+    <div id="mp-overlay" class="mp-overlay" aria-hidden="true" style="display:none"></div>
   </div>
 </div>
 
@@ -209,12 +186,7 @@ function handleImgError(img){
   const step = img.dataset.step || 'webp';
   if (step === 'webp'){ img.dataset.step='jpg'; img.src = base + '.jpg'; return; }
   if (step === 'jpg'){ img.dataset.step='png'; img.src = base + '.png'; return; }
-  // Fallback final por categoría
-  if (img.dataset.fallback){
-    img.onerror = null;
-    img.src = img.dataset.fallback;
-    return;
-  }
+  if (img.dataset.fallback){ img.onerror=null; img.src = img.dataset.fallback; return; }
   img.onerror = null;
 }
 
@@ -277,8 +249,8 @@ const modalProd=document.getElementById('modalProd'),
 const overlayCard=(t,h)=>`<div class="overlay-card"><span class="overlay-pill">${t}</span><div>${h}</div></div>`;
 function openProduct(p){
   const arr=v=>Array.isArray(v)?v:(v?[v]:[]);
-  // set imagen con mismo esquema de fallback:
   const fb = fallbackByCategory(p.categoria);
+
   mpImg.dataset.base = p.imgBase;
   mpImg.dataset.step = 'webp';
   mpImg.dataset.fallback = fb;
@@ -290,7 +262,8 @@ function openProduct(p){
   if(arr(p.ingredientes).length) html+=overlayCard('Ingredientes',`<ul style="margin:0 0 0 16px">${arr(p.ingredientes).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
   if(arr(p.beneficios).length)   html+=overlayCard('Beneficios',  `<ul style="margin:0 0 0 16px">${arr(p.beneficios).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
   if(arr(p.avisos).length)       html+=overlayCard('Avisos',      `<ul style="margin:0 0 0 16px">${arr(p.avisos).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
-  mpOverlay.innerHTML=html; mpOverlay.style.display=html?'grid':'none';
+  mpOverlay.innerHTML=html; mpOverlay.style.display=html?'flex':'none';
+
   modalProd.classList.add('open');
 }
 mpClose.onclick=()=>modalProd.classList.remove('open');
@@ -360,6 +333,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
+
 
 
 
