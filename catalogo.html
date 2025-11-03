@@ -10,6 +10,9 @@
       --brand-50:#F7EFE6; --brand-100:#F2E6D8; --brand-200:#EAD6C0; --brand-300:#DBBFA2;
       --brand-400:#C9A781; --brand-500:#2B0F3A; --brand-700:#1B0D28;
       --miyotl:#C53D8C; --ink:#140A1F;
+      --rose:#E067C6;         /* rosa consistente */
+      --rose-strong:#A83477;  /* hover */
+      --muted:#8E8E8E;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:ui-sans-serif,system-ui,Inter,Segoe UI,Roboto,Arial;color:var(--ink);background:#fff}
@@ -25,13 +28,11 @@
       font-weight:900;letter-spacing:.3px
     }
 
-    /* Contenedor de filtros + botón inicio */
+    /* Filtros */
     .filters-wrap{
       display:flex;justify-content:center;align-items:center;flex-wrap:wrap;
       gap:12px;padding:12px 16px;border-bottom:1px solid var(--brand-200);background:#fff;
     }
-
-    /* Filtros */
     .filters{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
     .filters button{
       appearance:none;border:1px solid #A83477;background:var(--miyotl);color:#fff;cursor:pointer;
@@ -42,27 +43,76 @@
     .filters button.is-active{box-shadow:0 2px 10px rgba(0,0,0,.12)}
     .note{font-size:13px;color:#4d4d4d;text-align:center;margin:8px 0 18px}
 
-    /* Grid: 4 por línea en desktop */
+    /* Grid */
     .grid{display:grid;gap:18px}
     @media(min-width:768px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+    /* ===== Card NUEVA ===== */
     .card{
-      background:#fff;border:1px solid var(--brand-200);border-radius:18px;overflow:hidden;
-      box-shadow:0 4px 14px rgba(0,0,0,.06);transition:.15s transform,.15s border-color;cursor:pointer
+      background:#fff;border:2px solid var(--rose);border-radius:22px;overflow:hidden;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);transition:.15s transform,.15s border-color;cursor:pointer
     }
-    .card:hover{transform:translateY(-3px);border-color:var(--brand-400)}
-    .card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
-    .card h3{font-size:16px;margin:10px 12px 2px}
-    .tagline{color:#555;margin:0 12px 12px;font-size:13px;min-height:34px}
+    .card:hover{transform:translateY(-3px);border-color:var(--rose-strong)}
+    .card .image-wrap{
+      position:relative;border-radius:20px;overflow:hidden;margin:6px;
+      border:2px solid var(--rose);
+    }
+    .card .image-wrap img{
+      width:100%;aspect-ratio:3/4;object-fit:cover;display:block;filter:saturate(.98)
+    }
+    .card .badge{
+      position:absolute;right:10px;bottom:10px;
+      width:64px;height:64px;border-radius:999px;background:var(--rose);color:#fff;
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      font-weight:800;line-height:1.05;padding:6px;box-shadow:0 6px 18px rgba(0,0,0,.18);
+      font-size:12px;
+    }
 
-    /* Datos (forma · tamaño) debajo de la tagline, a la derecha */
-    .card .meta-row{
-      display:flex;justify-content:flex-end;margin:0 12px 10px;
+    /* Píldoras de Código / Nombre (fila de 2) */
+    .card .row-2{
+      display:grid;grid-template-columns:1fr 2fr;gap:10px;padding:10px 10px 0 10px;
     }
-    .card .meta{
-      font-size:13px;color:#666;text-align:right;white-space:nowrap;
+    .pill{
+      background:#fff;border:2px solid var(--rose);border-radius:16px;padding:10px 12px;
+      color:#5A5A5A;font-weight:800;text-align:center;min-height:44px;display:flex;align-items:center;justify-content:center;
     }
 
-    /* Modal genérico */
+    /* Fila de 3 precios (pieza) */
+    .card .row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px 10px 8px}
+    .price-col{display:grid;gap:8px}
+    .pill--label{
+      background:#D874C3;color:#fff;border:none;border-radius:16px;padding:10px 12px;font-weight:800;text-align:center;
+    }
+    .pill--value{
+      background:#fff;border:2px solid var(--rose);border-radius:16px;padding:12px 12px;text-align:center;font-weight:800;color:#5A5A5A;
+      min-height:44px;
+    }
+
+    /* NUEVO: bloque “Precios por barra de kilo” */
+    .card .kilo-block{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:8px 10px 0}
+    .kilo-title{
+      grid-column:1 / -1; text-align:center; background:#D874C3; color:#fff;
+      border-radius:16px; padding:8px 12px; font-weight:800;
+    }
+
+    /* Fila mini de 3 (cats / categoria / contenido) */
+    .card .row-3-mini{
+      display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:8px 10px 14px;
+    }
+    .pill--mini{min-height:36px;padding:8px 10px;font-size:12px;border-radius:14px}
+
+    @media(max-width:640px){
+      .card .row-2{grid-template-columns:1fr;gap:8px}
+      .card .row-3{grid-template-columns:1fr;gap:10px}
+      .card .kilo-block{grid-template-columns:1fr}
+      .card .row-3-mini{grid-template-columns:1fr;gap:8px}
+    }
+
+    /* Oculto lo viejo que ya no usamos */
+    .tagline{display:none}
+    .card .meta-row{display:none}
+
+    /* ===== Modal ===== */
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.38);padding:20px;z-index:1000}
     .modal.open{display:flex}
     .sheet{
@@ -70,13 +120,28 @@
     }
     .sheet header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;background:none}
     .sheet .media{display:grid;gap:12px;grid-template-columns:160px 1fr}
-    .sheet .media img{width:100%;border-radius:12px}
+    .sheet .media .img-wrap{position:relative}
+    .sheet .media img{width:100%;border-radius:12px;display:block}
     .btn{appearance:none;border:0;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;color:#fff;background:var(--miyotl)}
     .btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--brand-300)}
-    .muted{color:#4d4d4d}
+    .muted{color:var(--muted)}
     .danger{color:#b42318;font-weight:700}
 
-    /* Modal Sign-in */
+    /* Overlay (Ingredientes / Beneficios / Avisos) en el modal */
+    .mp-overlay{
+      position:absolute;right:8px;bottom:8px;display:grid;gap:8px;max-width:min(42vw,260px);z-index:2;
+    }
+    .overlay-card{
+      position:relative;background:#fff;border:2px solid var(--rose);border-radius:16px;padding:10px 12px 12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.18);max-height:140px;overflow:auto;
+      font-size:12px;color:#5A5A5A;
+      backdrop-filter:saturate(1) blur(1px);
+    }
+    .overlay-pill{
+      position:absolute;left:0;top:-12px;background:#D874C3;color:#fff;border:none;border-radius:16px;padding:6px 12px;
+      font-weight:800;font-size:12px;transform:translateX(8px);
+    }
+
     .stack{display:grid;gap:10px}
     input[type="email"],input[type="password"]{width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-300)}
     .center{text-align:center}
@@ -86,10 +151,9 @@
 <body>
 
 <header class="headline">
-  <!-- Usa otra imagen para diferenciar del home -->
   <img class="top-banner" src="assets/images/catalogo-banner.webp" alt="">
   <nav class="nav-under-banner">
-    <a href="index.html">Inicio</a>
+    <a href="index.html">Inicio</a>Es
     <a href="nosotros.html">Nosotros</a>
     <a href="catalogo.html">Catálogo</a>
     <a href="distribuidor.html">Quiero ser distribuidor</a>
@@ -99,7 +163,6 @@
 </header>
  
 <div class="filters-wrap">
-  <!-- Filtros -->
   <div class="filters">
     <button data-filter="all" class="is-active">Todos</button>
     <button data-filter="sensible">Piel sensible</button>
@@ -107,7 +170,6 @@
     <button data-filter="astringente">Astringentes</button>
     <button data-filter="aromatico">Aromáticos</button>
   </div>
-  <!-- Botón de inicio aparte -->
   <div class="filters-home">
     <button id="btn-home" type="button" class="btn secondary" onclick="window.location.href='index.html'">Inicio</button>
   </div>
@@ -115,7 +177,6 @@
 <p class="note">Haz clic en cualquier producto para ver sus beneficios. Elije lo que tu piel necesita.</p>
 
 <main class="container">
-  <!-- Grid de productos -->
   <section id="grid" class="grid"></section>
 </main>
 
@@ -125,7 +186,7 @@
   </div>
 </footer>
 
-<!-- Modal Producto (beneficios) -->
+<!-- Modal Producto -->
 <div id="modalProd" class="modal" role="dialog" aria-modal="true">
   <div class="sheet">
     <header>
@@ -133,7 +194,10 @@
       <button id="mp-close" class="btn secondary">Cerrar</button>
     </header>
     <div class="media">
-      <img id="mp-img" alt="">
+      <div class="img-wrap">
+        <img id="mp-img" alt="">
+        <div id="mp-overlay" class="mp-overlay" aria-hidden="true" style="display:none"></div>
+      </div>
       <div>
         <p id="mp-benefits" class="muted" style="margin-top:0"></p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
@@ -146,7 +210,7 @@
   </div>
 </div>
 
-<!-- Modal Sign-in (si no ha iniciado sesión) -->
+<!-- Modal Sign-in -->
 <div id="modalAuth" class="modal" role="dialog" aria-modal="true">
   <div class="sheet">
     <header><h3 style="margin:0">Inicia sesión para continuar</h3><button id="ma-close" class="btn secondary">Cerrar</button></header>
@@ -166,33 +230,85 @@
 const grid = document.getElementById('grid');
 const btns = document.querySelectorAll('.filters button[data-filter]');
 let currentFilter = 'all';
-let PRODUCTS = []; // safeguard: initial empty dataset
+let PRODUCTS = []; // safeguard
+
+const money = v => {
+  if(v===undefined || v===null || v==='') return '';
+  const n = Number(v);
+  return Number.isFinite(n) ? n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}) : (v+'');
+};
+const s = v => (v??'')+''; // to string
 
 function productCard(p){
   const el = document.createElement('article');
   el.className = 'card';
-  el.dataset.cats = p.cats.join(',');
+  el.dataset.cats = (p.cats||[]).join(',');
+
+  const codigo   = s(p.codigo);
+  const nombre   = s(p.nombre);
+  const pp       = money(p.precioPublico);
+  const pm       = money(p.precioMayoreo);
+  const pd       = money(p.precioDistribuidor);
+  const etiqueta = s(p.etiqueta);
+  const catsTxt  = Array.isArray(p.cats) ? p.cats.join(', ') : s(p.cats);
+  const categoria= s(p.categoria);
+  const contenido= s(p.contenido);
+
+  /* Nuevos: precios por barra de kilo */
+  const ppK = money(p.precioPublico_K);
+  const pmK = money(p.precioMayoreo_K);
+  const pdK = money(p.precioDistribuidor_K);
+
   el.innerHTML = `
-    <img src="${p.img}" alt="${p.nombre}">
-    <h3>${p.nombre}</h3>
-    <p class="tagline">${p.beneficios[0] ?? ''}</p>
-    ${(p.forma || p.tamano) ? `
-      <div class="meta-row">
-        <span class="meta">
-          ${p.forma ? p.forma : ''}${p.forma && p.tamano ? ' · ' : ''}${p.tamano || ''}
-        </span>
-      </div>` : ''
-    }
+    <div class="image-wrap">
+      <img src="${p.img}" alt="${p.nombre}" loading="lazy">
+      ${etiqueta ? `<div class="badge">${etiqueta.replace(/(.{1,3})/g,'$1<br>').replace(/<br>$/,'')}</div>` : ``}
+    </div>
+
+    <div class="row-2">
+      <div class="pill">${codigo}</div>
+      <div class="pill">${nombre}</div>
+    </div>
+
+    <div class="row-3">
+      <div class="price-col">
+        <div class="pill--label">Precio público</div>
+        <div class="pill--value">${pp}</div>
+      </div>
+      <div class="price-col">
+        <div class="pill--label">Precio mayoreo</div>
+        <div class="pill--value">${pm}</div>
+      </div>
+      <div class="price-col">
+        <div class="pill--label">Precio distribuidor</div>
+        <div class="pill--value">${pd}</div>
+      </div>
+    </div>
+
+    <div class="kilo-block">
+      <div class="kilo-title">Precios por barra de kilo</div>
+      <div class="pill--value">${ppK}</div>
+      <div class="pill--value">${pmK}</div>
+      <div class="pill--value">${pdK}</div>
+    </div>
+
+    <div class="row-3-mini">
+      <div class="pill pill--mini">${catsTxt}</div>
+      <div class="pill pill--mini">${categoria}</div>
+      <div class="pill pill--mini">${contenido}</div>
+    </div>
   `;
   el.onclick = ()=>openProduct(p);
   return el;
 }
+
 function render(filter='all'){
   const DATA = (window.PRODUCTS && Array.isArray(window.PRODUCTS)) ? window.PRODUCTS : PRODUCTS;
   grid.innerHTML = '';
-  DATA.filter(p => filter==='all' || p.cats.includes(filter))
+  DATA.filter(p => filter==='all' || (p.cats||[]).includes(filter))
       .forEach(p => grid.appendChild(productCard(p)));
 }
+
 btns.forEach(b=>{
   b.onclick = ()=>{
     btns.forEach(x=>x.classList.remove('is-active'));
@@ -205,7 +321,7 @@ btns.forEach(b=>{
 render();
 
 /* =======================
-   Modal de producto
+   Modal de producto + overlay
    ======================= */
 const modalProd = document.getElementById('modalProd');
 const mpClose = document.getElementById('mp-close');
@@ -214,12 +330,54 @@ const mpImg = document.getElementById('mp-img');
 const mpBenefits = document.getElementById('mp-benefits');
 const mpTags = document.getElementById('mp-tags');
 const btnOrder = document.getElementById('btn-order');
+const mpOverlay = document.getElementById('mp-overlay');
+
+function overlayCard(title, contentHTML){
+  return `
+    <div class="overlay-card">
+      <span class="overlay-pill">${title}</span>
+      <div>${contentHTML}</div>
+    </div>
+  `;
+}
 
 function openProduct(p){
   mpTitle.textContent = p.nombre;
   mpImg.src = p.img; mpImg.alt = p.nombre;
-  mpBenefits.innerHTML = '<ul style="margin:0 0 6px 18px">' + p.beneficios.map(b=>`<li>${b}</li>`).join('') + '</ul>';
-  mpTags.textContent = p.tags?.join(' · ') || '';
+
+  const list = (p.beneficios||[]).map(b=>`<li>${b}</li>`).join('');
+  mpBenefits.innerHTML = list ? '<ul style="margin:0 0 6px 18px">'+list+'</ul>' : '';
+  mpTags.textContent = (p.tags&&p.tags.length)? p.tags.join(' · ') : '';
+
+  const asArray = v => Array.isArray(v) ? v : (v ? [v] : []);
+  const ingredientes = asArray(p.ingredientes).slice(0,5);
+  const beneficios   = asArray(p.beneficios).slice(0,5);
+  const avisos       = asArray(p.avisos || p.notaAdvertencia).slice(0,5);
+
+  let html = '';
+  if(ingredientes.length){
+    const tiny = `<ul style="margin:0 0 0 16px;padding:0">${ingredientes.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+    html += overlayCard('Ingredientes', tiny);
+  }
+  if(beneficios.length){
+    const tiny = `<ul style="margin:0 0 0 16px;padding:0">${beneficios.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+    html += overlayCard('Beneficios', tiny);
+  }
+  if(avisos.length){
+    const tiny = `<ul style="margin:0 0 0 16px;padding:0">${avisos.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+    html += overlayCard('Avisos', tiny);
+  }
+
+  if(html){
+    mpOverlay.innerHTML = html;
+    mpOverlay.style.display = 'grid';
+    mpOverlay.setAttribute('aria-hidden','false');
+  }else{
+    mpOverlay.innerHTML = '';
+    mpOverlay.style.display = 'none';
+    mpOverlay.setAttribute('aria-hidden','true');
+  }
+
   modalProd.classList.add('open');
   btnOrder.onclick = onOrder;
 }
@@ -228,12 +386,11 @@ mpClose.onclick = ()=>modalProd.classList.remove('open');
 /* =======================
    Pedido: sign-in -> cotizador
    ======================= */
-let isSignedIn = false; // CAMBIA a true cuando integres tu auth real
+let isSignedIn = false;
 
 const modalAuth = document.getElementById('modalAuth');
 document.getElementById('ma-close').onclick = ()=>modalAuth.classList.remove('open');
 document.getElementById('login').onclick = ()=>{
-  // Demo: marca sesión iniciada
   isSignedIn = true;
   modalAuth.classList.remove('open');
   goToQuote();
@@ -241,13 +398,12 @@ document.getElementById('login').onclick = ()=>{
 
 function onOrder(){
   if(!isSignedIn){
-    modalAuth.classList.add('open'); // pide login
+    modalAuth.classList.add('open');
   }else{
     goToQuote();
   }
 }
 function goToQuote(){
-  // Redirige al home/Index y abre el cotizador automáticamente
   window.location.href = '../Index.html?open=cotizador';
 }
 
@@ -289,17 +445,35 @@ document.getElementById('year').textContent = new Date().getFullYear();
         const cats = toArray(row.cats).map(mapCat).filter(Boolean);
         const beneficios = toArray(row.beneficios);
         const tags = toArray(row.tags);
+        const avisos = toArray(row.avisos || row.notaAdvertencia);
+        const ingredientes = toArray(row.ingredientes);
+
         return {
+          /* base */
           id: row.id || '',
           nombre: row.nombre || 'Producto',
           img: row.img || '../assets/images/placeholder.webp',
           cats,
           beneficios,
+          avisos,
+          ingredientes,
           tags,
           forma: row.forma || '',
           tamano: row.tamano || '',
           notaAdvertencia: row.notaAdvertencia || '',
-          familia: row.familia || ''
+          familia: row.familia || '',
+
+          /* Para card (nombres exactos) */
+          codigo: row.codigo ?? '',
+          etiqueta: row.etiqueta ?? '',
+          precioPublico: row.precioPublico ?? '',
+          precioMayoreo: row.precioMayoreo ?? '',
+          precioDistribuidor: row.precioDistribuidor ?? '',
+          precioPublico_K: row.precioPublico_K ?? '',
+          precioMayoreo_K: row.precioMayoreo_K ?? '',
+          precioDistribuidor_K: row.precioDistribuidor_K ?? '',
+          categoria: row.categoria ?? '',
+          contenido: row.contenido ?? ''
         };
       });
       window.PRODUCTS = fromJSON;
