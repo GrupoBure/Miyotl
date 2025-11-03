@@ -50,38 +50,36 @@
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55);padding:20px;z-index:1000}
     .modal.open{display:flex}
     #modalProd .sheet{background:transparent;box-shadow:none;padding:0;border-radius:0;position:relative}
-    #modalProd .img-max{
+#modalProd .img-max{
   position:relative;
   max-width:min(92vw,1000px);
   width:100%;
   margin:0 auto;
   border-radius:18px;
-  /* permitir que los banners “salgan” sin cortarse */
+  /* permitir que las tarjetas se vean completas */
   overflow:visible;
   box-shadow:0 12px 40px rgba(0,0,0,.45);
   border:2px solid var(--rose);
   background:#fff;
 }
+
     #modalProd .img-max img{display:block;width:100%;height:auto}
     #mp-close{position:absolute;top:-12px;right:-12px;z-index:3;background:#fff;color:var(--ink);border:2px solid var(--rose);border-radius:999px;padding:8px 12px;font-weight:900;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25)}
-    .mp-overlay{
-  position:absolute;
-  right:10px;
-  bottom:10px;
-  z-index:2;
+/* Columna fija sobre el modal, no se recorta y puede hacer scroll */
+.mp-overlay{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:1100;
   display:flex;
   flex-direction:column;
-  gap:10px;
-  max-width:min(40vw,320px);
-  max-height:calc(90vh - 40px);
-  overflow-y:auto;
-  overflow-x:hidden;
-  padding:6px;
-  background:rgba(255,255,255,0.6);
-  backdrop-filter:blur(4px);
-  border-radius:10px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+  gap:12px;
+  width:min(36vw,360px);
+  max-height:min(80vh,620px);
+  overflow:auto;
+  padding-right:2px; /* para que no tape la barra de scroll */
 }
+
 
 /* para pantallas pequeñas: que los cuadros bajen debajo de la imagen */
 @media (max-width: 900px){
@@ -109,7 +107,20 @@
   }
 }
 
-    .overlay-card{position:relative;background:#fff;border:2px solid var(--rose);border-radius:12px;padding:8px 10px 10px;box-shadow:0 6px 18px rgba(0,0,0,.25);max-height:140px;overflow:auto;font-size:12px;color:#4b4b4b}
+.overlay-card{
+  position:relative;
+  background:#fff;
+  border:2px solid var(--rose);
+  border-radius:12px;
+  padding:8px 10px 10px;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  /* que crezca natural; el scroll lo maneja la columna */
+  max-height:none;
+  overflow:visible;
+  font-size:12px;
+  color:#4b4b4b;
+}
+
     .overlay-pill{position:absolute;left:8px;top:-12px;background:#D874C3;color:#fff;border:none;border-radius:14px;padding:4px 10px;font-weight:800;font-size:11px}
 
     footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
