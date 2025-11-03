@@ -316,7 +316,7 @@ mpClose.onclick = ()=>modalProd.classList.remove('open');
         return {
           id: row.id || '',
           nombre: row.nombre || 'Producto',
-          img: row.img || '../assets/images/placeholder.webp',
+          img: row.img ? `assets/images/${row.img}.webp` : '',
           cats, beneficios, avisos, ingredientes, tags,
           forma: row.forma || '', tamano: row.tamano || '',
           notaAdvertencia: row.notaAdvertencia || '', familia: row.familia || '',
