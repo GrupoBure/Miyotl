@@ -56,14 +56,26 @@
   width:100%;
   margin:0 auto;
   border-radius:18px;
-  /* permitir que las tarjetas se vean completas */
-  overflow:visible;
+  /* recorta la imagen para respetar las esquinas redondeadas  */
+  overflow:hidden;
   box-shadow:0 12px 40px rgba(0,0,0,.45);
   border:2px solid var(--rose);
   background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-    #modalProd .img-max img{display:block;width:100%;height:auto}
+
+#modalProd .img-max img{
+  display:block;
+  max-width:100%;
+  max-height:80vh;   /* clave: no excede el alto visible */
+  width:auto;        /* conserva proporción */
+  height:auto;
+  border-radius:18px; /* por si acaso, iguala el redondeado */
+}
+
     #mp-close{position:absolute;top:-12px;right:-12px;z-index:3;background:#fff;color:var(--ink);border:2px solid var(--rose);border-radius:999px;padding:8px 12px;font-weight:900;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25)}
 /* Columna fija sobre el modal, no se recorta y puede hacer scroll */
 .mp-overlay{
@@ -124,6 +136,15 @@
     .overlay-pill{position:absolute;left:8px;top:-12px;background:#D874C3;color:#fff;border:none;border-radius:14px;padding:4px 10px;font-weight:800;font-size:11px}
 
     footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
+    @media (max-width: 900px){
+  .mp-overlay{
+    right:12px;
+    left:12px;
+    width:auto;
+    max-height:70vh;   /* un poco menos de alto en móvil */
+  }
+}
+
   </style>
 </head>
 <body>
