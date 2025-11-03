@@ -111,15 +111,14 @@ function productCard(p){
   el.innerHTML=`
     <div class="image-wrap">
       <img src="${p.img}" alt="${p.nombre}" loading="lazy"
-     data-step="1"
-     onerror="
-       if (this.dataset.step==='1') { this.dataset.step='2'; this.src='${p.imgBase}.jpg'; }
-       else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='${p.imgBase}.png'; }
-       else {
-         this.onerror=null;
-         this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 800 800%27><rect width=%27800%27 height=%27800%27 fill=%27%23f2f2f2%27/><text x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27%23999%27 font-family=%27Arial%27 font-size=%2750%27>Sin imagen</text></svg>';
-       }">
-
+           data-step="1"
+           onerror="
+             if (this.dataset.step==='1') { this.dataset.step='2'; this.src='${p.imgBase}.jpg'; }
+             else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='${p.imgBase}.png'; }
+             else {
+               this.onerror=null;
+               this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 800 800%27><rect width=%27800%27 height=%27800%27 fill=%27%23f2f2f2%27/><text x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27%23999%27 font-family=%27Arial%27 font-size=%2750%27>Sin imagen</text></svg>';
+             }">
       ${p.etiqueta?`<div class="badge">${p.etiqueta}</div>`:''}
     </div>
     <div class="row-2"><div class="pill">${p.codigo||''}</div><div class="pill">${p.nombre||''}</div></div>
@@ -171,7 +170,7 @@ mpClose.onclick=()=>modalProd.classList.remove('open');
     .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
     .replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
 
-  // NUEVO: devolvemos la BASE sin extensión para poder probar .webp, .jpg, .png
+  // Base sin extensión para probar .webp, .jpg, .png
   const pickImgBase = (row) => {
     const v = (row.img || '').trim();
     if (!v) {
@@ -184,8 +183,6 @@ mpClose.onclick=()=>modalProd.classList.remove('open');
     }
     return `assets/images/${v}`;
   };
-
-    if(/^https?:\/\//i.test(v))return v; if(/\.(png|jpe?g|webp|gif|avif|svg)$/i.test(v))return`assets/images/${v}`; return`assets/images/${v}.webp`;};
 
   async function loadJSON(){
     const tries=['./catalogo.json','catalogo.json','/Miyotl/catalogo.json','./Catalogo.json'];
@@ -208,12 +205,14 @@ mpClose.onclick=()=>modalProd.classList.remove('open');
     .then(data=>{
       PRODUCTS = data.map(row=>{
         const cats=toArray(row.cats).map(mapCat).filter(Boolean);
+        const base = pickImgBase(row);
         return {
           id: row.id || '',
           codigo: row.codigo ?? '',
           nombre: row.nombre || 'Producto',
-                    imgBase: pickImgBase(row),
-          img: (/^https?:\/\//i.test(pickImgBase(row)) ? pickImgBase(row) : pickImgBase(row) + '.webp'),
+
+          imgBase: base,
+          img: (/^https?:\/\//i.test(base) ? base : base + '.webp'),
 
           cats,
           beneficios: toArray(row.beneficios),
