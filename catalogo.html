@@ -10,14 +10,14 @@
       --brand-50:#F7EFE6; --brand-100:#F2E6D8; --brand-200:#EAD6C0; --brand-300:#DBBFA2;
       --brand-400:#C9A781; --brand-500:#2B0F3A; --brand-700:#1B0D28;
       --miyotl:#C53D8C; --ink:#140A1F;
-      --rose:#E067C6;
-      --rose-strong:#A83477;
+      --rose:#E067C6;        /* rosa base */
+      --rose-strong:#A83477; /* hover */
       --muted:#8E8E8E;
     }
     *{box-sizing:border-box}
     body{
       margin:0;font-family:ui-sans-serif,system-ui,Inter,Segoe UI,Roboto,Arial;color:var(--ink);background:#fff;
-      font-size:13px; line-height:1.35; /* ↓ texto global más pequeño */
+      font-size:13px; line-height:1.35;
     }
     .container{max-width:1120px;margin:0 auto;padding:0 16px}
 
@@ -57,18 +57,17 @@
       position:relative;border-radius:20px;overflow:hidden;margin:6px;border:2px solid var(--rose);
     }
     .card .image-wrap img{
-      width:100%;
-      aspect-ratio:1/1;   /* ← cuadrada: mismo ancho y alto */
-      object-fit:cover;display:block;filter:saturate(.98)
+      width:100%; aspect-ratio:1/1; object-fit:cover;display:block;filter:saturate(.98); /* cuadrada */
     }
     .card .badge{
       position:absolute;right:10px;bottom:10px;
       width:60px;height:60px;border-radius:999px;background:var(--rose);color:#fff;
       display:flex;align-items:center;justify-content:center;text-align:center;
       font-weight:800;line-height:1.05;padding:6px;box-shadow:0 6px 18px rgba(0,0,0,.18);
-      font-size:10px; /* ↓ badge más pequeño */
+      font-size:10px;
     }
 
+    /* Código / Nombre */
     .card .row-2{
       display:grid;grid-template-columns:1fr 2fr;gap:10px;padding:10px 10px 0 10px;
     }
@@ -76,31 +75,39 @@
       background:#fff;border:2px solid var(--rose);border-radius:16px;
       padding:7px 9px;color:#5A5A5A;font-weight:800;text-align:center;
       min-height:34px;display:flex;align-items:center;justify-content:center;
-      font-size:12px; /* ↓ */
+      font-size:12px;
     }
 
-    .card .row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:8px 10px 6px}
-    .price-col{display:grid;gap:6px}
-    .pill--label{
-      background:#D874C3;color:#fff;border:none;border-radius:16px;
-      padding:6px 9px;font-weight:800;text-align:center;font-size:11px; /* ↓ */
+    /* ===== Estilo “barras” como tu imagen ===== */
+    .bar-label{
+      background: rgba(224,103,198,.25); /* rosa claro, consistente con paleta */
+      color:#322; font-weight:800; text-align:center; border-radius:10px; padding:6px 8px;
+      font-size:12px;
     }
-    .pill--value{
-      background:#fff;border:2px solid var(--rose);border-radius:16px;
-      padding:8px 9px;text-align:center;font-weight:800;color:#5A5A5A;
-      min-height:34px;font-size:12px; /* ↓ */
+    .value-plain{
+      text-align:center; font-weight:800; color:#5A5A5A; padding:6px 4px; font-size:12px;
     }
 
-    .card .kilo-block{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:6px 10px 0}
+    /* 3 precios (pieza) */
+    .card .row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:8px 10px 6px}
+    .price-col{display:grid;gap:4px}
+
+    /* Precios por barra de kilo */
+    .card .kilo-block{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:8px 10px 0}
     .kilo-title{
-      grid-column:1 / -1; text-align:center; background:#D874C3; color:#fff;
-      border-radius:16px; padding:6px 10px; font-weight:800; font-size:12px;
+      grid-column:1 / -1; text-align:center; background:rgba(224,103,198,.25); color:#322;
+      border-radius:10px; padding:6px 10px; font-weight:800; font-size:12px;
     }
 
+    /* cats / categoria / contenido: barra + valor abajo */
     .card .row-3-mini{
-      display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:6px 10px 12px;
+      display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:8px 10px 12px;
     }
-    .pill--mini{min-height:30px;padding:7px 9px;font-size:11px;border-radius:14px}
+    .mini-col{display:grid;gap:4px}
+    .mini-label{ @apply bar-label; } /* comentario: conceptual; abajo definimos equivalente */
+    .mini-label{background:rgba(224,103,198,.25);color:#322;border-radius:10px;padding:6px 8px;font-weight:800;text-align:center;font-size:12px}
+    .mini-value{ @apply value-plain; }
+    .mini-value{text-align:center;font-weight:800;color:#5A5A5A;padding:6px 4px;font-size:12px}
 
     @media(max-width:640px){
       .card .row-2{grid-template-columns:1fr;gap:8px}
@@ -250,8 +257,11 @@ function productCard(p){
   const pd       = money(p.precioDistribuidor);
   const etiqueta = s(p.etiqueta);
   const catsTxt  = Array.isArray(p.cats) ? p.cats.join(', ') : s(p.cats);
-  const categoria= s(p.categoria);
+
+  /* OJO: categoria lee también 'categirua' si viene mal escrito */
+  const categoria= s(p.categoria || p.categirua);
   const contenido= s(p.contenido);
+
   const ppK = money(p.precioPublico_K);
   const pmK = money(p.precioMayoreo_K);
   const pdK = money(p.precioDistribuidor_K);
@@ -267,32 +277,42 @@ function productCard(p){
       <div class="pill">${nombre}</div>
     </div>
 
+    <!-- Barras de encabezado + valores debajo -->
     <div class="row-3">
       <div class="price-col">
-        <div class="pill--label">Público</div>          <!-- sin 'Precio' -->
-        <div class="pill--value">${pp}</div>
+        <div class="bar-label">Público</div>
+        <div class="value-plain">${pp}</div>
       </div>
       <div class="price-col">
-        <div class="pill--label">Mayoreo</div>          <!-- sin 'Precio' -->
-        <div class="pill--value">${pm}</div>
+        <div class="bar-label">Mayoreo</div>
+        <div class="value-plain">${pm}</div>
       </div>
       <div class="price-col">
-        <div class="pill--label">Fábrica</div>          <!-- antes 'Precio distribuidor' -->
-        <div class="pill--value">${pd}</div>
+        <div class="bar-label">Distribuidor</div>
+        <div class="value-plain">${pd}</div>
       </div>
     </div>
 
     <div class="kilo-block">
-      <div class="kilo-title">Precios por barra de kilo</div>
-      <div class="pill--value">${ppK}</div>
-      <div class="pill--value">${pmK}</div>
-      <div class="pill--value">${pdK}</div>
+      <div class="kilo-title">Precio por barra de kilo</div>
+      <div class="value-plain">${ppK}</div>
+      <div class="value-plain">${pmK}</div>
+      <div class="value-plain">${pdK}</div>
     </div>
 
     <div class="row-3-mini">
-      <div class="pill pill--mini">${catsTxt}</div>
-      <div class="pill pill--mini">${categoria}</div>
-      <div class="pill pill--mini">${contenido}</div>
+      <div class="mini-col">
+        <div class="mini-label">cats:</div>
+        <div class="mini-value">${catsTxt}</div>
+      </div>
+      <div class="mini-col">
+        <div class="mini-label">categoria:</div>
+        <div class="mini-value">${categoria}</div>
+      </div>
+      <div class="mini-col">
+        <div class="mini-label">contenido:</div>
+        <div class="mini-value">${contenido}</div>
+      </div>
     </div>
   `;
   el.onclick = ()=>openProduct(p);
@@ -459,7 +479,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
           notaAdvertencia: row.notaAdvertencia || '',
           familia: row.familia || '',
 
-          /* Campos del card (no cambiamos nombres) */
+          /* Campos del card */
           codigo: row.codigo ?? '',
           etiqueta: row.etiqueta ?? '',
           precioPublico: row.precioPublico ?? '',
@@ -468,7 +488,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
           precioPublico_K: row.precioPublico_K ?? '',
           precioMayoreo_K: row.precioMayoreo_K ?? '',
           precioDistribuidor_K: row.precioDistribuidor_K ?? '',
-          categoria: row.categoria ?? '',
+          categoria: row.categoria ?? row.categirua ?? '',   // ← fallback a 'categirua'
+          categirua: row.categirua ?? '',                    // por si quieres leerla directa
           contenido: row.contenido ?? ''
         };
       });
