@@ -316,7 +316,26 @@ mpClose.onclick = ()=>modalProd.classList.remove('open');
         return {
           id: row.id || '',
           nombre: row.nombre || 'Producto',
-          img: row.img || '../assets/images/placeholder.webp',
+          // arriba del return, dentro del .then(data=>{ ... map(row=>{ ... })
+const toSlug = s => (s||'').toString().toLowerCase()
+  .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+  .replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+
+const pickImg = (row) => {
+  const v = (row.img || '').trim();
+  // Si el JSON no trae 'img', inferimos desde 'nombre'
+  if (!v) {
+    const slug = toSlug(row.nombre || '');
+    return slug ? `assets/images/${slug}.webp` : '';
+  }
+  // Si el JSON trae URL absoluta, úsala
+  if (/^https?:\/\//i.test(v)) return v;
+  // Si el JSON trae ya la extensión, prepende la carpeta
+  if (/\.(png|jpe?g|webp|gif|avif|svg)$/i.test(v)) return `assets/images/${v}`;
+  // Si viene sin extensión, asumimos .webp
+  return `assets/images/${v}.webp`;
+};
+
           cats, beneficios, avisos, ingredientes, tags,
           forma: row.forma || '', tamano: row.tamano || '',
           notaAdvertencia: row.notaAdvertencia || '', familia: row.familia || '',
