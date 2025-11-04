@@ -47,13 +47,13 @@
     .kilo .title{grid-column:1/-1}
     .empty{margin:26px auto;max-width:860px;padding:12px 14px;border:1px dashed #d3a7c7;border-radius:12px;color:#6b3e64;background:#fff9fd;text-align:center;font-weight:700}
 
-    /* ================= MODAL (ARREGLADO) ================= */
+    /* ================= MODAL ================= */
     .modal{
       position:fixed; inset:0;
       display:none; align-items:center; justify-content:center;
       background:rgba(0,0,0,.55);
       padding:24px; z-index:1000;
-      overflow:auto;                 /* si todo crece, la página scrollea */
+      overflow:auto;
     }
     .modal.open{display:flex}
 
@@ -67,14 +67,13 @@
       max-width:min(1200px,95vw);
       width:100%;
     }
-    /* Ajuste de alineación vertical del panel derecho */
-#modalProd .sheet > .mp-overlay{
-  align-self: start;
-  margin-top: -8px; /* súbelo un poco */
-}
+    /* asegura que el panel quede alineado arriba */
+    #modalProd .sheet > .mp-overlay{
+      align-self:start;
+      margin-top:-8px;
+    }
 
-
-    /* Contenedor de imagen: respeta bordes, centra y limita altura */
+    /* Contenedor de imagen */
     #modalProd .img-max{
       position:relative;
       width:100%;
@@ -89,13 +88,13 @@
     #modalProd .img-max img{
       display:block;
       max-width:100%;
-      max-height:82vh;       /* <— clave para que no se salga */
+      max-height:82vh;       /* clave */
       width:auto; height:auto;
       border-radius:18px;
       object-fit:contain;
     }
 
-    /* Botón cerrar, anclado al contenedor del modal */
+    /* Botón cerrar */
     #mp-close{
       position:absolute;
       top:-14px; right:-14px;
@@ -106,14 +105,14 @@
       box-shadow:0 6px 16px rgba(0,0,0,.25)
     }
 
-    /* Columna de detalles: hace scroll propio, no se corta */
+    /* Columna detalles con scroll */
     .mp-overlay{
       position:relative;
       display:flex; flex-direction:column; gap:12px;
       width:100%;
-      max-height:82vh;        /* igual que la imagen */
-      overflow:auto;          /* scroll propio */
-      padding-right:2px;      /* deja ver barra de scroll */
+      max-height:82vh;
+      overflow:auto;
+      padding-right:2px;
     }
     .overlay-card{
       position:relative; background:#fff; border:2px solid var(--rose);
@@ -127,15 +126,13 @@
       font-weight:800; font-size:11px
     }
 
-    /* En pantallas chicas: todo en columna (imagen arriba) */
+    /* En pantallas chicas: apilar */
     @media (max-width: 900px){
       #modalProd .sheet{grid-template-columns:1fr}
       .mp-overlay{max-height:none; overflow:visible; margin:4px 0 0}
       #mp-close{top:-12px; right:-12px}
-      #modalProd .sheet > .mp-overlay{ margin-top: 0; }
-
+      #modalProd .sheet > .mp-overlay{ margin-top:0; }
     }
-    
 
     footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
   </style>
@@ -217,28 +214,28 @@ function productCard(p){
 
   el.innerHTML=`
     <div class="image-wrap">
-      <img src="${p.img}" alt="${p.nombre||''}" loading="lazy"
-           data-base="${p.imgBase}"
+      <img src="\${p.img}" alt="\${p.nombre||''}" loading="lazy"
+           data-base="\${p.imgBase}"
            data-step="webp"
-           data-fallback="${fb}"
+           data-fallback="${'${fb}'}"
            onerror="handleImgError(this)">
-      ${p.etiqueta?`<div class="badge">${p.etiqueta}</div>`:''}
+      \${p.etiqueta?`<div class="badge">\${p.etiqueta}</div>`:''}
     </div>
 
     <div class="row-2">
-      <div class="pill">${p.codigo||p.id||''}</div>
-      <div class="pill">${p.nombre||''}</div>
+      <div class="pill">\${p.codigo||p.id||''}</div>
+      <div class="pill">\${p.nombre||''}</div>
     </div>
 
     <div class="row-3">
-      <div class="price-col"><div class="bar">Público</div><div class="val">${pub}</div></div>
-      <div class="price-col"><div class="bar">Mayoreo</div><div class="val">${may}</div></div>
-      <div class="price-col"><div class="bar">Distribuidor</div><div class="val">${dis}</div></div>
+      <div class="price-col"><div class="bar">Público</div><div class="val">\${pub}</div></div>
+      <div class="price-col"><div class="bar">Mayoreo</div><div class="val">\${may}</div></div>
+      <div class="price-col"><div class="bar">Distribuidor</div><div class="val">\${dis}</div></div>
     </div>
 
     <div class="kilo">
       <div class="title"><div class="bar">Por barra de kilo</div></div>
-      <div class="val">${pubK}</div><div class="val">${mayK}</div><div class="val">${disK}</div>
+      <div class="val">\${pubK}</div><div class="val">\${mayK}</div><div class="val">\${disK}</div>
     </div>
   `;
   el.onclick=()=>openProduct(p);
@@ -262,7 +259,7 @@ const modalProd=document.getElementById('modalProd'),
       mpImg=document.getElementById('mp-img'),
       mpOverlay=document.getElementById('mp-overlay');
 
-const overlayCard=(t,h)=>`<div class="overlay-card"><span class="overlay-pill">${t}</span><div>${h}</div></div>`;
+const overlayCard=(t,h)=>`<div class="overlay-card"><span class="overlay-pill">\${t}</span><div>\${h}</div></div>`;
 function openProduct(p){
   const arr=v=>Array.isArray(v)?v:(v?[v]:[]);
   const fb = fallbackByCategory(p.categoria);
@@ -275,9 +272,9 @@ function openProduct(p){
   mpImg.alt = p.nombre||'';
 
   let html='';
-  if(arr(p.ingredientes).length) html+=overlayCard('Ingredientes',`<ul style="margin:0 0 0 16px">${arr(p.ingredientes).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
-  if(arr(p.beneficios).length)   html+=overlayCard('Beneficios',  `<ul style="margin:0 0 0 16px">${arr(p.beneficios).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
-  if(arr(p.avisos).length)       html+=overlayCard('Avisos',      `<ul style="margin:0 0 0 16px">${arr(p.avisos).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
+  if(arr(p.ingredientes).length) html+=overlayCard('Ingredientes',`<ul style="margin:0 0 0 16px">\${arr(p.ingredientes).slice(0,5).map(x=>`<li>\${x}</li>`).join('')}</ul>`);
+  if(arr(p.beneficios).length)   html+=overlayCard('Beneficios',  `<ul style="margin:0 0 0 16px">\${arr(p.beneficios).slice(0,5).map(x=>`<li>\${x}</li>`).join('')}</ul>`);
+  if(arr(p.avisos).length)       html+=overlayCard('Avisos',      `<ul style="margin:0 0 0 16px">\${arr(p.avisos).slice(0,5).map(x=>`<li>\${x}</li>`).join('')}</ul>`);
   mpOverlay.innerHTML=html; mpOverlay.style.display=html?'flex':'none';
 
   modalProd.classList.add('open');
@@ -298,7 +295,7 @@ mpClose.onclick=()=>modalProd.classList.remove('open');
     const id = getId(row);
     if (!id) return 'assets/images/placeholder';
     if (/^https?:\/\//i.test(row.img||'')) return row.img;
-    return `assets/images/${id}`;
+    return `assets/images/\${id}`;
   };
 
   async function loadJSON(){
@@ -349,7 +346,6 @@ document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
-
 
 
 
