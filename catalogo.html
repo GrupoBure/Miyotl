@@ -67,6 +67,12 @@
       max-width:min(1200px,95vw);
       width:100%;
     }
+    /* Ajuste de alineación vertical del panel derecho */
+#modalProd .sheet > .mp-overlay{
+  align-self: start;
+  margin-top: -8px; /* súbelo un poco */
+}
+
 
     /* Contenedor de imagen: respeta bordes, centra y limita altura */
     #modalProd .img-max{
@@ -126,7 +132,10 @@
       #modalProd .sheet{grid-template-columns:1fr}
       .mp-overlay{max-height:none; overflow:visible; margin:4px 0 0}
       #mp-close{top:-12px; right:-12px}
+      #modalProd .sheet > .mp-overlay{ margin-top: 0; }
+
     }
+    
 
     footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
   </style>
