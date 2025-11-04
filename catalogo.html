@@ -242,6 +242,19 @@ function productCard(p){
       <div class="title"><div class="bar">Por barra de kilo</div></div>
       <div class="val">${pubK}</div><div class="val">${mayK}</div><div class="val">${disK}</div>
     </div>
+        <!-- Meta extra desde el JSON -->
+    <div class="row-3">
+      <div class="price-col"><div class="bar">cats</div>
+        <div class="val">${(p.cats||[]).join(', ')}</div>
+      </div>
+      <div class="price-col"><div class="bar">categoría</div>
+        <div class="val">${p.categoria||''}</div>
+      </div>
+      <div class="price-col"><div class="bar">contenido</div>
+        <div class="val">${p.contenido||''}</div>
+      </div>
+    </div>
+
   `;
   el.onclick=()=>openProduct(p);
   return el;
