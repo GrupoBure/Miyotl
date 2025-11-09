@@ -149,18 +149,15 @@
 
 <div class="filters-wrap">
   <div class="filters">
-    <button onclick="location.href='index.html'" style="background:#fff;color:var(--miyotl);border:2px solid var(--miyotl);font-weight:800;">Inicio</button>
-    <button data-filter="all" class="is-active">Todos</button>
-    <button data-filter="sensible">Piel sensible</button>
-    <button data-filter="exfoliante">Exfoliantes</button>
-    <button data-filter="astringente">Astringentes</button>
-    <button data-filter="aromatico">Aromáticos</button>
-    <button data-filter="shampoo">Shampoo</button>
-    <button data-filter="líquido">Manos</button>
-    <button data-filter="corporal">Corporal</button>
-    <button data-filter="Decorativo">Decorativos</button>
-    <button data-filter="Temporada">Temporada</button>
-  </div>
+  <button onclick="location.href='index.html'" style="background:#fff;color:var(--miyotl);border:2px solid var(--miyotl);font-weight:800;">Inicio</button>
+
+  <button data-filter="Jabón sólido" class="is-active">Jabón sólido</button>
+  <button data-filter="Jabón líquido">Jabón líquido</button>
+  <button data-filter="Jabón corporal">Jabón corporal</button>
+  <button data-filter="Shampoo">Shampoo</button>
+  <button data-filter="Decorativos">Decorativos</button>
+  <button data-filter="Temporada">temporada</button>
+</div>
 </div>
 <p class="note">Haz clic en cualquier producto para ver sus beneficios.</p>
 
@@ -262,7 +259,9 @@ function productCard(p){
 
 function render(filter='all'){
   grid.innerHTML='';
-  const list=PRODUCTS.filter(p=>filter==='all'||(p.cats||[]).includes(filter));
+  const list=PRODUCTS.filter(p=>{
+    return filter==='all' ? true : (p.categoria === filter);
+  });
   list.forEach(p=>grid.appendChild(productCard(p)));
   empty.style.display=list.length?'none':'block';
   if(!list.length){
