@@ -349,6 +349,11 @@
       try { CART = JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
       catch(e){ CART = []; }
       if (!Array.isArray(CART)) CART = [];
+      // Si el carrito está vacío (p.ej. storage limpio), precarga demo una sola vez
+      if (!CART.length) {
+        CART = seedIfEmpty();
+        saveCart();
+      }
 
       const box = $('#cart-list');
       box.innerHTML='';
