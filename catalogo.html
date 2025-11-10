@@ -421,6 +421,7 @@ mpClose.onclick=()=>modalProd.classList.remove('open');
       };
     });
     render('all');
+    if (typeof miyotlUpdateCartBadge === 'function') miyotlUpdateCartBadge();
   }).catch(err=>{
     console.error(err);
     empty.style.display='block';
@@ -442,8 +443,10 @@ document.getElementById('year').textContent=new Date().getFullYear();
     if(!el) return;
     el.textContent = _count();
   };
-  // Inicializa al cargar
+  // Inicializa al cargar (si el botón aún no existe, repetimos en DOMContentLoaded)
   miyotlUpdateCartBadge();
+  document.addEventListener('DOMContentLoaded', miyotlUpdateCartBadge);
+  window.addEventListener('focus', miyotlUpdateCartBadge);
   // Observa cambios por si otra pestaña/parte de la app modifica el carrito
   window.addEventListener('storage', function(e){
     if(e.key === 'miyotl_cart') miyotlUpdateCartBadge();
