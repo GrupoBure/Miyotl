@@ -187,7 +187,7 @@
             <h3>Métodos de envío</h3>
             <div class="radios" id="shipping-radios">
               <label class="radio">
-                <input type="radio" name="ship" value="pickup" checked>
+                <input type="radio" name="ship" value="pickup">
                 <div>
                   <div><strong>Recoge personalmente</strong> <span class="pill">GRATIS</span></div>
                   <div class="muted small">Viveros del Rocío, Tlalnepantla. Coordinamos por WhatsApp.</div>
@@ -248,16 +248,22 @@
             </div>
             <p class="small muted">Incluye IVA cuando aplique. Jabones artesanales de glicerina.</p>
             <div class="badge" id="badge-info">Carrito demo precargado</div>
+            <button id="clear-cart" class="btn ghost block" style="margin-top:8px">Vaciar carrito</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- JS: se mantiene igual (lógica intacta) -->
+  <!-- JS: motor intacto + 3 mejoras (persistir envío, validación WA, vaciar carrito) -->
   <script>
     /* =====================================================
-       Checkout Miyotl — v1.1 (mismo motor, solo cambia el look)
+       Checkout Miyotl — v1.2
+       - Estilo unificado con catálogo
+       - Persistencia de método de envío
+       - Validación mínima antes de enviar a WhatsApp
+       - Botón "Vaciar carrito"
+       Mantiene: SHIP_TABLE, subtotal(), updateTotals(), renderCart(), etc.
        ===================================================== */
 
     const SHIP_TABLE = {
@@ -287,6 +293,14 @@
     const $ = sel => document.querySelector(sel);
     const $$ = sel => Array.from(document.querySelectorAll(sel));
     function saveCart(){ localStorage.setItem('miyotl_cart', JSON.stringify(CART)); }
+
+    // Persistencia de envío
+    let shipKey = localStorage.getItem('miyotl_ship') || 'pickup';
+    // Marcar el radio correspondiente si existe
+    document.addEventListener('DOMContentLoaded', () => {
+      const _shipInput = document.querySelector(\`input[name="ship"][value="\${shipKey}"]\`);
+      if (_shipInput) { _shipInput.checked = true; }
+    });
 
     let _cartEventsBound = false;
     function attachQtyHandlers(){
@@ -331,8 +345,6 @@
       $('#badge-info').style.display = CART.length? 'inline-flex':'none';
     }
 
-    let shipKey = 'pickup';
-
     function renderCart(){
       try { CART = JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
       catch(e){ CART = []; }
@@ -343,21 +355,21 @@
       CART.forEach(item=>{
         const row = document.createElement('div');
         row.className='cart-item';
-        row.innerHTML = `
-          <div class="thumb" style="background-image:url('${item.img||''}')"></div>
+        row.innerHTML = \`
+          <div class="thumb" style="background-image:url('\${item.img||''}')"></div>
           <div>
-            <div style="font-weight:700">${item.name}</div>
-            <div class="muted small">${MXN(item.price)} c/u</div>
+            <div style="font-weight:700">\${item.name}</div>
+            <div class="muted small">\${MXN(item.price)} c/u</div>
           </div>
           <div style="text-align:right">
             <div class="qty">
-              <button aria-label="Menos" data-act="dec" data-id="${item.id}">−</button>
-              <input value="${item.qty}" inputmode="numeric" data-id="${item.id}" />
-              <button aria-label="Más" data-act="inc" data-id="${item.id}">+</button>
+              <button aria-label="Menos" data-act="dec" data-id="\${item.id}">−</button>
+              <input value="\${item.qty}" inputmode="numeric" data-id="\${item.id}" />
+              <button aria-label="Más" data-act="inc" data-id="\${item.id}">+</button>
             </div>
-            <div class="small" style="margin-top:6px"><strong>${MXN(item.price*item.qty)}</strong></div>
-            <button class="small" style="margin-top:6px;color:#a00;background:transparent;border:0;cursor:pointer" data-act="rm" data-id="${item.id}">Eliminar</button>
-          </div>`;
+            <div class="small" style="margin-top:6px"><strong>\${MXN(item.price*item.qty)}</strong></div>
+            <button class="small" style="margin-top:6px;color:#a00;background:transparent;border:0;cursor:pointer" data-act="rm" data-id="\${item.id}">Eliminar</button>
+          </div>\`;
         box.appendChild(row);
       });
 
@@ -366,32 +378,68 @@
     }
     window.renderCart = renderCart;
 
+    // Listener de método de envío (con persistencia)
     $$('#shipping-radios input[name="ship"]').forEach(r=>{
-      r.addEventListener('change', ()=>{ shipKey = r.value; updateTotals(); });
+      r.addEventListener('change', ()=>{
+        shipKey = r.value;
+        localStorage.setItem('miyotl_ship', shipKey);
+        updateTotals();
+      });
     });
 
+    // Vaciar carrito
+    const clearBtn = document.getElementById('clear-cart');
+    if (clearBtn){
+      clearBtn.addEventListener('click', ()=>{
+        if(!confirm('¿Vaciar el carrito?')) return;
+        localStorage.removeItem('miyotl_cart');
+        CART = [];
+        renderCart();
+        updateTotals();
+      });
+    }
+
+    // WhatsApp checkout con validación mínima
     $('#btn-wa').addEventListener('click', ()=>{
       const addr = {
         email: $('#email').value.trim(), name: $('#name').value.trim(), phone: $('#phone').value.trim(),
         street: $('#street').value.trim(), col: $('#col').value.trim(), zip: $('#zip').value.trim(),
         city: $('#city').value.trim(), state: $('#state').value.trim()
       };
+
+      const required = [
+        ['name','Nombre completo'],
+        ['phone','Teléfono'],
+        ['city','Ciudad/Municipio'],
+        ['state','Estado']
+      ].filter(([k])=>!addr[k]).map(([,label])=>label);
+
+      if (required.length){
+        alert('Faltan datos: ' + required.join(', '));
+        return;
+      }
+      if (!CART.length){
+        alert('Tu carrito está vacío.');
+        return;
+      }
+
       const lines = [
-        `🧼 *Nuevo pedido Miyotl*`,
-        `\n*Contacto:* ${addr.name} — ${addr.phone} — ${addr.email}`,
-        `*Envío:* ${SHIP_TABLE[shipKey].label} (${SHIP_TABLE[shipKey].cost? MXN(SHIP_TABLE[shipKey].cost):'GRATIS'})`,
-        `*Dirección:* ${addr.street}, Col. ${addr.col}, CP ${addr.zip}, ${addr.city}, ${addr.state}`,
-        `\n*Artículos:*`,
-        ...CART.map(i=>`• ${i.name} × ${i.qty} — ${MXN(i.price*i.qty)}`),
-        `\n*Subtotal:* ${MXN(subtotal())}`,
-        `*Envío:* ${SHIP_TABLE[shipKey].cost? MXN(SHIP_TABLE[shipKey].cost):'GRATIS'}`,
-        `*Total:* ${MXN(subtotal()+SHIP_TABLE[shipKey].cost)}`
+        '🧼 *Nuevo pedido Miyotl*',
+        '\n*Contacto:* ' + addr.name + ' — ' + addr.phone + ' — ' + addr.email,
+        '*Envío:* ' + SHIP_TABLE[shipKey].label + ' (' + (SHIP_TABLE[shipKey].cost? MXN(SHIP_TABLE[shipKey].cost):'GRATIS') + ')',
+        '*Dirección:* ' + addr.street + ', Col. ' + addr.col + ', CP ' + addr.zip + ', ' + addr.city + ', ' + addr.state,
+        '\n*Artículos:*',
+        ...CART.map(i=>'• ' + i.name + ' × ' + i.qty + ' — ' + MXN(i.price*i.qty)),
+        '\n*Subtotal:* ' + MXN(subtotal()),
+        '*Envío:* ' + (SHIP_TABLE[shipKey].cost? MXN(SHIP_TABLE[shipKey].cost):'GRATIS'),
+        '*Total:* ' + MXN(subtotal()+SHIP_TABLE[shipKey].cost)
       ];
       const text = encodeURIComponent(lines.join('\n'));
       const phone = '52XXXXXXXXXX'; // reemplaza por tu número
-      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+      window.open('https://wa.me/' + phone + '?text=' + text, '_blank');
     });
 
+    // Inicializar render
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', renderCart);
     } else {
