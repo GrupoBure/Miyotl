@@ -283,7 +283,7 @@
 
     let CART = JSON.parse(localStorage.getItem('miyotl_cart') || '[]');
     if (!Array.isArray(CART)) CART = [];
-    if (!CART.length) CART = seedIfEmpty();
+    /* no seeding here: respetamos carrito vacío */
 
     const $ = sel => document.querySelector(sel);
     const $$ = sel => Array.from(document.querySelectorAll(sel));
@@ -346,11 +346,18 @@
       try { CART = JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
       catch(e){ CART = []; }
       if (!Array.isArray(CART)) CART = [];
-      // Sembrar demo si está vacío (solo para no dejar pantalla en blanco)
-      if (!CART.length) { CART = seedIfEmpty(); saveCart(); }
+      // No sembramos demo automáticamente; si está vacío, mostramos estado vacío.
 
       const box = $('#cart-list');
       box.innerHTML='';
+      if (!CART.length){
+        const empty = document.createElement('div');
+        empty.className='muted';
+        empty.innerHTML = `<p>Tu carrito está vacío.</p><p><a class="btn" href="catalogo.html">← Ir al catálogo</a></p>`;
+        box.appendChild(empty);
+        updateTotals();
+        return;
+      }
       CART.forEach(item=>{
         const row = document.createElement('div');
         row.className='cart-item';
