@@ -3,67 +3,142 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Checkout — Miyotl</title>
-  <meta name="description" content="Checkout con carrito, dirección, métodos de envío y resumen de pedido. Plantilla lista para integrar pagos más adelante.">
+  <title>Tienda — Miyotl</title>
+  <meta name="description" content="Checkout con carrito, dirección, métodos de envío y resumen de pedido. Estilo unificado con el catálogo.">
+
+  <!-- Paleta y tokens alineados al catálogo -->
   <style>
     :root{
-      --bg:#faf8f6;--card:#ffffff;--ink:#1f1b16;--muted:#6b645c;--accent:#2b0f3a;--accent-2:#c9a781;--ok:#0a7b34;--rose:#d24b6a;
-      --ring: 0 8px 24px rgba(0,0,0,.08);
+      /* Colores del catálogo (mismos nombres) */
+      --brand-50:#F7EFE6; --brand-100:#F2E6D8; --brand-200:#EAD6C0; --brand-300:#DBBFA2;
+      --brand-400:#C9A781; --brand-500:#2B0F3A; --brand-700:#1B0D28;
+      --miyotl:#C53D8C; --ink:#140A1F;
+      --rose:#E067C6; --rose-strong:#A83477; --muted:#8E8E8E;
+      --bar:#F2CFE9;
+
+      /* Derivados para checkout */
+      --bg:#fff;
+      --card:#fff;
+      --ring:0 6px 18px rgba(0,0,0,.12);
+      --ring-strong:0 12px 40px rgba(0,0,0,.18);
+      --ok:#0a7b34;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    a{color:var(--accent)}
-    .wrap{max-width:1100px;margin:24px auto;padding:0 16px}
-    header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-    header .brand{font-weight:800;letter-spacing:.2px}
-    .grid{display:grid;grid-template-columns:1.3fr .9fr;gap:24px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr;}}
-    .card{background:var(--card);border:1px solid #eee;border-radius:16px;box-shadow:var(--ring)}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font:16px/1.4 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    a{color:var(--miyotl); text-decoration:none}
+
+    /* Header con banner similar al catálogo */
+    header.headline{background:#e1d1bd}
+    .top-banner{width:100%; height:200px; object-fit:cover; display:block; filter:saturate(.95)}
+    .wrap{max-width:1100px; margin:-40px auto 24px; padding:0 16px; position:relative}
+
+    /* Tarjetas estilo catálogo */
+    .card{
+      background:var(--card);
+      border:2px solid var(--rose);
+      border-radius:22px;
+      box-shadow:var(--ring);
+      overflow:hidden;
+    }
     .card h3{margin:0 0 8px}
-    .section{padding:16px 18px;border-top:1px solid #eee}
-    .section:first-child{border-top:0;border-radius:16px 16px 0 0}
-    .section:last-child{border-radius:0 0 16px 16px}
+    .section{padding:16px 18px; border-top:1px solid var(--brand-100)}
+    .section:first-child{border-top:0; border-radius:22px 22px 0 0}
+    .section:last-child{border-radius:0 0 22px 22px}
+
+    /* Layout */
+    .grid{display:grid; grid-template-columns:1.3fr .9fr; gap:24px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+    /* Texto y labels */
     .muted{color:var(--muted)}
-    label{display:block;font-size:13px;color:var(--muted);margin:12px 0 6px}
-    input,select{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;background:#fff;outline:none}
-    input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(43,15,58,.1)}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .radios{display:flex;flex-direction:column;gap:10px}
-    .radio{display:flex;align-items:center;gap:12px;padding:10px;border:1px solid #e8e6e3;border-radius:12px;cursor:pointer}
-    .radio input{width:auto}
-    .pill{font-size:12px;padding:2px 8px;border-radius:999px;background:#f3efe9;color:#6a5b2e;border:1px solid #eadbc0}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:12px 14px;font-weight:700;cursor:pointer}
-    .btn.primary{background:var(--accent);color:#fff}
-    .btn.ghost{background:transparent;border:1px solid #ddd}
-    .btn.ok{background:var(--ok);color:#fff}
-    .btn.block{width:100%}
-    .totals{display:flex;flex-direction:column;gap:8px}
-    .totals .row{display:flex;justify-content:space-between}
-    .cart-item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid #f1efec}
-    .cart-item:first-child{border-top:0}
-    .thumb{width:56px;height:56px;border-radius:10px;background:#f2eee9;background-size:cover;background-position:center;border:1px solid #eee}
-    .qty{display:inline-flex;align-items:center;border:1px solid #ddd;border-radius:10px;overflow:hidden}
-    .qty button{border:0;background:#f4f2ef;padding:6px 10px;cursor:pointer}
-    .qty input{width:40px;border:0;text-align:center}
-    .note{font-size:12px;color:var(--muted)}
-    .danger{color:var(--rose)}
     .small{font-size:12px}
-    .hr{height:1px;background:#eee;margin:12px 0}
-    .right .section.sticky{position:sticky;top:16px}
-    .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:4px 8px;border-radius:999px;background:#eefbea;color:#0b6c34;border:1px solid #bfe8cc}
+    label{display:block; font-size:13px; color:var(--muted); margin:12px 0 6px}
+    input,select{
+      width:100%; padding:12px; border:2px solid var(--rose);
+      border-radius:12px; background:#fff; outline:none;
+    }
+    input:focus,select:focus{border-color:var(--rose-strong); box-shadow:0 0 0 3px rgba(168,52,119,.12)}
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+
+    /* Radios envío en tarjetas ligeras */
+    .radios{display:flex; flex-direction:column; gap:10px}
+    .radio{
+      display:flex; align-items:center; gap:12px; padding:10px;
+      border:2px solid var(--rose); border-radius:14px; cursor:pointer; background:#fff;
+      box-shadow:0 2px 10px rgba(0,0,0,.06);
+    }
+    .radio input{width:auto}
+    .pill{
+      font-size:12px; padding:2px 10px; border-radius:999px;
+      background:var(--bar); color:#2b2330; border:2px solid var(--rose);
+      font-weight:800;
+    }
+
+    /* Botones estilo catálogo */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      border:2px solid var(--rose); border-radius:12px; padding:12px 14px;
+      font-weight:800; cursor:pointer; background:#fff; color:#5A5A5A;
+      transition:.15s transform;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:var(--miyotl); border-color:var(--rose-strong); color:#fff}
+    .btn.ok{background:var(--ok); color:#fff; border-color:#0b6c34}
+    .btn.ghost{background:#fff}
+    .btn.block{width:100%}
+
+    /* Totales */
+    .totals{display:flex; flex-direction:column; gap:8px}
+    .totals .row{display:flex; justify-content:space-between}
+    .hr{height:1px; background:var(--brand-100); margin:12px 0}
+    .badge{
+      display:inline-flex; align-items:center; gap:6px; font-size:12px;
+      padding:6px 10px; border-radius:999px; background:var(--bar);
+      color:#2b2330; border:2px solid var(--rose); font-weight:800;
+    }
+
+    /* Items del carrito */
+    .cart-item{
+      display:grid; grid-template-columns:56px 1fr auto; gap:12px; align-items:center;
+      padding:10px 0; border-top:1px solid var(--brand-100);
+    }
+    .cart-item:first-child{border-top:0}
+    .thumb{
+      width:56px; height:56px; border-radius:12px; background:#fff;
+      background-size:cover; background-position:center;
+      border:2px solid var(--rose);
+    }
+    .qty{display:inline-flex; align-items:center; border:2px solid var(--rose); border-radius:12px; overflow:hidden}
+    .qty button{border:0; background:#fff; padding:6px 10px; cursor:pointer; font-weight:900}
+    .qty input{width:44px; border:0; text-align:center}
+    .danger{color:#a00}
+
+    /* Botón volver (arriba a la izquierda) */
+    .backbar{
+      display:flex; align-items:center; gap:12px; margin-bottom:12px;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Banner superior igual que el catálogo -->
+  <header class="headline">
+    <img class="top-banner" src="assets/images/catalogo-banner.webp" alt="">
+  </header>
+
   <div class="wrap">
-    <header>
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="var(--accent)" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>
-      <div class="brand">Miyotł — Tienda</div>
-      <span class="pill">Demo lista para usar</span>
-    </header>
+    <div class="backbar">
+      <a href="catalogo.html" class="btn">← Volver al catálogo</a>
+      <span class="pill">Checkout</span>
+    </div>
 
     <div class="grid">
-      <!-- Columna izquierda: Datos y método de envío -->
+      <!-- Columna izquierda: Datos y envío -->
       <div class="left">
         <div class="card">
           <div class="section">
@@ -111,10 +186,37 @@
           <div class="section">
             <h3>Métodos de envío</h3>
             <div class="radios" id="shipping-radios">
-              <label class="radio"><input type="radio" name="ship" value="pickup" checked> <div><div><strong>Recoge personalmente</strong> <span class="pill">GRATIS</span></div><div class="muted small">Viveros del Rocío, Tlalnepantla. Coordinamos por WhatsApp.</div></div></label>
-              <label class="radio"><input type="radio" name="ship" value="eco"> <div><div><strong>Envío económico</strong></div><div class="muted small">5 a 30 días hábiles aprox.</div></div><div style="margin-left:auto;">$120.00</div></label>
-              <label class="radio"><input type="radio" name="ship" value="std"> <div><div><strong>Envío estándar</strong></div><div class="muted small">3 a 6 días hábiles aprox.</div></div><div style="margin-left:auto;">$180.00</div></label>
-              <label class="radio"><input type="radio" name="ship" value="exp"> <div><div><strong>Envío express</strong></div><div class="muted small">1 a 3 días hábiles aprox.</div></div><div style="margin-left:auto;">$210.00</div></label>
+              <label class="radio">
+                <input type="radio" name="ship" value="pickup" checked>
+                <div>
+                  <div><strong>Recoge personalmente</strong> <span class="pill">GRATIS</span></div>
+                  <div class="muted small">Viveros del Rocío, Tlalnepantla. Coordinamos por WhatsApp.</div>
+                </div>
+              </label>
+              <label class="radio">
+                <input type="radio" name="ship" value="eco">
+                <div>
+                  <div><strong>Envío económico</strong></div>
+                  <div class="muted small">5 a 30 días hábiles aprox.</div>
+                </div>
+                <div style="margin-left:auto;">$120.00</div>
+              </label>
+              <label class="radio">
+                <input type="radio" name="ship" value="std">
+                <div>
+                  <div><strong>Envío estándar</strong></div>
+                  <div class="muted small">3 a 6 días hábiles aprox.</div>
+                </div>
+                <div style="margin-left:auto;">$180.00</div>
+              </label>
+              <label class="radio">
+                <input type="radio" name="ship" value="exp">
+                <div>
+                  <div><strong>Envío express</strong></div>
+                  <div class="muted small">1 a 3 días hábiles aprox.</div>
+                </div>
+                <div style="margin-left:auto;">$210.00</div>
+              </label>
             </div>
           </div>
         </div>
@@ -125,17 +227,17 @@
             <p class="muted small">Todas las transacciones son seguras y están encriptadas.</p>
             <div class="hr"></div>
             <p class="danger"><strong>Esta tienda no puede aceptar pagos en este momento.</strong></p>
-            <p class="note">Puedes finalizar el pedido por WhatsApp o transferencia. El botón de abajo arma todo el resumen automáticamente.</p>
+            <p class="small muted">Puedes finalizar el pedido por WhatsApp o transferencia. El botón de abajo arma el resumen automáticamente.</p>
             <button class="btn ok block" id="btn-wa">Finalizar por WhatsApp</button>
-            <p class="small muted">Después podemos integrar Mercado Pago/Stripe para pagar aquí mismo.</p>
+            <p class="small muted">Luego podemos integrar Mercado Pago/Stripe para pagar aquí mismo.</p>
           </div>
         </div>
       </div>
 
-      <!-- Columna derecha: Resumen del pedido -->
+      <!-- Columna derecha: Resumen -->
       <div class="right">
         <div class="card">
-          <div class="section sticky">
+          <div class="section" style="position:sticky; top:16px">
             <h3>Resumen de pedido</h3>
             <div id="cart-list"></div>
             <div class="hr"></div>
@@ -144,7 +246,7 @@
               <div class="row"><span>Envío</span><strong id="shipcost">GRATIS</strong></div>
               <div class="row" style="font-size:18px"><span>Total</span><strong id="grand">$0.00</strong></div>
             </div>
-            <p class="note">Incluye IVA cuando aplique. Jabones artesanales de glicerina.</p>
+            <p class="small muted">Incluye IVA cuando aplique. Jabones artesanales de glicerina.</p>
             <div class="badge" id="badge-info">Carrito demo precargado</div>
           </div>
         </div>
@@ -152,13 +254,10 @@
     </div>
   </div>
 
+  <!-- JS: se mantiene igual (lógica intacta) -->
   <script>
     /* =====================================================
-       Checkout Miyotl — v1.1 (corregido)
-       - Lee localStorage antes de semilla demo
-       - renderCart refresca desde localStorage
-       - Inicialización con DOMContentLoaded (una vez)
-       - attachQtyHandlers sin duplicar listeners
+       Checkout Miyotl — v1.1 (mismo motor, solo cambia el look)
        ===================================================== */
 
     const SHIP_TABLE = {
@@ -170,31 +269,28 @@
 
     const MXN = n => n.toLocaleString('es-MX',{style:'currency',currency:'MXN'});
 
-    // Demo por si no hay carrito (se usará SOLO si localStorage viene vacío)
     const seedIfEmpty = () => {
       const existing = JSON.parse(localStorage.getItem('miyotl_cart')||'[]');
       if(existing.length) return existing;
       const demo = [
-        {id:'frag-chocolate', name:'Fragancia/Aromatizante para jabón o vela — Chocolate', price:48, qty:1, img:'https://via.placeholder.com/80?text=Choco'},
-        {id:'frag-menta', name:'Fragancia/Aromatizante para jabón o vela — Menta', price:48, qty:1, img:'https://via.placeholder.com/80?text=Menta'}
+        {id:'frag-chocolate', name:'Fragancia/Aromatizante — Chocolate', price:48, qty:1, img:'assets/images/102000.webp'},
+        {id:'frag-menta', name:'Fragancia/Aromatizante — Menta', price:48, qty:1, img:'assets/images/104000.webp'}
       ];
       localStorage.setItem('miyotl_cart', JSON.stringify(demo));
       return demo;
     };
 
-    // 1) Lee primero del localStorage; si viene vacío, usa demo
     let CART = JSON.parse(localStorage.getItem('miyotl_cart') || '[]');
     if (!Array.isArray(CART)) CART = [];
     if (!CART.length) CART = seedIfEmpty();
 
     const $ = sel => document.querySelector(sel);
     const $$ = sel => Array.from(document.querySelectorAll(sel));
-
     function saveCart(){ localStorage.setItem('miyotl_cart', JSON.stringify(CART)); }
 
     let _cartEventsBound = false;
     function attachQtyHandlers(){
-      if (_cartEventsBound) return; // evita múltiples listeners
+      if (_cartEventsBound) return;
       _cartEventsBound = true;
 
       $('#cart-list').addEventListener('click', e=>{
@@ -208,7 +304,7 @@
         if(act==='dec') CART[idx].qty = Math.max(1, CART[idx].qty-1);
         if(act==='rm') CART.splice(idx,1);
         saveCart();
-        renderCart(); // solo re-render, nada de re-inicializar aquí
+        renderCart();
       });
 
       $('#cart-list').addEventListener('input', e=>{
@@ -238,7 +334,6 @@
     let shipKey = 'pickup';
 
     function renderCart(){
-      // 2) Refresca SIEMPRE desde localStorage (lo que dejó el catálogo)
       try { CART = JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
       catch(e){ CART = []; }
       if (!Array.isArray(CART)) CART = [];
@@ -251,7 +346,7 @@
         row.innerHTML = `
           <div class="thumb" style="background-image:url('${item.img||''}')"></div>
           <div>
-            <div style="font-weight:600">${item.name}</div>
+            <div style="font-weight:700">${item.name}</div>
             <div class="muted small">${MXN(item.price)} c/u</div>
           </div>
           <div style="text-align:right">
@@ -269,15 +364,12 @@
       attachQtyHandlers();
       updateTotals();
     }
-    // Exponer por si quieres llamar desde consola
     window.renderCart = renderCart;
 
-    // Selección de envío
     $$('#shipping-radios input[name="ship"]').forEach(r=>{
       r.addEventListener('change', ()=>{ shipKey = r.value; updateTotals(); });
     });
 
-    // WhatsApp checkout
     $('#btn-wa').addEventListener('click', ()=>{
       const addr = {
         email: $('#email').value.trim(), name: $('#name').value.trim(), phone: $('#phone').value.trim(),
@@ -296,12 +388,10 @@
         `*Total:* ${MXN(subtotal()+SHIP_TABLE[shipKey].cost)}`
       ];
       const text = encodeURIComponent(lines.join('\n'));
-      // Reemplaza el número con tu WhatsApp con formato 52XXXXXXXXXX
-      const phone = '52XXXXXXXXXX';
+      const phone = '52XXXXXXXXXX'; // reemplaza por tu número
       window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
     });
 
-    // 3) Inicializa UNA sola vez cuando el DOM esté listo
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', renderCart);
     } else {
