@@ -139,6 +139,14 @@
     
 
     footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
+/* Botón añadir */
+.btn-add{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:8px 12px;border-radius:12px;border:2px solid var(--rose);
+  background:#fff;cursor:pointer;font-weight:800;color:#5A5A5A;
+}
+.btn-add:hover{ transform:translateY(-1px); }
+
 
 /* FAB carrito */
 .fab-cart{
@@ -268,8 +276,20 @@ function productCard(p){
         <div class="val">${p.contenido||''}</div>
       </div>
     </div>
+  <div style="padding:8px 10px 12px">
+    <button class="btn-add" data-id="${p.id}">Añadir al carrito</button>
+  </div>
 
   `;
+// Evita abrir el modal al dar clic en “Añadir”
+const addBtn = el.querySelector('.btn-add');
+if (addBtn){
+  addBtn.addEventListener('click', (ev)=>{
+    ev.stopPropagation();
+    addToCart(p);                 // usa las utilidades del carrito
+  });
+}
+
   el.onclick=()=>openProduct(p);
   return el;
 }
