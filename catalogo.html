@@ -270,6 +270,39 @@ function render(filter='all'){
   }
 }
 btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');render(b.dataset.filter);});
+<script>
+/* ====== UTILIDADES DE CARRITO (no tocan tu UI) ====== */
+function miyotlGetCart(){
+  try { return JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
+  catch(e){ return []; }
+}
+function miyotlSetCart(cart){
+  localStorage.setItem('miyotl_cart', JSON.stringify(cart));
+  // Si más adelante ponemos un badge/contador, aquí lo refrescamos.
+  if (typeof miyotlUpdateCartBadge === 'function') miyotlUpdateCartBadge();
+}
+function miyotlCartCount(){
+  return miyotlGetCart().reduce((n,i)=> n + Number(i.qty || 0), 0);
+}
+/**
+ * addToCart: recibe un objeto de producto como el que ya usas en tu grid.
+ * Campos mínimos: id, nombre, precioPublico (o price), img
+ */
+function addToCart(p){
+  const cart = miyotlGetCart();
+  const id   = p.id || p.codigo || (p.nombre || '').toString().trim();
+  const name = p.nombre || p.codigo || 'Producto';
+  // Toma el precio público como base; si no viene, intenta price
+  const price = Number(p.precioPublico ?? p.price ?? 0);
+  const img   = p.img || p.imgBase || '';
+  const i = cart.findIndex(x => x.id === id);
+  if (i >= 0) cart[i].qty = Number(cart[i].qty||0) + 1;
+  else cart.push({ id, name, price, qty: 1, img });
+  miyotlSetCart(cart);
+}
+/* (Opcional) Hook para un contador futuro: no hace nada si no existe */
+function miyotlUpdateCartBadge(){ /* no-op por ahora */ }
+</script>
 
 /* ---------- Modal ---------- */
 const modalProd=document.getElementById('modalProd'),
