@@ -139,6 +139,22 @@
     
 
     footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
+
+/* FAB carrito */
+.fab-cart{
+  position:fixed; right:16px; bottom:16px; z-index:1200;
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--rose); color:#fff; text-decoration:none;
+  border:2px solid var(--rose-strong); border-radius:999px;
+  padding:10px 14px; font-weight:800;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
+.fab-cart:hover{ transform:translateY(-1px); }
+#cart-count{
+  background:#fff; color:var(--ink); border-radius:999px;
+  padding:2px 8px; font-weight:900; line-height:1;
+}
+
   </style>
 </head>
 <body>
@@ -392,7 +408,33 @@ mpClose.onclick=()=>modalProd.classList.remove('open');
   });
 })();
 document.getElementById('year').textContent=new Date().getFullYear();
+/* ====== Contador del FAB (lee localStorage, no depende de otras utilidades) ====== */
+(function(){
+  function _getCart(){
+    try { return JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
+    catch(e){ return []; }
+  }
+  function _count(){
+    return _getCart().reduce((n,i)=> n + Number(i?.qty || 0), 0);
+  }
+  window.miyotlUpdateCartBadge = function(){
+    var el = document.getElementById('cart-count');
+    if(!el) return;
+    el.textContent = _count();
+  };
+  // Inicializa al cargar
+  miyotlUpdateCartBadge();
+  // Observa cambios por si otra pestaña/parte de la app modifica el carrito
+  window.addEventListener('storage', function(e){
+    if(e.key === 'miyotl_cart') miyotlUpdateCartBadge();
+  });
+})();
+
 </script>
+<a id="to-checkout" href="checkout.html" class="fab-cart" aria-label="Ir al checkout">
+  🧺 <span id="cart-count">0</span>
+</a>
+
 </body>
 </html>
 
