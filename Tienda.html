@@ -135,6 +135,7 @@
     <div class="backbar">
       <a href="catalogo.html" class="btn">← Volver al catálogo</a>
       <span class="pill">Checkout</span>
+      <span class="pill" id="cart-pill"><span data-cart-count>0</span> artículo(s)</span>
     </div>
 
     <div class="grid">
@@ -332,6 +333,7 @@
     function subtotal(){ return CART.reduce((s,i)=>s + i.price*i.qty, 0); }
 
     function updateTotals(){
+      miyotlUpdateCartBadge();
       const sub = subtotal();
       const ship = SHIP_TABLE[shipKey]?.cost || 0;
       $('#subtotal').textContent = MXN(sub);
@@ -383,6 +385,7 @@
       updateTotals();
     }
     window.renderCart = renderCart;
+    miyotlUpdateCartBadge();
 
     // Listener de método de envío (con persistencia)
     $$('#shipping-radios input[name="ship"]').forEach(r=>{
@@ -445,9 +448,27 @@
       window.open('https://wa.me/' + phone + '?text=' + text, '_blank');
     });
 
+    
+    // === Contador global de carrito (siempre visible) ===
+    function miyotlCartCount(){
+      try{
+        const c = JSON.parse(localStorage.getItem('miyotl_cart')||'[]');
+        if(!Array.isArray(c)) return 0;
+        return c.reduce((s,i)=> s + (parseInt(i.qty,10)||0), 0);
+      }catch(e){ return 0; }
+    }
+    function miyotlUpdateCartBadge(){
+      const n = miyotlCartCount();
+      const el = document.querySelector('[data-cart-count]');
+      if (el){ el.textContent = n; }
+    }
+    window.addEventListener('storage', (e)=>{
+      if (e.key === 'miyotl_cart') miyotlUpdateCartBadge();
+    });
+
     // Inicializar render
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', renderCart);
+      document.addEventListener('DOMContentLoaded', ()=>{ renderCart(); miyotlUpdateCartBadge(); });
     } else {
       renderCart();
     }
