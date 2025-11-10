@@ -270,7 +270,6 @@ function render(filter='all'){
   }
 }
 btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');render(b.dataset.filter);});
-<script>
 /* ====== UTILIDADES DE CARRITO (no tocan tu UI) ====== */
 function miyotlGetCart(){
   try { return JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
@@ -302,7 +301,6 @@ function addToCart(p){
 }
 /* (Opcional) Hook para un contador futuro: no hace nada si no existe */
 function miyotlUpdateCartBadge(){ /* no-op por ahora */ }
-</script>
 
 /* ---------- Modal ---------- */
 const modalProd=document.getElementById('modalProd'),
