@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — Miyotl</title>
+  <meta name="description" content="Checkout con carrito, dirección, métodos de envío y resumen de pedido. Plantilla lista para integrar pagos más adelante.">
+  <style>
+    :root{
+      --bg:#faf8f6;--card:#ffffff;--ink:#1f1b16;--muted:#6b645c;--accent:#2b0f3a;--accent-2:#c9a781;--ok:#0a7b34;--rose:#d24b6a;
+      --ring: 0 8px 24px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:var(--accent)}
+    .wrap{max-width:1100px;margin:24px auto;padding:0 16px}
+    header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+    header .brand{font-weight:800;letter-spacing:.2px}
+    .grid{display:grid;grid-template-columns:1.3fr .9fr;gap:24px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr;}}
+    .card{background:var(--card);border:1px solid #eee;border-radius:16px;box-shadow:var(--ring)}
+    .card h3{margin:0 0 8px}
+    .section{padding:16px 18px;border-top:1px solid #eee}
+    .section:first-child{border-top:0;border-radius:16px 16px 0 0}
+    .section:last-child{border-radius:0 0 16px 16px}
+    .muted{color:var(--muted)}
+    label{display:block;font-size:13px;color:var(--muted);margin:12px 0 6px}
+    input,select{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;background:#fff;outline:none}
+    input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(43,15,58,.1)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .radios{display:flex;flex-direction:column;gap:10px}
+    .radio{display:flex;align-items:center;gap:12px;padding:10px;border:1px solid #e8e6e3;border-radius:12px;cursor:pointer}
+    .radio input{width:auto}
+    .pill{font-size:12px;padding:2px 8px;border-radius:999px;background:#f3efe9;color:#6a5b2e;border:1px solid #eadbc0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:12px 14px;font-weight:700;cursor:pointer}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.ghost{background:transparent;border:1px solid #ddd}
+    .btn.ok{background:var(--ok);color:#fff}
+    .btn.block{width:100%}
+    .totals{display:flex;flex-direction:column;gap:8px}
+    .totals .row{display:flex;justify-content:space-between}
+    .cart-item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid #f1efec}
+    .cart-item:first-child{border-top:0}
+    .thumb{width:56px;height:56px;border-radius:10px;background:#f2eee9;background-size:cover;background-position:center;border:1px solid #eee}
+    .qty{display:inline-flex;align-items:center;border:1px solid #ddd;border-radius:10px;overflow:hidden}
+    .qty button{border:0;background:#f4f2ef;padding:6px 10px;cursor:pointer}
+    .qty input{width:40px;border:0;text-align:center}
+    .note{font-size:12px;color:var(--muted)}
+    .danger{color:var(--rose)}
+    .small{font-size:12px}
+    .hr{height:1px;background:#eee;margin:12px 0}
+    .right .section.sticky{position:sticky;top:16px}
+    .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:4px 8px;border-radius:999px;background:#eefbea;color:#0b6c34;border:1px solid #bfe8cc}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="var(--accent)" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>
+      <div class="brand">Miyotł — Tienda</div>
+      <span class="pill">Demo lista para usar</span>
+    </header>
+
+    <div class="grid">
+      <!-- Columna izquierda: Datos y método de envío -->
+      <div class="left">
+        <div class="card">
+          <div class="section">
+            <h3>Contacto</h3>
+            <label for="email">Correo electrónico</label>
+            <input id="email" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email">
+          </div>
+
+          <div class="section">
+            <h3>Enviar a</h3>
+            <div class="row">
+              <div>
+                <label for="name">Nombre completo</label>
+                <input id="name" placeholder="Nombre y apellidos" autocomplete="name">
+              </div>
+              <div>
+                <label for="phone">Teléfono (WhatsApp)</label>
+                <input id="phone" placeholder="10 dígitos" autocomplete="tel">
+              </div>
+            </div>
+            <label for="street">Calle y número</label>
+            <input id="street" placeholder="Calle, número exterior e interior">
+            <div class="row">
+              <div>
+                <label for="col">Colonia</label>
+                <input id="col" placeholder="Colonia o barrio">
+              </div>
+              <div>
+                <label for="zip">C.P.</label>
+                <input id="zip" placeholder="Código postal">
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="city">Ciudad/Municipio</label>
+                <input id="city" placeholder="Ciudad o municipio">
+              </div>
+              <div>
+                <label for="state">Estado</label>
+                <input id="state" placeholder="Estado">
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Métodos de envío</h3>
+            <div class="radios" id="shipping-radios">
+              <label class="radio"><input type="radio" name="ship" value="pickup" checked> <div><div><strong>Recoge personalmente</strong> <span class="pill">GRATIS</span></div><div class="muted small">Viveros del Rocío, Tlalnepantla. Coordinamos por WhatsApp.</div></div></label>
+              <label class="radio"><input type="radio" name="ship" value="eco"> <div><div><strong>Envío económico</strong></div><div class="muted small">5 a 30 días hábiles aprox.</div></div><div style="margin-left:auto;">$120.00</div></label>
+              <label class="radio"><input type="radio" name="ship" value="std"> <div><div><strong>Envío estándar</strong></div><div class="muted small">3 a 6 días hábiles aprox.</div></div><div style="margin-left:auto;">$180.00</div></label>
+              <label class="radio"><input type="radio" name="ship" value="exp"> <div><div><strong>Envío express</strong></div><div class="muted small">1 a 3 días hábiles aprox.</div></div><div style="margin-left:auto;">$210.00</div></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="section">
+            <h3>Pago</h3>
+            <p class="muted small">Todas las transacciones son seguras y están encriptadas.</p>
+            <div class="hr"></div>
+            <p class="danger"><strong>Esta tienda no puede aceptar pagos en este momento.</strong></p>
+            <p class="note">Puedes finalizar el pedido por WhatsApp o transferencia. El botón de abajo arma todo el resumen automáticamente.</p>
+            <button class="btn ok block" id="btn-wa">Finalizar por WhatsApp</button>
+            <p class="small muted">Después podemos integrar Mercado Pago/Stripe para pagar aquí mismo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Resumen del pedido -->
+      <div class="right">
+        <div class="card">
+          <div class="section sticky">
+            <h3>Resumen de pedido</h3>
+            <div id="cart-list"></div>
+            <div class="hr"></div>
+            <div class="totals">
+              <div class="row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+              <div class="row"><span>Envío</span><strong id="shipcost">GRATIS</strong></div>
+              <div class="row" style="font-size:18px"><span>Total</span><strong id="grand">$0.00</strong></div>
+            </div>
+            <p class="note">Incluye IVA cuando aplique. Jabones artesanales de glicerina.</p>
+            <div class="badge" id="badge-info">Carrito demo precargado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =====================================================
+       Checkout Miyotl — v1.0 (Kael)
+       - Carrito en localStorage ('miyotl_cart')
+       - Métodos de envío fijos (modificar SHIP_TABLE)
+       - Botón WhatsApp para pedidos sin pasarela
+       ===================================================== */
+
+    const SHIP_TABLE = {
+      pickup: { label: 'Recoge personalmente', cost: 0 },
+      eco:    { label: 'Envío económico', cost: 120 },
+      std:    { label: 'Envío estándar', cost: 180 },
+      exp:    { label: 'Envío express', cost: 210 }
+    };
+
+    const MXN = n => n.toLocaleString('es-MX',{style:'currency',currency:'MXN'});
+
+    // Demo: si no hay carrito, sembramos dos artículos.
+    const seedIfEmpty = () => {
+      const existing = JSON.parse(localStorage.getItem('miyotl_cart')||'[]');
+      if(existing.length) return existing;
+      const demo = [
+        {id:'frag-chocolate', name:'Fragancia/Aromatizante para jabón o vela — Chocolate', price:48, qty:1, img:'https://via.placeholder.com/80?text=Choco'},
+        {id:'frag-menta', name:'Fragancia/Aromatizante para jabón o vela — Menta', price:48, qty:1, img:'https://via.placeholder.com/80?text=Menta'}
+      ];
+      localStorage.setItem('miyotl_cart', JSON.stringify(demo));
+      return demo;
+    }
+
+    let CART = seedIfEmpty();
+    let shipKey = 'pickup';
+
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    function saveCart(){ localStorage.setItem('miyotl_cart', JSON.stringify(CART)); }
+
+    function renderCart(){
+      const box = $('#cart-list');
+      box.innerHTML='';
+      CART.forEach(item=>{
+        const row = document.createElement('div');
+        row.className='cart-item';
+        row.innerHTML = `
+          <div class="thumb" style="background-image:url('${item.img||''}')"></div>
+          <div>
+            <div style="font-weight:600">${item.name}</div>
+            <div class="muted small">${MXN(item.price)} c/u</div>
+          </div>
+          <div style="text-align:right">
+            <div class="qty">
+              <button aria-label="Menos" data-act="dec" data-id="${item.id}">−</button>
+              <input value="${item.qty}" inputmode="numeric" data-id="${item.id}" />
+              <button aria-label="Más" data-act="inc" data-id="${item.id}">+</button>
+            </div>
+            <div class="small" style="margin-top:6px"><strong>${MXN(item.price*item.qty)}</strong></div>
+            <button class="small" style="margin-top:6px;color:#a00;background:transparent;border:0;cursor:pointer" data-act="rm" data-id="${item.id}">Eliminar</button>
+          </div>`;
+        box.appendChild(row);
+      });
+      attachQtyHandlers();
+      updateTotals();
+    }
+
+    function attachQtyHandlers(){
+      $('#cart-list').addEventListener('click', e=>{
+        const btn = e.target.closest('[data-act]');
+        if(!btn) return;
+        const id = btn.getAttribute('data-id');
+        const idx = CART.findIndex(p=>p.id===id);
+        if(idx<0) return;
+        const act = btn.getAttribute('data-act');
+        if(act==='inc') CART[idx].qty++;
+        if(act==='dec') CART[idx].qty = Math.max(1, CART[idx].qty-1);
+        if(act==='rm') CART.splice(idx,1);
+        saveCart();
+        renderCart();
+      });
+      $('#cart-list').addEventListener('input', e=>{
+        const input = e.target;
+        if(input.tagName!=='INPUT') return;
+        const id = input.getAttribute('data-id');
+        const idx = CART.findIndex(p=>p.id===id);
+        let val = parseInt(input.value||'1',10);
+        if(!Number.isFinite(val) || val<=0) val=1;
+        CART[idx].qty = val;
+        saveCart();
+        updateTotals();
+      });
+    }
+
+    function subtotal(){ return CART.reduce((s,i)=>s + i.price*i.qty, 0); }
+
+    function updateTotals(){
+      const sub = subtotal();
+      const ship = SHIP_TABLE[shipKey]?.cost || 0;
+      $('#subtotal').textContent = MXN(sub);
+      $('#shipcost').textContent = ship? MXN(ship) : 'GRATIS';
+      $('#grand').textContent = MXN(sub + ship);
+      $('#badge-info').style.display = CART.length? 'inline-flex':'none';
+    }
+
+    // Selección de envío
+    $$('#shipping-radios input[name="ship"]').forEach(r=>{
+      r.addEventListener('change', ()=>{ shipKey = r.value; updateTotals(); });
+    });
+
+    // WhatsApp checkout
+    $('#btn-wa').addEventListener('click', ()=>{
+      const addr = {
+        email: $('#email').value.trim(), name: $('#name').value.trim(), phone: $('#phone').value.trim(),
+        street: $('#street').value.trim(), col: $('#col').value.trim(), zip: $('#zip').value.trim(),
+        city: $('#city').value.trim(), state: $('#state').value.trim()
+      };
+      const lines = [
+        `🧼 *Nuevo pedido Miyotl*`,
+        `\n*Contacto:* ${addr.name} — ${addr.phone} — ${addr.email}`,
+        `*Envío:* ${SHIP_TABLE[shipKey].label} (${SHIP_TABLE[shipKey].cost? MXN(SHIP_TABLE[shipKey].cost):'GRATIS'})`,
+        `*Dirección:* ${addr.street}, Col. ${addr.col}, CP ${addr.zip}, ${addr.city}, ${addr.state
