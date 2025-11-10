@@ -154,10 +154,11 @@
 
   <script>
     /* =====================================================
-       Checkout Miyotl — v1.0 (Kael)
-       - Carrito en localStorage ('miyotl_cart')
-       - Métodos de envío fijos (modificar SHIP_TABLE)
-       - Botón WhatsApp para pedidos sin pasarela
+       Checkout Miyotl — v1.1 (corregido)
+       - Lee localStorage antes de semilla demo
+       - renderCart refresca desde localStorage
+       - Inicialización con DOMContentLoaded (una vez)
+       - attachQtyHandlers sin duplicar listeners
        ===================================================== */
 
     const SHIP_TABLE = {
@@ -169,7 +170,7 @@
 
     const MXN = n => n.toLocaleString('es-MX',{style:'currency',currency:'MXN'});
 
-    // Demo: si no hay carrito, sembramos dos artículos.
+    // Demo por si no hay carrito (se usará SOLO si localStorage viene vacío)
     const seedIfEmpty = () => {
       const existing = JSON.parse(localStorage.getItem('miyotl_cart')||'[]');
       if(existing.length) return existing;
@@ -179,44 +180,23 @@
       ];
       localStorage.setItem('miyotl_cart', JSON.stringify(demo));
       return demo;
-    }
+    };
 
-    let CART = seedIfEmpty();
-    let shipKey = 'pickup';
+    // 1) Lee primero del localStorage; si viene vacío, usa demo
+    let CART = JSON.parse(localStorage.getItem('miyotl_cart') || '[]');
+    if (!Array.isArray(CART)) CART = [];
+    if (!CART.length) CART = seedIfEmpty();
 
     const $ = sel => document.querySelector(sel);
     const $$ = sel => Array.from(document.querySelectorAll(sel));
 
     function saveCart(){ localStorage.setItem('miyotl_cart', JSON.stringify(CART)); }
 
-    function renderCart(){
-      const box = $('#cart-list');
-      box.innerHTML='';
-      CART.forEach(item=>{
-        const row = document.createElement('div');
-        row.className='cart-item';
-        row.innerHTML = `
-          <div class="thumb" style="background-image:url('${item.img||''}')"></div>
-          <div>
-            <div style="font-weight:600">${item.name}</div>
-            <div class="muted small">${MXN(item.price)} c/u</div>
-          </div>
-          <div style="text-align:right">
-            <div class="qty">
-              <button aria-label="Menos" data-act="dec" data-id="${item.id}">−</button>
-              <input value="${item.qty}" inputmode="numeric" data-id="${item.id}" />
-              <button aria-label="Más" data-act="inc" data-id="${item.id}">+</button>
-            </div>
-            <div class="small" style="margin-top:6px"><strong>${MXN(item.price*item.qty)}</strong></div>
-            <button class="small" style="margin-top:6px;color:#a00;background:transparent;border:0;cursor:pointer" data-act="rm" data-id="${item.id}">Eliminar</button>
-          </div>`;
-        box.appendChild(row);
-      });
-      attachQtyHandlers();
-      updateTotals();
-    }
-
+    let _cartEventsBound = false;
     function attachQtyHandlers(){
+      if (_cartEventsBound) return; // evita múltiples listeners
+      _cartEventsBound = true;
+
       $('#cart-list').addEventListener('click', e=>{
         const btn = e.target.closest('[data-act]');
         if(!btn) return;
@@ -228,8 +208,9 @@
         if(act==='dec') CART[idx].qty = Math.max(1, CART[idx].qty-1);
         if(act==='rm') CART.splice(idx,1);
         saveCart();
-        renderCart();
+        renderCart(); // solo re-render, nada de re-inicializar aquí
       });
+
       $('#cart-list').addEventListener('input', e=>{
         const input = e.target;
         if(input.tagName!=='INPUT') return;
@@ -254,6 +235,43 @@
       $('#badge-info').style.display = CART.length? 'inline-flex':'none';
     }
 
+    let shipKey = 'pickup';
+
+    function renderCart(){
+      // 2) Refresca SIEMPRE desde localStorage (lo que dejó el catálogo)
+      try { CART = JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
+      catch(e){ CART = []; }
+      if (!Array.isArray(CART)) CART = [];
+
+      const box = $('#cart-list');
+      box.innerHTML='';
+      CART.forEach(item=>{
+        const row = document.createElement('div');
+        row.className='cart-item';
+        row.innerHTML = `
+          <div class="thumb" style="background-image:url('${item.img||''}')"></div>
+          <div>
+            <div style="font-weight:600">${item.name}</div>
+            <div class="muted small">${MXN(item.price)} c/u</div>
+          </div>
+          <div style="text-align:right">
+            <div class="qty">
+              <button aria-label="Menos" data-act="dec" data-id="${item.id}">−</button>
+              <input value="${item.qty}" inputmode="numeric" data-id="${item.id}" />
+              <button aria-label="Más" data-act="inc" data-id="${item.id}">+</button>
+            </div>
+            <div class="small" style="margin-top:6px"><strong>${MXN(item.price*item.qty)}</strong></div>
+            <button class="small" style="margin-top:6px;color:#a00;background:transparent;border:0;cursor:pointer" data-act="rm" data-id="${item.id}">Eliminar</button>
+          </div>`;
+        box.appendChild(row);
+      });
+
+      attachQtyHandlers();
+      updateTotals();
+    }
+    // Exponer por si quieres llamar desde consola
+    window.renderCart = renderCart;
+
     // Selección de envío
     $$('#shipping-radios input[name="ship"]').forEach(r=>{
       r.addEventListener('change', ()=>{ shipKey = r.value; updateTotals(); });
@@ -270,4 +288,25 @@
         `🧼 *Nuevo pedido Miyotl*`,
         `\n*Contacto:* ${addr.name} — ${addr.phone} — ${addr.email}`,
         `*Envío:* ${SHIP_TABLE[shipKey].label} (${SHIP_TABLE[shipKey].cost? MXN(SHIP_TABLE[shipKey].cost):'GRATIS'})`,
-        `*Dirección:* ${addr.street}, Col. ${addr.col}, CP ${addr.zip}, ${addr.city}, ${addr.state
+        `*Dirección:* ${addr.street}, Col. ${addr.col}, CP ${addr.zip}, ${addr.city}, ${addr.state}`,
+        `\n*Artículos:*`,
+        ...CART.map(i=>`• ${i.name} × ${i.qty} — ${MXN(i.price*i.qty)}`),
+        `\n*Subtotal:* ${MXN(subtotal())}`,
+        `*Envío:* ${SHIP_TABLE[shipKey].cost? MXN(SHIP_TABLE[shipKey].cost):'GRATIS'}`,
+        `*Total:* ${MXN(subtotal()+SHIP_TABLE[shipKey].cost)}`
+      ];
+      const text = encodeURIComponent(lines.join('\n'));
+      // Reemplaza el número con tu WhatsApp con formato 52XXXXXXXXXX
+      const phone = '52XXXXXXXXXX';
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    });
+
+    // 3) Inicializa UNA sola vez cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', renderCart);
+    } else {
+      renderCart();
+    }
+  </script>
+</body>
+</html>
