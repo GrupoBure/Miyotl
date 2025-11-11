@@ -1,242 +1,467 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catálogo — Miyotl (tiers + modal + filtros)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catálogo — Miyotl Products</title>
+  <meta name="description" content="Catálogo de jabones artesanales de glicerina. Filtra por piel sensible, exfoliantes, astringentes, aromáticos, shampoo o temporada.">
   <style>
-    :root{ --rose:#E067C6; --rose-strong:#A83477; --bar:#F2CFE9; --ink:#140A1F; --muted:#8E8E8E; }
-    body{margin:0;font:16px/1.45 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:#fff;}
-    .wrap{max-width:1100px;margin:20px auto;padding:0 16px}
-    h1{font-size:24px;margin:0 0 12px}
-    .topbar{display:flex;gap:10px;align-items:center;margin:8px 0 16px}
-    .topbar input,.topbar select{padding:10px;border:2px solid var(--rose);border-radius:12px;outline:none}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-    .card{border:2px solid var(--rose);border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.08);background:#fff}
-    .card .img{width:100%;height:180px;background:#f4f4f4 center/cover no-repeat;display:block}
-    .pad{padding:10px 12px}
-    .name{font-weight:800;margin-bottom:6px}
-    .muted{color:var(--muted);font-size:12px}
-    .btn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--rose);border-radius:12px;padding:10px 12px;font-weight:800;background:#fff;cursor:pointer}
-    .pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;border:2px solid var(--rose);background:var(--bar);font-weight:800}
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
-    .sheet{background:#fff;border:2px solid var(--rose);border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.18);max-width:520px;width:100%;}
-    .section{padding:14px 16px;border-top:1px solid #eee}
-    .section:first-child{border-top:0}
-    .row{display:grid;grid-template-columns:1fr 110px;gap:10px}
-    select,input[type="number"]{width:100%;padding:10px;border:2px solid var(--rose);border-radius:12px;outline:none}
-    .actions{display:flex;gap:10px;justify-content:flex-end}
-    .btn.primary{background:#C53D8C;color:#fff;border-color:#A83477}
-    .right{float:right}
-    .fab{position:fixed;right:18px;bottom:18px;border-radius:999px;padding:10px 14px;box-shadow:0 8px 30px rgba(0,0,0,.18);background:#fff;border:2px solid var(--rose);font-weight:800;z-index:40}
+    :root{
+      --brand-50:#F7EFE6; --brand-100:#F2E6D8; --brand-200:#EAD6C0; --brand-300:#DBBFA2;
+      --brand-400:#C9A781; --brand-500:#2B0F3A; --brand-700:#1B0D28;
+      --miyotl:#C53D8C; --ink:#140A1F;
+      --rose:#E067C6; --rose-strong:#A83477; --muted:#8E8E8E;
+      --bar:#F2CFE9;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial;color:var(--ink);background:#fff;font-size:13px;line-height:1.35}
+    .container{max-width:1120px;margin:0 auto;padding:0 16px}
+
+    header{background:#e1d1bd}
+    .top-banner{width:100%;height:260px;object-fit:cover;display:block;filter:saturate(0.9)}
+    .headline{position:relative}
+
+    .filters-wrap{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;padding:12px 16px;border-bottom:1px solid var(--brand-200);background:#fff}
+    .filters button{appearance:none;border:1px solid #A83477;background:var(--miyotl);color:#fff;cursor:pointer;padding:6px 10px;border-radius:12px;font-weight:700;font-size:12px;transition:.15s transform,.15s opacity}
+    .filters button:hover{transform:translateY(-1px)}
+    .filters button.is-active{box-shadow:0 2px 10px rgba(0,0,0,.12)}
+    .note{font-size:11px;color:#4d4d4d;text-align:center;margin:8px 0 18px}
+
+    .grid{display:grid;gap:18px}
+    @media(min-width:768px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+    .card{background:#fff;border:2px solid var(--rose);border-radius:22px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.06);transition:.15s transform,.15s border-color;cursor:pointer}
+    .card:hover{transform:translateY(-3px);border-color:var(--rose-strong)}
+    .card .image-wrap{position:relative;border-radius:20px;overflow:hidden;margin:6px;border:2px solid var(--rose)}
+    .card .image-wrap img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;filter:saturate(.98)}
+    .card .badge{position:absolute;right:10px;bottom:10px;width:60px;height:60px;border-radius:999px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;line-height:1.05;padding:6px;box-shadow:0 6px 18px rgba(0,0,0,.18);font-size:10px}
+
+    .card .row-2{display:grid;grid-template-columns:1fr 2fr;gap:10px;padding:8px 10px 0}
+    .pill{background:#fff;border:2px solid var(--rose);border-radius:16px;padding:6px 9px;color:#5A5A5A;font-weight:800;text-align:center;min-height:30px;display:flex;align-items:center;justify-content:center;font-size:11px}
+
+    .bar{background:var(--bar);color:#2b2330;border-radius:4px;text-align:center;font-weight:800;padding:4px 0;font-size:10px;line-height:1.1}
+    .val{font-weight:800;text-align:center;color:#4b4b4b;font-size:11px;margin-top:4px}
+    .row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 10px 2px}
+    .price-col{display:grid}
+    .kilo{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 10px 0}
+    .kilo .title{grid-column:1/-1}
+    .empty{margin:26px auto;max-width:860px;padding:12px 14px;border:1px dashed #d3a7c7;border-radius:12px;color:#6b3e64;background:#fff9fd;text-align:center;font-weight:700}
+
+    /* ================= MODAL (ARREGLADO) ================= */
+    .modal{
+      position:fixed; inset:0;
+      display:none; align-items:center; justify-content:center;
+      background:rgba(0,0,0,.55);
+      padding:24px; z-index:1000;
+      overflow:auto;                 /* si todo crece, la página scrollea */
+    }
+    .modal.open{display:flex}
+
+    /* Imagen | Columna info */
+    #modalProd .sheet{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 340px; /* imagen flexible + panel fijo */
+      gap:16px;
+      align-items:start;
+      max-width:min(1200px,95vw);
+      width:100%;
+    }
+    /* Ajuste de alineación vertical del panel derecho */
+#modalProd .sheet > .mp-overlay{
+  align-self: start;
+  margin-top: -8px; /* súbelo un poco */
+}
+
+
+    /* Contenedor de imagen: respeta bordes, centra y limita altura */
+    #modalProd .img-max{
+      position:relative;
+      width:100%;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 12px 40px rgba(0,0,0,.45);
+      border:2px solid var(--rose);
+      background:#fff;
+      display:flex; align-items:center; justify-content:center;
+      min-height:200px;
+    }
+    #modalProd .img-max img{
+      display:block;
+      max-width:100%;
+      max-height:82vh;       /* <— clave para que no se salga */
+      width:auto; height:auto;
+      border-radius:18px;
+      object-fit:contain;
+    }
+
+    /* Botón cerrar, anclado al contenedor del modal */
+    #mp-close{
+      position:absolute;
+      top:-14px; right:-14px;
+      z-index:3;
+      background:#fff; color:var(--ink);
+      border:2px solid var(--rose); border-radius:999px;
+      padding:8px 12px; font-weight:900; cursor:pointer;
+      box-shadow:0 6px 16px rgba(0,0,0,.25)
+    }
+
+    /* Columna de detalles: hace scroll propio, no se corta */
+    .mp-overlay{
+      position:relative;
+      display:flex; flex-direction:column; gap:12px;
+      width:100%;
+      max-height:82vh;        /* igual que la imagen */
+      overflow:auto;          /* scroll propio */
+      padding-right:2px;      /* deja ver barra de scroll */
+      padding-top:16px;       /* <<< evita que la pill se corte */
+    }
+    .overlay-card{
+      position:relative; background:#fff; border:2px solid var(--rose);
+      border-radius:12px; padding:8px 10px 10px;
+      box-shadow:0 6px 18px rgba(0,0,0,.25);
+      max-height:none; overflow:visible; font-size:12px; color:#4b4b4b
+    }
+    .overlay-pill{
+      position:absolute; left:8px; top:-12px; background:#D874C3;
+      color:#fff; border:none; border-radius:14px; padding:4px 10px;
+      font-weight:800; font-size:11px
+    }
+
+    /* En pantallas chicas: todo en columna (imagen arriba) */
+    @media (max-width: 900px){
+      #modalProd .sheet{grid-template-columns:1fr}
+      .mp-overlay{max-height:none; overflow:visible; margin:4px 0 0}
+      #mp-close{top:-12px; right:-12px}
+      #modalProd .sheet > .mp-overlay{ margin-top: 0; }
+
+    }
+    
+
+    footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
+/* Botón añadir */
+.btn-add{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:8px 12px;border-radius:12px;border:2px solid var(--rose);
+  background:#fff;cursor:pointer;font-weight:800;color:#5A5A5A;
+}
+.btn-add:hover{ transform:translateY(-1px); }
+
+
+/* FAB carrito */
+.fab-cart{
+  position:fixed; right:16px; bottom:16px; z-index:1200;
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--rose); color:#fff; text-decoration:none;
+  border:2px solid var(--rose-strong); border-radius:999px;
+  padding:10px 14px; font-weight:800;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
+.fab-cart:hover{ transform:translateY(-1px); }
+#cart-count{
+  background:#fff; color:var(--ink); border-radius:999px;
+  padding:2px 8px; font-weight:900; line-height:1;
+}
+
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Catálogo — Miyotl</h1>
-    <div class="muted">Precios en vivo (Mayoreo ≥ 25 u, Distribuidor ≥ 100 u) · 100 g = 1 u, 1 kg = 10 u, líquidos = 1 u.</div>
 
-    <div class="topbar">
-      <input id="q" placeholder="Buscar...">
-      <select id="cat"><option value="all">Todas las categorías</option></select>
+<header class="headline">
+  <img class="top-banner" src="assets/images/catalogo-banner.webp" alt="">
+</header>
+
+<div class="filters-wrap">
+  <div class="filters">
+  <button onclick="location.href='index.html'" style="background:#fff;color:var(--miyotl);border:2px solid var(--miyotl);font-weight:800;">Inicio</button>
+
+  <button data-filter="all" class="is-active">Todos</button>
+  <button data-filter="Jabón sólido">Jabón sólido</button>  
+  <button data-filter="Jabón líquido">Jabón líquido</button>
+  <button data-filter="Jabón corporal">Jabón corporal</button>
+  <button data-filter="Shampoo">Shampoo</button>
+  <button data-filter="Decorativos">Decorativos</button>
+  <button data-filter="Temporada">Temporada</button>
+</div>
+</div>
+<p class="note">Haz clic en cualquier producto para ver sus beneficios.</p>
+
+<main class="container">
+  <section id="grid" class="grid"></section>
+  <div id="empty" class="empty" style="display:none"></div>
+</main>
+
+<footer><div class="container" style="text-align:center">© <span id="year"></span> Miyotl Products · Hecho en México</div></footer>
+
+<!-- Modal -->
+<div id="modalProd" class="modal" role="dialog" aria-modal="true">
+  <div class="sheet">
+    <button id="mp-close" class="btn secondary">Cerrar</button>
+    <div class="img-max">
+      <img id="mp-img" alt="">
     </div>
-
-    <div id="grid" class="grid"></div>
+    <div id="mp-overlay" class="mp-overlay" aria-hidden="true" style="display:none"></div>
   </div>
-
-  <a class="fab" href="Tienda.html">🧺 <span data-cart-count>0</span></a>
-
-  <!-- Modal -->
-  <div id="modal" class="modal" role="dialog" aria-modal="true">
-    <div class="sheet">
-      <div class="section">
-        <div id="m-name" class="name"></div>
-        <div class="muted" id="m-category"></div>
-      </div>
-      <div class="section row">
-        <div>
-          <div class="muted">Presentación</div>
-          <select id="m-pres"></select>
-        </div>
-        <div>
-          <div class="muted">Cantidad</div>
-          <input id="m-qty" type="number" min="1" value="1">
-        </div>
-      </div>
-      <div class="section">
-        <div class="pill">Nivel: <b id="m-tier" style="margin-left:6px">—</b></div>
-        <div class="right"><b>Precio:</b> <span id="m-price">$0.00</span></div>
-      </div>
-      <div class="section actions">
-        <button id="m-cancel" class="btn">Cancelar</button>
-        <button id="m-add" class="btn primary">Añadir al carrito</button>
-      </div>
-    </div>
-  </div>
+</div>
 
 <script>
-// ====== Utilidades ======
-const MXN = n => Number(n||0).toLocaleString('es-MX',{style:'currency',currency:'MXN'});
-const TIER_LIMITS = { wholesale: 25, distributor: 100 };
-function tierFactor(t){ return t==='wholesale'?0.95 : (t==='distributor'?0.85:1); }
-function cartGet(){ try{ const c=JSON.parse(localStorage.getItem('miyotl_cart')||'[]'); return Array.isArray(c)?c:[]; }catch{ return []; } }
-function cartSet(c){ localStorage.setItem('miyotl_cart', JSON.stringify(c)); miyotlUpdateCartBadge(); }
-function cartUnits(){ return cartGet().reduce((s,i)=> s + (Number(i.units_per_item||1)*Number(i.qty||0)), 0); }
-function currentTier(){ const u=cartUnits(); if(u>=TIER_LIMITS.distributor) return 'distributor'; if(u>=TIER_LIMITS.wholesale) return 'wholesale'; return 'public'; }
-function appliedPrice(base,t){ return Math.round(Number(base||0)*tierFactor(t)*100)/100; }
-function miyotlUpdateCartBadge(){ const el=document.querySelector('[data-cart-count]'); if(el) el.textContent = cartGet().reduce((s,i)=> s + Number(i.qty||0), 0); }
+const grid=document.getElementById('grid');
+const empty=document.getElementById('empty');
+const btns=document.querySelectorAll('.filters button[data-filter]');
+let PRODUCTS=[];
 
-function guessImage(p){
-  // Order: p.img -> p.imgBase -> assets/images/{codigo}.webp -> assets/images/{codigo padded with zeros to 6}.webp
-  if (p.img) return p.img;
-  if (p.imgBase) return p.imgBase;
-  const code = String(p.codigo || p.id || '').trim();
-  if (code){
-    const direct = `assets/images/${code}.webp`;
-    const padded = `assets/images/${code.padEnd(6,'0')}.webp`;
-    return direct;
-  }
-  return 'assets/images/catalogo-fallback.webp';
-}
+const money=v=>{if(v===undefined||v===null||v==='')return'';const n=Number(v);return Number.isFinite(n)?n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}):(v+'');};
 
-function availablePresentations(p){
-  const arr = [];
-  const gramsLabel = (p.contenido || '100 gr');
-  arr.push({id:'100g', label: gramsLabel, basePublic: Number(p.precioPublico||0), units: unitsFor(p,'100g')});
-  if (p.precioPublico_K != null){
-    arr.push({id:'1kg', label:'1 kg', basePublic: Number(p.precioPublico_K||0), units: 10});
-  }
-  return arr;
+/* === Helpers de imagen con fallback por categoría === */
+const norm = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+function fallbackByCategory(cat){
+  const c = norm(cat);
+  if (c.includes('solido') || c.includes('sólido')) return 'assets/images/102000.webp'; // barra
+  if (c.includes('shampoo') || c.includes('corporal') || c.includes('liquido') || c.includes('líquido'))
+    return 'assets/images/104000.webp'; // botella
+  return 'assets/images/102000.webp';
 }
-function unitsFor(p, presId){
-  const cat = (p.categoria||'').toLowerCase();
-  if (cat.includes('líquido') || cat.includes('liquido')) return 1;
-  if (presId==='1kg') return 10;
-  const m = String(p.contenido||'100').match(/(\\d+(?:\\.\\d+)?)/);
-  const grams = m ? parseFloat(m[1]) : 100;
-  return grams/100;
+function handleImgError(img){
+  const base = img.dataset.base || '';
+  const step = img.dataset.step || 'webp';
+  if (step === 'webp'){ img.dataset.step='jpg'; img.src = base + '.jpg'; return; }
+  if (step === 'jpg'){ img.dataset.step='png'; img.src = base + '.png'; return; }
+  if (img.dataset.fallback){ img.onerror=null; img.src = img.dataset.fallback; return; }
+  img.onerror = null;
 }
 
-// ====== Render catálogo con filtros ======
-let DATA = [];
-async function load(){
-  const urls = ['catalogo.json','./catalogo.json','assets/catalogo.json','./assets/catalogo.json'];
-  let json=null;
-  for (const u of urls){
-    try{ const r = await fetch(u, {cache:'no-store'}); if(r.ok){ json = await r.json(); break; } }catch(e){}
-  }
-  if (!json){ alert('No pude cargar catalogo.json'); return; }
-  const arr = Array.isArray(json)? json : (json.productos||json.items||[]);
-  DATA = arr;
-  renderFilters(arr);
-  render(arr);
-  miyotlUpdateCartBadge();
-}
-function renderFilters(arr){
-  const cats = Array.from(new Set(arr.map(p=>p.categoria||'Otros'))).sort();
-  const sel = document.getElementById('cat');
-  cats.forEach(c=>{ const o=document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o); });
-  document.getElementById('q').addEventListener('input', triggerFilter);
-  sel.addEventListener('change', triggerFilter);
-}
-function triggerFilter(){
-  const q = document.getElementById('q').value.toLowerCase().trim();
-  const c = document.getElementById('cat').value;
-  const filtered = DATA.filter(p=>{
-    const okCat = (c==='all') || (String(p.categoria||'').toLowerCase()===c.toLowerCase());
-    const txt = (p.nombre||'') + ' ' + (p.codigo||'') + ' ' + (p.categoria||'') + ' ' + (p.contenido||'');
-    const okQ = !q || txt.toLowerCase().includes(q);
-    return okCat && okQ;
-  });
-  render(filtered);
-}
-function render(list){
-  const grid = document.getElementById('grid');
-  grid.innerHTML='';
-  list.forEach(p=>{
-    const el = document.createElement('div');
-    el.className='card';
-    const img = guessImage(p);
-    el.innerHTML = `
-      <div class="img" style="background-image:url('${img}')"></div>
-      <div class="pad">
-        <div class="name">${p.nombre||p.name||'Producto'}</div>
-        <div class="muted">${p.categoria||''} · ${p.contenido||''}</div>
-        <div style="margin-top:8px"><button class="btn" data-config>Configurar y añadir</button></div>
+/* ---------- Tarjeta ---------- */
+function productCard(p){
+  const el=document.createElement('article'); el.className='card'; el.dataset.cats=(p.cats||[]).join(',');
+
+  const pub=money(p.precioPublico), may=money(p.precioMayoreo), dis=money(p.precioDistribuidor);
+  const pubK=money(p.precioPublico_K), mayK=money(p.precioMayoreo_K), disK=money(p.precioDistribuidor_K);
+
+  const fb = fallbackByCategory(p.categoria);
+
+  el.innerHTML=`
+    <div class="image-wrap">
+      <img src="${p.img}" alt="${p.nombre||''}" loading="lazy"
+           data-base="${p.imgBase}"
+           data-step="webp"
+           data-fallback="${fb}"
+           onerror="handleImgError(this)">
+      ${p.etiqueta?`<div class="badge">${p.etiqueta}</div>`:''}
+    </div>
+
+    <div class="row-2">
+      <div class="pill">${p.codigo||p.id||''}</div>
+      <div class="pill">${p.nombre||''}</div>
+    </div>
+
+    <div class="row-3">
+      <div class="price-col"><div class="bar">Público</div><div class="val">${pub}</div></div>
+      <div class="price-col"><div class="bar">Mayoreo</div><div class="val">${may}</div></div>
+      <div class="price-col"><div class="bar">Distribuidor</div><div class="val">${dis}</div></div>
+    </div>
+
+    <div class="kilo">
+      <div class="title"><div class="bar">Por barra de kilo</div></div>
+      <div class="val">${pubK}</div><div class="val">${mayK}</div><div class="val">${disK}</div>
+    </div>
+        <!-- Meta extra desde el JSON -->
+    <div class="row-3">
+      <div class="price-col"><div class="bar">cats</div>
+        <div class="val">${(p.cats||[]).join(', ')}</div>
       </div>
-    `;
-    el.querySelector('[data-config]').addEventListener('click', ()=> openModal(p));
-    grid.appendChild(el);
+      <div class="price-col"><div class="bar">categoría</div>
+        <div class="val">${p.categoria||''}</div>
+      </div>
+      <div class="price-col"><div class="bar">contenido</div>
+        <div class="val">${p.contenido||''}</div>
+      </div>
+    </div>
+  <div style="padding:8px 10px 12px">
+    <button class="btn-add" data-id="${p.id}">Añadir al carrito</button>
+  </div>
+
+  `;
+// Evita abrir el modal al dar clic en “Añadir”
+const addBtn = el.querySelector('.btn-add');
+if (addBtn){
+  addBtn.addEventListener('click', (ev)=>{
+    ev.stopPropagation();
+    addToCart(p);                 // usa las utilidades del carrito
   });
 }
 
-// ====== Modal ======
-const $ = s=>document.querySelector(s);
-const modal = $('#modal');
-const mName = $('#m-name');
-const mCat  = $('#m-category');
-const mPres = $('#m-pres');
-const mQty  = $('#m-qty');
-const mTier = $('#m-tier');
-const mPrice= $('#m-price');
-let currentProduct = null;
+  el.onclick=()=>openProduct(p);
+  return el;
+}
 
-function openModal(p){
-  currentProduct = p;
-  mName.textContent = p.nombre || p.name || 'Producto';
-  mCat.textContent  = (p.categoria||'') + (p.contenido? ' · '+p.contenido : '');
-  mPres.innerHTML = '';
-  availablePresentations(p).forEach(v=>{
-    const opt = document.createElement('option');
-    opt.value = v.id;
-    opt.textContent = v.label;
-    opt.dataset.base = v.basePublic;
-    opt.dataset.units = v.units;
-    mPres.appendChild(opt);
+function render(filter='all'){
+  grid.innerHTML='';
+  const list=PRODUCTS.filter(p=>{
+    return filter==='all' ? true : (p.categoria === filter);
   });
-  mQty.value = 1;
-  refreshModalPrice();
-  modal.style.display='flex';
+  list.forEach(p=>grid.appendChild(productCard(p)));
+  empty.style.display=list.length?'none':'block';
+  if(!list.length){
+    empty.innerHTML='No hay productos para mostrar. Revisa que <b>catalogo.json</b> exista, tenga formato válido y esté en la misma carpeta que <b>catalogo.html</b>.';
+  }
 }
-function closeModal(){ modal.style.display='none'; }
-function refreshModalPrice(){
-  const base = Number(mPres.selectedOptions[0].dataset.base||0);
-  const tier = currentTier();
-  mTier.textContent = (tier==='public'?'Público':(tier==='wholesale'?'Mayoreo':'Distribuidor'));
-  mPrice.textContent = MXN(appliedPrice(base, tier));
+btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');render(b.dataset.filter);});
+/* ====== UTILIDADES DE CARRITO (no tocan tu UI) ====== */
+function miyotlGetCart(){
+  try { return JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
+  catch(e){ return []; }
 }
-mPres.addEventListener('change', refreshModalPrice);
-mQty.addEventListener('input', ()=>{ if (mQty.value<=0) mQty.value=1; });
-$('#m-cancel').addEventListener('click', closeModal);
-modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
-$('#m-add').addEventListener('click', ()=>{
-  if (!currentProduct) return;
-  const presId = mPres.value;
-  const base = Number(mPres.selectedOptions[0].dataset.base||0);
-  const units = Number(mPres.selectedOptions[0].dataset.units||1);
-  const tier = currentTier();
-  const price = appliedPrice(base, tier);
-  const qty = Math.max(1, parseInt(mQty.value||'1',10));
-  const item = {
-    id: String(currentProduct.codigo||currentProduct.id) + '-' + presId,
-    name: (currentProduct.nombre||'') + ' — ' + mPres.selectedOptions[0].textContent,
-    img: guessImage(currentProduct),
-    variant: presId,
-    units_per_item: units,
-    price_base_public: base,
-    price_applied: price,
-    qty
+function miyotlSetCart(cart){
+  localStorage.setItem('miyotl_cart', JSON.stringify(cart));
+  // Si más adelante ponemos un badge/contador, aquí lo refrescamos.
+  if (typeof miyotlUpdateCartBadge === 'function') miyotlUpdateCartBadge();
+}
+function miyotlCartCount(){
+  return miyotlGetCart().reduce((n,i)=> n + Number(i.qty || 0), 0);
+}
+/**
+ * addToCart: recibe un objeto de producto como el que ya usas en tu grid.
+ * Campos mínimos: id, nombre, precioPublico (o price), img
+ */
+function addToCart(p){
+  const cart = miyotlGetCart();
+  const id   = p.id || p.codigo || (p.nombre || '').toString().trim();
+  const name = p.nombre || p.codigo || 'Producto';
+  // Toma el precio público como base; si no viene, intenta price
+  const price = Number(p.precioPublico ?? p.price ?? 0);
+  const img   = p.img || p.imgBase || '';
+  const i = cart.findIndex(x => x.id === id);
+  if (i >= 0) cart[i].qty = Number(cart[i].qty||0) + 1;
+  else cart.push({ id, name, price, qty: 1, img });
+  miyotlSetCart(cart);
+}
+/* (Opcional) Hook para un contador futuro: no hace nada si no existe */
+function miyotlUpdateCartBadge(){ /* no-op por ahora */ }
+
+/* ---------- Modal ---------- */
+const modalProd=document.getElementById('modalProd'),
+      mpClose=document.getElementById('mp-close'),
+      mpImg=document.getElementById('mp-img'),
+      mpOverlay=document.getElementById('mp-overlay');
+
+const overlayCard=(t,h)=>`<div class="overlay-card"><span class="overlay-pill">${t}</span><div>${h}</div></div>`;
+function openProduct(p){
+  const arr=v=>Array.isArray(v)?v:(v?[v]:[]);
+  const fb = fallbackByCategory(p.categoria);
+
+  mpImg.dataset.base = p.imgBase;
+  mpImg.dataset.step = 'webp';
+  mpImg.dataset.fallback = fb;
+  mpImg.onerror = () => handleImgError(mpImg);
+  mpImg.src = p.img;
+  mpImg.alt = p.nombre||'';
+
+  let html='';
+  if(arr(p.ingredientes).length) html+=overlayCard('Ingredientes',`<ul style="margin:0 0 0 16px">${arr(p.ingredientes).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
+  if(arr(p.beneficios).length)   html+=overlayCard('Beneficios',  `<ul style="margin:0 0 0 16px">${arr(p.beneficios).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
+  if(arr(p.avisos).length)       html+=overlayCard('Avisos',      `<ul style="margin:0 0 0 16px">${arr(p.avisos).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
+  mpOverlay.innerHTML=html; mpOverlay.style.display=html?'flex':'none';
+
+  modalProd.classList.add('open');
+}
+mpClose.onclick=()=>modalProd.classList.remove('open');
+
+/* ---------- Carga JSON por ID ---------- */
+(function(){
+  const mapCat=s=>{if(!s)return'';s=(''+s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');if(s.includes('sensible'))return'sensible';if(s.includes('exfol'))return'exfoliante';if(s.includes('astring'))return'astringente';if(s.includes('aromatic'))return'aromatico';return s;};
+  const toArray=v=>Array.isArray(v)?v.filter(Boolean):(typeof v==='string'?(v.includes('|||')?v.split('|||').map(x=>x.trim()).filter(Boolean):v.includes(',')?v.split(',').map(x=>x.trim()).filter(Boolean):(v.trim()?[v.trim()]:[])):[]);
+  const toSlug=s=>(s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+
+  const getId = row => {
+    const raw = (row.id ?? row.codigo ?? '').toString().trim();
+    return raw || toSlug(row.nombre||'');
   };
-  const cart = cartGet();
-  const idx = cart.findIndex(x=>x.id===item.id);
-  if (idx>=0){ cart[idx].qty += qty; } else { cart.push(item); }
-  cartSet(cart);
-  closeModal();
-});
+  const imgBaseById = row => {
+    const id = getId(row);
+    if (!id) return 'assets/images/placeholder';
+    if (/^https?:\/\//i.test(row.img||'')) return row.img;
+    return `assets/images/${id}`;
+  };
 
-// Init
-document.addEventListener('DOMContentLoaded', load);
-window.addEventListener('focus', miyotlUpdateCartBadge);
+  async function loadJSON(){
+    const tries=['./catalogo.json','catalogo.json','/Miyotl/catalogo.json','./Catalogo.json'];
+    for(const url of tries){
+      try{
+        const r=await fetch(url+'?v='+Date.now(),{cache:'no-store'});
+        if(!r.ok) continue;
+        return await r.json();
+      }catch(e){}
+    }
+    throw new Error('No se pudo cargar catalogo.json desde ninguna ruta conocida.');
+  }
+
+  loadJSON().then(data=>{
+    PRODUCTS = data.map(row=>{
+      const cats=toArray(row.cats).map(mapCat).filter(Boolean);
+      const base=imgBaseById(row);
+      return {
+        id: getId(row),
+        codigo: row.codigo ?? '',
+        nombre: row.nombre || 'Producto',
+        imgBase: /^https?:\/\//i.test(base) ? base.replace(/\.(webp|png|jpg|jpeg)$/i,'') : base,
+        img: /^https?:\/\//i.test(base) ? base : `${base}.webp`,
+        cats,
+        beneficios: toArray(row.beneficios),
+        avisos: toArray(row.avisos || row.notaAdvertencia),
+        ingredientes: toArray(row.ingredientes),
+        etiqueta: row.etiqueta ?? '',
+        precioPublico: row.precioPublico ?? '',
+        precioMayoreo: row.precioMayoreo ?? '',
+        precioDistribuidor: row.precioDistribuidor ?? '',
+        precioPublico_K: row.precioPublico_K ?? '',
+        precioMayoreo_K: row.precioMayoreo_K ?? '',
+        precioDistribuidor_K: row.precioDistribuidor_K ?? '',
+        categoria: row.categoria ?? row.categirua ?? '',
+        contenido: row.contenido ?? ''
+      };
+    });
+    render('all');
+    if (typeof miyotlUpdateCartBadge === 'function') miyotlUpdateCartBadge();
+  }).catch(err=>{
+    console.error(err);
+    empty.style.display='block';
+    empty.innerHTML='⚠️ No se pudo cargar <b>catalogo.json</b>. Verifica que el archivo exista en la misma carpeta y que el nombre coincida exactamente.';
+  });
+})();
+document.getElementById('year').textContent=new Date().getFullYear();
+/* ====== Contador del FAB (lee localStorage, no depende de otras utilidades) ====== */
+(function(){
+  function _getCart(){
+    try { return JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
+    catch(e){ return []; }
+  }
+  function _count(){
+    return _getCart().reduce((n,i)=> n + Number(i?.qty || 0), 0);
+  }
+  window.miyotlUpdateCartBadge = function(){
+    var el = document.getElementById('cart-count');
+    if(!el) return;
+    el.textContent = _count();
+  };
+  // Inicializa al cargar (si el botón aún no existe, repetimos en DOMContentLoaded)
+  miyotlUpdateCartBadge();
+  document.addEventListener('DOMContentLoaded', miyotlUpdateCartBadge);
+  window.addEventListener('focus', miyotlUpdateCartBadge);
+  // Observa cambios por si otra pestaña/parte de la app modifica el carrito
+  window.addEventListener('storage', function(e){
+    if(e.key === 'miyotl_cart') miyotlUpdateCartBadge();
+  });
+})();
+
 </script>
+<a id="to-checkout" href="Tienda.html" class="fab-cart" aria-label="Ir al checkout">
+  🧺 <span id="cart-count">0</span>
+</a>
+
 </body>
 </html>
+
+
+
+
+

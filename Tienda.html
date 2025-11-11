@@ -150,19 +150,18 @@
 
           <div class="section">
             <h3>Enviar a</h3>
-            <div class="row">      <div>        <label for="name">Nombre(s)</label>        <input id="name" placeholder="Nombre(s)" autocomplete="given-name">      </div>      <div>        <label for="apPat">Apellido paterno</label>        <input id="apPat" placeholder="Apellido paterno" autocomplete="family-name">      </div>    </div>    <div class="row">      <div>        <label for="apMat">Apellido materno</label>        <input id="apMat" placeholder="Apellido materno">      </div>      <div>        <label for="phone">Teléfono (WhatsApp)</label>        <input id="phone" placeholder="10 dígitos" autocomplete="tel">      </div>    </div>
-            <label for="street">Calle</label>
-            <input id="street" placeholder="Calle">
             <div class="row">
               <div>
-                <label for="numInt">Número interior</label>
-                <input id="numInt" placeholder="Interior">
+                <label for="name">Nombre completo</label>
+                <input id="name" placeholder="Nombre y apellidos" autocomplete="name">
               </div>
               <div>
-                <label for="numExt">Número exterior (opcional)</label>
-                <input id="numExt" placeholder="Exterior (opcional)">
+                <label for="phone">Teléfono (WhatsApp)</label>
+                <input id="phone" placeholder="10 dígitos" autocomplete="tel">
               </div>
             </div>
+            <label for="street">Calle y número</label>
+            <input id="street" placeholder="Calle, número exterior e interior">
             <div class="row">
               <div>
                 <label for="col">Colonia</label>
@@ -263,12 +262,6 @@
        Checkout Miyotl — v1.2 (visual unificado + fixes)
        ===================================================== */
 
-    const TIER_LIMITS = { wholesale: 25, distributor: 100 };
-    function tierFactor(t){ return t==='wholesale'?0.95 : (t==='distributor'?0.85:1); }
-    function cartUnitsFrom(C){ return C.reduce((s,i)=> s + (Number(i.units_per_item||1) * Number(i.qty||0)), 0); }
-    function currentTierFrom(C){ const u=cartUnitsFrom(C); if(u>=TIER_LIMITS.distributor) return 'distributor'; if(u>=TIER_LIMITS.wholesale) return 'wholesale'; return 'public'; }
-    function appliedPrice(base,t){ return Math.round(Number(base||0)*tierFactor(t)*100)/100; }
-
     const SHIP_TABLE = {
       pickup: { label: 'Recoge personalmente', cost: 0 },
       eco:    { label: 'Envío económico', cost: 120 },
@@ -337,7 +330,7 @@
       });
     }
 
-    function subtotal(){ const tier=currentTierFrom(CART); return CART.reduce((s,i)=>{ const base=(i.price_base_public!=null)?Number(i.price_base_public):Number(i.price||0); const price=appliedPrice(base,tier); i.price_applied=price; return s+price*Number(i.qty||0); },0);}
+    function subtotal(){ return CART.reduce((s,i)=>s + i.price*i.qty, 0); }
 
     function updateTotals(){
       miyotlUpdateCartBadge();
@@ -417,9 +410,18 @@
 
     // WhatsApp checkout con validación mínima
     $('#btn-wa').addEventListener('click', ()=>{
-      const addr = { email: $('#email').value.trim(), name: $('#name').value.trim(), apPat: $('#apPat')?$('#apPat').value.trim():'', apMat: $('#apMat')?$('#apMat').value.trim():'', phone: $('#phone').value.trim(), street: $('#street').value.trim(), numInt: $('#numInt')?$('#numInt').value.trim():'', numExt: $('#numExt')?$('#numExt').value.trim():'', col: $('#col').value.trim(), zip: $('#zip').value.trim(), city: $('#city').value.trim(), state: $('#state').value.trim() };
+      const addr = {
+        email: $('#email').value.trim(), name: $('#name').value.trim(), phone: $('#phone').value.trim(),
+        street: $('#street').value.trim(), col: $('#col').value.trim(), zip: $('#zip').value.trim(),
+        city: $('#city').value.trim(), state: $('#state').value.trim()
+      };
 
-      const required = [ ['name','Nombre(s)'], ['apPat','Apellido paterno'], ['apMat','Apellido materno'], ['phone','Teléfono'], ['street','Calle'], ['numInt','Número interior'], ['city','Ciudad/Municipio'], ['state','Estado'], ['col','Colonia'], ['zip','C.P.'] ].filter(([k])=>!addr[k]).map(([,label])=>label);
+      const required = [
+        ['name','Nombre completo'],
+        ['phone','Teléfono'],
+        ['city','Ciudad/Municipio'],
+        ['state','Estado']
+      ].filter(([k])=>!addr[k]).map(([,label])=>label);
 
       if (required.length){
         alert('Faltan datos: ' + required.join(', '));
@@ -432,9 +434,9 @@
 
       const lines = [
         '🧼 *Nuevo pedido Miyotl*',
-        '\n*Contacto:* ' + addr.name + ' ' + addr.apPat + ' ' + addr.apMat + ' — ' + addr.phone + ' — ' + addr.email,
+        '\n*Contacto:* ' + addr.name + ' — ' + addr.phone + ' — ' + addr.email,
         '*Envío:* ' + SHIP_TABLE[shipKey].label + ' (' + (SHIP_TABLE[shipKey].cost? MXN(SHIP_TABLE[shipKey].cost):'GRATIS') + ')',
-        '*Dirección:* ' + addr.street + ' Int. ' + addr.numInt + (addr.numExt? (' Ext. ' + addr.numExt) : '') + ', Col. ' + addr.col + ', CP ' + addr.zip + ', ' + addr.city + ', ' + addr.state,
+        '*Dirección:* ' + addr.street + ', Col. ' + addr.col + ', CP ' + addr.zip + ', ' + addr.city + ', ' + addr.state,
         '\n*Artículos:*',
         ...CART.map(i=>'• ' + i.name + ' × ' + i.qty + ' — ' + MXN(i.price*i.qty)),
         '\n*Subtotal:* ' + MXN(subtotal()),
