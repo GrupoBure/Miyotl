@@ -3,39 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catálogo — Miyotl (tiers + modal)</title>
+  <title>Catálogo — Miyotl (tiers + modal + filtros)</title>
   <style>
-    :root{
-      --rose:#E067C6; --rose-strong:#A83477; --bar:#F2CFE9; --ink:#140A1F; --muted:#8E8E8E;
-    }
+    :root{ --rose:#E067C6; --rose-strong:#A83477; --bar:#F2CFE9; --ink:#140A1F; --muted:#8E8E8E; }
     body{margin:0;font:16px/1.45 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:#fff;}
     .wrap{max-width:1100px;margin:20px auto;padding:0 16px}
     h1{font-size:24px;margin:0 0 12px}
+    .topbar{display:flex;gap:10px;align-items:center;margin:8px 0 16px}
+    .topbar input,.topbar select{padding:10px;border:2px solid var(--rose);border-radius:12px;outline:none}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
     .card{border:2px solid var(--rose);border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.08);background:#fff}
-    .card img{width:100%;height:180px;object-fit:cover;display:block}
+    .card .img{width:100%;height:180px;background:#f4f4f4 center/cover no-repeat;display:block}
     .pad{padding:10px 12px}
     .name{font-weight:800;margin-bottom:6px}
     .muted{color:var(--muted);font-size:12px}
     .btn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--rose);border-radius:12px;padding:10px 12px;font-weight:800;background:#fff;cursor:pointer}
     .pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;border:2px solid var(--rose);background:var(--bar);font-weight:800}
-    /* Modal */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:18px}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
     .sheet{background:#fff;border:2px solid var(--rose);border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.18);max-width:520px;width:100%;}
     .section{padding:14px 16px;border-top:1px solid #eee}
     .section:first-child{border-top:0}
-    .row{display:grid;grid-template-columns:1fr 100px;gap:10px}
+    .row{display:grid;grid-template-columns:1fr 110px;gap:10px}
     select,input[type="number"]{width:100%;padding:10px;border:2px solid var(--rose);border-radius:12px;outline:none}
     .actions{display:flex;gap:10px;justify-content:flex-end}
     .btn.primary{background:#C53D8C;color:#fff;border-color:#A83477}
     .right{float:right}
-    .fab{position:fixed;right:18px;bottom:18px;border-radius:999px;padding:10px 14px;box-shadow:0 8px 30px rgba(0,0,0,.18);background:#fff;border:2px solid var(--rose);font-weight:800}
+    .fab{position:fixed;right:18px;bottom:18px;border-radius:999px;padding:10px 14px;box-shadow:0 8px 30px rgba(0,0,0,.18);background:#fff;border:2px solid var(--rose);font-weight:800;z-index:40}
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>Catálogo — Miyotl</h1>
-    <div class="muted">Precios calculados en vivo (Mayoreo ≥ 25 u, Distribuidor ≥ 100 u). 100 g = 1 u, 1 kg = 10 u, líquidos = 1 u.</div>
+    <div class="muted">Precios en vivo (Mayoreo ≥ 25 u, Distribuidor ≥ 100 u) · 100 g = 1 u, 1 kg = 10 u, líquidos = 1 u.</div>
+
+    <div class="topbar">
+      <input id="q" placeholder="Buscar...">
+      <select id="cat"><option value="all">Todas las categorías</option></select>
+    </div>
+
     <div id="grid" class="grid"></div>
   </div>
 
@@ -81,63 +86,88 @@ function currentTier(){ const u=cartUnits(); if(u>=TIER_LIMITS.distributor) retu
 function appliedPrice(base,t){ return Math.round(Number(base||0)*tierFactor(t)*100)/100; }
 function miyotlUpdateCartBadge(){ const el=document.querySelector('[data-cart-count]'); if(el) el.textContent = cartGet().reduce((s,i)=> s + Number(i.qty||0), 0); }
 
+function guessImage(p){
+  // Order: p.img -> p.imgBase -> assets/images/{codigo}.webp -> assets/images/{codigo padded with zeros to 6}.webp
+  if (p.img) return p.img;
+  if (p.imgBase) return p.imgBase;
+  const code = String(p.codigo || p.id || '').trim();
+  if (code){
+    const direct = `assets/images/${code}.webp`;
+    const padded = `assets/images/${code.padEnd(6,'0')}.webp`;
+    return direct;
+  }
+  return 'assets/images/catalogo-fallback.webp';
+}
+
 function availablePresentations(p){
-  // Solo tomamos precios públicos (como pediste). 100 g viene de p.contenido; 1kg si existe precioPublico_K.
   const arr = [];
-  // 100 g (o gramos que diga 'contenido'); si 'contenido' no especifica, por defecto 100 g
   const gramsLabel = (p.contenido || '100 gr');
   arr.push({id:'100g', label: gramsLabel, basePublic: Number(p.precioPublico||0), units: unitsFor(p,'100g')});
   if (p.precioPublico_K != null){
     arr.push({id:'1kg', label:'1 kg', basePublic: Number(p.precioPublico_K||0), units: 10});
   }
-  // Para líquidos, dejamos 1L = 1 unidad (si en tu JSON traes líquidos separados, también serán 1 u)
   return arr;
 }
-
 function unitsFor(p, presId){
   const cat = (p.categoria||'').toLowerCase();
-  if (cat.includes('líquido') || cat.includes('liquido')) return 1; // líquidos siempre 1 u
+  if (cat.includes('líquido') || cat.includes('liquido')) return 1;
   if (presId==='1kg') return 10;
-  // 100g baseline: intenta leer número de 'contenido'
-  const m = String(p.contenido||'100').match(/(\d+(?:\.\d+)?)/);
+  const m = String(p.contenido||'100').match(/(\\d+(?:\\.\\d+)?)/);
   const grams = m ? parseFloat(m[1]) : 100;
   return grams/100;
 }
 
-// ====== Render catálogo ======
+// ====== Render catálogo con filtros ======
+let DATA = [];
 async function load(){
-  // Ruta segura: intenta ./catalogo.json primero y alterna si falla
   const urls = ['catalogo.json','./catalogo.json','assets/catalogo.json','./assets/catalogo.json'];
-  let json=null, lastErr=null;
+  let json=null;
   for (const u of urls){
-    try{
-      const r = await fetch(u, {cache:'no-store'});
-      if (r.ok){ json = await r.json(); break; }
-    }catch(e){ lastErr=e; }
+    try{ const r = await fetch(u, {cache:'no-store'}); if(r.ok){ json = await r.json(); break; } }catch(e){}
   }
-  if (!json){ alert('No pude cargar catalogo.json'); throw lastErr||new Error('No catalogo.json'); }
-  const data = Array.isArray(json)? json : (json.productos||json.items||[]);
-
+  if (!json){ alert('No pude cargar catalogo.json'); return; }
+  const arr = Array.isArray(json)? json : (json.productos||json.items||[]);
+  DATA = arr;
+  renderFilters(arr);
+  render(arr);
+  miyotlUpdateCartBadge();
+}
+function renderFilters(arr){
+  const cats = Array.from(new Set(arr.map(p=>p.categoria||'Otros'))).sort();
+  const sel = document.getElementById('cat');
+  cats.forEach(c=>{ const o=document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o); });
+  document.getElementById('q').addEventListener('input', triggerFilter);
+  sel.addEventListener('change', triggerFilter);
+}
+function triggerFilter(){
+  const q = document.getElementById('q').value.toLowerCase().trim();
+  const c = document.getElementById('cat').value;
+  const filtered = DATA.filter(p=>{
+    const okCat = (c==='all') || (String(p.categoria||'').toLowerCase()===c.toLowerCase());
+    const txt = (p.nombre||'') + ' ' + (p.codigo||'') + ' ' + (p.categoria||'') + ' ' + (p.contenido||'');
+    const okQ = !q || txt.toLowerCase().includes(q);
+    return okCat && okQ;
+  });
+  render(filtered);
+}
+function render(list){
   const grid = document.getElementById('grid');
   grid.innerHTML='';
-
-  data.forEach(p=>{
+  list.forEach(p=>{
     const el = document.createElement('div');
     el.className='card';
+    const img = guessImage(p);
     el.innerHTML = `
-      <img src="${p.img || p.imgBase || 'assets/images/catalogo-fallback.webp'}" alt="">
+      <div class="img" style="background-image:url('${img}')"></div>
       <div class="pad">
         <div class="name">${p.nombre||p.name||'Producto'}</div>
         <div class="muted">${p.categoria||''} · ${p.contenido||''}</div>
         <div style="margin-top:8px"><button class="btn" data-config>Configurar y añadir</button></div>
       </div>
     `;
-    // Abrir modal para configurar
     el.querySelector('[data-config]').addEventListener('click', ()=> openModal(p));
     grid.appendChild(el);
   });
-
-  miyotlUpdateCartBadge();
 }
 
 // ====== Modal ======
@@ -155,10 +185,8 @@ function openModal(p){
   currentProduct = p;
   mName.textContent = p.nombre || p.name || 'Producto';
   mCat.textContent  = (p.categoria||'') + (p.contenido? ' · '+p.contenido : '');
-  // Llenar presentaciones
   mPres.innerHTML = '';
-  const pres = availablePresentations(p);
-  pres.forEach(v=>{
+  availablePresentations(p).forEach(v=>{
     const opt = document.createElement('option');
     opt.value = v.id;
     opt.textContent = v.label;
@@ -170,23 +198,17 @@ function openModal(p){
   refreshModalPrice();
   modal.style.display='flex';
 }
-
 function closeModal(){ modal.style.display='none'; }
-
 function refreshModalPrice(){
   const base = Number(mPres.selectedOptions[0].dataset.base||0);
-  const unitsNow = cartUnits();
   const tier = currentTier();
   mTier.textContent = (tier==='public'?'Público':(tier==='wholesale'?'Mayoreo':'Distribuidor'));
-  const price = appliedPrice(base, tier);
-  mPrice.textContent = MXN(price);
+  mPrice.textContent = MXN(appliedPrice(base, tier));
 }
-
 mPres.addEventListener('change', refreshModalPrice);
 mQty.addEventListener('input', ()=>{ if (mQty.value<=0) mQty.value=1; });
 $('#m-cancel').addEventListener('click', closeModal);
 modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
-
 $('#m-add').addEventListener('click', ()=>{
   if (!currentProduct) return;
   const presId = mPres.value;
@@ -198,7 +220,7 @@ $('#m-add').addEventListener('click', ()=>{
   const item = {
     id: String(currentProduct.codigo||currentProduct.id) + '-' + presId,
     name: (currentProduct.nombre||'') + ' — ' + mPres.selectedOptions[0].textContent,
-    img: currentProduct.img || currentProduct.imgBase || '',
+    img: guessImage(currentProduct),
     variant: presId,
     units_per_item: units,
     price_base_public: base,
