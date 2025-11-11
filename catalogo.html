@@ -230,6 +230,45 @@ function handleImgError(img){
   img.onerror = null;
 }
 
+
+/* ======= Reglas de unidades y niveles ======= */
+const TIER_LIMITS = { wholesale: 25, distributor: 100 };
+function unitsForProduct(p, presId){
+  const cat = (p.categoria||'').toLowerCase();
+  if (cat.includes('líquido') || cat.includes('liquido')) return 1; // líquidos siempre 1
+  if (presId === '1kg') return 10;
+  const m = String(p.contenido||'100').match(/(\d+(\.\d+)?)/);
+  const grams = m ? parseFloat(m[1]) : 100;
+  return grams/100;
+}
+function currentTier(unitsTotal){
+  if (unitsTotal >= TIER_LIMITS.distributor) return 'distributor';
+  if (unitsTotal >= TIER_LIMITS.wholesale) return 'wholesale';
+  return 'public';
+}
+function tierFactor(tier){
+  if (tier==='wholesale') return 0.95;     // -5%
+  if (tier==='distributor') return 0.85;   // -15%
+  return 1;
+}
+function cartUnits(){
+  try{
+    const c = JSON.parse(localStorage.getItem('miyotl_cart')||'[]');
+    if (!Array.isArray(c)) return 0;
+    return c.reduce((s,i)=> s + (i.units_per_item? Number(i.units_per_item)*Number(i.qty||0) : Number(i.qty||0)), 0);
+  }catch(e){ return 0; }
+}
+function appliedPrice(basePublic, tier){
+  return Math.round((Number(basePublic||0) * tierFactor(tier))*100)/100;
+}
+function availablePresentations(p){
+  const arr = [{id:'100g', label:(p.contenido||'100 gr'), basePublic:Number(p.precioPublico||0)}];
+  if (p.precioPublico_K !== undefined && p.precioPublico_K !== null){
+    arr.push({id:'1kg', label:'1 kg', basePublic:Number(p.precioPublico_K||0)});
+  }
+  return arr;
+}
+
 /* ---------- Tarjeta ---------- */
 function productCard(p){
   const el=document.createElement('article'); el.className='card'; el.dataset.cats=(p.cats||[]).join(',');
@@ -238,6 +277,58 @@ function productCard(p){
   const pubK=money(p.precioPublico_K), mayK=money(p.precioMayoreo_K), disK=money(p.precioDistribuidor_K);
 
   const fb = fallbackByCategory(p.categoria);
+  const presSel = el.querySelector('[data-pres]');
+  const qtyInput = el.querySelector('[data-qty]');
+  const priceLive = el.querySelector('[data-price-live]');
+  const tierEl = el.querySelector('[data-tier]');
+  const nextEl = el.querySelector('[data-next]');
+  const addBtn = el.querySelector('[data-add]');
+
+  function refreshLive(){
+    const presId = presSel.value;
+    const base = Number(presSel.selectedOptions[0].dataset.base||0);
+    const unitsNow = cartUnits();
+    const tier = currentTier(unitsNow);
+    const price = appliedPrice(base, tier);
+    priceLive.textContent = money(price);
+    tierEl.textContent = (tier==='public'?'Público':(tier==='wholesale'?'Mayoreo':'Distribuidor'));
+    const limit = tier==='public'? TIER_LIMITS.wholesale : (tier==='wholesale'? TIER_LIMITS.distributor : null);
+    const need = limit? Math.max(0, limit - unitsNow) : 0;
+    nextEl.textContent = need.toFixed(0);
+  }
+  presSel.addEventListener('change', refreshLive);
+  qtyInput.addEventListener('input', ()=>{ if (qtyInput.value<=0) qtyInput.value=1; refreshLive(); });
+  refreshLive();
+
+  addBtn.addEventListener('click', (ev)=>{
+    ev.stopPropagation();
+    const presId = presSel.value;
+    const base = Number(presSel.selectedOptions[0].dataset.base||0);
+    const units = unitsForProduct(p, presId);
+    const unitsBefore = cartUnits();
+    const tier = currentTier(unitsBefore);
+    const price = appliedPrice(base, tier);
+    const qty = Math.max(1, parseInt(qtyInput.value||'1',10));
+
+    const item = {
+      id: String(p.codigo||p.id) + '-' + presId,
+      name: (p.nombre||'') + ' — ' + presSel.selectedOptions[0].textContent,
+      img: p.img || p.imgBase || '',
+      variant: presId,
+      units_per_item: units,
+      price_base_public: base,
+      price_applied: price,
+      qty
+    };
+    let CART=[];
+    try{ CART = JSON.parse(localStorage.getItem('miyotl_cart')||'[]'); }catch(e){ CART=[]; }
+    if (!Array.isArray(CART)) CART=[];
+    const idx = CART.findIndex(x=>x.id===item.id);
+    if (idx>=0){ CART[idx].qty += qty; } else { CART.push(item); }
+    localStorage.setItem('miyotl_cart', JSON.stringify(CART));
+    if (typeof miyotlUpdateCartBadge==='function') miyotlUpdateCartBadge();
+  });
+
 
   el.innerHTML=`
     <div class="image-wrap">
@@ -348,6 +439,58 @@ const overlayCard=(t,h)=>`<div class="overlay-card"><span class="overlay-pill">$
 function openProduct(p){
   const arr=v=>Array.isArray(v)?v:(v?[v]:[]);
   const fb = fallbackByCategory(p.categoria);
+  const presSel = el.querySelector('[data-pres]');
+  const qtyInput = el.querySelector('[data-qty]');
+  const priceLive = el.querySelector('[data-price-live]');
+  const tierEl = el.querySelector('[data-tier]');
+  const nextEl = el.querySelector('[data-next]');
+  const addBtn = el.querySelector('[data-add]');
+
+  function refreshLive(){
+    const presId = presSel.value;
+    const base = Number(presSel.selectedOptions[0].dataset.base||0);
+    const unitsNow = cartUnits();
+    const tier = currentTier(unitsNow);
+    const price = appliedPrice(base, tier);
+    priceLive.textContent = money(price);
+    tierEl.textContent = (tier==='public'?'Público':(tier==='wholesale'?'Mayoreo':'Distribuidor'));
+    const limit = tier==='public'? TIER_LIMITS.wholesale : (tier==='wholesale'? TIER_LIMITS.distributor : null);
+    const need = limit? Math.max(0, limit - unitsNow) : 0;
+    nextEl.textContent = need.toFixed(0);
+  }
+  presSel.addEventListener('change', refreshLive);
+  qtyInput.addEventListener('input', ()=>{ if (qtyInput.value<=0) qtyInput.value=1; refreshLive(); });
+  refreshLive();
+
+  addBtn.addEventListener('click', (ev)=>{
+    ev.stopPropagation();
+    const presId = presSel.value;
+    const base = Number(presSel.selectedOptions[0].dataset.base||0);
+    const units = unitsForProduct(p, presId);
+    const unitsBefore = cartUnits();
+    const tier = currentTier(unitsBefore);
+    const price = appliedPrice(base, tier);
+    const qty = Math.max(1, parseInt(qtyInput.value||'1',10));
+
+    const item = {
+      id: String(p.codigo||p.id) + '-' + presId,
+      name: (p.nombre||'') + ' — ' + presSel.selectedOptions[0].textContent,
+      img: p.img || p.imgBase || '',
+      variant: presId,
+      units_per_item: units,
+      price_base_public: base,
+      price_applied: price,
+      qty
+    };
+    let CART=[];
+    try{ CART = JSON.parse(localStorage.getItem('miyotl_cart')||'[]'); }catch(e){ CART=[]; }
+    if (!Array.isArray(CART)) CART=[];
+    const idx = CART.findIndex(x=>x.id===item.id);
+    if (idx>=0){ CART[idx].qty += qty; } else { CART.push(item); }
+    localStorage.setItem('miyotl_cart', JSON.stringify(CART));
+    if (typeof miyotlUpdateCartBadge==='function') miyotlUpdateCartBadge();
+  });
+
 
   mpImg.dataset.base = p.imgBase;
   mpImg.dataset.step = 'webp';
