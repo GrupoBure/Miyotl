@@ -20,13 +20,15 @@
     header{background:#e1d1bd}
     .top-banner{
   width: 100%;
-  height: clamp(160px, 26vh, 420px); /* altura flexible según pantalla */
+  height: clamp(160px, 30vh, 420px); /* altura flexible y uniforme */
   display: block;
-  object-fit: cover;      /* siempre llena la pantalla */
+  object-fit: contain;     /* 🔥 clave: NO recorta la imagen */
   object-position: center;
+  background-color: #ffffff; /* fondo para las franjas laterales */
   max-width: 100%;
   filter: saturate(0.9);
 }
+
 
     .headline{position:relative}
 
