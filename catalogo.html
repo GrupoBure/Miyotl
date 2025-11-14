@@ -395,13 +395,21 @@ mpClose.onclick=()=>modalProd.classList.remove('open');
   };
 
   async function loadJSON(){
-    const tries=['./catalogo.json','catalogo.json','/Miyotl/catalogo.json','./Catalogo.json'];
-    for(const url of tries){
+    const tries = [
+      'https://grupobure.github.io/Miyotl/catalogo.json',
+      './catalogo.json',
+      'catalogo.json',
+      '/Miyotl/catalogo.json',
+      './Catalogo.json'
+    ];
+    for (const url of tries){
       try{
-        const r=await fetch(url+'?v='+Date.now(),{cache:'no-store'});
+        const r = await fetch(url + '?v=' + Date.now(), { cache:'no-store' });
         if(!r.ok) continue;
         return await r.json();
-      }catch(e){}
+      }catch(e){
+        console.error('Error intentando cargar', url, e);
+      }
     }
     throw new Error('No se pudo cargar catalogo.json desde ninguna ruta conocida.');
   }
