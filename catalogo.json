@@ -2053,7 +2053,7 @@
   },
   {
     "codigo": 109106,
-    "nombre": "Pingüino", "Chocolate",
+    "nombre": "Pingüino - Chocolate",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Cocoa, Base de chocolate, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2071,7 +2071,7 @@
   },
   {
     "codigo": 109107,
-    "nombre": "Hombre de nieve", "Avena",
+    "nombre": "Hombre de nieve - Avena",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2089,7 +2089,7 @@
   },
   {
     "codigo": 109108,
-    "nombre": "Borrego", "Avena",
+    "nombre": "Borrego - Avena",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2107,7 +2107,7 @@
   },
   {
     "codigo": 109109,
-    "nombre": "Copo de nieve 1", "Avena",
+    "nombre": "Copo de nieve 1 - Avena",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2125,7 +2125,7 @@
   },
   {
     "codigo": 109110,
-    "nombre": "Niña Gengibre", "Chocolate Gengibre",
+    "nombre": "Niña Gengibre - Chocolate Gengibre",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Cocoa, Base de chocolate, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2143,7 +2143,7 @@
   },
   {
     "codigo": 109111,
-    "nombre": "Holandés Gengibre", "Chocolate Gengibre",
+    "nombre": "Holandés Gengibre - Chocolate Gengibre",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Cocoa, Base de chocolate, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2161,7 +2161,7 @@
   },
   {
     "codigo": 109112,
-    "nombre": "Cool Gengibre", "Chocolate Gengibre",
+    "nombre": "Cool Gengibre - Chocolate Gengibre",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Cocoa, Base de chocolate, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2179,7 +2179,7 @@
   },
   {
     "codigo": 109113,
-    "nombre": "Caramelo Gengibre", "Chocolate Gengibre",
+    "nombre": "Caramelo Gengibre - Chocolate Gengibre",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Cocoa, Base de chocolate, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2197,7 +2197,7 @@
   },
   {
     "codigo": 109114,
-    "nombre": "Niño Gengibre", "Chocolate Gengibre",
+    "nombre": "Niño Gengibre - Chocolate Gengibre",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Cocoa, Base de chocolate, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2215,7 +2215,7 @@
   },
   {
     "codigo": 109115,
-    "nombre": "Regalo Gengibre", "Chocolate Gengibre",
+    "nombre": "Regalo Gengibre - Chocolate Gengibre",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Cocoa, Base de chocolate, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2233,7 +2233,7 @@
   },
   {
     "codigo": 109116,
-    "nombre": "Guante", "Frutos Rojos",
+    "nombre": "Guante - Frutos Rojos",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Escencia de Frutos rojos, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2251,7 +2251,7 @@
   },
   {
     "codigo": 109117,
-    "nombre": "Bota", "Frutos Rojos",
+    "nombre": "Bota - Frutos Rojos",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Escencia de Frutos rojos, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2269,7 +2269,7 @@
   },
   {
     "codigo": 109118,
-    "nombre": "Árbolito", "Manzana Canela",
+    "nombre": "Árbolito - Manzana Canela",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Base de manzana y canela, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2287,7 +2287,7 @@
   },
   {
     "codigo": 109119,
-    "nombre": "Campana", "miel",
+    "nombre": "Campana - miel",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Miel, Base miel, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2305,7 +2305,7 @@
   },
   {
     "codigo": 109121,
-    "nombre": "Copo de nieve 2", "Avena",
+    "nombre": "Copo de nieve 2 - Avena",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2323,7 +2323,7 @@
   },
   {
     "codigo": 109122,
-    "nombre": "Copo de nieve 3", "Avena",
+    "nombre": "Copo de nieve 3 - Avena",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2341,7 +2341,7 @@
   },
   {
     "codigo": 109123,
-    "nombre": "Copo de nieve 4", "Avena",
+    "nombre": "Copo de nieve 4 - Avena",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2359,7 +2359,7 @@
   },
   {
     "codigo": 109124,
-    "nombre": "Copo de nieve 5", "Avena",
+    "nombre": "Copo de nieve 5 - Avena",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
@@ -2377,7 +2377,7 @@
   },
   {
     "codigo": 109125,
-    "nombre": "Copo de nieve 6", "Avena",
+    "nombre": "Copo de nieve 6 - Avena",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",
     "categoria": "Temporada",
     "cats": "Decorativo",
