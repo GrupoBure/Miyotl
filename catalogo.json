@@ -1383,7 +1383,7 @@
     "precioMayoreo_K": null,
     "precioDistribuidor": 150,
     "precioDistribuidor_K": null,
-    "Imagen": "104014.webp"
+    "Imagen": null
   },
   {
     "codigo": 104018,
@@ -1617,7 +1617,7 @@
     "precioMayoreo_K": null,
     "precioDistribuidor": 133,
     "precioDistribuidor_K": null,
-    "Imagen": "104065.webp"
+    "Imagen": null
   },
   {
     "codigo": 104066,
@@ -2037,7 +2037,7 @@
     "codigo": 110105,
     "nombre": "Angel Corazón",
     "ingredientes": "Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",
-    "categoria": "Jabón sólido",
+    "categoria": "Decorativo",
     "cats": "Decorativo",
     "etiqueta": "NS+AL",
     "beneficios": "Aroma suave “bebé” que aporta sensación de confort y limpieza fresca.\nBase de glicerina: limpieza gentil, enjuague fácil, sin sensación pegajosa.\nLa avena ayuda a dejar la piel con tacto más suave tras el baño.\nEspuma ligera/cremosa que hace la rutina rápida y agradable.\nIdeal para quien busca un aroma tierno sin notas intensas.",
