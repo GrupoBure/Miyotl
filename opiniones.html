@@ -152,7 +152,7 @@
 
         <div class="review-card">
           <div class="review-user">MariposaVioleta</div>
-          <div class="review-city">Edo. Mex</div>
+          <div class="review-city">Jalisco</div>
           <div class="review-stars">★★★★★</div>
           <p class="review-text">
             El jabón de avena está delicioso para la piel. Ya es el favorito de mi familia.
@@ -161,7 +161,7 @@
 
         <div class="review-card">
           <div class="review-user">FerCruzMx</div>
-          <div class="review-city">Edo. Mex</div>
+          <div class="review-city">Estado de México</div>
           <div class="review-stars">★★★★☆</div>
           <p class="review-text">
             Huelen súper rico y la textura es muy agradable. La entrega llegó sin problemas.
@@ -182,7 +182,7 @@
           <div class="review-city">Nuevo León</div>
           <div class="review-stars">★★★★★</div>
           <p class="review-text">
-            El de arroz me dejó la piel super suave. No lo cambio por nada.
+            El de arroz me dejó la piel súper suave. No lo cambio por nada.
           </p>
         </div>
 
@@ -203,12 +203,18 @@
             Compré varias barras personalizadas para regalos y quedaron preciosas.
           </p>
         </div>
-
+        
       </div>
 
     </div>
   </div>
 </section>
+
+<div style="text-align:center;margin:24px 0;">
+  <button class="btn" id="open-comment" style="background:var(--miyotl-purple);color:#fff;padding:10px 18px;border-radius:12px;border:0;cursor:pointer;">
+    Comentar
+  </button>
+</div>
 
 <footer>
   <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
@@ -221,10 +227,95 @@
   </div>
 </footer>
 
+<!-- Modal para comentarios -->
+<div class="modal" id="comment-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);align-items:center;justify-content:center;padding:20px;z-index:2000;">
+  <div class="sheet" style="background:#fff;border:1px solid var(--brand-200);border-radius:18px;padding:20px;max-width:520px;width:100%;box-shadow:0 10px 30px rgba(0,0,0,.12);">
+    
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <h3 style="margin:0;font-size:18px;color:var(--brand-800);">Enviar comentario</h3>
+      <button id="close-comment" class="btn secondary" style="background:#fff;border:1px solid var(--brand-300);border-radius:10px;padding:6px 10px;cursor:pointer;">
+        Cerrar
+      </button>
+    </div>
+
+    <form id="comment-form">
+      <label style="display:block;margin-bottom:12px;">
+        Nombre:
+        <input id="c-nombre" required class="input" style="margin-top:4px;width:100%;padding:8px;border:1px solid var(--brand-300);border-radius:10px;">
+      </label>
+
+      <label style="display:block;margin-bottom:12px;">
+        Ciudad:
+        <input id="c-ciudad" required class="input" style="margin-top:4px;width:100%;padding:8px;border:1px solid var(--brand-300);border-radius:10px;">
+      </label>
+
+      <label style="display:block;margin-bottom:12px;">
+        Comentario:
+        <textarea id="c-texto" required rows="4" style="margin-top:4px;width:100%;padding:8px;border:1px solid var(--brand-300);border-radius:10px;resize:vertical;"></textarea>
+      </label>
+
+      <div style="text-align:right;margin-top:14px;">
+        <button type="submit" class="btn" style="background:var(--miyotl-purple);color:#fff;padding:10px 18px;border-radius:12px;border:0;cursor:pointer;">
+          Enviar
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
 <script>
+  // Año del footer
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Lógica del modal de comentarios
+  const commentModal = document.getElementById("comment-modal");
+  const openComment = document.getElementById("open-comment");
+  const closeComment = document.getElementById("close-comment");
+
+  if (openComment && commentModal && closeComment){
+    openComment.onclick = () => {
+      commentModal.style.display = "flex";
+    };
+
+    closeComment.onclick = () => {
+      commentModal.style.display = "none";
+    };
+
+    // Cerrar si clic en fondo
+    commentModal.addEventListener("click", (e)=>{
+      if (e.target === commentModal) commentModal.style.display = "none";
+    });
+
+    // Enviar comentario
+    document.getElementById("comment-form").addEventListener("submit", (e)=>{
+      e.preventDefault();
+
+      const nombre = document.getElementById("c-nombre").value.trim();
+      const ciudad = document.getElementById("c-ciudad").value.trim();
+      const texto = document.getElementById("c-texto").value.trim();
+      
+      const cuerpo =
+`Nuevo comentario recibido en Miyotl
+
+Nombre: ${nombre}
+Ciudad: ${ciudad}
+
+Comentario:
+${texto}
+`;
+
+      const subject = encodeURIComponent("Nuevo comentario — Miyotl");
+      const body = encodeURIComponent(cuerpo);
+
+      window.location.href = `mailto:miyotlproductos@gmail.com?subject=${subject}&body=${body}`;
+
+      // cerrar modal al terminar
+      commentModal.style.display = "none";
+      e.target.reset();
+    });
+  }
 </script>
 
 </body>
-
 </html>
