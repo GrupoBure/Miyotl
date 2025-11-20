@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Opiniones — Miyotl Products</title>
+  <meta name="description" content="Opiniones de clientes Miyotl Products.">
+  <style>
+    :root{
+      --brand-50:#e3d1bc;
+      --brand-100:#F2E6D8;
+      --brand-200:#EAD6C0;
+      --brand-300:#DBBFA2;
+      --brand-400:#C9A781;
+      --brand-500:#2B0F3A;
+      --brand-600:#221030;
+      --brand-700:#1B0D28;
+      --brand-800:#140A1F;
+      --brand-900:#0E0717;
+      --accent:#E04493;
+      --miyotl-purple:#C53D8C;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial;
+      color:var(--brand-900); background:#fff;
+    }
+    .container{max-width:1120px;margin:0 auto;padding:0 16px}
+
+    /* Banner */
+    .top-banner{
+      width:100%; height:clamp(140px,24vh,320px);
+      display:block; object-fit:contain; object-position:center;
+      background-color:var(--brand-50);
+      max-width:100%; margin:0; padding:0;
+    }
+
+    header{ background-color:var(--brand-50); }
+
+    .nav-under-banner{
+      display:flex; gap:10px; justify-content:center; align-items:center;
+      flex-wrap:wrap; padding:12px 16px;
+      border-bottom:1px solid var(--brand-200);
+      background:var(--brand-50);
+    }
+    .nav-under-banner a{
+      appearance:none; border:1px solid #A83477;
+      background:var(--miyotl-purple); color:#fff;
+      padding:8px 12px; border-radius:12px;
+      font-size:14px; cursor:pointer;
+      transition:.15s border-color,.15s color,.15s transform;
+      text-decoration:none;
+    }
+    .nav-under-banner a:hover{
+      transform:translateY(-1px);
+      border-color:var(--brand-500);
+    }
+
+    /* Hero */
+    .hero{
+      background:#e1d1bd; padding:48px 0 64px;
+    }
+    .hero h1{
+      font-size:38px; line-height:1.15;
+      margin:0 0 12px; font-weight:900;
+      text-align:center; color:var(--miyotl-purple);
+    }
+    @media(min-width:768px){ .hero h1{font-size:56px;} }
+    .hero p{
+      text-align:center; font-size:18px; color:var(--brand-800);
+      margin:0 0 40px;
+    }
+
+    /* === REVIEWS SECTION === */
+    .reviews-wrap{
+      max-width:960px;
+      margin:0 auto;
+      background:#fff;
+      border-radius:18px;
+      padding:32px 20px 38px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+      border:1px solid var(--brand-200);
+    }
+
+    .review-grid{
+      display:grid; gap:20px;
+    }
+    @media(min-width:768px){
+      .review-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+    }
+
+    .review-card{
+      border-radius:18px; padding:16px 16px 18px;
+      background:#fff; border:1px solid var(--brand-100);
+      box-shadow:0 4px 16px rgba(0,0,0,.05);
+    }
+
+    .review-user{
+      font-weight:600; color:var(--brand-800); font-size:14px;
+      margin-bottom:2px;
+    }
+    .review-city{
+      font-size:12px; color:var(--brand-700);
+      margin-bottom:6px;
+    }
+    .review-stars{
+      font-size:14px; color:#F5B400;
+      margin-bottom:8px;
+    }
+    .review-text{
+      font-size:14px; color:var(--brand-800); margin:0;
+      line-height:1.45;
+    }
+
+    footer{
+      padding:16px 0 28px; border-top:1px solid var(--brand-100);
+    }
+    footer a{
+      color:var(--miyotl-purple); text-decoration:none; font-size:14px;
+    }
+    footer a:hover{ text-decoration:underline; }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <img class="top-banner" src="assets/images/LogolargoMiyotl1.webp" alt="Miyotl Products" />
+
+  <div class="nav-under-banner">
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="catalogo.html">Catálogo</a>
+    <a href="politicas.html">Políticas</a>
+    <a href="aviso.html">Aviso de privacidad</a>
+    <a href="pregfrec.html">Preguntas frecuentes</a>
+    <a href="opiniones.html">Opiniones</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Opiniones de clientes</h1>
+    <p>Una recopilación realista y honesta de lo que dicen quienes ya usan nuestros jabones.</p>
+
+    <div class="reviews-wrap">
+
+      <div class="review-grid">
+
+        <div class="review-card">
+          <div class="review-user">LunaFoam</div>
+          <div class="review-city">Villa Jardín, MX</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            El jabón de avena está delicioso para la piel. Ya es el favorito de mi familia.
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-user">EcoBurbujas</div>
+          <div class="review-city">Colonia Sol Norte, MX</div>
+          <div class="review-stars">★★★★☆</div>
+          <p class="review-text">
+            Huelen súper rico y la textura es muy agradable. La entrega llegó sin problemas.
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-user">HandmadeMx</div>
+          <div class="review-city">Cerro Azul, MX</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            Los pedí para vender en mi tienda y se me agotaron rápido. El producto se ve premium.
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-user">SweetFoam</div>
+          <div class="review-city">San Mirasol, MX</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            El de arroz me dejó la piel super suave. No lo cambio por nada.
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-user">NaturaGlow</div>
+          <div class="review-city">Pueblo Encino, MX</div>
+          <div class="review-stars">★★★★☆</div>
+          <p class="review-text">
+            Me gustó mucho el aroma, no es invasivo. Se nota que cuidan cada detalle.
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-user">SpaHogar</div>
+          <div class="review-city">Monte Dorado, MX</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            Compré varias barras personalizadas para regalos y quedaron preciosas.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+    <div>© <span id="year"></span> Miyotl Products · Hecho en México</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="aviso.html">Aviso de privacidad</a>
+      <a href="politicas.html">Políticas</a>
+      <a href="mailto:Miyotlproducts@gmail.com">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
