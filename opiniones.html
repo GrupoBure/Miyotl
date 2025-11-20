@@ -123,6 +123,26 @@
     }
     footer a:hover{ text-decoration:underline; }
 
+    /* Modal básico */
+    .modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.35);
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:2000;
+    }
+    .sheet{
+      background:#fff;
+      border:1px solid var(--brand-200);
+      border-radius:18px;
+      padding:20px;
+      max-width:520px;
+      width:100%;
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
+    }
   </style>
 </head>
 <body>
@@ -152,7 +172,7 @@
 
         <div class="review-card">
           <div class="review-user">MariposaVioleta</div>
-          <div class="review-city">Jalisco</div>
+          <div class="review-city">Villa Jardín, Jalisco</div>
           <div class="review-stars">★★★★★</div>
           <p class="review-text">
             El jabón de avena está delicioso para la piel. Ya es el favorito de mi familia.
@@ -161,7 +181,7 @@
 
         <div class="review-card">
           <div class="review-user">FerCruzMx</div>
-          <div class="review-city">Estado de México</div>
+          <div class="review-city">Río Bonito, Chiapas</div>
           <div class="review-stars">★★★★☆</div>
           <p class="review-text">
             Huelen súper rico y la textura es muy agradable. La entrega llegó sin problemas.
@@ -170,7 +190,7 @@
 
         <div class="review-card">
           <div class="review-user">HandmadeMx</div>
-          <div class="review-city">Jalisco</div>
+          <div class="review-city">Puerto Esmeralda, Jalisco</div>
           <div class="review-stars">★★★★★</div>
           <p class="review-text">
             Los pedí para vender en mi tienda y se me agotaron rápido. El producto se ve premium.
@@ -179,7 +199,7 @@
 
         <div class="review-card">
           <div class="review-user">NenaSolar</div>
-          <div class="review-city">Nuevo León</div>
+          <div class="review-city">Valle Áureo, Nuevo León</div>
           <div class="review-stars">★★★★★</div>
           <p class="review-text">
             El de arroz me dejó la piel súper suave. No lo cambio por nada.
@@ -188,7 +208,7 @@
 
         <div class="review-card">
           <div class="review-user">ValeSky</div>
-          <div class="review-city">Puebla</div>
+          <div class="review-city">Villa Altamira, Puebla</div>
           <div class="review-stars">★★★★☆</div>
           <p class="review-text">
             Me gustó mucho el aroma, no es invasivo. Se nota que cuidan cada detalle.
@@ -197,7 +217,7 @@
 
         <div class="review-card">
           <div class="review-user">SpaHogar</div>
-          <div class="review-city">Baja California Sur</div>
+          <div class="review-city">Costa Diamante, Baja California Sur</div>
           <div class="review-stars">★★★★★</div>
           <p class="review-text">
             Compré varias barras personalizadas para regalos y quedaron preciosas.
@@ -228,9 +248,8 @@
 </footer>
 
 <!-- Modal para comentarios -->
-<div class="modal" id="comment-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);align-items:center;justify-content:center;padding:20px;z-index:2000;">
-  <div class="sheet" style="background:#fff;border:1px solid var(--brand-200);border-radius:18px;padding:20px;max-width:520px;width:100%;box-shadow:0 10px 30px rgba(0,0,0,.12);">
-    
+<div class="modal" id="comment-modal">
+  <div class="sheet">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
       <h3 style="margin:0;font-size:18px;color:var(--brand-800);">Enviar comentario</h3>
       <button id="close-comment" class="btn secondary" style="background:#fff;border:1px solid var(--brand-300);border-radius:10px;padding:6px 10px;cursor:pointer;">
@@ -241,18 +260,20 @@
     <form id="comment-form">
       <label style="display:block;margin-bottom:12px;">
         Nombre:
-        <input id="c-nombre" required class="input" style="margin-top:4px;width:100%;padding:8px;border:1px solid var(--brand-300);border-radius:10px;">
+        <input id="c-nombre" name="nombre" required class="input" style="margin-top:4px;width:100%;padding:8px;border:1px solid var(--brand-300);border-radius:10px;">
       </label>
 
       <label style="display:block;margin-bottom:12px;">
         Ciudad:
-        <input id="c-ciudad" required class="input" style="margin-top:4px;width:100%;padding:8px;border:1px solid var(--brand-300);border-radius:10px;">
+        <input id="c-ciudad" name="ciudad" required class="input" style="margin-top:4px;width:100%;padding:8px;border:1px solid var(--brand-300);border-radius:10px;">
       </label>
 
       <label style="display:block;margin-bottom:12px;">
         Comentario:
-        <textarea id="c-texto" required rows="4" style="margin-top:4px;width:100%;padding:8px;border:1px solid var(--brand-300);border-radius:10px;resize:vertical;"></textarea>
+        <textarea id="c-texto" name="comentario" required rows="4" style="margin-top:4px;width:100%;padding:8px;border:1px solid var(--brand-300);border-radius:10px;resize:vertical;"></textarea>
       </label>
+
+      <div id="comment-msg" style="font-size:13px;color:var(--brand-700);margin-bottom:8px;display:none;"></div>
 
       <div style="text-align:right;margin-top:14px;">
         <button type="submit" class="btn" style="background:var(--miyotl-purple);color:#fff;padding:10px 18px;border-radius:12px;border:0;cursor:pointer;">
@@ -272,9 +293,15 @@
   const commentModal = document.getElementById("comment-modal");
   const openComment = document.getElementById("open-comment");
   const closeComment = document.getElementById("close-comment");
+  const commentForm  = document.getElementById("comment-form");
+  const commentMsg   = document.getElementById("comment-msg");
 
-  if (openComment && commentModal && closeComment){
+  const FORMSPREE_URL = "https://formspree.io/f/meondjev"; // <-- cambia esto por tu URL real
+
+  if (openComment && commentModal && closeComment && commentForm){
     openComment.onclick = () => {
+      commentMsg.style.display = "none";
+      commentMsg.textContent = "";
       commentModal.style.display = "flex";
     };
 
@@ -287,32 +314,50 @@
       if (e.target === commentModal) commentModal.style.display = "none";
     });
 
-    // Enviar comentario
-    document.getElementById("comment-form").addEventListener("submit", (e)=>{
+    // Enviar comentario a Formspree
+    commentForm.addEventListener("submit", async (e)=>{
       e.preventDefault();
 
       const nombre = document.getElementById("c-nombre").value.trim();
       const ciudad = document.getElementById("c-ciudad").value.trim();
-      const texto = document.getElementById("c-texto").value.trim();
-      
-      const cuerpo =
-`Nuevo comentario recibido en Miyotl
+      const texto  = document.getElementById("c-texto").value.trim();
 
-Nombre: ${nombre}
-Ciudad: ${ciudad}
+      if(!nombre || !ciudad || !texto){
+        commentMsg.style.display = "block";
+        commentMsg.style.color = "red";
+        commentMsg.textContent = "Por favor completa todos los campos.";
+        return;
+      }
 
-Comentario:
-${texto}
-`;
+      try{
+        const resp = await fetch(FORMSPREE_URL,{
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json",
+            "Accept":"application/json"
+          },
+          body:JSON.stringify({
+            nombre:nombre,
+            ciudad:ciudad,
+            comentario:texto
+          })
+        });
 
-      const subject = encodeURIComponent("Nuevo comentario — Miyotl");
-      const body = encodeURIComponent(cuerpo);
-
-      window.location.href = `mailto:miyotlproductos@gmail.com?subject=${subject}&body=${body}`;
-
-      // cerrar modal al terminar
-      commentModal.style.display = "none";
-      e.target.reset();
+        if(resp.ok){
+          commentMsg.style.display = "block";
+          commentMsg.style.color = "green";
+          commentMsg.textContent = "¡Gracias por tu comentario! 🙌";
+          commentForm.reset();
+        }else{
+          commentMsg.style.display = "block";
+          commentMsg.style.color = "red";
+          commentMsg.textContent = "Hubo un problema al enviar tu comentario. Intenta de nuevo más tarde.";
+        }
+      }catch(err){
+        commentMsg.style.display = "block";
+        commentMsg.style.color = "red";
+        commentMsg.textContent = "No se pudo conectar para enviar el comentario.";
+      }
     });
   }
 </script>
