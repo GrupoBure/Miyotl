@@ -187,6 +187,437 @@
 
           <div class="section">
             <h3>Métodos de envío</h3>
+
+            <!-- CAMBIO #2 (solo lo pedido): ahora mostramos el peso total.
+                 El costo se definirá después, cuando nos des tus rangos mínimos/máximos por peso. -->
+            <div class="radios" id="shipping-radios">
+              <div class="radio" style="cursor:default">
+                <div>
+                  <div><strong>Envío calculado por peso</strong> <span class="pill">POR DEFINIR</span></div>
+                  <div class="muted small">Peso total del pedido: <strong id="total-weight">0 g</strong></div>
+                  <div class="muted small">*El costo de envío se configurará por rangos de peso más adelante.*</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="section">
+            <h3>Pago</h3>
+            <p class="muted small">Todas las transacciones son seguras y están encriptadas.</p>
+            <div class="hr"></div>
+            <p class="danger"><strong>Esta tienda no puede aceptar pagos en este momento.</strong></p>
+            <p class="small muted">Puedes finalizar el pedido por WhatsApp o transferencia. El botón de abajo arma el resumen automáticamente.</p>
+            <button class="btn ok block" id="btn-wa">Finalizar por WhatsApp</button>
+            <p class="small muted">Luego podemos integrar Mercado Pago/Stripe para pagar aquí mismo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Resumen -->
+      <div class="right">
+        <div class="card">
+          <div class="section" style="position:sticky; top:16px">
+            <h3>Resumen de pedido</h3>
+            <div id="cart-list"></div>
+            <div class="hr"></div>
+            <div class="totals">
+              <div class="row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+              <!-- CAMBIO #2 (solo lo pedido): aquí mostramos el peso total en vez de costo de envío por ahora -->
+              <div class="row"><span>Peso total</span><strong id="shipcost">0 g</strong></div>
+              <div class="row" style="font-size:18px"><span>Total</span><strong id="grand">$0.00</strong></div>
+            </div>
+            <p class="small muted">Incluye IVA cuando aplique. Jabones artesanales de glicerina.</p>
+
+            <!-- CAMBIO #1 (solo lo pedido): quitamos la leyenda "carrito demo precargado" (elemento eliminado) -->
+
+            <button id="clear-cart" class="btn ghost block" style="margin-top:8px">Vaciar carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS: motor intacto + cambios mínimos pedidos (quitar badge demo, peso total, WA + mailto) -->
+  <script>
+    /* =====================================================
+       Checkout Miyotl — v1.3 (cambios puntuales a petición)
+       1) Quitar "carrito demo precargado"
+       2) Envío por peso (por ahora SOLO mostramos peso total)
+       3) Botón WhatsApp abre a 5536493444 y además abre correo a:
+          miyotlproductos@gmail.com y toy_vb@outlook.com con el resumen
+       ===================================================== */
+
+    // === PESO (por ahora solo mostramos el peso total) ===
+    // Si tus items ya traen "weight_g" en el carrito (localStorage), se usará automáticamente.
+    // Si NO lo traen, puedes definir pesos por ID aquí más adelante.
+    const WEIGHTS_G_BY_ID = {
+      // Ejemplo (cuando quieras):
+      // 'jab-rosa': 120,
+    };
+
+    const MXN = n => n.toLocaleString('es-MX',{style:'currency',currency:'MXN'});
+
+    let CART = JSON.parse(localStorage.getItem('miyotl_cart') || '[]');
+    if (!Array.isArray(CART)) CART = [];
+
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+    function saveCart(){ localStorage.setItem('miyotl_cart', JSON.stringify(CART)); }
+
+    let _cartEventsBound = false;
+    function attachQtyHandlers(){
+      if (_cartEventsBound) return;
+      _cartEventsBound = true;
+
+      $('#cart-list').addEventListener('click', e=>{
+        const btn = e.target.closest('[data-act]');
+        if(!btn) return;
+        const id = btn.getAttribute('data-id');
+        const idx = CART.findIndex(p=>p.id===id);
+        if(idx<0) return;
+        const act = btn.getAttribute('data-act');
+        if(act==='inc') CART[idx].qty++;
+        if(act==='dec') CART[idx].qty = Math.max(1, CART[idx].qty-1);
+        if(act==='rm') CART.splice(idx,1);
+        saveCart();
+        renderCart();
+      });
+
+      $('#cart-list').addEventListener('input', e=>{
+        const input = e.target;
+        if(input.tagName!=='INPUT') return;
+        const id = input.getAttribute('data-id');
+        const idx = CART.findIndex(p=>p.id===id);
+        let val = parseInt(input.value||'1',10);
+        if(!Number.isFinite(val) || val<=0) val=1;
+        CART[idx].qty = val;
+        saveCart();
+        updateTotals();
+      });
+    }
+
+    function subtotal(){ return CART.reduce((s,i)=>s + i.price*i.qty, 0); }
+
+    function itemWeightG(item){
+      const w = (item && typeof item.weight_g === 'number') ? item.weight_g
+              : (WEIGHTS_G_BY_ID[item?.id] ?? 0);
+      return Number.isFinite(w) ? w : 0;
+    }
+
+    function totalWeightG(){
+      return CART.reduce((s,i)=> s + (itemWeightG(i) * (parseInt(i.qty,10)||0)), 0);
+    }
+
+    function fmtWeight(g){
+      if(!Number.isFinite(g) || g<=0) return '0 g';
+      if(g < 1000) return `${Math.round(g)} g`;
+      const kg = g/1000;
+      return `${kg.toFixed(2)} kg`;
+    }
+
+    function updateTotals(){
+      miyotlUpdateCartBadge();
+
+      const sub = subtotal();
+      const wG = totalWeightG();
+
+      $('#subtotal').textContent = MXN(sub);
+
+      // CAMBIO #2: mostramos peso total (por ahora sin costo)
+      const wText = fmtWeight(wG);
+      $('#shipcost').textContent = wText;
+      const wtEl = document.getElementById('total-weight');
+      if (wtEl) wtEl.textContent = wText;
+
+      // Total por ahora = subtotal (envío pendiente de definir)
+      $('#grand').textContent = MXN(sub);
+    }
+
+    function renderCart(){
+      try { CART = JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
+      catch(e){ CART = []; }
+      if (!Array.isArray(CART)) CART = [];
+
+      const box = $('#cart-list');
+      box.innerHTML='';
+      if (!CART.length){
+        const empty = document.createElement('div');
+        empty.className='muted';
+        empty.innerHTML = `<p>Tu carrito está vacío.</p><p><a class="btn" href="catalogo.html">← Ir al catálogo</a></p>`;
+        box.appendChild(empty);
+        updateTotals();
+        return;
+      }
+      CART.forEach(item=>{
+        const row = document.createElement('div');
+        row.className='cart-item';
+
+        const w = itemWeightG(item);
+        const wLine = (w>0) ? `<div class="muted small">Peso: ${fmtWeight(w)} c/u</div>` : `<div class="muted small">Peso: —</div>`;
+
+        row.innerHTML = `
+          <div class="thumb" style="background-image:url('${item.img||''}')"></div>
+          <div>
+            <div style="font-weight:700">${item.name}</div>
+            <div class="muted small">${MXN(item.price)} c/u</div>
+            ${wLine}
+          </div>
+          <div style="text-align:right">
+            <div class="qty">
+              <button aria-label="Menos" data-act="dec" data-id="${item.id}">−</button>
+              <input value="${item.qty}" inputmode="numeric" data-id="${item.id}" />
+              <button aria-label="Más" data-act="inc" data-id="${item.id}">+</button>
+            </div>
+            <div class="small" style="margin-top:6px"><strong>${MXN(item.price*item.qty)}</strong></div>
+            <button class="small" style="margin-top:6px;color:#a00;background:transparent;border:0;cursor:pointer" data-act="rm" data-id="${item.id}">Eliminar</button>
+          </div>`;
+        box.appendChild(row);
+      });
+
+      attachQtyHandlers();
+      updateTotals();
+    }
+    window.renderCart = renderCart;
+    miyotlUpdateCartBadge();
+
+    // Vaciar carrito
+    const clearBtn = document.getElementById('clear-cart');
+    if (clearBtn){
+      clearBtn.addEventListener('click', ()=>{
+        if(!confirm('¿Vaciar el carrito?')) return;
+        localStorage.removeItem('miyotl_cart');
+        CART = [];
+        renderCart();
+        updateTotals();
+      });
+    }
+
+    // CAMBIO #3: WhatsApp + correo (mailto) con todo el resumen listo
+    $('#btn-wa').addEventListener('click', ()=>{
+      const addr = {
+        email: $('#email').value.trim(), name: $('#name').value.trim(), phone: $('#phone').value.trim(),
+        street: $('#street').value.trim(), col: $('#col').value.trim(), zip: $('#zip').value.trim(),
+        city: $('#city').value.trim(), state: $('#state').value.trim()
+      };
+
+      const required = [
+        ['name','Nombre completo'],
+        ['phone','Teléfono'],
+        ['city','Ciudad/Municipio'],
+        ['state','Estado']
+      ].filter(([k])=>!addr[k]).map(([,label])=>label);
+
+      if (required.length){
+        alert('Faltan datos: ' + required.join(', '));
+        return;
+      }
+      if (!CART.length){
+        alert('Tu carrito está vacío.');
+        return;
+      }
+
+      const sub = subtotal();
+      const wG = totalWeightG();
+      const wText = fmtWeight(wG);
+
+      const lines = [
+        '🧼 *Nuevo pedido Miyotl*',
+        '',
+        '*Contacto:* ' + addr.name + ' — ' + addr.phone + (addr.email? (' — ' + addr.email) : ''),
+        '*Dirección:* ' + [
+          addr.street,
+          addr.col ? ('Col. ' + addr.col) : '',
+          addr.zip ? ('CP ' + addr.zip) : '',
+          addr.city,
+          addr.state
+        ].filter(Boolean).join(', '),
+        '',
+        '*Artículos:*',
+        ...CART.map(i=>{
+          const w = itemWeightG(i);
+          const wPart = (w>0) ? ` — peso ${fmtWeight(w)} c/u` : '';
+          return '• ' + i.name + ' × ' + i.qty + ' — ' + MXN(i.price*i.qty) + wPart;
+        }),
+        '',
+        '*Subtotal:* ' + MXN(sub),
+        '*Peso total:* ' + wText,
+        '*Total:* ' + MXN(sub),
+        '',
+        '📌 *Nota:* El costo de envío se confirmará por rangos de peso.'
+      ];
+
+      const text = encodeURIComponent(lines.join('\n'));
+
+      // WhatsApp (teléfono: 5536493444, México)
+      const waPhone = '525536493444';
+      const waUrl = 'https://wa.me/' + waPhone + '?text=' + text;
+
+      // Correo (abre el cliente del usuario; en web estática no se puede "enviar" automático sin backend)
+      const mailTo = 'miyotlproductos@gmail.com,toy_vb@outlook.com';
+      const subject = encodeURIComponent('Nuevo pedido — Miyotl');
+      const body = encodeURIComponent(lines.join('\n'));
+      const mailUrl = `mailto:${mailTo}?subject=${subject}&body=${body}`;
+
+      // Abrimos WhatsApp y correo (puede que el navegador bloquee 2 ventanas; si pasa, abre una y luego la otra)
+      window.open(waUrl, '_blank');
+      window.open(mailUrl, '_blank');
+    });
+
+    // === Contador global de carrito (siempre visible) ===
+    function miyotlCartCount(){
+      try{
+        const c = JSON.parse(localStorage.getItem('miyotl_cart')||'[]');
+        if(!Array.isArray(c)) return 0;
+        return c.reduce((s,i)=> s + (parseInt(i.qty,10)||0), 0);
+      }catch(e){ return 0; }
+    }
+    function miyotlUpdateCartBadge(){
+      const n = miyotlCartCount();
+      const el = document.querySelector('[data-cart-count]');
+      if (el){ el.textContent = n; }
+    }
+    window.addEventListener('storage', (e)=>{
+      if (e.key === 'miyotl_cart') miyotlUpdateCartBadge();
+    });
+
+    // Inicializar render
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', ()=>{ renderCart(); miyotlUpdateCartBadge(); });
+    } else {
+      renderCart();
+    }
+  </script>
+</body>
+</html>
+      width:100%; padding:12px; border:2px solid var(--rose);
+      border-radius:12px; background:#fff; outline:none;
+    }
+    input:focus,select:focus{border-color:var(--rose-strong); box-shadow:0 0 0 3px rgba(168,52,119,.12)}
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+
+    /* Radios envío en tarjetas ligeras */
+    .radios{display:flex; flex-direction:column; gap:10px}
+    .radio{
+      display:flex; align-items:center; gap:12px; padding:10px;
+      border:2px solid var(--rose); border-radius:14px; cursor:pointer; background:#fff;
+      box-shadow:0 2px 10px rgba(0,0,0,.06);
+    }
+    .radio input{width:auto}
+    .pill{
+      font-size:12px; padding:2px 10px; border-radius:999px;
+      background:var(--bar); color:#2b2330; border:2px solid var(--rose);
+      font-weight:800;
+    }
+
+    /* Botones estilo catálogo */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      border:2px solid var(--rose); border-radius:12px; padding:12px 14px;
+      font-weight:800; cursor:pointer; background:#fff; color:#5A5A5A;
+      transition:.15s transform;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:var(--miyotl); border-color:var(--rose-strong); color:#fff}
+    .btn.ok{background:var(--ok); color:#fff; border-color:#0b6c34}
+    .btn.ghost{background:#fff}
+    .btn.block{width:100%}
+
+    /* Totales */
+    .totals{display:flex; flex-direction:column; gap:8px}
+    .totals .row{display:flex; justify-content:space-between}
+    .hr{height:1px; background:var(--brand-100); margin:12px 0}
+    .badge{
+      display:inline-flex; align-items:center; gap:6px; font-size:12px;
+      padding:6px 10px; border-radius:999px; background:var(--bar);
+      color:#2b2330; border:2px solid var(--rose); font-weight:800;
+    }
+
+    /* Items del carrito */
+    .cart-item{
+      display:grid; grid-template-columns:56px 1fr auto; gap:12px; align-items:center;
+      padding:10px 0; border-top:1px solid var(--brand-100);
+    }
+    .cart-item:first-child{border-top:0}
+    .thumb{
+      width:56px; height:56px; border-radius:12px; background:#fff;
+      background-size:cover; background-position:center;
+      border:2px solid var(--rose);
+    }
+    .qty{display:inline-flex; align-items:center; border:2px solid var(--rose); border-radius:12px; overflow:hidden}
+    .qty button{border:0; background:#fff; padding:6px 10px; cursor:pointer; font-weight:900}
+    .qty input{width:44px; border:0; text-align:center}
+    .danger{color:#a00}
+
+    /* Botón volver (arriba a la izquierda) */
+    .backbar{
+      display:flex; align-items:center; gap:12px; margin-bottom:12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner superior igual que el catálogo -->
+  <header class="headline">
+    <img class="top-banner" src="assets/images/catalogo-banner.webp" alt="">
+  </header>
+
+  <div class="wrap">
+    <div class="backbar">
+      <a href="catalogo.html" class="btn">← Volver al catálogo</a>
+      <span class="pill">Checkout</span>
+      <span class="pill" id="cart-pill"><span data-cart-count>0</span> artículo(s)</span>
+    </div>
+
+    <div class="grid">
+      <!-- Columna izquierda: Datos y envío -->
+      <div class="left">
+        <div class="card">
+          <div class="section">
+            <h3>Contacto</h3>
+            <label for="email">Correo electrónico</label>
+            <input id="email" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email">
+          </div>
+
+          <div class="section">
+            <h3>Enviar a</h3>
+            <div class="row">
+              <div>
+                <label for="name">Nombre completo</label>
+                <input id="name" placeholder="Nombre y apellidos" autocomplete="name">
+              </div>
+              <div>
+                <label for="phone">Teléfono (WhatsApp)</label>
+                <input id="phone" placeholder="10 dígitos" autocomplete="tel">
+              </div>
+            </div>
+            <label for="street">Calle y número</label>
+            <input id="street" placeholder="Calle, número exterior e interior">
+            <div class="row">
+              <div>
+                <label for="col">Colonia</label>
+                <input id="col" placeholder="Colonia o barrio">
+              </div>
+              <div>
+                <label for="zip">C.P.</label>
+                <input id="zip" placeholder="Código postal">
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="city">Ciudad/Municipio</label>
+                <input id="city" placeholder="Ciudad o municipio">
+              </div>
+              <div>
+                <label for="state">Estado</label>
+                <input id="state" placeholder="Estado">
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Métodos de envío</h3>
             <div class="radios" id="shipping-radios">
               <label class="radio">
                 <input type="radio" name="ship" value="pickup">
