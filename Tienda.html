@@ -242,20 +242,57 @@
   <!-- JS: motor intacto + cambios mínimos pedidos (quitar badge demo, peso total, WA + mailto) -->
   <script>
     /* =====================================================
-       Checkout Miyotl — v1.3 (cambios puntuales a petición)
+       Checkout Miyotl — v1.4 (cambios puntuales a petición)
        1) Quitar "carrito demo precargado"
-       2) Envío por peso (por ahora SOLO mostramos peso total)
-       3) Botón WhatsApp abre a 5536493444 y además abre correo a:
-          miyotlproductos@gmail.com y toy_vb@outlook.com con el resumen
+       2) Envío calculado por peso total (por ahora SOLO mostramos el peso)
+       3) Botón "Finalizar" abre WhatsApp (5536493444) y envía correo AUTOMÁTICO vía Google Apps Script
        ===================================================== */
 
-    // === PESO (por ahora solo mostramos el peso total) ===
-    // Si tus items ya traen "weight_g" en el carrito (localStorage), se usará automáticamente.
-    // Si NO lo traen, puedes definir pesos por ID aquí más adelante.
-    const WEIGHTS_G_BY_ID = {
-      // Ejemplo (cuando quieras):
-      // 'jab-rosa': 120,
-    };
+    // === PESO TOTAL (desde catalogo.json) ===
+    const CATALOGO_URL = 'catalogo.json'; // mismo nivel que Tienda.html en tu repo
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzQGQpK2av2IUeFchgwCufDucInaQZRoDYy2X6nWkW9314RsYJTS4kHIYnmHW3NrYbv/exec';
+
+    // Mapa: codigo (string) -> peso en gramos (number)
+    const PRODUCT_WEIGHT_G = new Map();
+
+    function parseContenidoToGrams(contenido){
+      if(!contenido) return 0;
+      const s = String(contenido).trim().toLowerCase().replace(',', '.');
+
+      // 1 kg, 0.5 kg, etc.
+      let m = s.match(/([0-9]+(?:\.[0-9]+)?)\s*(kg|kgs|kilogramo|kilogramos)\b/);
+      if(m) return Math.round(parseFloat(m[1]) * 1000);
+
+      // 100 gr, 100 g, etc.
+      m = s.match(/([0-9]+(?:\.[0-9]+)?)\s*(g|gr|gramo|gramos)\b/);
+      if(m) return Math.round(parseFloat(m[1]));
+
+      // 250 ml => aproximación a gramos
+      m = s.match(/([0-9]+(?:\.[0-9]+)?)\s*(ml|mililitro|mililitros)\b/);
+      if(m) return Math.round(parseFloat(m[1]));
+
+      return 0;
+    }
+
+    async function loadCatalogWeights(){
+      try{
+        const res = await fetch(CATALOGO_URL, { cache: 'no-store' });
+        const data = await res.json();
+        if(!Array.isArray(data)) throw new Error('catalogo.json no es un arreglo');
+
+        data.forEach(p=>{
+          const rawId = (p && (p.codigo ?? p.id ?? p.ID)) != null ? (p.codigo ?? p.id ?? p.ID) : null;
+          const id = rawId != null ? String(rawId) : null;
+          if(!id) return;
+          const g = parseContenidoToGrams(p.contenido);
+          PRODUCT_WEIGHT_G.set(id, g);
+        });
+        return true;
+      }catch(err){
+        console.warn('No pude cargar pesos desde catalogo.json:', err);
+        return false;
+      }
+    }
 
     const MXN = n => n.toLocaleString('es-MX',{style:'currency',currency:'MXN'});
 
@@ -301,9 +338,12 @@
     function subtotal(){ return CART.reduce((s,i)=>s + i.price*i.qty, 0); }
 
     function itemWeightG(item){
-      const w = (item && typeof item.weight_g === 'number') ? item.weight_g
-              : (WEIGHTS_G_BY_ID[item?.id] ?? 0);
-      return Number.isFinite(w) ? w : 0;
+      const direct = (item && typeof item.weight_g === 'number') ? item.weight_g : null;
+      if (typeof direct === 'number' && Number.isFinite(direct)) return direct;
+
+      const id = item && item.id != null ? String(item.id) : '';
+      const g = PRODUCT_WEIGHT_G.get(id);
+      return Number.isFinite(g) ? g : 0;
     }
 
     function totalWeightG(){
@@ -382,6 +422,9 @@
     window.renderCart = renderCart;
     miyotlUpdateCartBadge();
 
+    // Cargar pesos desde catalogo.json y refrescar el render (para que aparezcan los pesos)
+    loadCatalogWeights().then(()=>{ renderCart(); updateTotals(); });
+
     // Vaciar carrito
     const clearBtn = document.getElementById('clear-cart');
     if (clearBtn){
@@ -394,8 +437,25 @@
       });
     }
 
-    // CAMBIO #3: WhatsApp + correo (mailto) con todo el resumen listo
-    $('#btn-wa').addEventListener('click', ()=>{
+    // CAMBIO #3: WhatsApp + correo AUTOMÁTICO (Apps Script)
+    async function sendOrderEmail(payload){
+      try{
+        const res = await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const out = await res.json().catch(()=>({ ok:false, error:'Respuesta no JSON' }));
+        return out;
+      }catch(err){
+        return { ok:false, error: String(err) };
+      }
+    }
+
+    $('#btn-wa').addEventListener('click', async ()=>{
+      const btn = document.getElementById('btn-wa');
+
       const addr = {
         email: $('#email').value.trim(), name: $('#name').value.trim(), phone: $('#phone').value.trim(),
         street: $('#street').value.trim(), col: $('#col').value.trim(), zip: $('#zip').value.trim(),
@@ -454,15 +514,66 @@
       const waPhone = '525536493444';
       const waUrl = 'https://wa.me/' + waPhone + '?text=' + text;
 
-      // Correo (abre el cliente del usuario; en web estática no se puede "enviar" automático sin backend)
-      const mailTo = 'miyotlproductos@gmail.com,toy_vb@outlook.com';
-      const subject = encodeURIComponent('Nuevo pedido — Miyotl');
-      const body = encodeURIComponent(lines.join('\n'));
-      const mailUrl = `mailto:${mailTo}?subject=${subject}&body=${body}`;
-
-      // Abrimos WhatsApp y correo (puede que el navegador bloquee 2 ventanas; si pasa, abre una y luego la otra)
+      // 1) Abrir WhatsApp (acción del usuario)
       window.open(waUrl, '_blank');
-      window.open(mailUrl, '_blank');
+
+      // 2) Enviar correo automático (Apps Script)
+      const payload = {
+        type: 'pedido',
+        createdAt: new Date().toISOString(),
+        cliente: {
+          nombre: addr.name,
+          telefono: addr.phone,
+          correo: addr.email || ''
+        },
+        direccion: {
+          calle: addr.street || '',
+          colonia: addr.col || '',
+          cp: addr.zip || '',
+          muni: addr.city || '',
+          estado: addr.state || ''
+        },
+        items: CART.map(i=>{
+          const w = itemWeightG(i);
+          const qty = parseInt(i.qty,10) || 0;
+          return {
+            id: String(i.id),
+            nombre: i.name,
+            qty,
+            precioUnit: i.price,
+            totalLinea: i.price * qty,
+            pesoUnit_g: w,
+            pesoLinea_g: w * qty
+          };
+        }),
+        subtotal: sub,
+        pesoTotal_g: wG,
+        pesoTotal_txt: wText,
+        total: sub,
+        resumenTexto: lines.join('\n')
+      };
+
+      const prevText = btn ? btn.textContent : '';
+      if(btn){
+        btn.disabled = true;
+        btn.textContent = 'Enviando pedido…';
+      }
+
+      const out = await sendOrderEmail(payload);
+
+      if(btn){
+        btn.disabled = false;
+        btn.textContent = prevText || 'Finalizar por WhatsApp';
+      }
+
+      if(out && out.ok){
+        alert('Listo ✅ Pedido enviado por WhatsApp y correo.');
+      }else{
+        alert('WhatsApp quedó listo ✅ pero el correo NO se pudo enviar.\n' +
+              'Detalle: ' + (out && out.error ? out.error : 'sin detalle') + '\n\n' +
+              'Tip: revisa que el Apps Script permita CORS y responda JSON.');
+        console.warn('Apps Script response:', out);
+      }
     });
 
     // === Contador global de carrito (siempre visible) ===
