@@ -347,8 +347,7 @@ footer{ padding: 16px 0 28px; border-top: 1px solid var(--brand-100); }
       <a href="#aviso">Aviso de privacidad</a>
       <a href="#politicas">Políticas</a>
       <a href="mailto:Miyotlproducts@gmail.com?subject=Contacto%20desde%20miyotl.mx">Contacto</a>
-      <a href="#" id="open-quote2">Cotizador</a>
-    </div>
+</div>
   </div>
 </footer>
 <!-- Modal Registro -->
@@ -453,53 +452,7 @@ footer{ padding: 16px 0 28px; border-top: 1px solid var(--brand-100); }
 </div>
 <!-- /Modal Registro -->
 
-<!-- Modal Cotizador -->
-<div class="modal" id="modal">
-  <div class="sheet">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-      <h3 style="margin:0;font-size:18px">Cotizador</h3>
-      <button class="btn secondary" id="close-modal">Cerrar</button>
-    </div>
-
-    <div class="muted" style="margin:6px 0 12px">
-      Precios mostrados <strong>sin IVA</strong>. Packs por línea: <strong>3 = −10%</strong>, <strong>6 = −16%</strong>.
-    </div>
-
-    <div style="display:grid;gap:12px;grid-template-columns:1fr 2fr;margin-bottom:12px">
-      <label>Rol
-        <select id="rol" class="input">
-          <option>Consignatario</option>
-          <option selected>Mayorista</option>
-          <option>Distribuidor</option>
-        </select>
-      </label>
-      <label>Correo para copia (opcional)
-        <input class="input" id="email-cc" type="email" placeholder="tu.correo@dominio.com">
-      </label>
-    </div>
-
-    <div style="overflow:auto;border:1px solid var(--brand-200);border-radius:12px">
-      <table class="table" id="table">
-        <thead>
-          <tr>
-            <th>SKU</th>
-            <th>Precio unit. (sin IVA)</th>
-            <th>Cantidad</th>
-            <th class="right">Importe</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px">
-        <button class="muted" id="add-line" style="background:none;border:0;cursor:pointer">+ agregar línea</button>
-        <div class="right" style="font-size:14px">
-          <div>Subtotal (sin IVA): <strong id="sub"></strong></div>
-          <div>IVA 16%: <strong id="iva"></strong></div>
-          <div style="font-size:16px">Total: <strong id="tot"></strong></div>
-        </div>
-      </div>
-    </div>
+</div>
 
     <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:12px">
       <button class="btn secondary" id="clear">Limpiar</button>
@@ -509,116 +462,7 @@ footer{ padding: 16px 0 28px; border-top: 1px solid var(--brand-100); }
 </div>
 
 <script>
-  const $ = (s)=>document.querySelector(s);
-  const fmt = (n)=>n.toLocaleString('es-MX',{style:'currency',currency:'MXN'});
-  const byId = (id)=>document.getElementById(id);
-
-  // Catálogo (ajusta con tu Anexo A)
-  const SKUS = [
-    {id:'BAR-100', nombre:'Jabón de glicerina 100 g', unidad:'pza',
-     precios:{Consignatario:60, Mayorista:50, Distribuidor:40}},
-    {id:'COR-1L', nombre:'Jabón corporal 1 L', unidad:'botella',
-     precios:{Consignatario:110, Mayorista:100, Distribuidor:80}},
-    {id:'ESS-100', nombre:'Esencia 100 ml', unidad:'frasco',
-     precios:{Consignatario:180, Mayorista:175, Distribuidor:140}},
-    {id:'SHAM-1L', nombre:'Shampoo 1 L', unidad:'botella',
-     precios:{Consignatario:320, Mayorista:299, Distribuidor:299}} // excepción
-  ];
-
-  function unitPrice(rol, skuId){
-    const sku = SKUS.find(s=>s.id===skuId);
-    return sku ? sku.precios[rol] : 0;
-  }
-
-  // Descuento por packs: 6→−16%, 3→−10%, resto sin descuento
-  function lineTotal(qty, unit){
-    const packs6 = Math.floor(qty/6);
-    const rem6 = qty%6;
-    const packs3 = Math.floor(rem6/3);
-    const rem = rem6%3;
-    return packs6*(6*unit*0.84) + packs3*(3*unit*0.90) + rem*unit;
-  }
-
-  const tbody = byId('tbody');
-  const rolSel = byId('rol');
-  let rows = [{skuId:'BAR-100', qty:6}];
-
-  function render(){
-    tbody.innerHTML = '';
-    const rol = rolSel.value;
-    let subtotal = 0;
-    rows.forEach((r, i)=>{
-      const unit = unitPrice(rol, r.skuId);
-      const imp = lineTotal(r.qty, unit);
-      subtotal += imp;
-      const tr = document.createElement('tr');
-
-      const tdSku = document.createElement('td');
-      const sel = document.createElement('select');
-      sel.className='input';
-      SKUS.forEach(s=>{
-        const opt = document.createElement('option');
-        opt.value=s.id; opt.textContent=`${s.id} — ${s.nombre}`;
-        if(s.id===r.skuId) opt.selected=true;
-        sel.appendChild(opt);
-      });
-      sel.onchange = e=>{ rows[i].skuId = e.target.value; render(); };
-      tdSku.appendChild(sel);
-
-      const tdUnit = document.createElement('td');
-      tdUnit.textContent = fmt(unit);
-
-      const tdQty = document.createElement('td');
-      const input = document.createElement('input');
-      input.type='number'; input.min='0'; input.value=r.qty; input.className='input';
-      input.oninput = e=>{ rows[i].qty = Math.max(0, Math.floor(Number(e.target.value)||0)); render(); };
-      tdQty.appendChild(input);
-
-      const tdImp = document.createElement('td'); tdImp.className='right'; tdImp.textContent=fmt(imp);
-
-      const tdRm = document.createElement('td');
-      if(rows.length>1){
-        const btn = document.createElement('button');
-        btn.textContent='✕'; btn.className='muted';
-        btn.style.border='0'; btn.style.background='none'; btn.style.cursor='pointer';
-        btn.onclick = ()=>{ rows = rows.filter((_,idx)=>idx!==i); render(); };
-        tdRm.appendChild(btn);
-      }
-
-      tr.append(tdSku, tdUnit, tdQty, tdImp, tdRm);
-      tbody.appendChild(tr);
-    });
-
-    byId('sub').textContent = fmt(subtotal);
-    const iva = subtotal*0.16;
-    byId('iva').textContent = fmt(iva);
-    byId('tot').textContent = fmt(subtotal+iva);
-  }
-
-  byId('add-line').onclick = ()=>{ rows.push({skuId:'BAR-100', qty:1}); render(); };
-  byId('clear').onclick = ()=>{ rows = [{skuId:'BAR-100', qty:6}]; render(); };
-
-  const modal = byId('modal');
-  const openers = [byId('open-quote'), byId('open-quote2'), byId('cta-quote')];
-  openers.forEach(btn=>btn && (btn.onclick = ()=>{ modal.classList.add('open'); render(); }));
-  byId('close-modal').onclick = ()=> modal.classList.remove('open');
-
-  byId('send').onclick = ()=>{
-    const rol = rolSel.value;
-    let lines = rows.map(r=>{
-      const s = SKUS.find(x=>x.id===r.skuId);
-      const unit = unitPrice(rol, r.skuId);
-      const imp = lineTotal(r.qty, unit);
-      return `${s.id} — ${s.nombre} | ${r.qty} × ${fmt(unit)} = ${fmt(imp)}`;
-    }).join('%0A');
-    const sub = document.getElementById('sub').textContent;
-    const iva = document.getElementById('iva').textContent;
-    const tot = document.getElementById('tot').textContent;
-    const cc = (byId('email-cc').value||'').trim();
-    const subject = encodeURIComponent(`Cotización (${rol}) — Miyotl`);
-    const body = `Rol: ${rol}%0A%0A${lines}%0A%0ASubtotal (sin IVA): ${sub}%0AIVA 16%: ${iva}%0ATotal: ${tot}%0A%0AContacto:%0ANombre:%20______________%0ATeléfono:%20______________%0ADirección:%20______________`;
-    const mailto = `mailto:Miyotlproducts@gmail.com?subject=${subject}&body=${body}` + (cc?`&cc=${encodeURIComponent(cc)}`:'');
-    window.location.href = mailto;
+  
   };
 /** ===== Registro (abrir/cerrar, validación, envío) ===== **/
 const REG_MAIL = "Miyotlproducts@gmail.com";
