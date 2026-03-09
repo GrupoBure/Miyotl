@@ -1,62 +1,130 @@
 <!doctype html>
 <html lang="es">
 <head>
-	<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/png" href="/favicon.png">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Políticas — Miyotl Products</title>
   <meta name="description" content="Consulta las políticas de Miyotl Products.">
   <style>
     :root{
-      --brand-50:#F7EFE6; --brand-100:#F2E6D8; --brand-200:#EAD6C0; --brand-300:#DBBFA2;
-      --brand-400:#C9A781; --brand-500:#2B0F3A; --brand-700:#1B0D28;
-      --miyotl:#C53D8C; --ink:#140A1F;
+      --brand-50:#e3d1bc;
+      --brand-100:#F2E6D8;
+      --brand-200:#EAD6C0;
+      --brand-300:#DBBFA2;
+      --brand-400:#C9A781;
+      --brand-500:#2B0F3A;
+      --brand-600:#221030;
+      --brand-700:#1B0D28;
+      --brand-800:#140A1F;
+      --brand-900:#0E0717;
+      --accent:#E04493;
+      --miyotl-purple:#C53D8C;
     }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family:ui-sans-serif,system-ui,Inter,Segoe UI,Roboto,Arial;
-      color:var(--ink);
-      background:#fff; /* = igual al index */
+      margin:0; font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial;
+      color:var(--brand-900); background:#fff;
     }
     .container{max-width:1120px;margin:0 auto;padding:0 16px}
 
-    /* Banner */
-    header{background:#e1d1bd}
-    .top-banner{width:100%;height:260px;object-fit:cover;display:block;filter:saturate(.9)}
+    /* --- Banner encabezado (idéntico al index) --- */
+    .top-banner{
+      width: 100%;
+      height: clamp(140px, 24vh, 320px);
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      background-color: var(--brand-50);
+      max-width: 100%;
+      filter: saturate(0.95);
+      margin: 0;
+      padding: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
-    /* Barra de navegación */
     .nav-under-banner{
-      display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;
-      padding:12px 16px;border-bottom:1px solid var(--brand-200);background:#fff;
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      padding:12px 16px;
+      border-bottom:1px solid var(--brand-200);
+      background: var(--brand-50);
     }
-    .nav-under-banner a{
-      appearance:none;border:1px solid #A83477;background:var(--miyotl);color:#fff;cursor:pointer;
-      padding:8px 12px;border-radius:12px;font-size:14px;text-decoration:none;font-weight:700;
-      transition:.15s transform,.15s opacity;
-    }
-    .nav-under-banner a:hover{transform:translateY(-1px)}
 
-    .hero{padding:28px 0 16px}
-    .hero h1{text-align:center;margin:0 0 8px}
-    .hero p{color:#4d4d4d;text-align:center;margin:0}
-    footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
+    .nav-under-banner a, .nav-under-banner button{
+      appearance:none;border:1px solid var(--brand-300); background:#fff; color:var(--brand-800);
+      padding:8px 12px; border-radius:12px; font-size:14px; cursor:pointer;
+      transition:.15s border-color,.15s color,.15s transform; text-decoration:none;
+    }
+    .nav-under-banner a:hover, .nav-under-banner button:hover{
+      border-color:var(--brand-500); color:var(--brand-900); transform:translateY(-1px)
+    }
+
+    /* Botones del banner en morado Miyotl */
+    .nav-under-banner a,
+    .nav-under-banner button{
+      background: var(--miyotl-purple);
+      color: #fff;
+      border-color: #A83477;
+    }
+
+    header {
+      position: relative;
+      background-color: var(--brand-50);
+    }
+
+    .banner-link{display:block; line-height:0;}
+
+    /* Contenido */
+    main{padding-bottom:8px}
+    .hero{
+      background:#e1d1bd;
+      padding:48px 0 64px;
+    }
+    .hero h1{font-size:38px;line-height:1.15;margin:0 0 12px;font-weight:900;text-align:center;color:var(--miyotl-purple)}
+    @media(min-width:768px){.hero h1{font-size:56px}}
+    .hero p{color:var(--brand-800);font-size:18px;margin:0;text-align:center}
+
+    h2{color:var(--brand-600); margin:0 0 10px}
+    p, li{line-height:1.65}
+    a{color:var(--brand-600)}
+    a:hover{color:var(--brand-500)}
+    .muted{color:var(--brand-700);font-size:13px}
+    .hero .muted{color:var(--brand-800);font-size:18px}
+
+    footer{ padding: 16px 0 28px; border-top: 1px solid var(--brand-100); }
+    footer a{color:var(--brand-800); text-decoration:none}
+    footer a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
+
 <header>
-  <img class="top-banner" src="assets/images/LogolargoMiyotl1.webp" alt="Miyotl — banner">
-  <nav class="nav-under-banner">
+  <a href="index.html" class="banner-link" aria-label="Ir a la página de inicio">
+    <img class="top-banner"
+      src="assets/images/LogolargoMiyotl1.webp"
+      alt="Miyotl Products — banner principal"
+      width="1920" height="320">
+  </a>
+
+  <div class="nav-under-banner">
     <a href="index.html">Inicio</a>
     <a href="nosotros.html">Nosotros</a>
     <a href="catalogo.html">Catálogo</a>
+    <a href="distribuidor.html">Quiero ser distribuidor</a>
     <a href="politicas.html">Políticas</a>
     <a href="aviso.html">Aviso de privacidad</a>
-  </nav>
+    <a href="pregfrec.html">Preguntas frecuentes</a>
+    <a href="opiniones.html">Opiniones</a>
+  </div>
 </header>
 
 <main>
-  <section class="hero">
+<section class="hero">
     <div class="container">
       <h1>Políticas de venta y servicio</h1>
       <p class="muted">Estas políticas aplican a todos nuestros clientes y operaciones de Miyotl Products.</p>
@@ -126,16 +194,19 @@
   </section>
 </main>
 
-
 <footer>
-  <div class="container" style="text-align:center">
-    © <span id="year"></span> Miyotl Products · Hecho en México
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div>© <span id="year"></span> Miyotl Products · Hecho en México</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="aviso.html">Aviso de privacidad</a>
+      <a href="politicas.html">Políticas</a>
+      <a href="mailto:Miyotlproducts@gmail.com?subject=Contacto%20desde%20miyotl.mx">Contacto</a>
+    </div>
   </div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
-
-
-
