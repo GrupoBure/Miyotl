@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo dinámico CSV</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f6f6f6;}
+header{background:#222;color:white;padding:15px;}
+.container{padding:20px;max-width:1200px;margin:auto;}
+.controls{display:flex;gap:10px;margin-bottom:20px;}
+input,select{padding:8px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+.card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.15);}
+.card img{width:100%;height:200px;object-fit:cover;}
+.card .info{padding:12px;}
+.card h3{margin:0 0 6px 0;font-size:18px;}
+.card p{margin:0;font-size:14px;}
+.price{margin-top:6px;font-weight:bold;}
+</style>
+</head>
+<body>
+
+<header>
+<h2>Catálogo automático desde CSV</h2>
+</header>
+
+<div class="container">
+
+<div class="controls">
+<input type="text" id="buscar" placeholder="Buscar producto">
+<select id="categoria">
+<option value="">Todas las categorías</option>
+</select>
+<input type="file" id="csvFile" accept=".csv">
+</div>
+
+<div id="grid" class="grid"></div>
+
+</div>
+
+<script>
+let productos = [];
+
+async function cargarCSV(url){
+    const res = await fetch(url);
+    const buffer = await res.arrayBuffer();
+    const decoder = new TextDecoder("utf-8");
+    const texto = decoder.decode(buffer);
+    parseCSV(texto);
+}
+
+function parseCSV(texto){
+    const filas = texto.trim().split("\n");
+    const encabezados = filas[0].split(",");
+
+    productos = filas.slice(1).map(f=>{
+        const valores = f.split(",");
+        let obj = {};
+        encabezados.forEach((h,i)=>obj[h]=valores[i]);
+        return obj;
+    });
+
+    llenarCategorias();
+    render();
+}
+
+function llenarCategorias(){
+    const select = document.getElementById("categoria");
+    const cats = [...new Set(productos.map(p=>p.categoria))];
+
+    cats.forEach(c=>{
+        const op = document.createElement("option");
+        op.value = c;
+        op.textContent = c;
+        select.appendChild(op);
+    });
+}
+
+function render(){
+    const grid = document.getElementById("grid");
+    const txt = document.getElementById("buscar").value.toLowerCase();
+    const cat = document.getElementById("categoria").value;
+
+    grid.innerHTML="";
+
+    productos
+    .filter(p=>p.nombre.toLowerCase().includes(txt))
+    .filter(p=>!cat || p.categoria===cat)
+    .forEach(p=>{
+
+        const card = document.createElement("div");
+        card.className="card";
+
+        card.innerHTML=`
+        <img src="${p.img}" loading="lazy">
+        <div class="info">
+        <h3>${p.nombre}</h3>
+        <p>${p.descripcion}</p>
+        <div class="price">$${p.precio}</div>
+        </div>`;
+
+        grid.appendChild(card);
+    });
+}
+
+document.getElementById("buscar").addEventListener("input",render);
+document.getElementById("categoria").addEventListener("change",render);
+
+document.getElementById("csvFile").addEventListener("change",e=>{
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = ()=>parseCSV(reader.result);
+    reader.readAsText(file,"UTF-8");
+});
+
+cargarCSV("productos.csv");
+</script>
+
+</body>
+</html>
