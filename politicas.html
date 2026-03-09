@@ -7,19 +7,20 @@
   <title>Políticas — Miyotl Products</title>
   <meta name="description" content="Consulta las políticas de Miyotl Products.">
   <style>
-    :root{
-      --brand-50:#e3d1bc;
+:root{
+      /* Paleta aproximada extraída del logo */
+      --brand-50:#e3d1bc;   /* beige fondo */
       --brand-100:#F2E6D8;
       --brand-200:#EAD6C0;
       --brand-300:#DBBFA2;
       --brand-400:#C9A781;
-      --brand-500:#2B0F3A;
+      --brand-500:#2B0F3A;  /* morado tipografía */
       --brand-600:#221030;
       --brand-700:#1B0D28;
       --brand-800:#140A1F;
       --brand-900:#0E0717;
-      --accent:#E04493;
-      --miyotl-purple:#C53D8C;
+      --accent:#E04493;     /* magenta isotipo */
+	  --miyotl-purple:#C53D8C;
     }
     *{box-sizing:border-box}
     body{
@@ -27,33 +28,34 @@
       color:var(--brand-900); background:#fff;
     }
     .container{max-width:1120px;margin:0 auto;padding:0 16px}
+.banner-link{display:block;line-height:0}
+   /* --- Banner encabezado (sin recortes, fondo beige detrás) --- */
+.top-banner{
+  width: 100%;
+  height: clamp(140px, 24vh, 320px); /* altura adaptable */
+  display: block;
+  object-fit: contain;             /* muestra la imagen completa sin recortes */
+  object-position: center;
+  background-color: var(--brand-50); /* usa tu beige #F7EFE6 */
+  max-width: 100%;
+  filter: saturate(0.95);
+  margin: 0;
+  padding: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
-    /* --- Banner encabezado (idéntico al index) --- */
-    .top-banner{
-      width: 100%;
-      height: clamp(140px, 24vh, 320px);
-      display: block;
-      object-fit: contain;
-      object-position: center;
-      background-color: var(--brand-50);
-      max-width: 100%;
-      filter: saturate(0.95);
-      margin: 0;
-      padding: 0;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
 
     .nav-under-banner{
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      align-items:center;
-      flex-wrap:wrap;
-      padding:12px 16px;
-      border-bottom:1px solid var(--brand-200);
-      background: var(--brand-50);
-    }
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  padding:12px 16px;
+  border-bottom:1px solid var(--brand-200);
+  background: var(--brand-50); /* mismo beige que el banner: #F7EFE6 */
+}
 
     .nav-under-banner a, .nav-under-banner button{
       appearance:none;border:1px solid var(--brand-300); background:#fff; color:var(--brand-800);
@@ -63,64 +65,253 @@
     .nav-under-banner a:hover, .nav-under-banner button:hover{
       border-color:var(--brand-500); color:var(--brand-900); transform:translateY(-1px)
     }
+	/* Botones del banner en morado Miyotl */
+.nav-under-banner a,
+.nav-under-banner button{
+background: var(--miyotl-purple);
+color: #fff;
+border-color: #A83477;
 
-    /* Botones del banner en morado Miyotl */
-    .nav-under-banner a,
-    .nav-under-banner button{
-      background: var(--miyotl-purple);
-      color: #fff;
-      border-color: #A83477;
-    }
-
-    header {
-      position: relative;
-      background-color: var(--brand-50);
-    }
-
-    .banner-link{display:block; line-height:0;}
-
-    /* Contenido */
-    main{padding-bottom:8px}
+}
     .hero{
-      background:#e1d1bd;
-      padding:48px 0 64px;
+	background:#e1d1bd;   /* nuevo fondo (H33 S16 B88) */
+	padding:48px 0 64px;
     }
-    .hero h1{font-size:38px;line-height:1.15;margin:0 0 12px;font-weight:900;text-align:center;color:var(--miyotl-purple)}
+	.hero h1{font-size:38px;line-height:1.15;margin:0 0 12px;font-weight:900;text-align:center;color:var(--miyotl-purple)}
     @media(min-width:768px){.hero h1{font-size:56px}}
-    .hero p{color:var(--brand-800);font-size:18px;margin:0;text-align:center}
+    .hero p{color:var(--brand-800);font-size:18px;margin:0 0 50px;text-align:center}
+    .pill{display:inline-block;background:#fff;border:1px solid var(--brand-200);padding:6px 10px;border-radius:10px;margin-right:8px;color:var(--brand-700);font-size:13px}
+    .btn{
+      appearance:none;border:0;border-radius:12px;padding:10px 16px;font-weight:700;cursor:pointer;
+      color:#fff;background:var(--brand-600);box-shadow:0 2px 8px rgba(0,0,0,.08);
+    }
+    .btn:hover{background:var(--brand-700)}
+    .btn.secondary{background:#fff;color:var(--brand-800);border:1px solid var(--brand-300)}
+    .grid4{display:grid;gap:16px}
+    @media(min-width:768px){.grid4{grid-template-columns:repeat(4,1fr)}}
+    .card{
+      background:#fff;border:1px solid var(--brand-200);border-radius:18px;padding:20px;
+      transition:.15s transform,.15s border-color; box-shadow:0 2px 12px rgba(0,0,0,.04)
+    }
+    .card:hover{
+	transform: translateY(-2px);
+	border-color: var(--brand-400);
+	}
+     /* Bullets horizontales (sección de confianza) */
+.confidence{
+  background: inherit;
+  padding: 12px 0 18px;     /* +aire vertical */
+  margin: 16px 0 40px;      /* separa del footer */
+}
+.confidence .container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;   /* centro real */
+  gap: 24px;                 /* +aire entre bullets */
+}
+.confidence .card{
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  text-align: center;        /* centra texto de cada ítem */
+  line-height: 1.4;          /* +aire interno */
+}
+.confidence .card::before{
+  content: "•";
+  font-weight: 700;
+  color: var(--brand-400);
+  margin-right: 2px;
+}
+.confidence .card > div{ display: inline; }
+.confidence .card > div:first-child{ font-weight: 700; margin-right: 6px; }
+.confidence .card .muted{ color: var(--brand-700); font-weight: 400; }
 
-    h2{color:var(--brand-600); margin:0 0 10px}
-    p, li{line-height:1.65}
-    a{color:var(--brand-600)}
-    a:hover{color:var(--brand-500)}
+/* Cada item como bullet */
+.confidence .card{
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.confidence .card::before{
+  content: "•";
+  font-weight: 700;
+  color: var(--brand-400);
+  margin-right: 2px;
+}
+.confidence .card > div{ display: inline; }
+.confidence .card > div:first-child{ font-weight: 700; margin-right: 6px; }
+.confidence .card .muted{ color: var(--brand-700); font-weight: 400; }
+     /* Modal: oculto por defecto */
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;                 /* <-- clave: oculto */
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.35);
+  padding:20px;
+  z-index:1000;
+}
+.modal.open{ display:flex; }
+    }
+    .table{width:100%;border-collapse:collapse;font-size:14px}
+    .table th,.table td{padding:10px;border-top:1px solid #eee;text-align:left}
+    .table thead th{background:var(--brand-50);color:var(--brand-800);border-top:none}
+    .input, select{
+      width:100%;padding:9px 10px;border:1px solid var(--brand-300);border-radius:10px;background:#fff;
+    }
+    .right{text-align:right}
     .muted{color:var(--brand-700);font-size:13px}
-    .hero .muted{color:var(--brand-800);font-size:18px}
+    .accent{color:var(--accent)}
+	/* --- Color morado para Sign in --- */
+    :root { --miyotl-purple: #C53D8C; }  /* RGB(197,61,140) */
 
-    footer{ padding: 16px 0 28px; border-top: 1px solid var(--brand-100); }
-    footer a{color:var(--brand-800); text-decoration:none}
-    footer a:hover{text-decoration:underline}
+    /* (opcional) morado también para el link “Soy nuevo” */
+    header .new-link{ color: var(--miyotl-purple); }
+	/* Sign in sobre el banner (arriba-derecha) */
+    header { position: relative; }
+	  header{
+  position: relative;
+  background-color: var(--brand-50); /* beige detrás del banner */
+}
+
+    header .signin-wrap{
+      position:absolute;
+		right:16px;
+		bottom:16px;   /* ancla abajo */
+		top:auto;      /* cancela cualquier 'top' previo */
+		display:flex;
+		flex-direction:column;
+		gap:6px;
+		align-items:center;
+		text-align:center;
+		z-index:5;
+}
+
+    header .btn-signin{
+      display:inline-block;
+      appearance:none;
+      border:0; border-radius:12px; padding:10px 14px;
+      font-weight:700; cursor:pointer;
+      color:#fff; background:var(--miyotl-purple);
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+      text-decoration:none;
+    }
+    header .btn-signin:hover{ background:#A83477; }
+
+    header .new-link{
+      font-size:12px; color:var(--miyotl-purple);
+      text-decoration:underline;
+    }
+	/* === Triptych central (3 imágenes verticales) === */
+.triptych-wrap{
+  background:#fff;
+  padding:32px 0 48px;
+  border-top:1px solid var(--brand-100);
+}
+
+.triptych{
+  display:grid;
+  gap:16px;
+  grid-template-columns: 1fr;      /* móvil: 1 columna */
+  justify-items:center;            /* centra cada imagen */
+}
+
+.triptych figure{
+  margin:0;
+  width:100%;
+  max-width:420px;                 /* ancho máx por imagen en móvil/tablet */
+}
+
+.triptych img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:3/4;                /* vertical 3:4 */
+  object-fit:cover;
+  border-radius:18px;
+  box-shadow:0 6px 24px rgba(0,0,0,.08);
+}
+
+/* Desktop: 3 columnas */
+@media (min-width:900px){
+  .triptych{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:24px;
+  }
+  .triptych figure{
+    max-width:100%;
+  }
+}
+footer{ padding: 16px 0 28px; border-top: 1px solid var(--brand-100); }
+/* ---- Registro (reusa variables y look & feel) ---- */
+.sheet{
+  background:#fff; border:1px solid var(--brand-200); border-radius:18px;
+  padding:16px; max-width:840px; width:100%; box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+.form-grid{
+  display:grid; gap:12px;
+  grid-template-columns: 1fr;
+}
+@media (min-width:760px){
+  .form-grid{ grid-template-columns: repeat(2, 1fr); }
+  .span-2{ grid-column: 1 / span 2; }
+}
+.form-note{ font-size:13px; color:var(--brand-700); }
+.form-title{ margin:0 0 8px; font-size:18px; color:var(--brand-600); }
+.success-box{
+  border:1px solid var(--brand-300); background:var(--brand-50);
+  border-radius:12px; padding:12px; margin-top:12px;
+}
+.badge{
+  display:inline-block; font-size:12px; padding:3px 8px; border-radius:999px;
+  background:#fff; border:1px solid var(--brand-300); color:var(--brand-700);
+}
+
+
+/* Ajustes de contenido para páginas internas */
+main{padding-bottom:8px}
+h2{color:var(--brand-600); margin:0 0 10px}
+p, li{line-height:1.65}
+a{color:var(--brand-600)}
+a:hover{color:var(--brand-500)}
+.hero .muted{color:var(--brand-800);font-size:18px}
+
   </style>
 </head>
 <body>
 
 <header>
-  <a href="index.html" class="banner-link" aria-label="Ir a la página de inicio">
-    <img class="top-banner"
-      src="assets/images/LogolargoMiyotl1.webp"
-      alt="Miyotl Products — banner principal"
-      width="1920" height="320">
+<a href="index.html" class="banner-link" aria-label="Ir a la página de inicio">
+  <img class="top-banner"
+     src="assets/images/LogolargoMiyotl1.webp"
+     alt="Miyotl Products — banner principal"
+     width="1920" height="320">
   </a>
-
-  <div class="nav-under-banner">
-    <a href="index.html">Inicio</a>
-    <a href="nosotros.html">Nosotros</a>
-    <a href="catalogo.html">Catálogo</a>
-    <a href="distribuidor.html">Quiero ser distribuidor</a>
-    <a href="politicas.html">Políticas</a>
-    <a href="aviso.html">Aviso de privacidad</a>
-    <a href="pregfrec.html">Preguntas frecuentes</a>
-    <a href="opiniones.html">Opiniones</a>
-  </div>
+  <!-- Botones debajo del banner, en línea horizontal -->
+<div class="nav-under-banner">
+	<a href="index.html">Inicio</a>
+	<a href="nosotros.html">Nosotros</a>
+	<a href="catalogo.html">Catálogo</a>
+	<a href="distribuidor.html">Quiero ser distribuidor</a>
+	<a href="politicas.html">Políticas</a>
+	<a href="aviso.html">Aviso de privacidad</a>
+	<a href="pregfrec.html">Preguntas frecuentes</a>
+	<a href="opiniones.html">Opiniones</a>
+</div>
 </header>
 
 <main>
@@ -194,8 +385,9 @@
   </section>
 </main>
 
+
 <footer>
-  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
     <div>© <span id="year"></span> Miyotl Products · Hecho en México</div>
     <div style="display:flex;gap:12px;flex-wrap:wrap">
       <a href="aviso.html">Aviso de privacidad</a>
@@ -204,6 +396,7 @@
     </div>
   </div>
 </footer>
+
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
