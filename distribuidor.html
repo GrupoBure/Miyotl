@@ -80,6 +80,17 @@ border-top:1px solid var(--brand-100);
 
 footer a{color:var(--brand-800);text-decoration:none}
 footer a:hover{text-decoration:underline}
+
+.required-label::after{
+  content:" *";
+  color:#e11d48;
+  font-weight:bold;
+}
+.input-error{
+  border:2px solid #e11d48 !important;
+  background:#fff5f5;
+}
+
 </style>
 </head>
 
@@ -113,32 +124,67 @@ width="1920" height="320">
       <p class="muted">
   Tus clientes ya buscan productos naturales y honestos para el cuidado de su piel. 
   Con Miyotl no necesitas grandes inversiones para empezar: puedes integrarnos a tu spa, barbería o tienda y comenzar a ganar desde el primer día. 
-  Te ofrecemos un modelo claro y un surtido continuo.
+  Te ofrecemos un modelo claro, contratos justos y respaldo constante para que tu negocio crezca y se diferencie. 
+  Ser Concesionario, Mayorista o Distribuidor no es solo comprar producto: es asegurar un flujo de clientes satisfechos que volverán a pedir lo que solo tú les puedes dar.
 </p>
     </div>
   </section>
 
-  
+  <!-- 3 variantes -->
+  <section class="section" style="padding:18px 0">
+    <div class="container" style="display:grid;gap:12px;grid-template-columns:1fr;max-width:980px">
+      <div style="display:grid;gap:12px" class="tiers">
+        <div class="card" style="background:#fff;border:1px solid var(--brand-200);border-radius:16px;padding:16px">
+          <h2 style="margin:0 0 6px;font-size:20px">Concesionario</h2>
+          <p class="muted" style="margin:6px 0 0">
+            Pensado para spas, barberías y estéticas que buscan diferenciar su servicio con una línea propia y exhibición cuidada en su punto. Soporte de activaciones y POP oficial.
+          </p>
+        </div>
+        <div class="card" style="background:#fff;border:1px solid var(--brand-200);border-radius:16px;padding:16px">
+          <h2 style="margin:0 0 6px;font-size:20px">Mayorista</h2>
+          <p class="muted" style="margin:6px 0 0">
+            Enfoque en volumen y rotación. Condiciones por Unidad Logística, precios preferentes y reglas claras para proteger la marca y la rentabilidad del canal.
+          </p>
+        </div>
+        <div class="card" style="background:#fff;border:1px solid var(--brand-200);border-radius:16px;padding:16px">
+          <h2 style="margin:0 0 6px;font-size:20px">Distribuidor</h2>
+          <p class="muted" style="margin:6px 0 0">
+            Desarrollo de territorio, capacitación y acompañamiento comercial. Condiciones de compra pactadas y metas con evaluación periódica.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Formulario -->
   <section class="section" style="padding:10px 0 28px">
     <div class="container" style="max-width:720px">
       <form id="form-distrib" onsubmit="return false" novalidate>
-         <!-- Datos del establecimiento -->
+        <!-- Selección única de variante -->
+        <fieldset style="border:1px solid var(--brand-200);border-radius:12px;padding:12px;margin:0 0 12px">
+          <legend style="padding:0 6px">Elige el que mejor se ajuste a ti</legend>
+			<label><input type="radio" name="modalidad" value="Concesionario" required> Concesionario</label>
+			<label><input type="radio" name="modalidad" value="Mayorista"> Mayorista</label>
+			<label><input type="radio" name="modalidad" value="Distribuidor"> Distribuidor</label>
+
+        </fieldset>
+
+        <!-- Datos del establecimiento -->
         <div style="display:grid;gap:10px;margin:12px 0">
           <label>Nombre completo
             <input type="text" id="nombre" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
           </label>
 		  <label>Nombre del establecimiento
-            <input type="text" id="estab" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+            <input type="text" id="estab" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
           </label>
           <!-- Dirección (detalle) -->
 		  <label for="calle" style="display:block;margin:2px 0 6px">Dirección completa</label>
 <div style="display:grid;gap:10px;grid-template-columns:1fr 140px 140px;align-items:end">
   <label>Calle
-    <input type="text" id="calle" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+    <input type="text" id="calle" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
   </label>
   <label>No. ext
-    <input type="text" id="noext" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+    <input type="text" id="noext" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
   </label>
   <label>No. int
     <input type="text" id="noint" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
@@ -147,19 +193,19 @@ width="1920" height="320">
 
 <div style="display:grid;gap:10px;grid-template-columns:1fr 1fr 160px;align-items:end">
   <label>Colonia
-    <input type="text" id="colonia" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+    <input type="text" id="colonia" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
   </label>
   <label>Municipio / Delegación
-    <input type="text" id="muni" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+    <input type="text" id="muni" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
   </label>
   <label>C.P.
-    <input type="text" id="cp" inputmode="numeric" maxlength="5" placeholder="5 dígitos"
+    <input type="text" id="cp" required inputmode="numeric" maxlength="5" placeholder="5 dígitos"
            style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
   </label>
 </div>
 
 <label>Estado
-  <input type="text" id="estado" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+  <input type="text" id="estado" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
 </label>
 
           <label>Teléfono
@@ -172,6 +218,7 @@ width="1920" height="320">
 
         <!-- Aceptaciones -->
         <div style="display:grid;gap:6px;margin:12px 0">
+          <label><input type="checkbox" id="ok-contrato"> He leído los <a href="distribuidor.html#contrato" onclick="return false">términos del contrato</a> y estoy de acuerdo.</label>
           <label><input type="checkbox" id="ok-politicas"> He leído las <a href="politicas.html" target="_self">políticas</a> y estoy de acuerdo.</label>
           <label><input type="checkbox" id="ok-aviso"> He leído el <a href="aviso.html" target="_self">aviso de privacidad</a> y estoy de acuerdo.</label>
         </div>
@@ -181,11 +228,11 @@ width="1920" height="320">
 <div id="cita-wrap" style="display:block">
   <div style="display:grid;gap:10px;grid-template-columns:1fr 1fr;max-width:520px;margin:0 auto">
     <label>Fecha (día hábil)
-      <input type="date" id="fecha"
+      <input type="date" id="fecha" required
              style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
     </label>
     <label>Hora (9:00–14:00)
-      <input type="time" id="hora" min="09:00" max="14:00" step="900"
+      <input type="time" id="hora" required min="09:00" max="14:00" step="900"
              style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
     </label>
   </div>
@@ -197,8 +244,8 @@ width="1920" height="320">
 
         <!-- Enviar -->
         <div style="text-align:center;margin:16px 0 0">
-          <button id="btn-enviar" type="button" class="btn secondary"
-                  style="appearance:none;border:1px solid #A83477;background:#fff;color:#A83477;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer">
+          <button id="btn-enviar" type="button" class="btn secondary" disabled
+                  style="appearance:none;border:1px solid #A83477;background:#fff;color:#A83477;padding:10px 14px;border-radius:12px;font-weight:700;cursor:not-allowed">
             Enviar
           </button>
           <p class="muted" style="margin:8px 0 0">Nos pondremos en contacto para confirmar la reunión.</p>
@@ -220,122 +267,8 @@ width="1920" height="320">
 </div>
 </footer>
 
-
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
-
-const DISTRIB_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKXTiUE3Df4EXBmuv6pmBKGEpK0OBpMaObBIctlnQ-mHknCAEeyTrP0k55ci3vEvQk/exec';
-
-function val(id){ return (document.getElementById(id)?.value || '').trim(); }
-function checked(id){ return !!document.getElementById(id)?.checked; }
-
-function formatDateMx(dateStr){
-  if(!dateStr) return 'No especificada';
-  const d = new Date(dateStr + 'T00:00:00');
-  if (isNaN(d)) return dateStr;
-  return d.toLocaleDateString('es-MX', {
-    weekday:'long', year:'numeric', month:'long', day:'numeric'
-  });
-}
-
-function formatTimeMx(timeStr){
-  if(!timeStr) return 'No especificada';
-  const parts = timeStr.split(':');
-  if (parts.length < 2) return timeStr;
-  const h = Number(parts[0]);
-  const m = Number(parts[1]);
-  const d = new Date();
-  d.setHours(h, m, 0, 0);
-  return d.toLocaleTimeString('es-MX', {
-    hour:'numeric', minute:'2-digit', hour12:true
-  });
-}
-
-async function sendDistribuidor(payload){
-  const res = await fetch(DISTRIB_APPS_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'cors',
-    headers: { 'Content-Type':'text/plain;charset=utf-8' },
-    body: JSON.stringify(payload)
-  });
-  return res.json();
-}
-
-document.getElementById('btn-enviar')?.addEventListener('click', async ()=>{
-  const modalidad = document.querySelector('input[name="modalidad"]:checked')?.value || '';
-  const nombre = val('nombre');
-  const estab = val('estab');
-  const calle = val('calle');
-  const noext = val('noext');
-  const noint = val('noint');
-  const colonia = val('colonia');
-  const muni = val('muni');
-  const cp = val('cp');
-  const estado = val('estado');
-  const tel = val('tel');
-  const mail = val('mail');
-  const fecha = val('fecha');
-  const hora = val('hora');
-  const okPoliticas = checked('ok-politicas');
-  const okAviso = checked('ok-aviso');
-
-  if(!nombre || !tel || !mail || !okPoliticas || !okAviso){
-    alert('Completa los campos obligatorios Nombre, Tel, Correo y acepta politicas y aviso');
-    return;
-  }
-
-  const payload = {
-    type: 'distribuidor',
-    createdAt: new Date().toISOString(),
-    modalidad: modalidad || 'No especificada',
-    nombre,
-    telefono: tel,
-    correo: mail,
-    establecimiento: estab || '',
-    direccion: {
-      calle: calle || '',
-      noext: noext || '',
-      noint: noint || '',
-      colonia: colonia || '',
-      municipio: muni || '',
-      cp: cp || '',
-      estado: estado || ''
-    },
-    cita: {
-      fecha: fecha || '',
-      fechaTexto: formatDateMx(fecha),
-      hora: hora || '',
-      horaTexto: formatTimeMx(hora)
-    },
-    checks: {
-      contrato: okContrato ? 'Sí' : 'No',
-      politicas: okPoliticas ? 'Sí' : 'No',
-      aviso: okAviso ? 'Sí' : 'No'
-    }
-  };
-
-  const btn = document.getElementById('btn-enviar');
-  const txt = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = 'Enviando…';
-
-  try{
-    const out = await sendDistribuidor(payload);
-    if(out && out.ok){
-      alert('Solicitud enviada correctamente');
-      document.getElementById('form-distrib')?.reset();
-    }else{
-      alert('No se pudo enviar la solicitud. ' + (out?.error || ''));
-      console.warn(out);
-    }
-  }catch(err){
-    alert('No se pudo enviar la solicitud.');
-    console.error(err);
-  }finally{
-    btn.disabled = false;
-    btn.textContent = txt;
-  }
-});
+document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 
 </body>
