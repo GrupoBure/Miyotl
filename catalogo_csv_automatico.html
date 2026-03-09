@@ -1,121 +1,439 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo dinámico CSV</title>
-<style>
-body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f6f6f6;}
-header{background:#222;color:white;padding:15px;}
-.container{padding:20px;max-width:1200px;margin:auto;}
-.controls{display:flex;gap:10px;margin-bottom:20px;}
-input,select{padding:8px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
-.card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.15);}
-.card img{width:100%;height:200px;object-fit:cover;}
-.card .info{padding:12px;}
-.card h3{margin:0 0 6px 0;font-size:18px;}
-.card p{margin:0;font-size:14px;}
-.price{margin-top:6px;font-weight:bold;}
-</style>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catálogo — Miyotl Products</title>
+  <meta name="description" content="Catálogo de Miyotl Products cargado desde CSV.">
+  <style>
+    :root{
+      --brand-50:#F7EFE6; --brand-100:#F2E6D8; --brand-200:#EAD6C0; --brand-300:#DBBFA2;
+      --brand-400:#C9A781; --brand-500:#2B0F3A; --brand-700:#1B0D28;
+      --miyotl:#C53D8C; --ink:#140A1F;
+      --rose:#E067C6; --rose-strong:#A83477; --muted:#8E8E8E;
+      --bar:#F2CFE9;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial;color:var(--ink);background:#fff;font-size:13px;line-height:1.35}
+    .container{max-width:1120px;margin:0 auto;padding:0 16px}
+    header{background:#e1d1bd}
+    .top-banner{
+      width:100%;height:clamp(160px,30vh,420px);display:block;object-fit:contain;object-position:center;
+      background-color:#fff;max-width:100%;filter:saturate(.9);
+    }
+    .headline{position:relative}
+    .filters-wrap{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;padding:12px 16px;border-bottom:1px solid var(--brand-200);background:#fff}
+    .filters button{appearance:none;border:1px solid #A83477;background:var(--miyotl);color:#fff;cursor:pointer;padding:6px 10px;border-radius:12px;font-weight:700;font-size:12px;transition:.15s transform,.15s opacity}
+    .filters button:hover{transform:translateY(-1px)}
+    .filters button.is-active{box-shadow:0 2px 10px rgba(0,0,0,.12)}
+    .note{font-size:11px;color:#4d4d4d;text-align:center;margin:8px 0 18px}
+    .grid{display:grid;gap:18px}
+    @media(min-width:768px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .card{background:#fff;border:2px solid var(--rose);border-radius:22px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.06);transition:.15s transform,.15s border-color;cursor:pointer}
+    .card:hover{transform:translateY(-3px);border-color:var(--rose-strong)}
+    .card .image-wrap{position:relative;border-radius:20px;overflow:hidden;margin:6px;border:2px solid var(--rose)}
+    .card .image-wrap img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;filter:saturate(.98)}
+    .card .badge{position:absolute;right:10px;bottom:10px;width:60px;height:60px;border-radius:999px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;line-height:1.05;padding:6px;box-shadow:0 6px 18px rgba(0,0,0,.18);font-size:10px}
+    .card .row-2{display:grid;grid-template-columns:1fr 2fr;gap:10px;padding:8px 10px 0}
+    .pill{background:#fff;border:2px solid var(--rose);border-radius:16px;padding:6px 9px;color:#5A5A5A;font-weight:800;text-align:center;min-height:30px;display:flex;align-items:center;justify-content:center;font-size:11px}
+    .bar{background:var(--bar);color:#2b2330;border-radius:4px;text-align:center;font-weight:800;padding:4px 0;font-size:10px;line-height:1.1}
+    .val{font-weight:800;text-align:center;color:#4b4b4b;font-size:11px;margin-top:4px}
+    .row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 10px 2px}
+    .price-col{display:grid}
+    .kilo{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 10px 0}
+    .kilo .title{grid-column:1/-1}
+    .empty{margin:26px auto;max-width:860px;padding:12px 14px;border:1px dashed #d3a7c7;border-radius:12px;color:#6b3e64;background:#fff9fd;text-align:center;font-weight:700}
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55);padding:24px;z-index:1000;overflow:auto}
+    .modal.open{display:flex}
+    #modalProd .sheet{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start;max-width:min(1200px,95vw);width:100%}
+    #modalProd .sheet > .mp-overlay{align-self:start;margin-top:-8px}
+    #modalProd .img-max{position:relative;width:100%;border-radius:18px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.45);border:2px solid var(--rose);background:#fff;display:flex;align-items:center;justify-content:center;min-height:200px}
+    #modalProd .img-max img{display:block;max-width:100%;max-height:82vh;width:auto;height:auto;border-radius:18px;object-fit:contain}
+    #mp-close{position:absolute;top:-14px;right:-14px;z-index:3;background:#fff;color:var(--ink);border:2px solid var(--rose);border-radius:999px;padding:8px 12px;font-weight:900;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+    .mp-overlay{position:relative;display:flex;flex-direction:column;gap:12px;width:100%;max-height:82vh;overflow:auto;padding-right:2px;padding-top:16px}
+    .overlay-card{position:relative;background:#fff;border:2px solid var(--rose);border-radius:12px;padding:8px 10px 10px;box-shadow:0 6px 18px rgba(0,0,0,.25);max-height:none;overflow:visible;font-size:12px;color:#4b4b4b}
+    .overlay-pill{position:absolute;left:8px;top:-12px;background:#D874C3;color:#fff;border:none;border-radius:14px;padding:4px 10px;font-weight:800;font-size:11px}
+    @media (max-width:900px){
+      #modalProd .sheet{grid-template-columns:1fr}
+      .mp-overlay{max-height:none;overflow:visible;margin:4px 0 0}
+      #mp-close{top:-12px;right:-12px}
+      #modalProd .sheet > .mp-overlay{margin-top:0}
+    }
+    footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
+    .btn-add{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:12px;border:2px solid var(--rose);background:#fff;cursor:pointer;font-weight:800;color:#5A5A5A}
+    .btn-add:hover{transform:translateY(-1px)}
+    .fab-cart{position:fixed;right:16px;bottom:16px;z-index:1200;display:inline-flex;align-items:center;gap:8px;background:var(--rose);color:#fff;text-decoration:none;border:2px solid var(--rose-strong);border-radius:999px;padding:10px 14px;font-weight:800;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+    .fab-cart:hover{transform:translateY(-1px)}
+    #cart-count{background:#fff;color:var(--ink);border-radius:999px;padding:2px 8px;font-weight:900;line-height:1}
+  </style>
 </head>
 <body>
 
-<header>
-<h2>Catálogo automático desde CSV</h2>
+<header class="headline">
+  <img class="top-banner" src="assets/images/catalogo-banner.webp" alt="">
 </header>
 
-<div class="container">
-
-<div class="controls">
-<input type="text" id="buscar" placeholder="Buscar producto">
-<select id="categoria">
-<option value="">Todas las categorías</option>
-</select>
-<input type="file" id="csvFile" accept=".csv">
+<div class="filters-wrap">
+  <div class="filters">
+    <button onclick="location.href='index.html'" style="background:#fff;color:var(--miyotl);border:2px solid var(--miyotl);font-weight:800;">Inicio</button>
+    <button data-filter="all" class="is-active">Todos</button>
+    <button data-filter="Jabón sólido">Jabón sólido</button>
+    <button data-filter="Jabón líquido">Jabón líquido</button>
+    <button data-filter="Jabón corporal">Jabón corporal</button>
+    <button data-filter="Shampoo">Shampoo</button>
+    <button data-filter="Decorativos">Decorativos</button>
+    <button data-filter="Temporada">Temporada</button>
+  </div>
 </div>
+<p class="note">Haz clic en cualquier producto para ver sus beneficios.</p>
 
-<div id="grid" class="grid"></div>
+<main class="container">
+  <section id="grid" class="grid"></section>
+  <div id="empty" class="empty" style="display:none"></div>
+</main>
 
+<footer><div class="container" style="text-align:center">© <span id="year"></span> Miyotl Products · Hecho en México</div></footer>
+
+<div id="modalProd" class="modal" role="dialog" aria-modal="true">
+  <div class="sheet">
+    <button id="mp-close">Cerrar</button>
+    <div class="img-max">
+      <img id="mp-img" alt="">
+    </div>
+    <div id="mp-overlay" class="mp-overlay" aria-hidden="true" style="display:none"></div>
+  </div>
 </div>
 
 <script>
-let productos = [];
+const grid=document.getElementById('grid');
+const empty=document.getElementById('empty');
+const btns=document.querySelectorAll('.filters button[data-filter]');
+let PRODUCTS=[];
 
-async function cargarCSV(url){
-    const res = await fetch(url);
-    const buffer = await res.arrayBuffer();
-    const decoder = new TextDecoder("utf-8");
-    const texto = decoder.decode(buffer);
-    parseCSV(texto);
+const money=v=>{
+  if(v===undefined||v===null||v==='') return '';
+  const s=(''+v).trim();
+  if(!s || /^n\/a$/i.test(s)) return 'N/A';
+  const n=Number(s);
+  return Number.isFinite(n)
+    ? n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0})
+    : s;
+};
+
+const norm = s => (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+function fallbackByCategory(cat){
+  const c = norm(cat);
+  if (c.includes('solido')) return 'assets/images/102000.webp';
+  if (c.includes('shampoo') || c.includes('corporal') || c.includes('liquido')) return 'assets/images/104000.webp';
+  return 'assets/images/102000.webp';
+}
+function handleImgError(img){
+  const base = img.dataset.base || '';
+  const step = img.dataset.step || 'webp';
+  if (base && step === 'webp'){ img.dataset.step='jpg'; img.src = base + '.jpg'; return; }
+  if (base && step === 'jpg'){ img.dataset.step='png'; img.src = base + '.png'; return; }
+  if (img.dataset.fallback){ img.onerror=null; img.src = img.dataset.fallback; return; }
+  img.onerror = null;
+}
+function splitMulti(v){
+  if(v===undefined || v===null) return [];
+  const s=(''+v).trim();
+  if(!s) return [];
+  if(s.includes('|||')) return s.split('|||').map(x=>x.trim()).filter(Boolean);
+  if(s.includes('\n')) return s.split('\n').map(x=>x.trim()).filter(Boolean);
+  return [s];
+}
+function splitCats(v){
+  if(v===undefined || v===null) return [];
+  const s=(''+v).trim();
+  if(!s) return [];
+  if(s.includes('|||')) return s.split('|||').map(x=>x.trim()).filter(Boolean);
+  if(s.includes(',')) return s.split(',').map(x=>x.trim()).filter(Boolean);
+  return [s];
+}
+function normalizeImagePath(value, codigo){
+  const raw = (value || '').toString().trim();
+  if(raw){
+    if (/^https?:\/\//i.test(raw)) return raw;
+    if (/^assets\/images\//i.test(raw)) return raw;
+    return 'assets/images/' + raw.replace(/^\.?\/*/, '').replace(/^assets\/images\//i,'');
+  }
+  if(codigo){
+    return 'assets/images/' + String(codigo).trim() + '.webp';
+  }
+  return 'assets/images/placeholder.webp';
+}
+function baseFromImagePath(path){
+  if(/^https?:\/\//i.test(path)) return path.replace(/\.(webp|png|jpg|jpeg)$/i,'');
+  return path.replace(/\.(webp|png|jpg|jpeg)$/i,'');
 }
 
-function parseCSV(texto){
-    const filas = texto.trim().split("\n");
-    const encabezados = filas[0].split(",");
+/* CSV parser con soporte para comillas, comas y saltos de línea */
+function parseCSV(text){
+  const rows = [];
+  let row = [];
+  let value = '';
+  let i = 0;
+  let inQuotes = false;
 
-    productos = filas.slice(1).map(f=>{
-        const valores = f.split(",");
-        let obj = {};
-        encabezados.forEach((h,i)=>obj[h]=valores[i]);
-        return obj;
+  while(i < text.length){
+    const ch = text[i];
+    const next = text[i+1];
+
+    if(ch === '"'){
+      if(inQuotes && next === '"'){
+        value += '"';
+        i += 2;
+        continue;
+      }
+      inQuotes = !inQuotes;
+      i++;
+      continue;
+    }
+
+    if(ch === ',' && !inQuotes){
+      row.push(value);
+      value = '';
+      i++;
+      continue;
+    }
+
+    if((ch === '\n' || ch === '\r') && !inQuotes){
+      if(ch === '\r' && next === '\n') i++;
+      row.push(value);
+      rows.push(row);
+      row = [];
+      value = '';
+      i++;
+      continue;
+    }
+
+    value += ch;
+    i++;
+  }
+
+  if(value.length || row.length){
+    row.push(value);
+    rows.push(row);
+  }
+
+  if(!rows.length) return [];
+  const headers = rows[0].map(h => h.trim());
+  return rows.slice(1).filter(r => r.some(cell => (cell||'').trim() !== '')).map(r => {
+    const obj = {};
+    headers.forEach((h, idx) => obj[h] = (r[idx] ?? '').trim());
+    return obj;
+  });
+}
+
+function productCard(p){
+  const el=document.createElement('article');
+  el.className='card';
+  el.dataset.cats=(p.cats||[]).join(',');
+
+  const pub=money(p.precioPublico), may=money(p.precioMayoreo), dis=money(p.precioDistribuidor);
+  const pubK=money(p.precioPublico_K), mayK=money(p.precioMayoreo_K), disK=money(p.precioDistribuidor_K);
+  const fb = fallbackByCategory(p.categoria);
+
+  el.innerHTML=`
+    <div class="image-wrap">
+      <img src="${p.img}" alt="${p.nombre||''}" loading="lazy"
+           data-base="${p.imgBase}"
+           data-step="webp"
+           data-fallback="${fb}">
+      ${p.etiqueta?`<div class="badge">${p.etiqueta}</div>`:''}
+    </div>
+
+    <div class="row-2">
+      <div class="pill">${p.codigo||p.id||''}</div>
+      <div class="pill">${p.nombre||''}</div>
+    </div>
+
+    <div class="row-3">
+      <div class="price-col"><div class="bar">Público</div><div class="val">${pub}</div></div>
+      <div class="price-col"><div class="bar">Mayoreo</div><div class="val">${may}</div></div>
+      <div class="price-col"><div class="bar">Distribuidor</div><div class="val">${dis}</div></div>
+    </div>
+
+    <div class="kilo">
+      <div class="title"><div class="bar">Por barra de kilo</div></div>
+      <div class="val">${pubK}</div><div class="val">${mayK}</div><div class="val">${disK}</div>
+    </div>
+
+    <div class="row-3">
+      <div class="price-col"><div class="bar">cats</div><div class="val">${(p.cats||[]).join(', ')}</div></div>
+      <div class="price-col"><div class="bar">categoría</div><div class="val">${p.categoria||''}</div></div>
+      <div class="price-col"><div class="bar">contenido</div><div class="val">${p.contenido||''}</div></div>
+    </div>
+
+    <div style="padding:8px 10px 12px">
+      <button class="btn-add" data-id="${p.id}">Añadir al carrito</button>
+    </div>
+  `;
+
+  const img = el.querySelector('img');
+  img.onerror = () => handleImgError(img);
+
+  const addBtn = el.querySelector('.btn-add');
+  if (addBtn){
+    addBtn.addEventListener('click', (ev)=>{
+      ev.stopPropagation();
+      addToCart(p);
     });
+  }
 
-    llenarCategorias();
-    render();
+  el.onclick=()=>openProduct(p);
+  return el;
 }
 
-function llenarCategorias(){
-    const select = document.getElementById("categoria");
-    const cats = [...new Set(productos.map(p=>p.categoria))];
+function render(filter='all'){
+  grid.innerHTML='';
+  const list=PRODUCTS.filter(p=> filter==='all' ? true : (p.categoria === filter));
+  list.forEach(p=>grid.appendChild(productCard(p)));
+  empty.style.display=list.length?'none':'block';
+  if(!list.length){
+    empty.innerHTML='No hay productos para mostrar. Verifica que <b>catalogo_productos.csv</b> exista en la misma carpeta que este HTML y que las imágenes estén dentro de <b>assets/images/</b>.';
+  }
+}
+btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');render(b.dataset.filter);});
 
-    cats.forEach(c=>{
-        const op = document.createElement("option");
-        op.value = c;
-        op.textContent = c;
-        select.appendChild(op);
+function miyotlGetCart(){
+  try { return JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
+  catch(e){ return []; }
+}
+function miyotlSetCart(cart){
+  localStorage.setItem('miyotl_cart', JSON.stringify(cart));
+  if (typeof miyotlUpdateCartBadge === 'function') miyotlUpdateCartBadge();
+}
+function addToCart(p){
+  const cart = miyotlGetCart();
+  const id   = p.id || p.codigo || (p.nombre || '').toString().trim();
+  const name = p.nombre || p.codigo || 'Producto';
+  const price = Number(p.precioPublico ?? p.price ?? 0);
+  const img   = p.img || p.imgBase || '';
+  const i = cart.findIndex(x => x.id === id);
+  if (i >= 0) cart[i].qty = Number(cart[i].qty||0) + 1;
+  else cart.push({ id, name, price, qty: 1, img });
+  miyotlSetCart(cart);
+}
+function miyotlUpdateCartBadge(){}
+
+const modalProd=document.getElementById('modalProd'),
+      mpClose=document.getElementById('mp-close'),
+      mpImg=document.getElementById('mp-img'),
+      mpOverlay=document.getElementById('mp-overlay');
+
+const overlayCard=(t,h)=>`<div class="overlay-card"><span class="overlay-pill">${t}</span><div>${h}</div></div>`;
+function openProduct(p){
+  const arr=v=>Array.isArray(v)?v:(v?[v]:[]);
+  const fb = fallbackByCategory(p.categoria);
+
+  mpImg.dataset.base = p.imgBase;
+  mpImg.dataset.step = 'webp';
+  mpImg.dataset.fallback = fb;
+  mpImg.onerror = () => handleImgError(mpImg);
+  mpImg.src = p.img;
+  mpImg.alt = p.nombre||'';
+
+  let html='';
+  if(arr(p.ingredientes).length) html+=overlayCard('Ingredientes',`<ul style="margin:0 0 0 16px">${arr(p.ingredientes).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
+  if(arr(p.beneficios).length)   html+=overlayCard('Beneficios',`<ul style="margin:0 0 0 16px">${arr(p.beneficios).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
+  if(arr(p.avisos).length)       html+=overlayCard('Avisos',`<ul style="margin:0 0 0 16px">${arr(p.avisos).slice(0,5).map(x=>`<li>${x}</li>`).join('')}</ul>`);
+  mpOverlay.innerHTML=html;
+  mpOverlay.style.display=html?'flex':'none';
+
+  modalProd.classList.add('open');
+}
+mpClose.onclick=()=>modalProd.classList.remove('open');
+
+async function loadCSV(){
+  const tries = [
+    './catalogo_productos.csv',
+    'catalogo_productos.csv',
+    './productos.csv',
+    'productos.csv'
+  ];
+
+  for (const url of tries){
+    try{
+      const r = await fetch(url + '?v=' + Date.now(), { cache:'no-store' });
+      if(!r.ok) continue;
+      const buf = await r.arrayBuffer();
+      let text = new TextDecoder('utf-8').decode(buf);
+      if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+      return parseCSV(text);
+    }catch(e){
+      console.error('Error intentando cargar', url, e);
+    }
+  }
+  throw new Error('No se pudo cargar el CSV desde ninguna ruta conocida.');
+}
+
+(function(){
+  loadCSV().then(rows=>{
+    PRODUCTS = rows.map(row=>{
+      const codigo = (row.codigo ?? row.id ?? '').toString().trim();
+      const imagePath = normalizeImagePath(row.Imagen || row.img || row.imagen || '', codigo);
+      const cats = splitCats(row.cats);
+      return {
+        id: codigo || (row.nombre||'Producto').toString().trim(),
+        codigo: codigo,
+        nombre: row.nombre || 'Producto',
+        imgBase: baseFromImagePath(imagePath),
+        img: imagePath,
+        cats,
+        beneficios: splitMulti(row.beneficios),
+        avisos: splitMulti(row.avisos || row.notaAdvertencia),
+        ingredientes: splitMulti(row.ingredientes),
+        etiqueta: row.etiqueta ?? '',
+        precioPublico: row.precioPublico ?? '',
+        precioMayoreo: row.precioMayoreo ?? '',
+        precioDistribuidor: row.precioDistribuidor ?? '',
+        precioPublico_K: row.precioPublico_K ?? '',
+        precioMayoreo_K: row.precioMayoreo_K ?? '',
+        precioDistribuidor_K: row.precioDistribuidor_K ?? '',
+        categoria: row.categoria ?? row.categirua ?? '',
+        contenido: row.contenido ?? '',
+        cantidadArticulos: row.cantidadArticulos ?? ''
+      };
     });
-}
+    render('all');
+    if (typeof miyotlUpdateCartBadge === 'function') miyotlUpdateCartBadge();
+  }).catch(err=>{
+    console.error(err);
+    empty.style.display='block';
+    empty.innerHTML='⚠️ No se pudo cargar <b>catalogo_productos.csv</b>. Verifica que esté en la misma carpeta que este HTML, guardado como <b>CSV UTF-8</b>, y que las fotos estén en <b>assets/images/</b>.';
+  });
+})();
 
-function render(){
-    const grid = document.getElementById("grid");
-    const txt = document.getElementById("buscar").value.toLowerCase();
-    const cat = document.getElementById("categoria").value;
+document.getElementById('year').textContent=new Date().getFullYear();
 
-    grid.innerHTML="";
-
-    productos
-    .filter(p=>p.nombre.toLowerCase().includes(txt))
-    .filter(p=>!cat || p.categoria===cat)
-    .forEach(p=>{
-
-        const card = document.createElement("div");
-        card.className="card";
-
-        card.innerHTML=`
-        <img src="${p.img}" loading="lazy">
-        <div class="info">
-        <h3>${p.nombre}</h3>
-        <p>${p.descripcion}</p>
-        <div class="price">$${p.precio}</div>
-        </div>`;
-
-        grid.appendChild(card);
-    });
-}
-
-document.getElementById("buscar").addEventListener("input",render);
-document.getElementById("categoria").addEventListener("change",render);
-
-document.getElementById("csvFile").addEventListener("change",e=>{
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = ()=>parseCSV(reader.result);
-    reader.readAsText(file,"UTF-8");
-});
-
-cargarCSV("productos.csv");
+(function(){
+  function _getCart(){
+    try { return JSON.parse(localStorage.getItem('miyotl_cart') || '[]'); }
+    catch(e){ return []; }
+  }
+  function _count(){
+    return _getCart().reduce((n,i)=> n + Number(i?.qty || 0), 0);
+  }
+  window.miyotlUpdateCartBadge = function(){
+    var el = document.getElementById('cart-count');
+    if(!el) return;
+    el.textContent = _count();
+  };
+  miyotlUpdateCartBadge();
+  document.addEventListener('DOMContentLoaded', miyotlUpdateCartBadge);
+  window.addEventListener('focus', miyotlUpdateCartBadge);
+  window.addEventListener('storage', function(e){
+    if(e.key === 'miyotl_cart') miyotlUpdateCartBadge();
+  });
+})();
 </script>
+
+<a id="to-checkout" href="Tienda.html" class="fab-cart" aria-label="Ir al checkout">
+  🧺 <span id="cart-count">0</span>
+</a>
 
 </body>
 </html>
