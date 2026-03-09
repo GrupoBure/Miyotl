@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Catálogo simple desde CSV</title>
+  <meta name="description" content="Vista simple de catálogo cargada desde CSV.">
+  <style>
+    :root{
+      --bg:#f7f7f7;
+      --card:#ffffff;
+      --text:#1f1f1f;
+      --muted:#666666;
+      --line:#e6e6e6;
+      --accent:#111111;
+      --radius:18px;
+      --shadow:0 8px 24px rgba(0,0,0,.06);
+      --container:1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    .page{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:24px 16px 40px;
+    }
+    .catalog-header{margin-bottom:22px}
+    .catalog-title{
+      margin:0;
+      font-size:clamp(24px, 4vw, 36px);
+      line-height:1.1;
+    }
+    .catalog-subtitle{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:18px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+    }
+    .card-media{
+      width:100%;
+      aspect-ratio:1 / 1;
+      overflow:hidden;
+      background:#ececec;
+    }
+    .card-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .card-body{
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .tag{
+      align-self:flex-start;
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      background:#f0f0f0;
+      color:var(--accent);
+      border:1px solid var(--line);
+    }
+    .name{
+      margin:0;
+      font-size:20px;
+      line-height:1.2;
+    }
+    .desc{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      min-height:58px;
+    }
+    .price-block{
+      margin-top:auto;
+      padding-top:4px;
+      border-top:1px solid var(--line);
+    }
+    .price-label{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:2px;
+    }
+    .price-value{
+      font-size:22px;
+      font-weight:800;
+      line-height:1.1;
+    }
+    .empty{
+      display:none;
+      background:#fff;
+      border:1px dashed #cfcfcf;
+      color:#555;
+      padding:16px;
+      border-radius:14px;
+      text-align:center;
+    }
+    @media (max-width:640px){
+      .page{padding:18px 12px 28px}
+      .card-body{padding:14px}
+      .name{font-size:18px}
+      .price-value{font-size:20px}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="catalog-header">
+      <h1 class="catalog-title">Catálogo</h1>
+      <p class="catalog-subtitle">Vista simple cargada desde CSV.</p>
+    </header>
+
+    <section id="grid" class="grid"></section>
+    <div id="empty" class="empty"></div>
+  </main>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+
+    function money(v){
+      if(v === undefined || v === null || v === '') return '';
+      const s = String(v).trim();
+      if(!s || /^n\/a$/i.test(s)) return 'N/A';
+      const n = Number(s);
+      return Number.isFinite(n)
+        ? n.toLocaleString('es-MX', { style:'currency', currency:'MXN', maximumFractionDigits:0 })
+        : s;
+    }
+
+    function splitMulti(v){
+      if(v === undefined || v === null) return [];
+      const s = String(v).trim();
+      if(!s) return [];
+      if(s.includes('|||')) return s.split('|||').map(x => x.trim()).filter(Boolean);
+      if(s.includes('\\n')) return s.split('\\n').map(x => x.trim()).filter(Boolean);
+      return [s];
+    }
+
+    function normalizeImagePath(value, codigo){
+      const raw = (value || '').toString().trim();
+      if(raw){
+        if(/^https?:\\/\\//i.test(raw)) return raw;
+        if(/^assets\\/images\\//i.test(raw)) return raw;
+        return 'assets/images/' + raw.replace(/^\\.?\\/*/, '').replace(/^assets\\/images\\//i, '');
+      }
+      if(codigo){
+        return 'assets/images/' + String(codigo).trim() + '.webp';
+      }
+      return 'assets/images/placeholder.webp';
+    }
+
+    function fallbackByCategory(cat){
+      const c = (cat || '').toString().toLowerCase()
+        .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '');
+      if(c.includes('solido')) return 'assets/images/102000.webp';
+      if(c.includes('shampoo') || c.includes('corporal') || c.includes('liquido')) return 'assets/images/104000.webp';
+      return 'assets/images/102000.webp';
+    }
+
+    function handleImgError(img){
+      const base = img.dataset.base || '';
+      const step = img.dataset.step || 'webp';
+      if(base && step === 'webp'){
+        img.dataset.step = 'jpg';
+        img.src = base + '.jpg';
+        return;
+      }
+      if(base && step === 'jpg'){
+        img.dataset.step = 'png';
+        img.src = base + '.png';
+        return;
+      }
+      if(img.dataset.fallback){
+        img.onerror = null;
+        img.src = img.dataset.fallback;
+        return;
+      }
+      img.onerror = null;
+    }
+
+    function baseFromImagePath(path){
+      return path.replace(/\\.(webp|png|jpg|jpeg)$/i,'');
+    }
+
+    function parseCSV(text){
+      const rows = [];
+      let row = [];
+      let value = '';
+      let i = 0;
+      let inQuotes = false;
+
+      while(i < text.length){
+        const ch = text[i];
+        const next = text[i + 1];
+
+        if(ch === '"'){
+          if(inQuotes && next === '"'){
+            value += '"';
+            i += 2;
+            continue;
+          }
+          inQuotes = !inQuotes;
+          i++;
+          continue;
+        }
+
+        if(ch === ',' && !inQuotes){
+          row.push(value);
+          value = '';
+          i++;
+          continue;
+        }
+
+        if((ch === '\\n' || ch === '\\r') && !inQuotes){
+          if(ch === '\\r' && next === '\\n') i++;
+          row.push(value);
+          rows.push(row);
+          row = [];
+          value = '';
+          i++;
+          continue;
+        }
+
+        value += ch;
+        i++;
+      }
+
+      if(value.length || row.length){
+        row.push(value);
+        rows.push(row);
+      }
+
+      if(!rows.length) return [];
+      const headers = rows[0].map(h => h.trim());
+
+      return rows
+        .slice(1)
+        .filter(r => r.some(cell => (cell || '').trim() !== ''))
+        .map(r => {
+          const obj = {};
+          headers.forEach((h, idx) => obj[h] = (r[idx] ?? '').trim());
+          return obj;
+        });
+    }
+
+    function productCard(p){
+      const el = document.createElement('article');
+      el.className = 'card';
+
+      const description = splitMulti(p.beneficios).join(' · ') || '';
+      const imagePath = normalizeImagePath(p.Imagen || p.img || p.imagen || '', p.codigo);
+      const imgBase = baseFromImagePath(imagePath);
+      const fallback = fallbackByCategory(p.categoria);
+
+      el.innerHTML = `
+        <div class="card-media">
+          <img
+            src="${imagePath}"
+            alt="${p.nombre || ''}"
+            loading="lazy"
+            data-base="${imgBase}"
+            data-step="webp"
+            data-fallback="${fallback}"
+          >
+        </div>
+        <div class="card-body">
+          ${p.etiqueta ? `<span class="tag">${p.etiqueta}</span>` : ''}
+          <h2 class="name">${p.nombre || 'Producto'}</h2>
+          <p class="desc">${description}</p>
+          <div class="price-block">
+            <span class="price-label">Precio</span>
+            <div class="price-value">${money(p.precioPublico)}</div>
+          </div>
+        </div>
+      `;
+
+      const img = el.querySelector('img');
+      img.onerror = () => handleImgError(img);
+
+      return el;
+    }
+
+    function render(rows){
+      grid.innerHTML = '';
+
+      if(!rows.length){
+        empty.style.display = 'block';
+        empty.innerHTML = 'No se encontraron productos en el CSV.';
+        return;
+      }
+
+      empty.style.display = 'none';
+      rows.forEach(row => grid.appendChild(productCard(row)));
+    }
+
+    async function loadCSV(){
+      const tries = [
+        './catalogo_productos.csv',
+        'catalogo_productos.csv',
+        './productos.csv',
+        'productos.csv'
+      ];
+
+      for(const url of tries){
+        try{
+          const r = await fetch(url + '?v=' + Date.now(), { cache:'no-store' });
+          if(!r.ok) continue;
+          const buf = await r.arrayBuffer();
+          let text = new TextDecoder('utf-8').decode(buf);
+          if(text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+          return parseCSV(text);
+        }catch(e){
+          console.error('Error intentando cargar', url, e);
+        }
+      }
+
+      throw new Error('No se pudo cargar el CSV.');
+    }
+
+    loadCSV()
+      .then(render)
+      .catch(err => {
+        console.error(err);
+        empty.style.display = 'block';
+        empty.innerHTML = 'No se pudo cargar el archivo CSV. Verifica que exista y esté guardado como CSV UTF-8.';
+      });
+  </script>
+</body>
+</html>
