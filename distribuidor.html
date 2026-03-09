@@ -1,158 +1,82 @@
 <!doctype html>
 <html lang="es">
 <head>
-<link rel="icon" type="image/png" href="/favicon.png">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quiero ser distribuidor — Miyotl Products</title>
+	<link rel="icon" type="image/png" href="/favicon.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiero ser distribuidor — Miyotl Products</title>
+  <meta name="description" content="Programa para distribuidores de Miyotl.">
+  <style>
+    :root{
+      --brand-50:#F7EFE6; --brand-100:#F2E6D8; --brand-200:#EAD6C0; --brand-300:#DBBFA2;
+      --brand-400:#C9A781; --brand-500:#2B0F3A; --brand-700:#1B0D28;
+      --miyotl:#C53D8C; --ink:#140A1F;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,Inter,Segoe UI,Roboto,Arial;
+      color:var(--ink);
+      background:#fff; 
+    }
+    .container{max-width:1120px;margin:0 auto;padding:0 16px}
 
-<style>
-:root{
-  --brand-50:#e3d1bc;
-  --brand-100:#F2E6D8;
-  --brand-200:#EAD6C0;
-  --brand-300:#DBBFA2;
-  --brand-400:#C9A781;
-  --brand-500:#2B0F3A;
-  --brand-600:#221030;
-  --brand-700:#1B0D28;
-  --brand-800:#140A1F;
-  --brand-900:#0E0717;
-  --miyotl-purple:#C53D8C;
-}
+    /* Banner (igual al index) */
+    header{background:var(--brand-50)}
+    .banner-link{display:block;line-height:0}
+    .top-banner{width:100%;height:clamp(140px,24vh,320px);object-fit:contain;object-position:center;display:block;filter:saturate(.95);background-color:var(--brand-50)}
 
-*{box-sizing:border-box}
+    /* Barra bajo el banner (misma que ya usamos) */
+    .nav-under-banner{
+      display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;
+      padding:12px 16px;border-bottom:1px solid var(--brand-200);background:var(--brand-50);
+    }
+    .nav-under-banner a{
+      appearance:none;border:1px solid #A83477;background:var(--miyotl);color:#fff;cursor:pointer;
+      padding:8px 12px;border-radius:12px;font-size:14px;text-decoration:none;font-weight:700;
+      transition:.15s transform,.15s opacity;
+    }
+    .nav-under-banner a:hover{transform:translateY(-1px)}
 
-body{
-margin:0;
-font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial;
-color:var(--brand-900);
-background:#fff;
-}
-
-.container{max-width:1120px;margin:0 auto;padding:0 16px}
-
-header{background:var(--brand-50)}
-.banner-link{display:block;line-height:0}
-
-.top-banner{
-width:100%;
-height:clamp(140px,24vh,320px);
-display:block;
-object-fit:contain;
-object-position:center;
-background:var(--brand-50);
-filter:saturate(.95);
-}
-
-.nav-under-banner{
-display:flex;
-gap:10px;
-justify-content:center;
-align-items:center;
-flex-wrap:wrap;
-padding:12px 16px;
-border-bottom:1px solid var(--brand-200);
-background:var(--brand-50);
-}
-
-.nav-under-banner a{
-border:1px solid var(--brand-300);
-padding:8px 12px;
-border-radius:12px;
-font-size:14px;
-text-decoration:none;
-background:var(--miyotl-purple);
-color:#fff;
-font-weight:700;
-}
-
-.nav-under-banner a:hover{transform:translateY(-1px)}
-
-main{padding:32px 0}
-h1,h2,h3{color:var(--brand-600)}
-p{line-height:1.65}
-
-footer{
-padding:16px 0 28px;
-border-top:1px solid var(--brand-100);
-}
-
-footer a{color:var(--brand-800);text-decoration:none}
-footer a:hover{text-decoration:underline}
-
-.required-label::after{
-  content:" *";
-  color:#e11d48;
-  font-weight:bold;
-}
-.input-error{
-  border:2px solid #e11d48 !important;
-  background:#fff5f5;
-}
-
-</style>
+    /* Placeholder de sección (contenido real lo agregamos después) */
+    .hero{padding:28px 0 16px}
+    .hero h1{text-align:center;margin:0 0 8px}
+    .hero p{color:#4d4d4d;text-align:justify;margin:0}
+    footer{padding:16px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
+    .required-label::after{content:' *';color:#e11d48;font-weight:700}
+    .input-error{border:2px solid #e11d48 !important;background:#fff5f5}
+    .check-error{outline:2px solid #e11d48;outline-offset:2px;border-radius:6px}
+  </style>
 </head>
-
 <body>
-
 <header>
-<a href="index.html" class="banner-link">
-<img class="top-banner"
-src="assets/images/LogolargoMiyotl1.webp"
-alt="Miyotl Products — banner principal"
-width="1920" height="320">
-</a>
+  <!-- Mismo banner que el index -->
+  <a href="index.html" class="banner-link" aria-label="Ir a inicio"><img class="top-banner" src="assets/images/LogolargoMiyotl1.webp" alt="Miyotl — banner"></a>
 
-<div class="nav-under-banner">
-<a href="index.html">Inicio</a>
-<a href="nosotros.html">Nosotros</a>
-<a href="catalogo.html">Catálogo</a>
-<a href="distribuidor.html">Quiero ser distribuidor</a>
-<a href="politicas.html">Políticas</a>
-<a href="aviso.html">Aviso de privacidad</a>
-<a href="pregfrec.html">Preguntas frecuentes</a>
-<a href="opiniones.html">Opiniones</a>
-</div>
+  <!-- Misma barra de navegación -->
+  <nav class="nav-under-banner">
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="catalogo.html">Catálogo</a>
+    <a href="distribuidor.html">Quiero ser distribuidor</a>
+    <a href="politicas.html">Políticas</a>
+    <a href="aviso.html">Aviso de privacidad</a>
+    <a href="pregfrec.html">Preguntas frecuentes</a>
+    <a href="opiniones.html">Opiniones</a>
+  </nav>
 </header>
 
-<main class="container">
-<!-- Hero -->
+<main>
+  <!-- Hero -->
   <section class="hero">
     <div class="container">
       <h1>Crece con Miyotl y gana desde el día uno!</h1>
       <p class="muted">
   Tus clientes ya buscan productos naturales y honestos para el cuidado de su piel. 
-  Con Miyotl no necesitas grandes inversiones para empezar: puedes integrarnos a tu spa, barbería o tienda y comenzar a ganar desde el primer día. 
-  Te ofrecemos un modelo claro, contratos justos y respaldo constante para que tu negocio crezca y se diferencie. 
-  Ser Concesionario, Mayorista o Distribuidor no es solo comprar producto: es asegurar un flujo de clientes satisfechos que volverán a pedir lo que solo tú les puedes dar.
+  Con Miyotl puedes integrarnos a tu spa, barbería o tienda y comenzar a generar valor desde el primer día. 
+  Te ofrecemos acompañamiento comercial, condiciones claras y respaldo constante para que tu negocio crezca y se diferencie. 
+  Ser distribuidor es construir una relación de largo plazo con productos que la gente quiera volver a comprar.
 </p>
-    </div>
-  </section>
-
-  <!-- 3 variantes -->
-  <section class="section" style="padding:18px 0">
-    <div class="container" style="display:grid;gap:12px;grid-template-columns:1fr;max-width:980px">
-      <div style="display:grid;gap:12px" class="tiers">
-        <div class="card" style="background:#fff;border:1px solid var(--brand-200);border-radius:16px;padding:16px">
-          <h2 style="margin:0 0 6px;font-size:20px">Concesionario</h2>
-          <p class="muted" style="margin:6px 0 0">
-            Pensado para spas, barberías y estéticas que buscan diferenciar su servicio con una línea propia y exhibición cuidada en su punto. Soporte de activaciones y POP oficial.
-          </p>
-        </div>
-        <div class="card" style="background:#fff;border:1px solid var(--brand-200);border-radius:16px;padding:16px">
-          <h2 style="margin:0 0 6px;font-size:20px">Mayorista</h2>
-          <p class="muted" style="margin:6px 0 0">
-            Enfoque en volumen y rotación. Condiciones por Unidad Logística, precios preferentes y reglas claras para proteger la marca y la rentabilidad del canal.
-          </p>
-        </div>
-        <div class="card" style="background:#fff;border:1px solid var(--brand-200);border-radius:16px;padding:16px">
-          <h2 style="margin:0 0 6px;font-size:20px">Distribuidor</h2>
-          <p class="muted" style="margin:6px 0 0">
-            Desarrollo de territorio, capacitación y acompañamiento comercial. Condiciones de compra pactadas y metas con evaluación periódica.
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -160,31 +84,22 @@ width="1920" height="320">
   <section class="section" style="padding:10px 0 28px">
     <div class="container" style="max-width:720px">
       <form id="form-distrib" onsubmit="return false" novalidate>
-        <!-- Selección única de variante -->
-        <fieldset style="border:1px solid var(--brand-200);border-radius:12px;padding:12px;margin:0 0 12px">
-          <legend style="padding:0 6px">Elige el que mejor se ajuste a ti</legend>
-			<label><input type="radio" name="modalidad" value="Concesionario" required> Concesionario</label>
-			<label><input type="radio" name="modalidad" value="Mayorista"> Mayorista</label>
-			<label><input type="radio" name="modalidad" value="Distribuidor"> Distribuidor</label>
-
-        </fieldset>
-
-        <!-- Datos del establecimiento -->
+<!-- Datos del establecimiento -->
         <div style="display:grid;gap:10px;margin:12px 0">
-          <label>Nombre completo
+          <label class="required-label">Nombre completo
             <input type="text" id="nombre" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
           </label>
 		  <label>Nombre del establecimiento
-            <input type="text" id="estab" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+            <input type="text" id="estab" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
           </label>
           <!-- Dirección (detalle) -->
 		  <label for="calle" style="display:block;margin:2px 0 6px">Dirección completa</label>
 <div style="display:grid;gap:10px;grid-template-columns:1fr 140px 140px;align-items:end">
   <label>Calle
-    <input type="text" id="calle" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+    <input type="text" id="calle" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
   </label>
   <label>No. ext
-    <input type="text" id="noext" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+    <input type="text" id="noext" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
   </label>
   <label>No. int
     <input type="text" id="noint" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
@@ -193,34 +108,33 @@ width="1920" height="320">
 
 <div style="display:grid;gap:10px;grid-template-columns:1fr 1fr 160px;align-items:end">
   <label>Colonia
-    <input type="text" id="colonia" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+    <input type="text" id="colonia" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
   </label>
   <label>Municipio / Delegación
-    <input type="text" id="muni" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+    <input type="text" id="muni" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
   </label>
   <label>C.P.
-    <input type="text" id="cp" required inputmode="numeric" maxlength="5" placeholder="5 dígitos"
+    <input type="text" id="cp" inputmode="numeric" maxlength="5" placeholder="5 dígitos"
            style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
   </label>
 </div>
 
 <label>Estado
-  <input type="text" id="estado" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
+  <input type="text" id="estado" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
 </label>
 
-          <label>Teléfono
+          <label class="required-label">Teléfono
             <input type="tel" id="tel" required placeholder="10 dígitos" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
           </label>
-          <label>Correo electrónico
+          <label class="required-label">Correo electrónico
             <input type="email" id="mail" required style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
           </label>
         </div>
 
         <!-- Aceptaciones -->
         <div style="display:grid;gap:6px;margin:12px 0">
-          <label><input type="checkbox" id="ok-contrato"> He leído los <a href="distribuidor.html#contrato" onclick="return false">términos del contrato</a> y estoy de acuerdo.</label>
-          <label><input type="checkbox" id="ok-politicas"> He leído las <a href="politicas.html" target="_self">políticas</a> y estoy de acuerdo.</label>
-          <label><input type="checkbox" id="ok-aviso"> He leído el <a href="aviso.html" target="_self">aviso de privacidad</a> y estoy de acuerdo.</label>
+<label class="required-label"><input type="checkbox" id="ok-politicas"> He leído las <a href="politicas.html" target="_self">políticas</a> y estoy de acuerdo.</label>
+          <label class="required-label"><input type="checkbox" id="ok-aviso"> He leído el <a href="aviso.html" target="_self">aviso de privacidad</a> y estoy de acuerdo.</label>
         </div>
 
         <!-- Agendar cita -->
@@ -228,11 +142,11 @@ width="1920" height="320">
 <div id="cita-wrap" style="display:block">
   <div style="display:grid;gap:10px;grid-template-columns:1fr 1fr;max-width:520px;margin:0 auto">
     <label>Fecha (día hábil)
-      <input type="date" id="fecha" required
+      <input type="date" id="fecha"
              style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
     </label>
     <label>Hora (9:00–14:00)
-      <input type="time" id="hora" required min="09:00" max="14:00" step="900"
+      <input type="time" id="hora" min="09:00" max="14:00" step="900"
              style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--brand-200)">
     </label>
   </div>
@@ -244,32 +158,264 @@ width="1920" height="320">
 
         <!-- Enviar -->
         <div style="text-align:center;margin:16px 0 0">
-          <button id="btn-enviar" type="button" class="btn secondary" disabled
-                  style="appearance:none;border:1px solid #A83477;background:#fff;color:#A83477;padding:10px 14px;border-radius:12px;font-weight:700;cursor:not-allowed">
+          <button id="btn-enviar" type="button" class="btn secondary"
+                  style="appearance:none;border:1px solid #A83477;background:#fff;color:#A83477;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer">
             Enviar
           </button>
-          <p class="muted" style="margin:8px 0 0">Nos pondremos en contacto para confirmar la reunión.</p>
+          <p class="muted" style="margin:8px 0 0">Los campos marcados con * son obligatorios.</p>
         </div>
       </form>
     </div>
   </section>
 </main>
 
-<footer>
-<div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-<div>© <span id="year"></span> Miyotl Products · Hecho en México</div>
 
-<div style="display:flex;gap:12px;flex-wrap:wrap">
-<a href="aviso.html">Aviso de privacidad</a>
-<a href="politicas.html">Políticas</a>
-<a href="mailto:Miyotlproducts@gmail.com">Contacto</a>
-</div>
-</div>
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div>© <span id="year"></span> Miyotl Products · Hecho en México</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="aviso.html">Aviso de privacidad</a>
+      <a href="politicas.html">Políticas</a>
+      <a href="mailto:Miyotlproducts@gmail.com?subject=Contacto%20desde%20miyotl.mx">Contacto</a>
+    </div>
+  </div>
 </footer>
 
+<!-- === Script de lógica del formulario distribuidor === -->
 <script>
-document.getElementById('year').textContent=new Date().getFullYear();
+(function(){
+  const f = document.getElementById('form-distrib');
+  if(!f) return;
+
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbwKXTiUE3Df4EXBmuv6pmBKGEpK0OBpMaObBIctlnQ-mHknCAEeyTrP0k55ci3vEvQk/exec';
+
+  const yspan = document.getElementById('year');
+  if (yspan) yspan.textContent = new Date().getFullYear();
+
+  const nombre = document.getElementById('nombre');
+  const estab  = document.getElementById('estab');
+  const calle  = document.getElementById('calle');
+  const noext  = document.getElementById('noext');
+  const noint  = document.getElementById('noint');
+  const colonia= document.getElementById('colonia');
+  const muni   = document.getElementById('muni');
+  const estado = document.getElementById('estado');
+  const cp     = document.getElementById('cp');
+  const tel    = document.getElementById('tel');
+  const mail   = document.getElementById('mail');
+  const okP    = document.getElementById('ok-politicas');
+  const okA    = document.getElementById('ok-aviso');
+  const fecha  = document.getElementById('fecha');
+  const hora   = document.getElementById('hora');
+  const btnEnviar = document.getElementById('btn-enviar');
+
+  const esEmail = (v)=> /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  const esTel   = (v)=> /^[0-9]{10}$/.test(v.replace(/\D/g,''));
+  const esCP    = (v)=> !v || /^[0-9]{5}$/.test(v.trim());
+  const esHabil = (d)=>{ const wd = d.getDay(); return wd >= 1 && wd <= 5; };
+
+  function toYMDLocal(dt){
+    const y = dt.getFullYear();
+    const m = String(dt.getMonth()+1).padStart(2,'0');
+    const d = String(dt.getDate()).padStart(2,'0');
+    return `${y}-${m}-${d}`;
+  }
+
+  function setRangoFecha(){
+    const hoy = new Date();
+    let min = new Date(hoy);
+    min.setDate(min.getDate()+1);
+    while(!esHabil(min)) min.setDate(min.getDate()+1);
+    const max = new Date(min);
+    max.setDate(max.getDate()+14);
+    if (fecha){
+      fecha.min = toYMDLocal(min);
+      fecha.max = toYMDLocal(max);
+    }
+  }
+
+  function clampHora(){
+    if(!hora || !hora.value) return;
+    if(hora.value < '09:00') hora.value = '09:00';
+    if(hora.value > '14:00') hora.value = '14:00';
+  }
+
+  function limpiarErrores(){
+    f.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+    f.querySelectorAll('.check-error').forEach(el => el.classList.remove('check-error'));
+  }
+
+  function marcarError(el, type='input'){
+    if(!el) return;
+    if(type === 'check'){
+      const label = el.closest('label');
+      if(label) label.classList.add('check-error');
+    }else{
+      el.classList.add('input-error');
+    }
+  }
+
+  function formatDateMx(dateStr){
+    if(!dateStr) return 'No especificada';
+    const d = new Date(dateStr + 'T00:00:00');
+    if (isNaN(d)) return dateStr;
+    return d.toLocaleDateString('es-MX', {
+      weekday:'long', year:'numeric', month:'long', day:'numeric'
+    });
+  }
+
+  function formatTimeMx(timeStr){
+    if(!timeStr) return 'No especificada';
+    const parts = timeStr.split(':');
+    if (parts.length < 2) return timeStr;
+    const d = new Date();
+    d.setHours(Number(parts[0]), Number(parts[1]), 0, 0);
+    return d.toLocaleTimeString('es-MX', {
+      hour:'numeric', minute:'2-digit', hour12:true
+    });
+  }
+
+  function validarRequeridos(){
+    const okNombre = !!nombre.value.trim();
+    const okTel = esTel(tel.value);
+    const okMail = esEmail(mail.value);
+    const okChecks = okP.checked && okA.checked;
+    return okNombre && okTel && okMail && okChecks;
+  }
+
+  function validarCitaOpcional(){
+    if(!fecha.value && !hora.value) return true;
+    if(!(fecha.value && hora.value)) return false;
+
+    const d = new Date(`${fecha.value}T${hora.value}:00`);
+    const min = new Date(`${fecha.min}T00:00:00`);
+    const max = new Date(`${fecha.max}T23:59:59`);
+    return d >= min && d <= max && esHabil(d) && hora.value >= '09:00' && hora.value <= '14:00';
+  }
+
+  function refrescarBoton(){
+    const listo = validarRequeridos() && validarCitaOpcional() && esCP(cp.value);
+    btnEnviar.disabled = false;
+    btnEnviar.style.cursor = 'pointer';
+    btnEnviar.style.opacity = listo ? '1' : '.95';
+    btnEnviar.title = listo ? '' : 'Completa los campos obligatorios';
+  }
+
+  async function sendDistribuidor(payload){
+    const res = await fetch(GAS_URL, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type':'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+
+    const txt = await res.text();
+    try{
+      return JSON.parse(txt);
+    }catch(_){
+      return { ok: res.ok, raw: txt };
+    }
+  }
+
+  setRangoFecha();
+  refrescarBoton();
+
+  f.addEventListener('input', ()=>{ clampHora(); refrescarBoton(); });
+  f.addEventListener('change', ()=>{ clampHora(); refrescarBoton(); });
+
+  if(fecha){
+    fecha.addEventListener('change', ()=>{
+      if (fecha.value) {
+        const d = new Date(`${fecha.value}T00:00:00`);
+        if (!esHabil(d)) alert('Elige un día hábil (lunes a viernes).');
+      }
+      refrescarBoton();
+    });
+  }
+
+  btnEnviar.addEventListener('click', async ()=>{
+    limpiarErrores();
+
+    let hayErrores = false;
+
+    if(!nombre.value.trim()){ marcarError(nombre); hayErrores = true; }
+    if(!esTel(tel.value)){ marcarError(tel); hayErrores = true; }
+    if(!esEmail(mail.value)){ marcarError(mail); hayErrores = true; }
+    if(!okP.checked){ marcarError(okP, 'check'); hayErrores = true; }
+    if(!okA.checked){ marcarError(okA, 'check'); hayErrores = true; }
+
+    if(cp.value && !esCP(cp.value)){ marcarError(cp); hayErrores = true; }
+
+    if((fecha.value || hora.value) && !validarCitaOpcional()){
+      if(fecha) marcarError(fecha);
+      if(hora) marcarError(hora);
+      hayErrores = true;
+    }
+
+    if(hayErrores){
+      alert('Completa los campos obligatorios');
+      return;
+    }
+
+    const payload = {
+      type: 'distribuidor',
+      createdAt: new Date().toISOString(),
+      modalidad: 'Distribuidor',
+      nombre: nombre.value.trim(),
+      telefono: tel.value.trim(),
+      correo: mail.value.trim(),
+      establecimiento: estab.value.trim(),
+      direccion: {
+        calle: calle.value.trim(),
+        noext: noext.value.trim(),
+        noint: noint.value.trim(),
+        colonia: colonia.value.trim(),
+        municipio: muni.value.trim(),
+        cp: cp.value.trim(),
+        estado: estado.value.trim()
+      },
+      cita: {
+        fecha: fecha.value || '',
+        fechaTexto: formatDateMx(fecha.value || ''),
+        hora: hora.value || '',
+        horaTexto: formatTimeMx(hora.value || '')
+      },
+      checks: {
+        politicas: okP.checked ? 'Sí' : 'No',
+        aviso: okA.checked ? 'Sí' : 'No'
+      }
+    };
+
+    const txtOriginal = btnEnviar.textContent;
+    btnEnviar.disabled = true;
+    btnEnviar.textContent = 'Enviando…';
+
+    try{
+      const out = await sendDistribuidor(payload);
+      if(out && out.ok){
+        alert('Gracias. Recibimos tu solicitud y te contactaremos para confirmar la reunión.');
+        f.reset();
+        setRangoFecha();
+        limpiarErrores();
+        refrescarBoton();
+        btnEnviar.textContent = txtOriginal;
+        btnEnviar.disabled = false;
+      }else{
+        console.warn(out);
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = txtOriginal;
+        alert('No pudimos enviar tu solicitud. Reintenta en unos minutos.');
+      }
+    }catch(err){
+      console.error(err);
+      btnEnviar.disabled = false;
+      btnEnviar.textContent = txtOriginal;
+      alert('No pudimos enviar tu solicitud. Reintenta en unos minutos.');
+    }
+  });
+})();
 </script>
+
 
 </body>
 </html>
