@@ -172,7 +172,6 @@ width="1920" height="320">
 
         <!-- Aceptaciones -->
         <div style="display:grid;gap:6px;margin:12px 0">
-          <label><input type="checkbox" id="ok-contrato"> He leído los <a href="distribuidor.html#contrato" onclick="return false">términos del contrato</a> y estoy de acuerdo.</label>
           <label><input type="checkbox" id="ok-politicas"> He leído las <a href="politicas.html" target="_self">políticas</a> y estoy de acuerdo.</label>
           <label><input type="checkbox" id="ok-aviso"> He leído el <a href="aviso.html" target="_self">aviso de privacidad</a> y estoy de acuerdo.</label>
         </div>
@@ -277,13 +276,11 @@ document.getElementById('btn-enviar')?.addEventListener('click', async ()=>{
   const mail = val('mail');
   const fecha = val('fecha');
   const hora = val('hora');
-
-  const okContrato = checked('ok-contrato');
   const okPoliticas = checked('ok-politicas');
   const okAviso = checked('ok-aviso');
 
-  if(!nombre || !tel || !mail || !okContrato || !okPoliticas || !okAviso){
-    alert('Completa los campos obligatorios');
+  if(!nombre || !tel || !mail || !okPoliticas || !okAviso){
+    alert('Completa los campos obligatorios Nombre, Tel, Correo y acepta politicas y aviso');
     return;
   }
 
