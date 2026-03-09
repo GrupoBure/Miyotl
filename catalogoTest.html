@@ -159,16 +159,16 @@
       const s = String(v).trim();
       if(!s) return [];
       if(s.includes('|||')) return s.split('|||').map(x => x.trim()).filter(Boolean);
-      if(s.includes('\\n')) return s.split('\\n').map(x => x.trim()).filter(Boolean);
+      if(s.includes('\n')) return s.split('\n').map(x => x.trim()).filter(Boolean);
       return [s];
     }
 
     function normalizeImagePath(value, codigo){
       const raw = (value || '').toString().trim();
       if(raw){
-        if(/^https?:\\/\\//i.test(raw)) return raw;
-        if(/^assets\\/images\\//i.test(raw)) return raw;
-        return 'assets/images/' + raw.replace(/^\\.?\\/*/, '').replace(/^assets\\/images\\//i, '');
+        if(/^https?:\/\//i.test(raw)) return raw;
+        if(/^assets\/images\//i.test(raw)) return raw;
+        return 'assets/images/' + raw.replace(/^\.?\/*/, '').replace(/^assets\/images\//i, '');
       }
       if(codigo){
         return 'assets/images/' + String(codigo).trim() + '.webp';
@@ -178,7 +178,7 @@
 
     function fallbackByCategory(cat){
       const c = (cat || '').toString().toLowerCase()
-        .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '');
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
       if(c.includes('solido')) return 'assets/images/102000.webp';
       if(c.includes('shampoo') || c.includes('corporal') || c.includes('liquido')) return 'assets/images/104000.webp';
       return 'assets/images/102000.webp';
@@ -206,7 +206,7 @@
     }
 
     function baseFromImagePath(path){
-      return path.replace(/\\.(webp|png|jpg|jpeg)$/i,'');
+      return path.replace(/\.(webp|png|jpg|jpeg)$/i,'');
     }
 
     function parseCSV(text){
@@ -238,8 +238,8 @@
           continue;
         }
 
-        if((ch === '\\n' || ch === '\\r') && !inQuotes){
-          if(ch === '\\r' && next === '\\n') i++;
+        if((ch === '\n' || ch === '\r') && !inQuotes){
+          if(ch === '\r' && next === '\n') i++;
           row.push(value);
           rows.push(row);
           row = [];
