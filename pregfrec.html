@@ -1,25 +1,24 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/png" href="/favicon.png">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Preguntas frecuentes — Miyotl Products</title>
-  <meta name="description" content="Preguntas frecuentes sobre los jabones artesanales de glicerina Miyotl.">
+  <meta name="description" content="Preguntas frecuentes de Miyotl Products.">
   <style>
     :root{
-      /* Paleta aproximada extraída del logo */
-      --brand-50:#e3d1bc;   /* beige fondo */
+      --brand-50:#e3d1bc;
       --brand-100:#F2E6D8;
       --brand-200:#EAD6C0;
       --brand-300:#DBBFA2;
       --brand-400:#C9A781;
-      --brand-500:#2B0F3A;  /* morado tipografía */
+      --brand-500:#2B0F3A;
       --brand-600:#221030;
       --brand-700:#1B0D28;
       --brand-800:#140A1F;
       --brand-900:#0E0717;
-      --accent:#E04493;     /* magenta isotipo */
+      --accent:#E04493;
       --miyotl-purple:#C53D8C;
     }
     *{box-sizing:border-box}
@@ -29,7 +28,6 @@
     }
     .container{max-width:1120px;margin:0 auto;padding:0 16px}
 
-    /* --- Banner encabezado (sin recortes, fondo beige detrás) --- */
     .top-banner{
       width: 100%;
       height: clamp(140px, 24vh, 320px);
@@ -45,11 +43,6 @@
       border-bottom-right-radius: 0;
     }
 
-    header{
-      position: relative;
-      background-color: var(--brand-50);
-    }
-
     .nav-under-banner{
       display:flex;
       gap:10px;
@@ -60,17 +53,15 @@
       border-bottom:1px solid var(--brand-200);
       background: var(--brand-50);
     }
-    .nav-under-banner a,
-    .nav-under-banner button{
+
+    .nav-under-banner a, .nav-under-banner button{
       appearance:none;border:1px solid var(--brand-300); background:#fff; color:var(--brand-800);
       padding:8px 12px; border-radius:12px; font-size:14px; cursor:pointer;
       transition:.15s border-color,.15s color,.15s transform; text-decoration:none;
     }
-    .nav-under-banner a:hover,
-    .nav-under-banner button:hover{
+    .nav-under-banner a:hover, .nav-under-banner button:hover{
       border-color:var(--brand-500); color:var(--brand-900); transform:translateY(-1px)
     }
-    /* Botones del banner en morado Miyotl */
     .nav-under-banner a,
     .nav-under-banner button{
       background: var(--miyotl-purple);
@@ -78,128 +69,47 @@
       border-color: #A83477;
     }
 
-    .hero{
-      background:#e1d1bd;
-      padding:48px 0 64px;
+    header {
+      position: relative;
+      background-color: var(--brand-50);
     }
-    .hero h1{
-      font-size:38px;
-      line-height:1.15;
-      margin:0 0 12px;
-      font-weight:900;
-      text-align:center;
-      color:var(--miyotl-purple);
-    }
-    @media(min-width:768px){
-      .hero h1{font-size:56px}
-    }
-    .hero p{
-      color:var(--brand-800);
-      font-size:18px;
-      margin:0 0 32px;
-      text-align:center;
-    }
+    .banner-link{display:block; line-height:0;}
 
-    /* === Bloque de preguntas frecuentes === */
-    .faq-wrap{
-      max-width:840px;
-      margin:0 auto;
-      background:#fff;
-      border-radius:18px;
-      padding:24px 18px 28px;
-      box-shadow:0 10px 30px rgba(0,0,0,.08);
-      border:1px solid var(--brand-200);
-    }
-    .faq-item{
-      margin-bottom:20px;
-      border-bottom:1px solid var(--brand-100);
-      padding-bottom:16px;
-    }
-    .faq-item:last-child{
-      border-bottom:none;
-      margin-bottom:0;
-      padding-bottom:0;
-    }
-    .faq-q{
-      margin:0 0 6px;
-      font-size:14pt;          /* 2 puntos más grande que la respuesta */
-      font-weight:600;
-      color:var(--brand-800);
-    }
-    .faq-a{
-      margin:0;
-      font-size:12pt;          /* tamaño 12 pts */
-      font-weight:400;
-      color:var(--brand-800);
-    }
+    main{padding-bottom:8px}
+    h1,h2,h3{color:var(--brand-600)}
+    p, li{line-height:1.65}
+    a{color:var(--brand-600)}
+    a:hover{color:var(--brand-500)}
+    .muted{color:var(--brand-700);font-size:13px}
 
-    /* Bullets horizontales (sección de confianza) */
-    .confidence{
-      background: inherit;
-      padding: 12px 0 18px;
-      margin: 16px 0 40px;
-    }
-    .confidence .container{
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-    }
-    .confidence .card{
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-      padding: 0;
-      margin: 0;
-      border-radius: 0;
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      text-align: center;
-      line-height: 1.4;
-    }
-    .confidence .card::before{
-      content: "•";
-      font-weight: 700;
-      color: var(--brand-400);
-      margin-right: 2px;
-    }
-    .confidence .card > div{ display: inline; }
-    .confidence .card > div:first-child{ font-weight: 700; margin-right: 6px; }
-    .confidence .card .muted{ color: var(--brand-700); font-weight: 400; }
-
-    footer{
-      padding: 16px 0 28px;
-      border-top: 1px solid var(--brand-100);
-    }
-    footer a{
-      color:var(--miyotl-purple);
-      text-decoration:none;
-      font-size:14px;
-    }
-    footer a:hover{
-      text-decoration:underline;
-    }
+    footer{ padding: 16px 0 28px; border-top: 1px solid var(--brand-100); }
+    footer a{color:var(--brand-800); text-decoration:none}
+    footer a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
 
 <header>
-  <img class="top-banner"
-       src="assets/images/LogolargoMiyotl1.webp"
-       alt="Miyotl Products — banner principal"
-       width="1920" height="320">
+  <a href="index.html" class="banner-link" aria-label="Ir a la página de inicio">
+    <img class="top-banner"
+      src="assets/images/LogolargoMiyotl1.webp"
+      alt="Miyotl Products — banner principal"
+      width="1920" height="320">
+  </a>
 
   <div class="nav-under-banner">
+    <a href="index.html">Inicio</a>
     <a href="nosotros.html">Nosotros</a>
     <a href="catalogo.html">Catálogo</a>
+    <a href="distribuidor.html">Quiero ser distribuidor</a>
     <a href="politicas.html">Políticas</a>
     <a href="aviso.html">Aviso de privacidad</a>
     <a href="pregfrec.html">Preguntas frecuentes</a>
+    <a href="opiniones.html">Opiniones</a>
   </div>
 </header>
 
+<main>
 <section class="hero">
   <div class="container">
     <h1>Preguntas frecuentes</h1>
@@ -288,9 +198,10 @@ Si quieres calcular tu total antes de escribirnos, también puedes usar nuestro 
     </div>
   </div>
 </section>
+</main>
 
 <footer>
-  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
     <div>© <span id="year"></span> Miyotl Products · Hecho en México</div>
     <div style="display:flex;gap:12px;flex-wrap:wrap">
       <a href="aviso.html">Aviso de privacidad</a>
@@ -303,10 +214,5 @@ Si quieres calcular tu total antes de escribirnos, también puedes usar nuestro 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
-
-
-
-

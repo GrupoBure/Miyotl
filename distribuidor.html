@@ -1,67 +1,112 @@
 <!doctype html>
 <html lang="es">
 <head>
-	<link rel="icon" type="image/png" href="/favicon.png">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Quiero ser distribuidor — Miyotl Products</title>
-  <meta name="description" content="Programa para distribuidores de Miyotl.">
-  <style>
-    :root{
-      --brand-50:#F7EFE6; --brand-100:#F2E6D8; --brand-200:#EAD6C0; --brand-300:#DBBFA2;
-      --brand-400:#C9A781; --brand-500:#2B0F3A; --brand-700:#1B0D28;
-      --miyotl:#C53D8C; --ink:#140A1F;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:ui-sans-serif,system-ui,Inter,Segoe UI,Roboto,Arial;
-      color:var(--ink);
-      background:#fff; 
-    }
-    .container{max-width:1120px;margin:0 auto;padding:0 16px}
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiero ser distribuidor — Miyotl Products</title>
 
-    /* Banner (igual al index) */
-    header{background:#e1d1bd}
-    .top-banner{width:100%;height:260px;object-fit:cover;display:block;filter:saturate(.9)}
+<style>
+:root{
+  --brand-50:#e3d1bc;
+  --brand-100:#F2E6D8;
+  --brand-200:#EAD6C0;
+  --brand-300:#DBBFA2;
+  --brand-400:#C9A781;
+  --brand-500:#2B0F3A;
+  --brand-600:#221030;
+  --brand-700:#1B0D28;
+  --brand-800:#140A1F;
+  --brand-900:#0E0717;
+  --miyotl-purple:#C53D8C;
+}
 
-    /* Barra bajo el banner (misma que ya usamos) */
-    .nav-under-banner{
-      display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;
-      padding:12px 16px;border-bottom:1px solid var(--brand-200);background:#fff;
-    }
-    .nav-under-banner a{
-      appearance:none;border:1px solid #A83477;background:var(--miyotl);color:#fff;cursor:pointer;
-      padding:8px 12px;border-radius:12px;font-size:14px;text-decoration:none;font-weight:700;
-      transition:.15s transform,.15s opacity;
-    }
-    .nav-under-banner a:hover{transform:translateY(-1px)}
+*{box-sizing:border-box}
 
-    /* Placeholder de sección (contenido real lo agregamos después) */
-    .hero{padding:28px 0 16px}
-    .hero h1{text-align:center;margin:0 0 8px}
-    .hero p{color:#4d4d4d;text-align:justify;margin:0}
-    footer{padding:18px 0 28px;border-top:1px solid var(--brand-100);margin-top:28px}
-  </style>
+body{
+margin:0;
+font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial;
+color:var(--brand-900);
+background:#fff;
+}
+
+.container{max-width:1120px;margin:0 auto;padding:0 16px}
+
+header{background:var(--brand-50)}
+.banner-link{display:block;line-height:0}
+
+.top-banner{
+width:100%;
+height:clamp(140px,24vh,320px);
+display:block;
+object-fit:contain;
+object-position:center;
+background:var(--brand-50);
+filter:saturate(.95);
+}
+
+.nav-under-banner{
+display:flex;
+gap:10px;
+justify-content:center;
+align-items:center;
+flex-wrap:wrap;
+padding:12px 16px;
+border-bottom:1px solid var(--brand-200);
+background:var(--brand-50);
+}
+
+.nav-under-banner a{
+border:1px solid var(--brand-300);
+padding:8px 12px;
+border-radius:12px;
+font-size:14px;
+text-decoration:none;
+background:var(--miyotl-purple);
+color:#fff;
+font-weight:700;
+}
+
+.nav-under-banner a:hover{transform:translateY(-1px)}
+
+main{padding:32px 0}
+h1,h2,h3{color:var(--brand-600)}
+p{line-height:1.65}
+
+footer{
+padding:16px 0 28px;
+border-top:1px solid var(--brand-100);
+}
+
+footer a{color:var(--brand-800);text-decoration:none}
+footer a:hover{text-decoration:underline}
+</style>
 </head>
-<body>
-<header>
-  <!-- Mismo banner que el index -->
-  <img class="top-banner" src="assets/images/LogolargoMiyotl1.webp" alt="Miyotl — banner">
 
-  <!-- Misma barra de navegación -->
-  <nav class="nav-under-banner">
-    <a href="index.html">Inicio</a>
-    <a href="nosotros.html">Nosotros</a>
-    <a href="catalogo.html">Catálogo</a>
-    <a href="distribuidor.html">Quiero ser distribuidor</a>
-    <a href="politicas.html">Políticas</a>
-    <a href="aviso.html">Aviso de privacidad</a>
-  </nav>
+<body>
+
+<header>
+<a href="index.html" class="banner-link">
+<img class="top-banner"
+src="assets/images/LogolargoMiyotl1.webp"
+alt="Miyotl Products — banner principal"
+width="1920" height="320">
+</a>
+
+<div class="nav-under-banner">
+<a href="index.html">Inicio</a>
+<a href="nosotros.html">Nosotros</a>
+<a href="catalogo.html">Catálogo</a>
+<a href="distribuidor.html">Quiero ser distribuidor</a>
+<a href="politicas.html">Políticas</a>
+<a href="aviso.html">Aviso de privacidad</a>
+<a href="pregfrec.html">Preguntas frecuentes</a>
+<a href="opiniones.html">Opiniones</a>
+</div>
 </header>
 
-<main>
-  <!-- Hero -->
+<main class="container">
+<!-- Hero -->
   <section class="hero">
     <div class="container">
       <h1>Crece con Miyotl y gana desde el día uno!</h1>
@@ -199,191 +244,21 @@
   </section>
 </main>
 
-
 <footer>
-  <div class="container" style="text-align:center">
-    © <span id="year"></span> Miyotl Products · Hecho en México
-  </div>
+<div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+<div>© <span id="year"></span> Miyotl Products · Hecho en México</div>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<a href="aviso.html">Aviso de privacidad</a>
+<a href="politicas.html">Políticas</a>
+<a href="mailto:Miyotlproducts@gmail.com">Contacto</a>
+</div>
+</div>
 </footer>
 
-<!-- === Script de lógica del formulario distribuidor === -->
 <script>
-(function(){
-  const f = document.getElementById('form-distrib');
-  if(!f) return;
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbzQGQpK2av2IUeFchgwCufDucInaQZRoDYy2X6nWkW9314RsYJTS4kHIYnmHW3NrYbv/exec';
-
-	const yspan = document.getElementById('year');
-	if (yspan) yspan.textContent = new Date().getFullYear();
-  // Campos (TODOS los requeridos para habilitar Agendar cita)
-  const nombre = document.getElementById('nombre'); // requerido
-  const estab  = document.getElementById('estab');  // requerido
-  // const dir    = document.getElementById('dir');    // <- QUITA esta línea
-const calle  = document.getElementById('calle');
-const noext  = document.getElementById('noext');
-const noint  = document.getElementById('noint'); // opcional
-const colonia= document.getElementById('colonia');
-const muni   = document.getElementById('muni');
-const estado = document.getElementById('estado');
-const cp     = document.getElementById('cp');
-
-  const tel    = document.getElementById('tel');    // requerido (10 dígitos)
-  const mail   = document.getElementById('mail');   // requerido
-
-  const okC = document.getElementById('ok-contrato');
-  const okP = document.getElementById('ok-politicas');
-  const okA = document.getElementById('ok-aviso');
-
-  const citaWrap  = document.getElementById('cita-wrap');
-  const fecha     = document.getElementById('fecha');
-  const hora      = document.getElementById('hora');
-  const btnEnviar = document.getElementById('btn-enviar');
-
-  // Helpers
-  const esEmail = (v)=> /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-  const esTel   = (v)=> /^[0-9]{10}$/.test(v.replace(/\D/g,''));
-  const esCP   = (v)=> /^[0-9]{5}$/.test(v);
-  const esHabil = (d)=>{ const wd=d.getDay(); return wd>=1 && wd<=5; }; // L-V
-
-  // Fecha min = próximo día hábil (LOCAL), max = +14 días
-  function toYMDLocal(dt){
-    const y = dt.getFullYear();
-    const m = String(dt.getMonth()+1).padStart(2,'0');
-    const d = String(dt.getDate()).padStart(2,'0');
-    return `${y}-${m}-${d}`;
-  }
-  function setRangoFecha(){
-    const hoy = new Date();
-    let min = new Date(hoy); min.setDate(min.getDate()+1);
-    while(!esHabil(min)) min.setDate(min.getDate()+1);
-    const max = new Date(min); max.setDate(max.getDate()+14);
-    fecha.min = toYMDLocal(min);
-    fecha.max = toYMDLocal(max);
-  }
-  // Forzar que la hora quede entre 09:00 y 14:00
-function clampHora(){
-  if(!hora.value) return;
-  if(hora.value < '09:00') hora.value = '09:00';
-  if(hora.value > '14:00') hora.value = '14:00';
-}
-function validarTodo(){
-  // requisitos base (datos + modalidad)
-  const modalidad = f.querySelector('input[name="modalidad"]:checked');
-  const okDatos =
-    nombre.value.trim() &&
-    estab.value.trim() &&
-    calle.value.trim() &&
-    noext.value.trim() &&
-    colonia.value.trim() &&
-    muni.value.trim() &&
-    estado.value.trim() &&
-    esCP(cp.value.trim()) &&
-    esTel(tel.value) &&
-    esEmail(mail.value);
-
-  // fecha/hora válidas
-  let okCita = false;
-  if (fecha.value && hora.value) {
-    const d   = new Date(`${fecha.value}T${hora.value}:00`);
-    const min = new Date(`${fecha.min}T00:00:00`);
-    const max = new Date(`${fecha.max}T23:59:59`);
-    okCita = d >= min && d <= max && esHabil(d) && hora.value >= '09:00' && hora.value <= '14:00';
-  }
-
-  // checks
-  const okChecks = okC.checked && okP.checked && okA.checked;
-
-  const listo = modalidad && okDatos && okCita && okChecks;
-
-  btnEnviar.disabled = !listo;
-  btnEnviar.style.cursor = listo ? 'pointer' : 'not-allowed';
-  btnEnviar.style.opacity = listo ? '1' : '.7';
-
-  // tooltip útil (opcional)
-  btnEnviar.title = !modalidad ? 'Selecciona una modalidad' :
-                    !okDatos   ? 'Revisa los datos obligatorios' :
-                    !okCita    ? 'Elige fecha/hora válidas (L–V, 09:00–14:00)' :
-                    !okChecks  ? 'Acepta contrato, políticas y aviso' : '';
-}
-// Recalcula rangos al cargar
-setRangoFecha();
-
-// Validación continua
-f.addEventListener('input',  ()=>{ clampHora(); validarTodo(); });
-f.addEventListener('change', ()=>{ clampHora(); validarTodo(); });
-
-// Radios de modalidad (algunos navegadores no disparan a tiempo)
-f.querySelectorAll('input[name="modalidad"]').forEach(r=>{
-  r.addEventListener('change', ()=>{ validarTodo(); });
-});
-
-// Hora/fecha específicas
-hora.addEventListener('input',  ()=>{ clampHora(); validarTodo(); });
-hora.addEventListener('change', ()=>{ clampHora(); validarTodo(); });
-fecha.addEventListener('change', ()=>{
-  if (fecha.value) {
-    const d = new Date(`${fecha.value}T00:00:00`);
-    if (d.getDay() === 0 || d.getDay() === 6) alert('Elige un día hábil (lunes a viernes).');
-  }
-  validarTodo();
-});
-
-// Estado inicial (por si autocompleta el navegador)
-validarTodo();
-    btnEnviar.addEventListener('click', ()=>{
-    if(btnEnviar.disabled) return;
-
-    const modalidad = f.querySelector('input[name="modalidad"]:checked')?.value || '';
-
-    const payload = {
-      modalidad,
-      nombre: nombre.value.trim(),
-      estab:  estab.value.trim(),
-      calle:  calle.value.trim(),
-      noext:  noext.value.trim(),
-      noint:  noint.value.trim(),
-      colonia: colonia.value.trim(),
-      muni:   muni.value.trim(),
-      estado: estado.value.trim(),
-      cp:     cp.value.trim(),
-      tel:    tel.value.trim(),
-      mail:   mail.value.trim(),
-      fecha:  fecha.value,
-      hora:   hora.value,
-      okC: okC.checked, okP: okP.checked, okA: okA.checked
-    };
-
-    btnEnviar.disabled = true;
-    btnEnviar.textContent = 'Enviando…';
-
-    fetch(GAS_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-    .then(r => r.ok ? r.json() : Promise.reject('HTTP ' + r.status))
-    .then(res => {
-      if (!res.ok) throw new Error('Backend respondió error');
-      btnEnviar.textContent = 'Enviado';
-      alert('Gracias. Recibimos tu solicitud y te contactaremos para confirmar la reunión.');
-      f.reset();
-      setRangoFecha();
-      validarTodo();   // re-evalúa el botón tras el reset
-    })
-    .catch(err => {
-      console.error(err);
-      btnEnviar.disabled = false;
-      btnEnviar.textContent = 'Enviar';
-      alert('No pudimos enviar tu solicitud. Reintenta en unos minutos.');
-    });
-  });
-
-
-
-
-})();
+document.getElementById('year').textContent=new Date().getFullYear();
 </script>
-
 
 </body>
 </html>
