@@ -114,7 +114,7 @@
       display:flex;
       flex-direction:column;
       gap:8px;
-      animation:fadeUp .28s ease;
+      animation:none;
     }
 
     .bubble-row{
@@ -249,7 +249,7 @@
       justify-content:center;
       padding:16px;
       z-index:999;
-      backdrop-filter:blur(2px);
+      backdrop-filter:none;
     }
 
     .sheet{
@@ -622,7 +622,7 @@
 
       <p class="form-note">Tu comentario será enviado para revisión antes de publicarse.</p>
 
-      <form id="comment-form" novalidate>
+      <form id="comment-form" novalidate method="POST" target="hidden_iframe" action="https://script.google.com/macros/s/AKfycbwshjigFe0Wz-ejIMxTqmOTaZwqtSxvu6tQqhPMIt3ajX8tsa1eyFI7LXULd60TUSxI/exec">
         <div class="form-grid">
           <div class="field rating-wrap">
             <label>Calificación</label>
@@ -663,6 +663,9 @@
 
           <div id="comment-msg" class="comment-msg"></div>
 
+          <input type="hidden" name="tipo" value="comentario_web_miyotl">
+          <input type="hidden" name="origen" value="opiniones.html">
+
           <div class="submit-row">
             <button type="submit" class="btn-primary" id="submit-comment">Enviar</button>
           </div>
@@ -670,6 +673,8 @@
       </form>
     </div>
   </div>
+
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
@@ -700,61 +705,7 @@
     const textArea = document.getElementById('c-texto');
     const charCounter = document.getElementById('char-counter');
 
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwshjigFe0Wz-ejIMxTqmOTaZwqtSxvu6tQqhPMIt3ajX8tsa1eyFI7LXULd60TUSxI/exec';
-
-    function paintStars(value){
-      ratingButtons.forEach((btn, index) => {
-        btn.classList.toggle('active', index < value);
-      });
-    }
-
-    ratingButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const value = Number(btn.dataset.value);
-        ratingInput.value = String(value);
-        paintStars(value);
-        ratingCaption.textContent = value === 1 ? '1 estrella seleccionada' : `${value} estrellas seleccionadas`;
-      });
-    });
-
-    textArea.addEventListener('input', () => {
-      charCounter.textContent = `${textArea.value.length} / 500`;
-    });
-
-    function showMessage(type, text){
-      commentMsg.className = 'comment-msg ' + type;
-      commentMsg.textContent = text;
-    }
-
-    function clearMessage(){
-      commentMsg.className = 'comment-msg';
-      commentMsg.textContent = '';
-    }
-
-    function openModal(){
-      clearMessage();
-      commentModal.style.display = 'flex';
-      commentModal.setAttribute('aria-hidden', 'false');
-      setTimeout(() => document.getElementById('c-nombre').focus(), 50);
-    }
-
-    function closeModal(){
-      commentModal.style.display = 'none';
-      commentModal.setAttribute('aria-hidden', 'true');
-    }
-
-    openComment.addEventListener('click', openModal);
-    closeComment.addEventListener('click', closeModal);
-
-    commentModal.addEventListener('click', (e) => {
-      if (e.target === commentModal) closeModal();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && commentModal.style.display === 'flex') {
-        closeModal();
-      }
-    });
+    let formSubmitted = false;
 
     commentForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -788,46 +739,29 @@
       submitComment.style.opacity = '.7';
       submitComment.textContent = 'Enviando...';
 
-      try {
-        const resp = await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            tipo: 'comentario_web_miyotl',
-            nombre,
-            correo,
-            ciudad,
-            estrellas,
-            comentario,
-            origen: 'opiniones.html'
-          })
-        });
+      formSubmitted = true;
+      showMessage('ok', 'Tu comentario fue enviado para revisión');
 
-        if (resp.ok) {
-          showMessage('ok', 'Tu comentario fue enviado para revisión');
-          commentForm.reset();
-          ratingInput.value = '';
-          paintStars(0);
-          ratingCaption.textContent = '';
-          charCounter.textContent = '0 / 500';
+      setTimeout(() => {
+        commentForm.reset();
+        ratingInput.value = '';
+        paintStars(0);
+        ratingCaption.textContent = '';
+        charCounter.textContent = '0 / 500';
+      }, 150);
 
-          setTimeout(() => {
-            closeModal();
-            clearMessage();
-          }, 2200);
-        } else {
-          showMessage('error', 'Hubo un problema al enviar tu comentario. Revisa tu URL del script o intenta de nuevo más tarde.');
-        }
-      } catch (err) {
-        showMessage('error', 'No se pudo conectar para enviar el comentario.');
-      } finally {
+      setTimeout(() => {
+        closeModal();
+        clearMessage();
         submitComment.disabled = false;
         submitComment.style.opacity = '1';
         submitComment.textContent = 'Enviar';
-      }
+      }, 2200);
+    });
+
+    document.getElementById('hidden_iframe').addEventListener('load', () => {
+      if (!formSubmitted) return;
+      formSubmitted = false;
     });
   </script>
 </body>
