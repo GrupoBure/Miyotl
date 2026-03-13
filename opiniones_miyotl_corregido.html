@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Opiniones — Miyotl Products</title>
+
+  <style>
+    :root{
+      --brand-50:#e3d1bc;
+      --brand-100:#F2E6D8;
+      --brand-200:#EAD6C0;
+      --brand-300:#DBBFA2;
+      --brand-400:#C9A781;
+      --brand-500:#2B0F3A;
+      --brand-600:#221030;
+      --brand-700:#1B0D28;
+      --brand-800:#140A1F;
+      --brand-900:#0E0717;
+      --miyotl-purple:#B24787;
+      --bubble-shadow:0 8px 18px rgba(0,0,0,.08);
+      --bubble-shadow-soft:0 4px 10px rgba(0,0,0,.06);
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial;
+      color:var(--brand-900);
+      background:#fff;
+    }
+
+    .container{max-width:980px;margin:0 auto;padding:0 16px}
+
+    .top-banner{
+      width:100%;
+      height:clamp(140px,24vh,320px);
+      display:block;
+      object-fit:contain;
+      object-position:center;
+      background-color:var(--brand-50);
+      filter:saturate(.95);
+    }
+
+    header{background:var(--brand-50)}
+    .banner-link{display:block;line-height:0}
+
+    .nav-under-banner{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      padding:12px 16px;
+      border-bottom:1px solid var(--brand-200);
+      background:var(--brand-50);
+    }
+
+    .nav-under-banner a{
+      appearance:none;
+      border:1px solid var(--brand-300);
+      padding:8px 12px;
+      border-radius:12px;
+      font-size:14px;
+      text-decoration:none;
+      background:var(--miyotl-purple);
+      color:#fff;
+      font-weight:700;
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+
+    .nav-under-banner a:hover{
+      transform:translateY(-1px);
+      box-shadow:var(--bubble-shadow-soft);
+    }
+
+    main{padding:32px 0 48px}
+    h1,h2,h3{color:var(--brand-600)}
+    p{line-height:1.65}
+
+    .hero-copy{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 28px;
+    }
+
+    .hero-copy h1{
+      font-size:clamp(32px,4vw,44px);
+      margin:8px 0 10px;
+    }
+
+    .hero-copy p{
+      margin:0;
+      color:var(--brand-700);
+    }
+
+    /* LISTA DE COMENTARIOS TIPO CHAT */
+    .reviews-wrap{
+      max-width:760px;
+      margin:0 auto;
+    }
+
+    .review-list{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .review-item{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      animation:fadeUp .28s ease;
+    }
+
+    .bubble-row{
+      display:flex;
+      width:100%;
+    }
+
+    .bubble-row.client{justify-content:flex-start}
+    .bubble-row.miyotl{justify-content:flex-end}
+
+    .bubble{
+      position:relative;
+      max-width:min(78%, 620px);
+      border-radius:22px;
+      padding:14px 16px;
+      box-shadow:var(--bubble-shadow);
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+
+    .bubble.client-bubble{
+      background:var(--miyotl-purple);
+      color:#fff;
+    }
+
+    .bubble.client-bubble::after{
+      content:"";
+      position:absolute;
+      left:-10px;
+      top:16px;
+      width:0;
+      height:0;
+      border-top:10px solid transparent;
+      border-bottom:10px solid transparent;
+      border-right:12px solid var(--miyotl-purple);
+    }
+
+    .bubble.reply-bubble{
+      background:var(--brand-100);
+      color:var(--brand-900);
+    }
+
+    .bubble.reply-bubble::after{
+      content:"";
+      position:absolute;
+      right:-10px;
+      top:16px;
+      width:0;
+      height:0;
+      border-top:10px solid transparent;
+      border-bottom:10px solid transparent;
+      border-left:12px solid var(--brand-100);
+    }
+
+    .review-stars{
+      color:#F5C84B;
+      font-size:17px;
+      letter-spacing:1px;
+      font-weight:700;
+      margin-bottom:6px;
+    }
+
+    .review-head{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:baseline;
+      gap:6px;
+      margin-bottom:4px;
+    }
+
+    .review-user,
+    .review-city,
+    .review-date,
+    .review-text,
+    .response-label,
+    .response-text,
+    .response-signature{
+      font-weight:700;
+    }
+
+    .review-user{font-size:17px}
+    .review-city{font-size:15px;opacity:.96}
+    .review-date{font-size:13px;opacity:.92;margin-bottom:8px}
+
+    .review-text,
+    .response-text{
+      display:-webkit-box;
+      -webkit-line-clamp:6;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+      margin:0;
+    }
+
+    .response-label{
+      font-size:13px;
+      margin-bottom:6px;
+      text-transform:none;
+    }
+
+    .response-signature{
+      font-size:13px;
+      margin-top:8px;
+    }
+
+    /* BOTÓN */
+    .actions{
+      text-align:center;
+      margin:30px 0 0;
+    }
+
+    .btn-primary{
+      background:var(--miyotl-purple);
+      color:#fff;
+      padding:12px 20px;
+      border-radius:14px;
+      border:0;
+      cursor:pointer;
+      font-weight:800;
+      box-shadow:var(--bubble-shadow-soft);
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+
+    .btn-primary:hover{transform:translateY(-1px);opacity:.96}
+
+    /* MODAL */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(15,7,23,.45);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      z-index:999;
+      backdrop-filter:blur(2px);
+    }
+
+    .sheet{
+      width:min(680px,100%);
+      background:linear-gradient(180deg,#f7efe6 0%, #f3e5d6 100%);
+      border:1px solid var(--brand-300);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 22px 60px rgba(0,0,0,.18);
+    }
+
+    .sheet-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:10px;
+      gap:10px;
+    }
+
+    .sheet-title{
+      margin:0;
+      font-size:22px;
+      color:var(--brand-800);
+    }
+
+    .close-btn{
+      background:#fff;
+      border:1px solid var(--brand-300);
+      border-radius:12px;
+      padding:8px 12px;
+      cursor:pointer;
+      font-weight:700;
+      color:var(--brand-800);
+    }
+
+    .form-note{
+      margin:0 0 14px;
+      color:var(--brand-700);
+      font-size:14px;
+    }
+
+    .form-grid{
+      display:grid;
+      gap:14px;
+    }
+
+    .field{display:flex;flex-direction:column;gap:6px}
+
+    .field label{
+      font-size:14px;
+      font-weight:800;
+      color:var(--brand-800);
+    }
+
+    .input,
+    .textarea{
+      width:100%;
+      border:1px solid var(--brand-300);
+      border-radius:14px;
+      padding:12px 14px;
+      font-size:15px;
+      background:#fff;
+      color:var(--brand-900);
+      outline:none;
+      transition:border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .input:focus,
+    .textarea:focus{
+      border-color:var(--miyotl-purple);
+      box-shadow:0 0 0 4px rgba(178,71,135,.12);
+    }
+
+    .textarea{
+      resize:vertical;
+      min-height:130px;
+      max-height:280px;
+    }
+
+    .helper-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      font-size:12px;
+      color:var(--brand-700);
+      margin-top:6px;
+    }
+
+    .rating-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .rating{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      user-select:none;
+    }
+
+    .rating button{
+      appearance:none;
+      border:0;
+      background:transparent;
+      padding:0;
+      margin:0;
+      cursor:pointer;
+      font-size:28px;
+      line-height:1;
+      color:#6f5b4c;
+      transition:transform .15s ease, color .15s ease;
+    }
+
+    .rating button:hover{transform:scale(1.06)}
+    .rating button.active{color:var(--miyotl-purple)}
+
+    .rating-caption{
+      font-size:13px;
+      font-weight:700;
+      color:var(--brand-700);
+      min-height:18px;
+    }
+
+    .comment-msg{
+      display:none;
+      border-radius:12px;
+      padding:10px 12px;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .comment-msg.ok{
+      display:block;
+      color:#134b24;
+      background:#e8f5ea;
+      border:1px solid #b8ddbf;
+    }
+
+    .comment-msg.error{
+      display:block;
+      color:#7a1c1c;
+      background:#fdeaea;
+      border:1px solid #efb7b7;
+    }
+
+    .submit-row{
+      display:flex;
+      justify-content:flex-end;
+      margin-top:2px;
+    }
+
+    footer{
+      padding:16px 0 28px;
+      border-top:1px solid var(--brand-100);
+    }
+
+    footer a{
+      color:var(--brand-800);
+      text-decoration:none;
+    }
+
+    footer a:hover{text-decoration:underline}
+
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(8px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @media (max-width:720px){
+      .bubble{max-width:92%}
+      .sheet{padding:16px}
+      .sheet-title{font-size:20px}
+      .hero-copy h1{font-size:36px}
+    }
+
+    @media (max-width:520px){
+      .nav-under-banner{gap:8px}
+      .nav-under-banner a{font-size:13px;padding:8px 10px}
+      .review-user{font-size:16px}
+      .review-city{font-size:14px}
+      .sheet-head{align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="banner-link">
+      <img class="top-banner"
+        src="assets/images/LogolargoMiyotl1.webp"
+        alt="Miyotl Products — banner principal"
+        width="1920" height="320">
+    </a>
+
+    <div class="nav-under-banner">
+      <a href="index.html">Inicio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="distribuidor.html">Quiero ser distribuidor</a>
+      <a href="politicas.html">Políticas</a>
+      <a href="aviso.html">Aviso de privacidad</a>
+      <a href="pregfrec.html">Preguntas frecuentes</a>
+      <a href="opiniones.html">Opiniones</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-copy">
+      <h1>Comentarios</h1>
+      <p>Mira lo que otros clientes opinan de nuestros productos. Si tienes algo que contarnos, no olvides enviarnos tu opinión.</p>
+    </section>
+
+    <section class="reviews-wrap">
+      <div class="review-list">
+
+        <!-- DUPLICA ESTE BLOQUE COMPLETO PARA AGREGAR UN NUEVO COMENTARIO -->
+        <article class="review-item">
+          <div class="bubble-row client">
+            <div class="bubble client-bubble">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-head">
+                <div class="review-user">MariposaVioleta</div>
+                <div class="review-city">— Villa Jardín, Jalisco</div>
+              </div>
+              <div class="review-date">12 Marzo 2026</div>
+              <p class="review-text">El jabón de avena está delicioso para la piel. Ya es el favorito de mi familia.</p>
+            </div>
+          </div>
+
+          <!-- SI NO HAY RESPUESTA, BORRA ESTE BLOQUE DE RESPUESTA -->
+          <div class="bubble-row miyotl">
+            <div class="bubble reply-bubble">
+              <div class="response-label">Miyotl respondió</div>
+              <p class="response-text">Nos encanta saber que se volvió un favorito en casa. Gracias por compartirnos tu experiencia.</p>
+              <div class="response-signature">— Equipo Miyotl</div>
+            </div>
+          </div>
+        </article>
+        <!-- FIN DEL BLOQUE DUPLICABLE -->
+
+        <article class="review-item">
+          <div class="bubble-row client">
+            <div class="bubble client-bubble">
+              <div class="review-stars">★★★★☆</div>
+              <div class="review-head">
+                <div class="review-user">FerCruzMx</div>
+                <div class="review-city">— Río Bonito, Chiapas</div>
+              </div>
+              <div class="review-date">10 Marzo 2026</div>
+              <p class="review-text">Huelen súper rico y la textura es muy agradable. La entrega llegó sin problemas.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-item">
+          <div class="bubble-row client">
+            <div class="bubble client-bubble">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-head">
+                <div class="review-user">HandmadeMx</div>
+                <div class="review-city">— Puerto Esmeralda, Jalisco</div>
+              </div>
+              <div class="review-date">08 Marzo 2026</div>
+              <p class="review-text">Los pedí para vender en mi tienda y se me agotaron rápido. El producto se ve premium.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-item">
+          <div class="bubble-row client">
+            <div class="bubble client-bubble">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-head">
+                <div class="review-user">NenaSolar</div>
+                <div class="review-city">— Valle Áureo, Nuevo León</div>
+              </div>
+              <div class="review-date">07 Marzo 2026</div>
+              <p class="review-text">El de arroz me dejó la piel súper suave. No lo cambio por nada.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-item">
+          <div class="bubble-row client">
+            <div class="bubble client-bubble">
+              <div class="review-stars">★★★★☆</div>
+              <div class="review-head">
+                <div class="review-user">ValeSky</div>
+                <div class="review-city">— Villa Altamira, Puebla</div>
+              </div>
+              <div class="review-date">05 Marzo 2026</div>
+              <p class="review-text">Me gustó mucho el aroma, no es invasivo. Se nota que cuidan cada detalle.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-item">
+          <div class="bubble-row client">
+            <div class="bubble client-bubble">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-head">
+                <div class="review-user">SpaHogar</div>
+                <div class="review-city">— Costa Diamante, Baja California Sur</div>
+              </div>
+              <div class="review-date">04 Marzo 2026</div>
+              <p class="review-text">Compré varias barras personalizadas para regalos y quedaron preciosas.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-item">
+          <div class="bubble-row client">
+            <div class="bubble client-bubble">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-head">
+                <div class="review-user">Monserrat</div>
+                <div class="review-city">— Edo. de Méx.</div>
+              </div>
+              <div class="review-date">03 Marzo 2026</div>
+              <p class="review-text">Huelen delicioso, aún no tengo favorito porque todos tienen algo que te enamora. Los di como regalo y les encantaron.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-item">
+          <div class="bubble-row client">
+            <div class="bubble client-bubble">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-head">
+                <div class="review-user">Roman Aguirre</div>
+                <div class="review-city">— Tlalnepantla, Estado de México</div>
+              </div>
+              <div class="review-date">02 Marzo 2026</div>
+              <p class="review-text">Huelen muy bien y me ayudaron con mi piel reseca, yo creí que no pero sí me ayudaron mucho.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-item">
+          <div class="bubble-row client">
+            <div class="bubble client-bubble">
+              <div class="review-stars">★★★★★</div>
+              <div class="review-head">
+                <div class="review-user">Araceli Medina</div>
+                <div class="review-city">— Estado de México</div>
+              </div>
+              <div class="review-date">01 Marzo 2026</div>
+              <p class="review-text">Dejan la piel como nalgas de bebé.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="actions">
+      <button class="btn-primary" id="open-comment">Comentar</button>
+    </div>
+  </main>
+
+  <!-- Modal para comentarios -->
+  <div class="modal" id="comment-modal" aria-hidden="true">
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="comment-modal-title">
+      <div class="sheet-head">
+        <h3 class="sheet-title" id="comment-modal-title">Enviar comentario</h3>
+        <button id="close-comment" class="close-btn" type="button">Cerrar</button>
+      </div>
+
+      <p class="form-note">Tu comentario será enviado para revisión antes de publicarse.</p>
+
+      <form id="comment-form" novalidate>
+        <div class="form-grid">
+          <div class="field rating-wrap">
+            <label>Calificación</label>
+            <div class="rating" id="rating" aria-label="Calificación de 1 a 5 estrellas">
+              <button type="button" data-value="1" aria-label="1 estrella">★</button>
+              <button type="button" data-value="2" aria-label="2 estrellas">★</button>
+              <button type="button" data-value="3" aria-label="3 estrellas">★</button>
+              <button type="button" data-value="4" aria-label="4 estrellas">★</button>
+              <button type="button" data-value="5" aria-label="5 estrellas">★</button>
+            </div>
+            <div class="rating-caption" id="rating-caption"></div>
+            <input type="hidden" id="c-estrellas" name="estrellas" required>
+          </div>
+
+          <div class="field">
+            <label for="c-nombre">Nombre</label>
+            <input id="c-nombre" name="nombre" required class="input" maxlength="80" autocomplete="name">
+          </div>
+
+          <div class="field">
+            <label for="c-ciudad">Ciudad</label>
+            <input id="c-ciudad" name="ciudad" required class="input" maxlength="100" autocomplete="address-level2">
+          </div>
+
+          <div class="field">
+            <label for="c-correo">Correo <span style="font-weight:600;opacity:.8;">(opcional)</span></label>
+            <input id="c-correo" name="correo" type="email" class="input" maxlength="120" inputmode="email" autocomplete="email">
+          </div>
+
+          <div class="field">
+            <label for="c-texto">Comentario</label>
+            <textarea id="c-texto" name="comentario" required rows="5" maxlength="500" class="textarea"></textarea>
+            <div class="helper-row">
+              <span>Máximo 500 caracteres.</span>
+              <span id="char-counter">0 / 500</span>
+            </div>
+          </div>
+
+          <div id="comment-msg" class="comment-msg"></div>
+
+          <div class="submit-row">
+            <button type="submit" class="btn-primary" id="submit-comment">Enviar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Miyotl Products · Hecho en México</div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="aviso.html">Aviso de privacidad</a>
+        <a href="politicas.html">Políticas</a>
+        <a href="mailto:Miyotlproducts@gmail.com">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const commentModal = document.getElementById('comment-modal');
+    const openComment = document.getElementById('open-comment');
+    const closeComment = document.getElementById('close-comment');
+    const commentForm = document.getElementById('comment-form');
+    const commentMsg = document.getElementById('comment-msg');
+    const submitComment = document.getElementById('submit-comment');
+
+    const ratingButtons = Array.from(document.querySelectorAll('#rating button'));
+    const ratingInput = document.getElementById('c-estrellas');
+    const ratingCaption = document.getElementById('rating-caption');
+
+    const textArea = document.getElementById('c-texto');
+    const charCounter = document.getElementById('char-counter');
+
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwshjigFe0Wz-ejIMxTqmOTaZwqtSxvu6tQqhPMIt3ajX8tsa1eyFI7LXULd60TUSxI/exec';
+
+    function paintStars(value){
+      ratingButtons.forEach((btn, index) => {
+        btn.classList.toggle('active', index < value);
+      });
+    }
+
+    ratingButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const value = Number(btn.dataset.value);
+        ratingInput.value = String(value);
+        paintStars(value);
+        ratingCaption.textContent = value === 1 ? '1 estrella seleccionada' : `${value} estrellas seleccionadas`;
+      });
+    });
+
+    textArea.addEventListener('input', () => {
+      charCounter.textContent = `${textArea.value.length} / 500`;
+    });
+
+    function showMessage(type, text){
+      commentMsg.className = 'comment-msg ' + type;
+      commentMsg.textContent = text;
+    }
+
+    function clearMessage(){
+      commentMsg.className = 'comment-msg';
+      commentMsg.textContent = '';
+    }
+
+    function openModal(){
+      clearMessage();
+      commentModal.style.display = 'flex';
+      commentModal.setAttribute('aria-hidden', 'false');
+      setTimeout(() => document.getElementById('c-nombre').focus(), 50);
+    }
+
+    function closeModal(){
+      commentModal.style.display = 'none';
+      commentModal.setAttribute('aria-hidden', 'true');
+    }
+
+    openComment.addEventListener('click', openModal);
+    closeComment.addEventListener('click', closeModal);
+
+    commentModal.addEventListener('click', (e) => {
+      if (e.target === commentModal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && commentModal.style.display === 'flex') {
+        closeModal();
+      }
+    });
+
+    commentForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearMessage();
+
+      const nombre = document.getElementById('c-nombre').value.trim();
+      const ciudad = document.getElementById('c-ciudad').value.trim();
+      const correo = document.getElementById('c-correo').value.trim();
+      const comentario = textArea.value.trim();
+      const estrellas = ratingInput.value.trim();
+
+      if (!estrellas || !nombre || !ciudad || !comentario) {
+        showMessage('error', 'Completa nombre, ciudad, comentario y calificación.');
+        return;
+      }
+
+      if (comentario.length > 500) {
+        showMessage('error', 'Tu comentario excede el máximo de 500 caracteres.');
+        return;
+      }
+
+      if (correo) {
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+        if (!emailOk) {
+          showMessage('error', 'El correo no tiene un formato válido.');
+          return;
+        }
+      }
+
+      submitComment.disabled = true;
+      submitComment.style.opacity = '.7';
+      submitComment.textContent = 'Enviando...';
+
+      try {
+        const resp = await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            tipo: 'comentario_web_miyotl',
+            nombre,
+            correo,
+            ciudad,
+            estrellas,
+            comentario,
+            origen: 'opiniones.html'
+          })
+        });
+
+        if (resp.ok) {
+          showMessage('ok', 'Tu comentario fue enviado para revisión');
+          commentForm.reset();
+          ratingInput.value = '';
+          paintStars(0);
+          ratingCaption.textContent = '';
+          charCounter.textContent = '0 / 500';
+
+          setTimeout(() => {
+            closeModal();
+            clearMessage();
+          }, 2200);
+        } else {
+          showMessage('error', 'Hubo un problema al enviar tu comentario. Revisa tu URL del script o intenta de nuevo más tarde.');
+        }
+      } catch (err) {
+        showMessage('error', 'No se pudo conectar para enviar el comentario.');
+      } finally {
+        submitComment.disabled = false;
+        submitComment.style.opacity = '1';
+        submitComment.textContent = 'Enviar';
+      }
+    });
+  </script>
+</body>
+</html>
