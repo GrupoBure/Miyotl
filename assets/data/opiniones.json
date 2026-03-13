@@ -1,0 +1,74 @@
+[
+  {
+    "estrellas": 5,
+    "nombre": "MariposaVioleta",
+    "ciudad": "Villa Jardín, Jalisco",
+    "fecha": "12 Marzo 2026",
+    "comentario": "El jabón de avena está delicioso para la piel. Ya es el favorito de mi familia.",
+    "respuesta": "Nos encanta saber que se volvió un favorito en casa. Gracias por compartirnos tu experiencia."
+  },
+  {
+    "estrellas": 4,
+    "nombre": "FerCruzMx",
+    "ciudad": "Río Bonito, Chiapas",
+    "fecha": "10 Marzo 2026",
+    "comentario": "Huelen súper rico y la textura es muy agradable. La entrega llegó sin problemas.",
+    "respuesta": ""
+  },
+  {
+    "estrellas": 5,
+    "nombre": "HandmadeMx",
+    "ciudad": "Puerto Esmeralda, Jalisco",
+    "fecha": "08 Marzo 2026",
+    "comentario": "Los pedí para vender en mi tienda y se me agotaron rápido. El producto se ve premium.",
+    "respuesta": ""
+  },
+  {
+    "estrellas": 5,
+    "nombre": "NenaSolar",
+    "ciudad": "Valle Áureo, Nuevo León",
+    "fecha": "07 Marzo 2026",
+    "comentario": "El de arroz me dejó la piel súper suave. No lo cambio por nada.",
+    "respuesta": ""
+  },
+  {
+    "estrellas": 4,
+    "nombre": "ValeSky",
+    "ciudad": "Villa Altamira, Puebla",
+    "fecha": "05 Marzo 2026",
+    "comentario": "Me gustó mucho el aroma, no es invasivo. Se nota que cuidan cada detalle.",
+    "respuesta": ""
+  },
+  {
+    "estrellas": 5,
+    "nombre": "SpaHogar",
+    "ciudad": "Costa Diamante, Baja California Sur",
+    "fecha": "04 Marzo 2026",
+    "comentario": "Compré varias barras personalizadas para regalos y quedaron preciosas.",
+    "respuesta": ""
+  },
+  {
+    "estrellas": 5,
+    "nombre": "Monserrat",
+    "ciudad": "Edo de Méx",
+    "fecha": "03 Marzo 2026",
+    "comentario": "Huelen delicioso, aún no tengo favorito porque todos tienen algo que te enamora. Los di como regalo y les encantaron.",
+    "respuesta": ""
+  },
+  {
+    "estrellas": 5,
+    "nombre": "Roman Aguirre",
+    "ciudad": "Tlalnepantla, Estado de México",
+    "fecha": "02 Marzo 2026",
+    "comentario": "Huelen muy bien y me ayudaron con mi piel reseca, yo creí que no pero sí me ayudaron mucho.",
+    "respuesta": ""
+  },
+  {
+    "estrellas": 5,
+    "nombre": "Araceli Medina",
+    "ciudad": "Estado de México",
+    "fecha": "01 Marzo 2026",
+    "comentario": "Dejan la piel como nalgas de bebé.",
+    "respuesta": ""
+  }
+]
