@@ -1,4 +1,12 @@
 [
+   {
+    "estrellas": 5,
+    "nombre": "IanYiro",
+    "ciudad": "Tlalnepantla Estado de méxico",
+    "fecha": "13 Marzo 2026",
+    "comentario": "Me encantó el jabón líquido de coco es mu favorito junto con el jabón en barra de chocolate la mejor combinacion",
+    "respuesta": "Ese de chocolate nos gusta mucho a nosotros también, muchas gracias por tu comentario, estamos a tus órdenes."
+  },
   {
     "estrellas": 5,
     "nombre": "MariposaVioleta",
@@ -53,7 +61,7 @@
     "ciudad": "Edo de Méx",
     "fecha": "03 Marzo 2026",
     "comentario": "Huelen delicioso, aún no tengo favorito porque todos tienen algo que te enamora. Los di como regalo y les encantaron.",
-    "respuesta": ""
+    "respuesta": "De verdad mil gracias por tus comentarios, esperemos les gusten mucho a quienes los obsequiaste, estamos para lo que necesites."
   },
   {
     "estrellas": 5,
@@ -69,6 +77,6 @@
     "ciudad": "Estado de México",
     "fecha": "01 Marzo 2026",
     "comentario": "Dejan la piel como nalgas de bebé.",
-    "respuesta": ""
+    "respuesta": "Tu comentario nos hizo el día la verdad, muchas gracias Araceli, estamos a tus órdenes."
   }
 ]
