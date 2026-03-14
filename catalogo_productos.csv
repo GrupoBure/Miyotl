@@ -1,779 +1,779 @@
-﻿Linea,codigo,nombre,ingredientes,categoria,cats,etiqueta,beneficios,avisos,contenido,precioPublico,precioPúblico_K,precioMayoreo,precioMayoreo_K,precioDistribuidor,precioDistribuidor_K,Imagen,cantidadArticulos
-De línea,102001,Abre Caminos,"Glicerina, LESS, Cocoamida, Aceite de coco, Ruda, Romero, Santa María (Tanacetum balsamita), TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma herbal intenso que deja sensación limpia y vigorizante.
+﻿codigo,nombre,ingredientes,categoria,cats,etiqueta,beneficios,avisos,contenido,precioPublico,precioPúblico_K,precioMayoreo,precioMayoreo_K,precioDistribuidor,precioDistribuidor_K,Imagen,cantidadArticulos
+102001,Abre Caminos,"Glicerina, LESS, Cocoamida, Aceite de coco, Ruda, Romero, Santa María (Tanacetum balsamita), TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma herbal intenso que deja sensación limpia y vigorizante.
 Limpieza amable con base de glicerina, enjuague fácil.
 Ideal para rutinas matutinas cuando buscas un efecto despeje.","Por los botánicos potentes, no recomendado para piel muy reactiva. Prueba de parche primero.",100 gr,45,450,43,430,39,390,102001.webp,1
-De línea,102044,Abre Caminos con miel,"Glicerina, LESS, Cocoamida, Aceite de coco, Ruda, Romero, Santa María (Tanacetum balsamita), Miel TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal intenso con toque dulce que convierte la ducha en un momento reconfortante.
+102044,Abre Caminos con miel,"Glicerina, LESS, Cocoamida, Aceite de coco, Ruda, Romero, Santa María (Tanacetum balsamita), Miel TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal intenso con toque dulce que convierte la ducha en un momento reconfortante.
 Sensación fresca y de limpieza al enjuagar.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que deja tacto cómodo.
 Ideal para quienes buscan un perfil verde con un matiz cálido de miel.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102044.webp,1
-De línea,102139,Abre Caminos Menta Coco,"Glicerina, LESS, Cocoamida, Acite de coco, Abre Caminos Menta Coco TEA",Jabón sólido,Jabón sólido,NS+AL,"Aroma herbal profundo con notas verdes y ligeramente especiadas que acompaña momentos de renovación y limpieza personal durante el baño.
+102139,Abre Caminos Menta Coco,"Glicerina, LESS, Cocoamida, Acite de coco, Abre Caminos Menta Coco TEA",Jabón sólido,Jabón sólido,NS+AL,"Aroma herbal profundo con notas verdes y ligeramente especiadas que acompaña momentos de renovación y limpieza personal durante el baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Mezcla botánica inspirada en tradiciones de bienestar que se asocian con la idea de renovar la energía personal y comenzar el día con mayor claridad y ligereza.
 Su aroma herbal envolvente crea una experiencia de baño que invita a pausar, respirar y soltar la tensión acumulada.
 Espuma ligera que facilita la limpieza diaria mientras deja una sensación fresca y revitalizante en la piel.
 Ideal para quienes disfrutan rituales sencillos de cuidado personal y aromas naturales que evocan limpieza, claridad y nuevos comienzos.",Contiene extractos herbales y compuestos aromáticos naturales que pueden provocar irritación en piel sensible o muy reactiva. No recomendado para piel extremadamente sensible. Haz prueba de parche antes de usar. Suspende su uso si aparece irritación.,100 gr,40,400,38,380,34,340,102139.webp,1
-De línea,102138,Abre Caminos Miel y Albahaca,"Glicerina, LESS, Cocoamida, Acite de coco, Ruda, Romero, Santa María (Tanacetum balsamita) TEA",Jabón sólido,Jabón sólido,NS+AL,"Aroma herbal intenso con notas verdes y ligeramente amargas que aporta una sensación de limpieza profunda y frescura natural durante el baño.
+102138,Abre Caminos Miel y Albahaca,"Glicerina, LESS, Cocoamida, Acite de coco, Ruda, Romero, Santa María (Tanacetum balsamita) TEA",Jabón sólido,Jabón sólido,NS+AL,"Aroma herbal intenso con notas verdes y ligeramente amargas que aporta una sensación de limpieza profunda y frescura natural durante el baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Mezcla botánica tradicionalmente asociada la purificación.
 Ayuda a que la piel se sienta fresca, limpia y equilibrada después del lavado.
 Espuma ligera que facilita la limpieza diaria y deja una sensación herbal duradera en la piel.
 Ideal para quienes disfrutan aromas naturales intensos y una experiencia de baño energizante.",Contiene extractos herbales y compuestos aromáticos naturales que pueden generar reacción en piel sensible o muy reactiva. No recomendado durante embarazo ni para piel extremadamente sensible. Haz prueba de parche antes de usar. Suspende su uso si aparece irritación.,100 gr,40,400,38,380,34,340,102138.webp,1
-De línea,102002,Albahaca,"Glicerina, LESS, Cocoamida, Aceite de coco, Albahaca, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma herbal fresco que deja sensación limpia y despejada tras el enjuague.
+102002,Albahaca,"Glicerina, LESS, Cocoamida, Aceite de coco, Albahaca, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma herbal fresco que deja sensación limpia y despejada tras el enjuague.
 Base de glicerina: limpieza suave, fácil de enjuagar, sin sensación pegajosa.
 Acompaña rutinas matutinas aportando una sensación de equilibrio en piel normal/mixta.
 Espuma ligera que no satura; ideal para uso cotidiano.
 Notas verdes tipo spa casero, pensadas para un baño revitalizante.",Contiene compuestos aromáticos potencialmente sensibilizantes → No sensible (NS) · Alérgeno (AL).,100 gr,45,450,43,430,39,390,102002.webp,1
-De línea,102003,Almendras,"Glicerina, LESS, Cocoamida, Aceite de coco, Aceite de almendras, Base de almendras, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma suave y cálido tipo mazapán que acompaña sin invadir.
+102003,Almendras,"Glicerina, LESS, Cocoamida, Aceite de coco, Aceite de almendras, Base de almendras, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma suave y cálido tipo mazapán que acompaña sin invadir.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Aporta confort y sensación emoliente en piel normal a seca.
 Espuma cremosa que hace la rutina rápida y agradable.
 Ideal para baño nocturno por su perfil reconfortante.","Si tiene alergia a frutos secos o piel muy reactiva, mejor elija entre nuestros jabones ""Sencibles"" o pruebe otra fragancia de esta línea.",100 gr,45,450,43,430,39,390,102003.webp,1
-De línea,102004,Almendras y avena,"Glicerina, LESS, Cocoamida, Aceite de coco, Aceite de almendras, Base de almendras, Avena, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma cálido y cremoso que acompaña sin invadir (toque “comfort”).
+102004,Almendras y avena,"Glicerina, LESS, Cocoamida, Aceite de coco, Aceite de almendras, Base de almendras, Avena, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma cálido y cremoso que acompaña sin invadir (toque “comfort”).
 Base de glicerina: limpia suave y se enjuaga fácil, sin sensación pegajosa.
 Avena ayuda a dar suavidad y a calmar la apariencia de irritaciones leves del día a día.
 Perfil emoliente por la almendra: deja tacto más flexible tras el secado.
 Espuma cremosa, ideal para rutina nocturna o climas secos.","Si tiene piel muy reactiva o alergia a frutos secos, pruebe mejor nuestro jabón de Avena.",100 gr,45,450,43,430,39,390,102004.webp,1
-De línea,102005,Aloe Vera,"Glicerina, LESS, Cocoamida, Aceite de coco, Alore vera, TEA",Jabón sólido,Piel sensible,S,"Humectación inmediata: ayuda a retener agua y reduce la sensación de tirantez.
+102005,Aloe Vera,"Glicerina, LESS, Cocoamida, Aceite de coco, Alore vera, TEA",Jabón sólido,Piel sensible,S,"Humectación inmediata: ayuda a retener agua y reduce la sensación de tirantez.
 Efecto calmante y refrescante tras ducha; acompaña pieles que se irritan fácil.
 Base de glicerina: limpieza suave, enjuague fácil, sin sensación pegajosa.
 Aporta confort en climas calurosos o después de exposición solar ligera.
 Espuma ligera pensada para uso cotidiano y pieles que buscan suavidad.",,100 gr,45,450,43,430,39,390,102005.webp,1
-De línea,102047,Aloe vera con Vitamina E,"Glicerina, LESS, Cocoamida, Aceite de coco, Alore vera, Vitamina E, TEA",Jabón sólido,Piel sensible,S,"Hidratación y confort: aloe que ayuda a reducir la sensación de tirantez tras el baño.
+102047,Aloe vera con Vitamina E,"Glicerina, LESS, Cocoamida, Aceite de coco, Alore vera, Vitamina E, TEA",Jabón sólido,Piel sensible,S,"Hidratación y confort: aloe que ayuda a reducir la sensación de tirantez tras el baño.
 Con vitamina E (antioxidante) para una sensación de suavidad al tacto.
 Base de glicerina: limpieza gentil y enjuague fácil, sin residuo pegajoso.
 Espuma ligera pensada para uso diario.
 Perfil neutro y amable, ideal cuando no quieres aromas intensos.","Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102047.webp,1
-De línea,102006,Aloe vera y ácido hialurónico,"Glicerina, LESS, Cocoamida, Aceite de coco, Aloe vera, Ácido Hialurónico, TEA",Jabón sólido,Piel sensible,S,"Hidratación profunda y sostenida: el hialurónico (sodium hyaluronate) ayuda a retener agua y mejorar la sensación de elasticidad.
+102006,Aloe vera y ácido hialurónico,"Glicerina, LESS, Cocoamida, Aceite de coco, Aloe vera, Ácido Hialurónico, TEA",Jabón sólido,Piel sensible,S,"Hidratación profunda y sostenida: el hialurónico (sodium hyaluronate) ayuda a retener agua y mejorar la sensación de elasticidad.
 Calma inmediata: el aloe aporta frescura y reduce la sensación de tirantez tras la ducha.
 Limpieza suave: base de glicerina, enjuague fácil, sin residuo pegajoso.
 Confort de barrera: uso cotidiano que apoya a una piel que se irrita con facilidad.
 Acabado cómodo: espuma ligera; piel se siente suave y con mejor flexibilidad al tacto.",,100 gr,45,450,43,430,39,390,102006.webp,1
-De línea,102045,Aloe vera y árnica,"Glicerina, LESS, Cocoamida, Aceite de coco, Alore vera, Árnica, TEA",Jabón sólido,Astringente,NS+AL,"Sensación refrescante del aloe en una limpieza suave y de enjuague fácil.
+102045,Aloe vera y árnica,"Glicerina, LESS, Cocoamida, Aceite de coco, Alore vera, Árnica, TEA",Jabón sólido,Astringente,NS+AL,"Sensación refrescante del aloe en una limpieza suave y de enjuague fácil.
 Aroma herbal con toque verde que deja sensación limpia al terminar.
 Espuma ligera/cremosa que no satura y aporta confort en la ducha.
 Ideal para quienes disfrutan perfiles verdes tipo spa.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102045.webp,1
-De línea,102046,Aloe vera y miel,"Glicerina, LESS, Cocoamida, Aceite de coco, Alore vera, Miel, TEA",Jabón sólido,Aromáticos,NS+AL,"Sensación fresca del aloe en una limpieza suave y de enjuague fácil.
+102046,Aloe vera y miel,"Glicerina, LESS, Cocoamida, Aceite de coco, Alore vera, Miel, TEA",Jabón sólido,Aromáticos,NS+AL,"Sensación fresca del aloe en una limpieza suave y de enjuague fácil.
 Toque confortable y cremoso gracias a la miel.
 Espuma ligera/cremosa que deja tacto cómodo al secar.
 Ideal para quien busca un perfil dulce–herbal sin resultar empalagoso.
 Perfecto para una rutina nocturna o climas secos.","Contiene derivados de abeja; si tu piel es muy reactiva, realiza prueba de parche. Evita el contorno de ojos. Si irrita, suspende.",100 gr,45,450,43,430,39,390,102046.webp,1
-De línea,110105,Angel Corazón,"Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",Jabón sólido,Decorativo,NS+AL,"Aroma suave “bebé” que aporta sensación de confort y limpieza fresca.
+110105,Angel Corazón,"Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",Jabón sólido,Decorativo,NS+AL,"Aroma suave “bebé” que aporta sensación de confort y limpieza fresca.
 Base de glicerina: limpieza gentil, enjuague fácil, sin sensación pegajosa.
 La avena ayuda a dejar la piel con tacto más suave tras el baño.
 Espuma ligera/cremosa que hace la rutina rápida y agradable.
 Ideal para quien busca un aroma tierno sin notas intensas.","En piel muy reactiva o con antecedentes de sensibilidad a fragancias, mejor elegir tu Avena sin perfume.",40 gr,21,N/A,20,N/A,18,N/A,110105.webp,1
-De línea,102007,Anti acné salicílico y aloe vera,"Glicerina, LESS, Cocoamida, Aceite de coco, Ácido salicilico, Pigmento, Aloe vera, TEA",Jabón sólido,Astringente,NS+AL,"Apoyo antiimperfecciones: el ácido salicílico (BHA) ayuda a desobstruir poros y mejorar la apariencia de brotes.
+102007,Anti acné salicílico y aloe vera,"Glicerina, LESS, Cocoamida, Aceite de coco, Ácido salicilico, Pigmento, Aloe vera, TEA",Jabón sólido,Astringente,NS+AL,"Apoyo antiimperfecciones: el ácido salicílico (BHA) ayuda a desobstruir poros y mejorar la apariencia de brotes.
 Limpieza dirigida sin sensación jabonosa pesada; base de glicerina con aloe para dar frescura.
 Con uso constante, favorece una piel con menos brillo y textura más uniforme.
 Espuma ligera y enjuague fácil, pensado para rutina de piel mixta/grasa.
 Puede complementar rutinas con activos seborreguladores (niacinamida, zinc) —en productos aparte.","No recomendado para piel muy reactiva. Evitar uso si hay alergia a salicilatos/aspirina. Haz prueba de parche. Si reseca, reduce frecuencia (día por medio).",100 gr,45,450,43,430,39,390,102007.webp,1
-De línea,102008,Arándanos,"Glicerina, LESS, Cocoamida, Aceite de coco, Arándanos, Base de frutos rojos, TEA",Jabón sólido,Aromáticos,NS+AL,"Antioxidante: los arándanos aportan antocianinas que ayudan a neutralizar radicales libres, dejando una apariencia más luminosa.
+102008,Arándanos,"Glicerina, LESS, Cocoamida, Aceite de coco, Arándanos, Base de frutos rojos, TEA",Jabón sólido,Aromáticos,NS+AL,"Antioxidante: los arándanos aportan antocianinas que ayudan a neutralizar radicales libres, dejando una apariencia más luminosa.
 Sensación astringente ligera: ayuda a que la piel se sienta más fresca y con menos brillo tras el lavado.
 Base de glicerina: limpieza suave, enjuague fácil y sin sensación pegajosa.
 Aroma frutal que anima la rutina diaria sin volverse invasivo.
 Espuma ligera, pensada para uso diurno en piel normal/mixta.","No recomendado para piel muy reactiva. Evita el contorno de ojos. Haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102008.webp,1
-De línea,102009,Árnica,"Glicerina, LESS, Cocoamida, Aceite de coco, Árnica, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma herbal intenso que acompaña rutinas post-día/post-entreno con sensación reconfortante.
+102009,Árnica,"Glicerina, LESS, Cocoamida, Aceite de coco, Árnica, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma herbal intenso que acompaña rutinas post-día/post-entreno con sensación reconfortante.
 Base de glicerina: limpieza suave, enjuague fácil, sin sensación pegajosa.
 Aporta una sensación de frescura al finalizar el baño.
 Espuma ligera que no satura; ideal para uso en cuerpo.
 Deja la piel con tacto limpio y aroma verde tipo spa.","Puede contener alérgenos aromáticos. No recomendado para piel muy reactiva. Evita rostro/contorno de ojos y piel lesionada o irritada. Haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102009.webp,1
-De línea,102048,Árnica y Vitamina E,"Glicerina, LESS, Cocoamida, Aceite de coco, Árnica, Vitamina E, TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal que acompaña la ducha con una sensación fresca.
+102048,Árnica y Vitamina E,"Glicerina, LESS, Cocoamida, Aceite de coco, Árnica, Vitamina E, TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal que acompaña la ducha con una sensación fresca.
 Vitamina E (antioxidante) que aporta sensación de suavidad al tacto.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que deja tacto cómodo.
 Perfil tipo spa verde para quienes disfrutan notas botánicas marcadas.","Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102048.webp,1
-De línea,102010,Arroz,"Glicerina, LESS, Cocoamida, Aceite de coco, Arroz, Harina de arroz, aceite de oliva, TEA",Jabón sólido,Piel sensible,S,"Calma y suaviza: aporta sensación de confort en pieles que se irritan fácil.
+102010,Arroz,"Glicerina, LESS, Cocoamida, Aceite de coco, Arroz, Harina de arroz, aceite de oliva, TEA",Jabón sólido,Piel sensible,S,"Calma y suaviza: aporta sensación de confort en pieles que se irritan fácil.
 Limpieza gentil con base de glicerina; enjuague fácil, sin sensación pegajosa.
 Confort diario: espuma ligera pensada para uso cotidiano.
 Ayuda a que la piel se sienta menos tirante después del baño.
 Ideal para rutinas neutras (sin aromas intensos) o climas secos.",,120 gr,45,450,43,430,39,390,102010.webp,1
-De línea,102011,Arroz con aloe vera,"Glicerina, LESS, Cocoamida, Aceite de coco, Arroz, Harina de arroz, aloe vera, TEA",Jabón sólido,Piel sensible,S,"Confort inmediato: combinación de arroz (sensación calmante) + aloe (refrescante) para piel que se irrita fácil.
+102011,Arroz con aloe vera,"Glicerina, LESS, Cocoamida, Aceite de coco, Arroz, Harina de arroz, aloe vera, TEA",Jabón sólido,Piel sensible,S,"Confort inmediato: combinación de arroz (sensación calmante) + aloe (refrescante) para piel que se irrita fácil.
 Hidratación ligera: ayuda a retener agua y a disminuir la sensación de tirantez post-baño.
 Limpieza gentil: base de glicerina, espuma ligera y enjuague fácil, sin residuo pegajoso.
 Uso cotidiano: ideal para rutina diaria y climas secos o calurosos.
 Perfil neutro y amable: sin aromas intensos; pensado para quienes buscan sencillez y suavidad.",,100 gr,45,450,43,430,39,390,102011.webp,1
-De línea,102049,Arroz exfoliante,"Glicerina, LESS, Cocoamida, Aceite de coco, Arroz, Harina de arroz, aceite de oliva, TEA",Jabón sólido,Exfoliante,NS,"Exfoliación física suave con arroz molido: ayuda a remover células muertas y a mejorar el tacto.
+102049,Arroz exfoliante,"Glicerina, LESS, Cocoamida, Aceite de coco, Arroz, Harina de arroz, aceite de oliva, TEA",Jabón sólido,Exfoliante,NS,"Exfoliación física suave con arroz molido: ayuda a remover células muertas y a mejorar el tacto.
 Deja la piel más lisa en zonas ásperas (codos, rodillas, talones).
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que no satura.
 Perfecto como complemento 2–3 veces por semana.",Evita rostro/ojos y piel irritada.,120 gr,55,550,53,530,47,470,102049.webp,1
-De línea,102140,Arroz Miel y Canela,"Glicerina, LESS, Cocoamida, Acite de coco, Arroz Miel y Canela TEA",Jabón sólido,Jabón sólido,S,"Aroma cálido y dulce con notas especiadas que hace más agradable la rutina de baño y deja una sensación reconfortante.
+102140,Arroz Miel y Canela,"Glicerina, LESS, Cocoamida, Acite de coco, Arroz Miel y Canela TEA",Jabón sólido,Jabón sólido,S,"Aroma cálido y dulce con notas especiadas que hace más agradable la rutina de baño y deja una sensación reconfortante.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Mezcla inspirada en ingredientes tradicionales de cuidado personal que ayudan a que la piel se sienta más suave y confortable después del lavado.
 La espuma ligera permite una limpieza delicada mientras deja la piel con sensación de suavidad y flexibilidad.
 Ideal para quienes disfrutan aromas dulces y cálidos que acompañan rutinas de baño relajantes.","Contiene canela, que puede generar irritación en piel muy sensible o reactiva. Si tu piel es delicada, úsalo con moderación. Haz prueba de parche antes de usar. Suspende su uso si aparece irritación.",100 gr,40,400,38,380,34,340,102140.webp,1
-De línea,102012,Avena miel,"Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, Base miel, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma dulce y reconfortante que hace más agradable la rutina.
+102012,Avena miel,"Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, Base miel, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma dulce y reconfortante que hace más agradable la rutina.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 La avena aporta suavidad y sensación de confort tras el baño.
 Espuma cremosa ideal para climas secos o uso nocturno.
 Deja tacto más flexible cuando se seca sin fricción.",Evitar en personas con alergia a productos de abeja o piel muy reactiva. Haz prueba de parche.,100 gr,45,450,43,430,39,390,102012.webp,1
-De línea,102141,Avena Miel y Arroz,"Glicerina, LESS, Cocoamida, Acite de coco, Avena Miel y Arroz TEA",Jabón sólido,Jabón sólido,S,"Aroma suave y cálido con notas ligeramente dulces que hacen más agradable la rutina de baño.
+102141,Avena Miel y Arroz,"Glicerina, LESS, Cocoamida, Acite de coco, Avena Miel y Arroz TEA",Jabón sólido,Jabón sólido,S,"Aroma suave y cálido con notas ligeramente dulces que hacen más agradable la rutina de baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Combinación inspirada en ingredientes tradicionalmente usados para el cuidado suave de la piel que ayuda a dejar una sensación de confort después del lavado.
 Espuma cremosa que acompaña una limpieza delicada sin necesidad de fricción excesiva.
 Ideal para rutinas de baño relajantes o para piel que busca sentirse más suave y equilibrada después del lavado.
 Deja un tacto más flexible y confortable cuando la piel se seca.","Aunque está formulado con ingredientes suaves, personas con alergia a la avena o miel deben evitar su uso. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.",100 gr,40,400,38,380,34,340,102141.webp,1
-De línea,102013,Avena para bebé,"Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma suave “bebé” que aporta sensación de confort y limpieza fresca.
+102013,Avena para bebé,"Glicerina, LESS, Cocoamida, Aceite de coco, Avena, Miel, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma suave “bebé” que aporta sensación de confort y limpieza fresca.
 Base de glicerina: limpieza gentil, enjuague fácil, sin sensación pegajosa.
 La avena ayuda a dejar la piel con tacto más suave tras el baño.
 Espuma ligera/cremosa que hace la rutina rápida y agradable.
 Ideal para quien busca un aroma tierno sin notas intensas.","En piel muy reactiva o con antecedentes de sensibilidad a fragancias, mejor elegir tu Avena sin perfume.",100 gr,45,450,43,430,39,390,102013.webp,1
-De línea,102050,Azúfre,"Glicerina, LESS, Cocoamida, Aceite de coco, Azúfre, TEA",Jabón sólido,Exfoliante,NS+AL,"Limpieza profunda con sensación purificante al enjuagar.
+102050,Azúfre,"Glicerina, LESS, Cocoamida, Aceite de coco, Azúfre, TEA",Jabón sólido,Exfoliante,NS+AL,"Limpieza profunda con sensación purificante al enjuagar.
 Ayuda a que la piel se sienta menos brillante y con textura más uniforme con uso constante.
 Base de glicerina: enjuague fácil, sin sensación pegajosa.
 Espuma ligera, pensada para piel mixta/grasa en rutina diurna.
 Opción ideal cuando buscas un reset después de calor o actividad.","Puede resecar en piel sensible. Evita rostro y contorno de ojos. Úsalo máx. 1 vez al día (o días alternos si notas tirantez). Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102050.webp,1
-De línea,102014,Bergamota,"Glicerina, LESS, Cocoamida, Aceite de coco, Aceite esencial de bergamota, Base Bergamota, Extracto de gengibre, TEA.",Jabón sólido,Astringente,NS+AL,"Aroma cítrico brillante que deja sensación fresca y limpia tras el enjuague.
+102014,Bergamota,"Glicerina, LESS, Cocoamida, Aceite de coco, Aceite esencial de bergamota, Base Bergamota, Extracto de gengibre, TEA.",Jabón sólido,Astringente,NS+AL,"Aroma cítrico brillante que deja sensación fresca y limpia tras el enjuague.
 Astringencia ligera: ayuda a que la piel se sienta menos brillante después del baño.
 Base de glicerina: limpieza suave, enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para uso diurno en piel normal/mixta.
 Perfil aromático que anima la rutina sin volverse invasivo.",No recomendado para piel muy reactiva. Evita el contorno de ojos y realiza prueba de parche.,100 gr,45,450,43,430,39,390,102014.webp,1
-De línea,102135,Bugambilia Eucalipto y Menta,"Glicerina, LESS, Cocoamida, Acite de coco, Bugambilia Eucalipto y Menta TEA",Jabón sólido,Jabón sólido,NS+AL,"Aroma herbal fresco con notas mentoladas que aporta sensación de limpieza y energía durante el baño.
+102135,Bugambilia Eucalipto y Menta,"Glicerina, LESS, Cocoamida, Acite de coco, Bugambilia Eucalipto y Menta TEA",Jabón sólido,Jabón sólido,NS+AL,"Aroma herbal fresco con notas mentoladas que aporta sensación de limpieza y energía durante el baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 El eucalipto aporta sensación purificante y ayuda a que la piel se sienta limpia y fresca.
 La menta brinda un efecto refrescante que revitaliza la piel y deja una agradable sensación de frescura.
 La bugambilia aporta una nota floral suave que equilibra el aroma y contribuye a una sensación de suavidad tras el lavado.
 Espuma ligera y refrescante ideal para uso matutino o después de actividad física.",,100 gr,40,400,38,380,34,340,102135.webp,1
-De línea,102015,Café,"Glicerina, LESS, Cocoamida, Aceite de coco, Café de grano, TEA",Jabón sólido,Exfoliante,NS+AL,"Exfoliación física suave con partículas de café: ayuda a retirar células muertas y mejora la apariencia de zonas ásperas (codos, rodillas).
+102015,Café,"Glicerina, LESS, Cocoamida, Aceite de coco, Café de grano, TEA",Jabón sólido,Exfoliante,NS+AL,"Exfoliación física suave con partículas de café: ayuda a retirar células muertas y mejora la apariencia de zonas ásperas (codos, rodillas).
 Sensación energizante: aroma a café que anima la rutina matutina.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Piel con tacto más liso y aspecto más uniforme tras el secado.
 Úsalo 2–3 veces por semana; alterna con un jabón no exfoliante.","Evita en rostro, piel muy reactiva, irritada o con dermatitis/rosácea.",100 gr,45,450,43,430,39,390,102015.webp,1
-De línea,102016,Caléndula,"Glicerina, LESS, Cocoamida, Aceite de coco, Caléndula, TEA",Jabón sólido,Piel sensible,AL,"Aporta sensación de calma y confort tras el baño, ideal para rutinas suaves.
+102016,Caléndula,"Glicerina, LESS, Cocoamida, Aceite de coco, Caléndula, TEA",Jabón sólido,Piel sensible,AL,"Aporta sensación de calma y confort tras el baño, ideal para rutinas suaves.
 Base de glicerina: limpieza gentil, enjuague fácil, sin residuo pegajoso.
 Espuma ligera pensada para uso diario y para piel que se irrita con facilidad.
 Perfil neutro y amable; opción cuando se buscan aromas discretos o nulos.
 Deja la piel con tacto suave y menos sensación de tirantez post-ducha.",Precaución en personas alérgicas a Asteraceae. Haz prueba de parche en piel muy reactiva.,100 gr,45,450,43,430,39,390,102016.webp,1
-De línea,102142,Caléndula y Árnica,"Glicerina, LESS, Cocoamida, Acite de coco, Caléndula y Árnica TEA",Jabón sólido,Jabón sólido,S,"Aroma herbal suave que acompaña una rutina de baño tranquila y reconfortante.
+102142,Caléndula y Árnica,"Glicerina, LESS, Cocoamida, Acite de coco, Caléndula y Árnica TEA",Jabón sólido,Jabón sólido,S,"Aroma herbal suave que acompaña una rutina de baño tranquila y reconfortante.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Mezcla botánica tradicionalmente asociada con el cuidado delicado de la piel, que ayuda a que se sienta más calmada y confortable después del lavado.
 Espuma ligera que permite limpiar sin fricción excesiva, ideal para rutinas de cuidado suave.
 Deja una sensación de suavidad y bienestar en la piel después del baño.
 Ideal para quienes buscan una experiencia de limpieza gentil con aroma herbal natural.",Contiene extractos botánicos que pueden provocar reacción en personas sensibles a plantas de la familia Asteraceae (como árnica o caléndula). Haz prueba de parche antes de usar. Suspende su uso si aparece irritación.,100 gr,40,400,38,380,34,340,102142.webp,1
-De línea,102017,Canela,"Glicerina, LESS, Cocoamida, Aceite de coco, Canela, Base de canela, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma cálido y especiado que da sensación acogedora tipo “baño de invierno”.
+102017,Canela,"Glicerina, LESS, Cocoamida, Aceite de coco, Canela, Base de canela, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma cálido y especiado que da sensación acogedora tipo “baño de invierno”.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Perfil estimulante que anima la rutina matutina sin volverse empalagoso.
 Espuma cremosa que deja tacto más confortable tras el secado.
 Combina bien con climas fríos o noches donde buscas una fragancia envolvente.","Puede irritar piel reactiva o zonas sensibles. Evita rostro/ojos y mucosas. Haz prueba de parche; si irrita, suspende. No recomendado para niños pequeños.",100 gr,45,450,43,430,39,390,102017.webp,1
-De línea,102018,Carbón activado,"Glicerina, LESS, Cocoamida, Aceite de coco, Carbón activado, Extracto de romero, TEA",Jabón sólido,Astringente,NS+AL,"Limpieza profunda con sensación purificante; ayuda a que la piel se sienta menos grasa al terminar.
+102018,Carbón activado,"Glicerina, LESS, Cocoamida, Aceite de coco, Carbón activado, Extracto de romero, TEA",Jabón sólido,Astringente,NS+AL,"Limpieza profunda con sensación purificante; ayuda a que la piel se sienta menos grasa al terminar.
 Con uso constante, da una apariencia más mate y uniforme (sin prometer milagros).
 Base de glicerina: enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal en rutinas diurnas para piel mixta/grasa.
 Buen “reset” después de actividades o calor excesivo.","Puede resecar en piel seca o muy reactiva. Evita el contorno de ojos y zonas irritadas. Si sientes tirantez, reduce frecuencia (día por medio).",100 gr,45,450,43,430,39,390,102018.webp,1
-De línea,102019,CBD,"Glicerina, LESS, Cocoamida, Aceite de coco, CBD al 2.0%, TEA, aceites y extractos esenciales.",Jabón sólido,Aromáticos,NS+AL,"Limpieza suave con base de glicerina; enjuague fácil, sin sensación pegajosa.
+102019,CBD,"Glicerina, LESS, Cocoamida, Aceite de coco, CBD al 2.0%, TEA, aceites y extractos esenciales.",Jabón sólido,Aromáticos,NS+AL,"Limpieza suave con base de glicerina; enjuague fácil, sin sensación pegajosa.
 Perfil confort: sensación agradable post-ducha, ideal para rutina nocturna.
 Si usas aceites portadores (p. ej., semilla de cáñamo) aporta toque emoliente y deja tacto más flexible.
 Espuma ligera/cremosa que no satura, pensada para uso cotidiano del cuerpo.","No recomendado para piel muy reactiva. Evita el contorno de ojos. Haz prueba de parche; si irrita, suspende.",100 gr,76,760,73,730,65,650,102019.webp,1
-De línea,102078,Cempasúchil,"Glicerina, LESS, Cocoamida, Aceite de coco, Cempasúchil, TEA",Jabón sólido,Astringente,NS+AL,"Aroma floral–herbal inspirado en el cempasúchil que deja una sensación fresca al enjuagar.
+102078,Cempasúchil,"Glicerina, LESS, Cocoamida, Aceite de coco, Cempasúchil, TEA",Jabón sólido,Astringente,NS+AL,"Aroma floral–herbal inspirado en el cempasúchil que deja una sensación fresca al enjuagar.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que aporta confort en la ducha.
 Perfil vivo y festivo ideal para temporadas especiales o quien disfruta notas botánicas.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102078.webp,1
-De línea,102020,Chocolate,"Glicerina, LESS, Cocoamida, Aceite de coco, Cocoa, Base de chocolate, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma gourmand cálido tipo cacao que vuelve el baño reconfortante.
+102020,Chocolate,"Glicerina, LESS, Cocoamida, Aceite de coco, Cocoa, Base de chocolate, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma gourmand cálido tipo cacao que vuelve el baño reconfortante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Deja tacto más flexible; buena opción para piel normal a seca.
 Espuma cremosa ideal para rutina nocturna o climas fríos.
 Perfil sensorial envolvente sin llegar a empalagar (si dosificas bien la fragancia).","Evita en piel muy reactiva y el contorno de ojos, usar máx. 2–3 veces/semana.",100 gr,45,450,43,430,39,390,102020.webp,1
-De línea,102021,Cítricos,"Glicerina, LESS, Cocoamida, Aceite de coco, Naranja, Toronja, Limón y Mandarina",Jabón sólido,Astringente,NS+AL,"Aroma brillante y fresco (limón/naranja/toronja) que activa la rutina matutina.
+102021,Cítricos,"Glicerina, LESS, Cocoamida, Aceite de coco, Naranja, Toronja, Limón y Mandarina",Jabón sólido,Astringente,NS+AL,"Aroma brillante y fresco (limón/naranja/toronja) que activa la rutina matutina.
 Astringencia ligera: deja sensación menos brillante después del lavado.
 Base de glicerina: limpieza suave, enjuague fácil, sin sensación pegajosa.
 Espuma ligera pensada para uso diurno en piel normal/mixta.
 Perfil refrescante ideal en climas cálidos o después de actividad.",No recomendado para piel muy reactiva. Evita contorno de ojos y haz prueba de parche.,100 gr,45,450,43,430,39,390,102021.webp,1
-De línea,102022,Coco,"Glicerina, LESS, Cocoamida, Aceite de coco, Base de coco, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
+102022,Coco,"Glicerina, LESS, Cocoamida, Aceite de coco, Base de coco, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Sensación emoliente que deja el tacto más flexible tras el secado.
 Espuma cremosa, ideal para rutina nocturna o climas secos.
 Perfil sensorial cálido que acompaña sin volverse invasivo.",No recomendado para piel muy reactiva. Evita contorno de ojos y haz prueba de parche.,100 gr,45,450,43,430,39,390,102022.webp,1
-De línea,102023,Concha nacar,"Glicerina, LESS, Cocoamida, Aceite de coco, Crema de concha nacar, Alantoina, TEA",Jabón sólido,Exfoliante,NS+AL,"Exfoliación mineral suave (polvo finamente molido) que ayuda a pulir textura y dejar tacto más liso.
+102023,Concha nacar,"Glicerina, LESS, Cocoamida, Aceite de coco, Crema de concha nacar, Alantoina, TEA",Jabón sólido,Exfoliante,NS+AL,"Exfoliación mineral suave (polvo finamente molido) que ayuda a pulir textura y dejar tacto más liso.
 Con uso regular, la piel luce más uniforme y luminosa (sin prometer blanqueamientos milagrosos).
 Base de glicerina: limpieza amable con enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para cuerpo y zonas ásperas (codos, rodillas).
 Buen complemento 2–3 veces por semana en rutinas que buscan suavidad al tacto.","Evita rostro/ojos, piel irritada o muy reactiva. Úsalo máx. 2–3 veces/semana para no sobre-exfoliar y haz prueba de parche.",100 gr,45,450,43,430,39,390,102023.webp,1
-De línea,102143,Cúrcuma y Miel,"Glicerina, LESS, Cocoamida, Acite de coco, Cúrcuma y Miel TEA",Jabón sólido,Jabón sólido,S,"Aroma cálido y ligeramente especiado con notas dulces que hacen más agradable la rutina de baño.
+102143,Cúrcuma y Miel,"Glicerina, LESS, Cocoamida, Acite de coco, Cúrcuma y Miel TEA",Jabón sólido,Jabón sólido,S,"Aroma cálido y ligeramente especiado con notas dulces que hacen más agradable la rutina de baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Combinación inspirada en ingredientes tradicionales de cuidado personal que ayudan a que la piel se sienta limpia, suave y con sensación de equilibrio después del lavado.
 Espuma ligera que permite una limpieza delicada mientras deja la piel con sensación de suavidad y confort.
 Ideal para rutinas de baño que buscan una sensación cálida y reconfortante en la piel.","Aunque es un jabón suave, personas con alergia a la miel o sensibilidad a especias deben usar con precaución. La cúrcuma puede dejar ligera coloración temporal en telas claras. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.",100 gr,40,400,38,380,34,340,102143.webp,1
-De línea,102051,Durazno,"Glicerina, LESS, Cocoamida, Aceite de coco, Durazno, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma frutal jugoso que vuelve la ducha fresca y alegre.
+102051,Durazno,"Glicerina, LESS, Cocoamida, Aceite de coco, Durazno, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma frutal jugoso que vuelve la ducha fresca y alegre.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que deja tacto cómodo al secar.
 Perfil dulce y suave que acompaña sin empalagar.
 Ideal para rutina diurna o climas cálidos.","Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102051.webp,1
-De línea,102053,"Gengibre con limón, cúrcuma y canela","Glicerina, LESS, Cocoamida, Aceite de coco, Gengivre, limón, cúrcuma, canela, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma cítrico–especiado que activa la rutina y deja sensación fresca.
+102053,"Gengibre con limón, cúrcuma y canela","Glicerina, LESS, Cocoamida, Aceite de coco, Gengivre, limón, cúrcuma, canela, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma cítrico–especiado que activa la rutina y deja sensación fresca.
 Astringencia ligera: piel con menos brillo tras el lavado.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que acompaña sin empalagar.
 Perfil sensorial energizante ideal para la mañana.","Puede contener alérgenos aromáticos y compuestos fotosensibilizantes. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102053.webp,1
-De línea,102054,"Gengibre con naranja, cúrcuma y canela","Glicerina, LESS, Cocoamida, Aceite de coco, Gengivre, naranja, cúrcuma, canela, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma cítrico–especiado (naranja + gengibre) que activa y deja sensación fresca.
+102054,"Gengibre con naranja, cúrcuma y canela","Glicerina, LESS, Cocoamida, Aceite de coco, Gengivre, naranja, cúrcuma, canela, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma cítrico–especiado (naranja + gengibre) que activa y deja sensación fresca.
 Astringencia ligera: piel con menos brillo tras el lavado.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que acompaña sin empalagar.
 Perfil sensorial energizante ideal para la mañana o climas cálidos.","Puede contener alérgenos aromáticos y compuestos fotosensibilizantes. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102054.webp,1
-De línea,102025,Glicerina,"Glicerina, LESS, Cocoamida, Aceite de coco, TEA",Jabón sólido,Piel sensible,AL,"Limpieza amable con base de glicerina, pensada para uso cotidiano.
+102025,Glicerina,"Glicerina, LESS, Cocoamida, Aceite de coco, TEA",Jabón sólido,Piel sensible,AL,"Limpieza amable con base de glicerina, pensada para uso cotidiano.
 Enjuague rápido, sin sensación pegajosa.
 Espuma ligera que no satura la piel.
 Deja tacto cómodo y apariencia limpia.
 Opción neutra cuando no quieres botánicos intensos.",,100 gr,45,450,43,430,39,390,102025.webp,1
-De línea,102024,Glicerina con Leche,"Glicerina, LESS, Cocoamida, Aceite de coco, Aceite de oliva, Leche de vaca, TEA",Jabón sólido,Aromáticos,NS+AL,"Sensación cremosa y confortable durante la ducha.
+102024,Glicerina con Leche,"Glicerina, LESS, Cocoamida, Aceite de coco, Aceite de oliva, Leche de vaca, TEA",Jabón sólido,Aromáticos,NS+AL,"Sensación cremosa y confortable durante la ducha.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Deja el tacto más flexible tras el secado sin fricción.
 Espuma suave/cremosa, ideal para rutina nocturna o climas secos.
 Perfil sensorial cálido, discreto y reconfortante.",Contiene derivados lácteos. Evitar en personas con alergia a la leche y en piel muy reactiva y haz prueba de parche.,100 gr,45,450,43,430,39,390,102024.webp,1
-De línea,102026,Lavanda,"Glicerina, LESS, Cocoamida, Aceite de coco, Lavanda, Base de Lavanda, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma floral-relajante tipo spa, ideal para rutina nocturna.
+102026,Lavanda,"Glicerina, LESS, Cocoamida, Aceite de coco, Lavanda, Base de Lavanda, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma floral-relajante tipo spa, ideal para rutina nocturna.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que deja tacto cómodo tras el secado.
 Acompaña una sensación de desconexión al final del día (sin claims terapéuticos).
 Perfil aromático suave si dosificas bien la fragancia.",Evitar en piel muy reactiva y contorno de ojos. Prueba de parche.,100 gr,45,450,43,430,39,390,102026.webp,1
-De línea,102027,Limón,"Glicerina, LESS, Cocoamida, Aceite de coco, Base de limón, TEA",Jabón sólido,Astringente,NS+AL,"Aroma cítrico brillante que deja sensación fresca y limpia al enjuagar.
+102027,Limón,"Glicerina, LESS, Cocoamida, Aceite de coco, Base de limón, TEA",Jabón sólido,Astringente,NS+AL,"Aroma cítrico brillante que deja sensación fresca y limpia al enjuagar.
 Astringencia ligera: ayuda a que la piel se sienta menos brillante después del baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para rutina diurna en piel normal/mixta.
 Perfil aromático que activa la rutina sin volverse invasivo (si dosificas bien la fragancia).",No recomendado para piel muy reactiva. Evita el contorno de ojos. Haz prueba de parche.,100 gr,45,450,43,430,39,390,102027.webp,1
-De línea,102028,Manzana y canela,"Glicerina, LESS, Cocoamida, Aceite de coco, Base de manzana y canela, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma cálido y especiado (manzana horneada + canela) que vuelve la ducha reconfortante.
+102028,Manzana y canela,"Glicerina, LESS, Cocoamida, Aceite de coco, Base de manzana y canela, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma cálido y especiado (manzana horneada + canela) que vuelve la ducha reconfortante.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma cremosa con tacto confortable tras el secado.
 Ideal para rutina nocturna o climas fríos por su perfil envolvente.
 Opción sensorial para quien busca una fragancia gourmand sin empalagar.","Puede irritar piel muy reactiva. Evita rostro/ojos y mucosas. Haz prueba de parche; si irrita, suspende. Usar máx. 2–3 veces/semana.",100 gr,45,450,43,430,39,390,102028.webp,1
-De línea,102029,Manzanilla,"Glicerina, LESS, Cocoamida, Aceite de coco, Chamomilla, Base de manzanilla, TEA",Jabón sólido,Piel sensible,AL,"Sensación de calma y confort tras el baño, pensada para rutinas suaves.
+102029,Manzanilla,"Glicerina, LESS, Cocoamida, Aceite de coco, Chamomilla, Base de manzanilla, TEA",Jabón sólido,Piel sensible,AL,"Sensación de calma y confort tras el baño, pensada para rutinas suaves.
 Base de glicerina: limpieza gentil, enjuague fácil, sin sensación pegajosa.
 Espuma ligera para uso diario en piel que se irrita con facilidad.
 Ayuda a disminuir la sensación de tirantez post-ducha.
 Perfil neutro y amable (ideal sin aromas intensos).",Precaución en personas con alergia a Asteraceae. Prueba de parche en piel muy reactiva.,100 gr,45,450,43,430,39,390,102029.webp,1
-De línea,102030,Mascotas,"Glicerina, LESS, Cocoamida, Acite de coco, Mascotas TEA",Jabón sólido,Jabón sólido,NS,"Aroma suave a vainilla que hace más agradable el baño de la mascota sin resultar invasivo para su olfato.
+102030,Mascotas,"Glicerina, LESS, Cocoamida, Acite de coco, Mascotas TEA",Jabón sólido,Jabón sólido,NS,"Aroma suave a vainilla que hace más agradable el baño de la mascota sin resultar invasivo para su olfato.
 Base de glicerina: limpieza amable y enjuague fácil que ayuda a mantener el pelaje limpio sin dejar sensación pesada.
 El aceite de coco aporta suavidad al pelaje y ayuda a que se sienta más manejable después del baño.
 La cocoamida contribuye a generar espuma estable que facilita la distribución del jabón durante el lavado.
 El LESS (tensoactivo limpiador) ayuda a remover suciedad, grasa y residuos del pelaje sin necesidad de frotar excesivamente.
 Espuma ligera que permite un baño rápido y enjuague sencillo, ideal para rutinas de higiene regular en mascotas.","Uso exclusivo para mascotas. No utilizar en humanos. Evitar contacto con ojos, nariz y mucosas del animal. Si se observa irritación o reacción en la piel, suspender su uso y enjuagar con abundante agua. Realizar una prueba en una pequeña zona del pelaje antes del primer uso.",100 ml,45,450,43,430,39,390,102030.webp,1
-De línea,102031,Menta,"Glicerina, LESS, Cocoamida, Aceite de coco, Menta, Base menta, TEA",Jabón sólido,Astringente,NS+AL,"Sensación fresca y vigorizante gracias al perfil mentolado; ideal para baño matutino.
+102031,Menta,"Glicerina, LESS, Cocoamida, Aceite de coco, Menta, Base menta, TEA",Jabón sólido,Astringente,NS+AL,"Sensación fresca y vigorizante gracias al perfil mentolado; ideal para baño matutino.
 Astringencia ligera: deja la piel con sensación menos brillante tras el lavado.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera que no satura; buena para climas cálidos o después de actividad.
 Aroma herbal-menta que “despeja” sin volverse invasivo","Evita rostro/contorno de ojos y mucosas (puede arder). No recomendado para piel muy reactiva. Haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102031.webp,1
-De línea,102032,Miel,"Glicerina, LESS, Cocoamida, Aceite de coco, Miel, Base miel, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma dulce y reconfortante que hace la ducha más agradable.
+102032,Miel,"Glicerina, LESS, Cocoamida, Aceite de coco, Miel, Base miel, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma dulce y reconfortante que hace la ducha más agradable.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Deja tacto más flexible y sensación de confort tras el secado.
 Espuma cremosa, ideal para rutina nocturna o climas secos.
 Perfil sensorial cálido que acompaña sin volverse invasivo.",Evitar en personas con alergia a productos de abeja y en piel muy reactiva. Se recomienda prueba de parche. No usar en contorno de ojos.,100 gr,45,450,43,430,39,390,102032.webp,1
-De línea,102055,Miel con canela,"Glicerina, LESS, Cocoamida, Aceite de coco, Miel, Base miel, Canela, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma dulce-especiado que vuelve la ducha reconfortante.
+102055,Miel con canela,"Glicerina, LESS, Cocoamida, Aceite de coco, Miel, Base miel, Canela, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma dulce-especiado que vuelve la ducha reconfortante.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma cremosa que deja tacto cómodo tras el secado.
 Perfil cálido ideal para rutina nocturna o climas frescos.
 Combina nota miel con toque canela sin empalagar","Contiene derivados de abeja y fragancia especiada; puede incluir alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102055.webp,1
-De línea,102056,Miel con canela y pétalos de rosa,"Glicerina, LESS, Cocoamida, Aceite de coco, Miel, Base miel, Canela, Pétalos de rosa, TEA",Jabón sólido,Exfoliante,NS+AL,"Aroma dulce–floral con toque especiado que vuelve la ducha reconfortante y elegante.
+102056,Miel con canela y pétalos de rosa,"Glicerina, LESS, Cocoamida, Aceite de coco, Miel, Base miel, Canela, Pétalos de rosa, TEA",Jabón sólido,Exfoliante,NS+AL,"Aroma dulce–floral con toque especiado que vuelve la ducha reconfortante y elegante.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma cremosa que deja tacto cómodo al secar.
 Los pétalos de rosa aportan un detalle sensorial y visual tipo spa.
 Ideal para rutina nocturna o climas frescos.","Puede incluir alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, realiza prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102056.webp,1
-De línea,102057,Neem,"Glicerina, LESS, Cocoamida, Aceite de coco, Neem, TEA",Jabón sólido,Astringente,NS+AL,"Sensación purificante y de limpieza profunda al enjuagar.
+102057,Neem,"Glicerina, LESS, Cocoamida, Aceite de coco, Neem, TEA",Jabón sólido,Astringente,NS+AL,"Sensación purificante y de limpieza profunda al enjuagar.
 Ayuda a que la piel se sienta menos brillante y con textura más uniforme con uso constante.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera, pensada para rutinas diurnas en piel mixta/grasa.
 Perfil aromático terroso/herbal característico del neem","Puede sensibilizar piel muy reactiva. Evita el contorno de ojos. Si tu piel es muy sensible, realiza prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102057.webp,1
-De línea,102058,Neem con caléndula,"Glicerina, LESS, Cocoamida, Aceite de coco, Neem, Caléndula TEA",Jabón sólido,Aromáticos,NS+AL,"Sensación purificante y de limpieza profunda al enjuagar (neem).
+102058,Neem con caléndula,"Glicerina, LESS, Cocoamida, Aceite de coco, Neem, Caléndula TEA",Jabón sólido,Aromáticos,NS+AL,"Sensación purificante y de limpieza profunda al enjuagar (neem).
 Piel con menos brillo y apariencia más uniforme con uso constante.
 Toque de confort gracias a la caléndula, para una rutina más amable.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Espuma ligera pensada para piel mixta/grasa en rutina diurna.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102058.webp,1
-De línea,102144,Nopal,"Glicerina, LESS, Cocoamida, Acite de coco, Nopal TEA",Jabón sólido,Jabón sólido,S,"Aroma vegetal suave y fresco que acompaña una rutina de baño limpia y natural.
+102144,Nopal,"Glicerina, LESS, Cocoamida, Acite de coco, Nopal TEA",Jabón sólido,Jabón sólido,S,"Aroma vegetal suave y fresco que acompaña una rutina de baño limpia y natural.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Inspirado en ingredientes tradicionalmente asociados con el cuidado suave de la piel, que ayudan a que se sienta más fresca y confortable después del lavado.
 Espuma ligera que permite una limpieza delicada sin necesidad de fricción excesiva.
 Ideal para rutinas de higiene diaria que buscan mantener la piel con sensación de suavidad y equilibrio.
 Deja un tacto flexible y fresco cuando la piel se seca.","Aunque es un jabón suave, personas con sensibilidad a extractos vegetales deben usar con precaución. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.",100 gr,40,400,38,380,34,340,102144.webp,1
-De línea,102033,Romero,"Glicerina, LESS, Cocoamida, Aceite de coco, Romero, TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal fresco que deja sensación limpia y despejada tras el enjuague.
+102033,Romero,"Glicerina, LESS, Cocoamida, Aceite de coco, Romero, TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal fresco que deja sensación limpia y despejada tras el enjuague.
 Astringencia ligera: ayuda a que la piel se sienta menos brillante después del baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para rutina diurna o post-actividad.
 Perfil aromático que activa sin volverse invasivo ","Puede contener alérgenos aromáticos; no recomendado para piel muy reactiva. Evita contorno de ojos y mucosas. Prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102033.webp,1
-De línea,102034,Romero y sándalo,"Glicerina, LESS, Cocoamida, Aceite de coco, Romero, Acéite de sándalo, TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal–amaderado: romero fresco + sándalo cálido/terroso para una ducha equilibrante.
+102034,Romero y sándalo,"Glicerina, LESS, Cocoamida, Aceite de coco, Romero, Acéite de sándalo, TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal–amaderado: romero fresco + sándalo cálido/terroso para una ducha equilibrante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Astringencia ligera del romero: piel se siente menos brillante tras el lavado.
 Espuma ligera/cremosa que no satura; funciona bien de día (despeje) o de noche (confort).
 Perfil aromático elegante que acompaña sin volverse invasivo.","Puede contener alérgenos aromáticos. No recomendado para piel muy reactiva. Evita contorno de ojos. Haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102034.webp,1
-De línea,102035,"Romero, sándalo y castaña de indias","Glicerina, LESS, Cocoamida, Aceite de coco, Romero, Aceite de Sándalo, Aceite de Castaña de indias, TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal–amaderado con matiz nuez: romero fresco, sándalo cálido y castaña de Indias para una ducha equilibrante y con carácter.
+102035,"Romero, sándalo y castaña de indias","Glicerina, LESS, Cocoamida, Aceite de coco, Romero, Aceite de Sándalo, Aceite de Castaña de indias, TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal–amaderado con matiz nuez: romero fresco, sándalo cálido y castaña de Indias para una ducha equilibrante y con carácter.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Astringencia ligera: la piel se siente más fresca y con menos brillo tras el lavado.
 Espuma ligera/cremosa que no satura; funciona bien de día (despeje) o de noche (confort).
 Perfil sensorial elegante y reconfortante, sin volverse invasivo","No recomendado para piel muy reactiva. Evitar rostro/contorno de ojos y piel lesionada. Prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102035.webp,1
-De línea,102036,Rosa de Castilla,"Glicerina, LESS, Cocoamida, Aceite de coco, Rosa de castilla, Base de rosas, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma floral elegante que convierte la ducha en un momento relajante.
+102036,Rosa de Castilla,"Glicerina, LESS, Cocoamida, Aceite de coco, Rosa de castilla, Base de rosas, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma floral elegante que convierte la ducha en un momento relajante.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Deja tacto cómodo y una sensación de piel fresca al secar.
 Espuma ligera/cremosa ideal para una rutina nocturna tipo spa.
 Perfil aromático sofisticado que acompaña sin invadir.","Fragancia floral; puede contener alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102036.webp,1
-De línea,102037,Ruda,"Glicerina, LESS, Cocoamida, Aceite de coco, Ruda, TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal intenso que deja una sensación de limpieza y despeje.
+102037,Ruda,"Glicerina, LESS, Cocoamida, Aceite de coco, Ruda, TEA",Jabón sólido,Astringente,NS+AL,"Aroma herbal intenso que deja una sensación de limpieza y despeje.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Espuma ligera ideal para una rutina diurna.
 Perfil aromático verde que acompaña sin volverse empalagoso.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102037.webp,1
-De línea,102146,Ruda Albahaca y Sándalo,"Glicerina, LESS, Cocoamida, Acite de coco, Ruda Albahaca y Sándalo TEA",Jabón sólido,Jabón sólido,NS+AL,"Aroma herbal profundo con notas verdes y un fondo cálido amaderado que crea una experiencia de baño envolvente y reconfortante.
+102146,Ruda Albahaca y Sándalo,"Glicerina, LESS, Cocoamida, Acite de coco, Ruda Albahaca y Sándalo TEA",Jabón sólido,Jabón sólido,NS+AL,"Aroma herbal profundo con notas verdes y un fondo cálido amaderado que crea una experiencia de baño envolvente y reconfortante.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Mezcla botánica inspirada en tradiciones de herbolaria que acompaña momentos de renovación y bienestar personal.
 El equilibrio entre notas herbales frescas y el carácter cálido del sándalo genera una sensación de calma y claridad durante la rutina de baño.
 Espuma ligera que facilita la limpieza diaria mientras deja una sensación fresca y un aroma herbal duradero en la piel.
 Ideal para quienes disfrutan aromas naturales intensos con un toque cálido y relajante.",Contiene extractos herbales y compuestos aromáticos naturales que pueden provocar irritación en piel sensible o muy reactiva. No recomendado para piel extremadamente sensible. Haz prueba de parche antes de usar. Suspende su uso si aparece irritación.,100 ml,40,400,38,380,34,340,102146.webp,1
-De línea,102145,Ruda y Albahaca,"Glicerina, LESS, Cocoamida, Acite de coco, Ruda y Albahaca TEA",Jabón sólido,Jabón sólido,NS+AL,"Aroma herbal profundo con notas verdes y ligeramente especiadas que aporta una sensación de limpieza fresca y natural durante el baño.
+102145,Ruda y Albahaca,"Glicerina, LESS, Cocoamida, Acite de coco, Ruda y Albahaca TEA",Jabón sólido,Jabón sólido,NS+AL,"Aroma herbal profundo con notas verdes y ligeramente especiadas que aporta una sensación de limpieza fresca y natural durante el baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Mezcla botánica inspirada en tradiciones de herbolaria que acompaña momentos de renovación y cuidado personal.
 Su aroma herbal envolvente crea una experiencia de baño que invita a relajarse y empezar el día con sensación de frescura.
 Espuma ligera que facilita la limpieza diaria mientras deja una sensación herbal duradera en la piel.
 Ideal para quienes disfrutan aromas naturales intensos y una experiencia de baño revitalizante.",Contiene extractos herbales y compuestos aromáticos naturales que pueden provocar irritación en piel sensible o muy reactiva. No recomendado para piel extremadamente sensible. Haz prueba de parche antes de usar. Suspende su uso si aparece irritación.,100 gr,40,400,38,380,34,340,102145.webp,1
-De línea,102038,Sándalo,"Glicerina, LESS, Cocoamida, Aceite de coco, Aceite de Sándalo, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma amaderado y cálido que vuelve la ducha reconfortante.
+102038,Sándalo,"Glicerina, LESS, Cocoamida, Aceite de coco, Aceite de Sándalo, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma amaderado y cálido que vuelve la ducha reconfortante.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Espuma cremosa/ligera que deja tacto cómodo al secar.
 Perfil elegante y sereno, ideal para rutina nocturna.
 Acompaña una sensación de bienestar sin invadir el ambiente.","Fragancia amaderada; puede contener alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102038.webp,1
-De línea,102039,Tepezcohuite,"Glicerina, LESS, Cocoamida, Aceite de coco, Mimosa tenuiflora, TEA",Jabón sólido,Astringente,NS+AL,"Sensación purificante y de limpieza profunda al enjuagar.
+102039,Tepezcohuite,"Glicerina, LESS, Cocoamida, Aceite de coco, Mimosa tenuiflora, TEA",Jabón sólido,Astringente,NS+AL,"Sensación purificante y de limpieza profunda al enjuagar.
 Ayuda a que la piel se sienta más mate y con textura más uniforme con el uso constante.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para piel mixta/grasa en rutina diurna.
 Si lleva partículas, aporta exfoliación suave para zonas ásperas (codos, rodillas).",Evita contorno de ojos y piel irritada. Usar 2–3 veces por semana.,100 gr,45,450,43,430,39,390,102039.webp,1
-De línea,102040,Toronja y romero,"Glicerina, LESS, Cocoamida, Aceite de coco, Extracto de toronja, Romero, TEA",Jabón sólido,Astringente,NS+AL,"Aroma cítrico–herbal que deja una sensación fresca y despejada.
+102040,Toronja y romero,"Glicerina, LESS, Cocoamida, Aceite de coco, Extracto de toronja, Romero, TEA",Jabón sólido,Astringente,NS+AL,"Aroma cítrico–herbal que deja una sensación fresca y despejada.
 Astringencia ligera: la piel se siente con menos brillo tras el lavado.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para rutina diurna o después de actividad.
 Perfil aromático activo que anima la ducha sin volverse invasivo.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102040.webp,1
-De línea,102041,Vainilla,"Glicerina, LESS, Cocoamida, Aceite de coco, Extracto natural de vainilla, Base vainilla, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma gourmand suave y reconfortante que envuelve sin empalagar.
+102041,Vainilla,"Glicerina, LESS, Cocoamida, Aceite de coco, Extracto natural de vainilla, Base vainilla, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma gourmand suave y reconfortante que envuelve sin empalagar.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma cremosa que deja tacto cómodo tras el secado.
 Ideal para rutina nocturna o climas secos por su perfil cálido.
 Opción sensorial relajante para quien busca un baño “tipo postre”.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102041.webp,1
-De línea,102042,Vino tinto y rosas,"Glicerina, LESS, Cocoamida, Aceite de coco, Vino tinto, Pétalos de rosa, Base rosas, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma floral–frutal elegante: rosas suaves con un toque vino tinto para una ducha sofisticada.
+102042,Vino tinto y rosas,"Glicerina, LESS, Cocoamida, Aceite de coco, Vino tinto, Pétalos de rosa, Base rosas, TEA",Jabón sólido,Aromáticos,NS+AL,"Aroma floral–frutal elegante: rosas suaves con un toque vino tinto para una ducha sofisticada.
 Deja sensación fresca y una piel con menos brillo al terminar.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que aporta confort al secar.
 Perfil sensorial romántico que acompaña sin invadir el ambiente.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, realiza prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102042.webp,1
-De línea,102043,Vitamina E,"Glicerina, LESS, Cocoamida, Aceite de coco, Vitaminta e, TEA.",Jabón sólido,Aromáticos,AL,"Limpieza suave con base de glicerina y enjuague fácil.
+102043,Vitamina E,"Glicerina, LESS, Cocoamida, Aceite de coco, Vitaminta e, TEA.",Jabón sólido,Aromáticos,AL,"Limpieza suave con base de glicerina y enjuague fácil.
 Con vitamina E (antioxidante) que acompaña una sensación de suavidad tras el baño.
 Espuma ligera/cremosa que no satura la piel.
 Deja tacto cómodo y flexible al secar sin fricción.
 Opción neutra si vas con aroma discreto","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",100 gr,45,450,43,430,39,390,102043.webp,1
-De línea,103003,Almendras,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Albahaca, Aceites esenciales, Esencia, Pigmento.",Jabón líquido,Aromáticos,NS+AL,"Aroma suave y cálido tipo mazapán que acompaña sin invadir.
+103003,Almendras,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Albahaca, Aceites esenciales, Esencia, Pigmento.",Jabón líquido,Aromáticos,NS+AL,"Aroma suave y cálido tipo mazapán que acompaña sin invadir.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Aporta confort y sensación emoliente en piel normal a seca.
 Espuma cremosa que hace la rutina rápida y agradable.
 Ideal para baño nocturno por su perfil reconfortante.","Si tiene alergia a frutos secos o piel muy reactiva, mejor elija entre nuestros jabones ""Sencibles"" o pruebe otra fragancia de esta línea.",1000 ml,94,N/A,90,N/A,80,N/A,103003.webp,1
-De línea,103005,Aloe vera,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Alore vera, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Piel sensible,S,"Humectación inmediata: ayuda a retener agua y reduce la sensación de tirantez.
+103005,Aloe vera,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Alore vera, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Piel sensible,S,"Humectación inmediata: ayuda a retener agua y reduce la sensación de tirantez.
 Efecto calmante y refrescante tras ducha; acompaña pieles que se irritan fácil.
 Base de glicerina: limpieza suave, enjuague fácil, sin sensación pegajosa.
 Aporta confort en climas calurosos o después de exposición solar ligera.
 Espuma ligera pensada para uso cotidiano y pieles que buscan suavidad.",,1000 ml,94,N/A,90,N/A,80,N/A,103005.webp,1
-De línea,103009,Árnica,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Árnica, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma herbal intenso que acompaña rutinas post-día/post-entreno con sensación reconfortante.
+103009,Árnica,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Árnica, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma herbal intenso que acompaña rutinas post-día/post-entreno con sensación reconfortante.
 Base de glicerina: limpieza suave, enjuague fácil, sin sensación pegajosa.
 Aporta una sensación de frescura al finalizar el baño.
 Espuma ligera que no satura; ideal para uso en cuerpo.
 Deja la piel con tacto limpio y aroma verde tipo spa.","Puede contener alérgenos aromáticos. No recomendado para piel muy reactiva. Evita rostro/contorno de ojos y piel lesionada o irritada. Haz prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,103009.webp,1
-De línea,103059,Avena,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,S,"Sensación de calma y suavidad para piel que se irrita fácil.
+103059,Avena,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,S,"Sensación de calma y suavidad para piel que se irrita fácil.
 Base de glicerina: limpieza gentil y enjuague fácil, sin sensación pegajosa.
 Espuma ligera pensada para uso diario.
 Ayuda a reducir la sensación de tirantez post-ducha.
 Perfil neutro",Puede contener alérgenos aromáticos.,1000 ml,94,N/A,90,N/A,80,N/A,103059.webp,1
-De línea,103012,Avena Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena y Miel",Jabón líquido,Jabón líquido,S,"Aroma suave y ligeramente dulce que hace más agradable la rutina de lavado de manos.
+103012,Avena Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena y Miel",Jabón líquido,Jabón líquido,S,"Aroma suave y ligeramente dulce que hace más agradable la rutina de lavado de manos.
 Base limpiadora con glicerina: ayuda a remover suciedad cotidiana con enjuague fácil y sensación ligera en la piel.
 Inspirado en ingredientes tradicionalmente asociados con el cuidado suave de la piel, ayudando a mantener las manos con sensación de confort después del lavado.
 Espuma ligera que se distribuye fácilmente y permite una limpieza práctica durante el día.
 Ideal para lavado frecuente de manos cuando se busca una sensación de suavidad y cuidado en la piel.",Personas con alergia a productos derivados de la miel deben evitar su uso. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,103012.webp,1
-De línea,103152,Canela Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Canela y Miel",Jabón líquido,Jabón líquido,NS+AL,"Aroma cálido y dulce con notas especiadas que hace más agradable la rutina de lavado de manos.
+103152,Canela Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Canela y Miel",Jabón líquido,Jabón líquido,NS+AL,"Aroma cálido y dulce con notas especiadas que hace más agradable la rutina de lavado de manos.
 Base limpiadora con glicerina: ayuda a remover suciedad cotidiana con enjuague fácil y sensación ligera en la piel.
 Las notas dulces y especiadas crean una experiencia de lavado reconfortante durante el día.
 Espuma ligera que se distribuye fácilmente y permite una limpieza práctica para uso frecuente.
 Ideal para quienes disfrutan aromas cálidos que dejan una sensación agradable después del lavado de manos.",La canela puede provocar irritación en piel sensible o reactiva. Personas con alergia a productos derivados de la miel deben evitar su uso. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,103152.webp,1
-De línea,103020,Chocolate,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Cocoa, Base de chocolate, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma gourmand cálido tipo cacao que vuelve el baño reconfortante.
+103020,Chocolate,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Cocoa, Base de chocolate, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma gourmand cálido tipo cacao que vuelve el baño reconfortante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Deja tacto más flexible; buena opción para piel normal a seca.
 Espuma cremosa ideal para rutina nocturna o climas fríos.
 Perfil sensorial envolvente sin llegar a empalagar (si dosificas bien la fragancia).","Evita en piel muy reactiva y el contorno de ojos, usar máx. 2–3 veces/semana.",1000 ml,94,N/A,90,N/A,80,N/A,103020.webp,1
-De línea,103022,Coco,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
+103022,Coco,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Sensación emoliente que deja el tacto más flexible tras el secado.
 Espuma cremosa, ideal para rutina nocturna o climas secos.
 Perfil sensorial cálido que acompaña sin volverse invasivo.",No recomendado para piel muy reactiva. Evita contorno de ojos y haz prueba de parche.,1000 ml,94,N/A,90,N/A,80,N/A,103022.webp,1
-De línea,103066,Coco con miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Miel, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma tropical y cálido con toque cremoso–dulce que hace la ducha reconfortante.
+103066,Coco con miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Miel, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma tropical y cálido con toque cremoso–dulce que hace la ducha reconfortante.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma cremosa que deja tacto cómodo al secar.
 Sensación emoliente ideal para climas secos o rutina nocturna.
 Perfil sensorial envolvente que acompaña sin empalagar","Contiene derivados de abeja y fragancia; puede incluir alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,103066.webp,1
-De línea,103069,Frutos rojos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Extracto de frutos rojos, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma frutal jugoso (berries) que hace la ducha alegre y fresca.
+103069,Frutos rojos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Extracto de frutos rojos, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma frutal jugoso (berries) que hace la ducha alegre y fresca.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que deja tacto cómodo al secar.
 Perfil dulce y vibrante que acompaña sin empalagar.
 Ideal para rutina diurna o climas cálidos.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,103069.webp,1
-De línea,103027,Limón,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de limón, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Astringente,NS+AL,"Aroma cítrico brillante que deja sensación fresca y limpia al enjuagar.
+103027,Limón,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de limón, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Astringente,NS+AL,"Aroma cítrico brillante que deja sensación fresca y limpia al enjuagar.
 Astringencia ligera: ayuda a que la piel se sienta menos brillante después del baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para rutina diurna en piel normal/mixta.
 Perfil aromático que activa la rutina sin volverse invasivo (si dosificas bien la fragancia).",No recomendado para piel muy reactiva. Evita el contorno de ojos. Haz prueba de parche.,1000 ml,94,N/A,90,N/A,80,N/A,103027.webp,1
-De línea,103029,Manzanilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Chamomilla, Base de manzanilla, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Piel sensible,AL,"Sensación de calma y confort tras el baño, pensada para rutinas suaves.
+103029,Manzanilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Chamomilla, Base de manzanilla, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Piel sensible,AL,"Sensación de calma y confort tras el baño, pensada para rutinas suaves.
 Base de glicerina: limpieza gentil, enjuague fácil, sin sensación pegajosa.
 Espuma ligera para uso diario en piel que se irrita con facilidad.
 Ayuda a disminuir la sensación de tirantez post-ducha.
 Perfil neutro y amable (ideal sin aromas intensos).",Precaución en personas con alergia a Asteraceae. Prueba de parche en piel muy reactiva.,1000 ml,94,N/A,90,N/A,80,N/A,103029.webp,1
-De línea,103032,Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Miel, Base miel, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma dulce y reconfortante que hace la ducha más agradable.
+103032,Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Miel, Base miel, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma dulce y reconfortante que hace la ducha más agradable.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Deja tacto más flexible y sensación de confort tras el secado.
 Espuma cremosa, ideal para rutina nocturna o climas secos.
 Perfil sensorial cálido que acompaña sin volverse invasivo.",Evitar en personas con alergia a productos de abeja y en piel muy reactiva. Se recomienda prueba de parche. No usar en contorno de ojos.,1000 ml,94,N/A,90,N/A,80,N/A,103032.webp,1
-De línea,103033,Romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Romero, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Astringente,NS+AL,"Aroma herbal fresco que deja sensación limpia y despejada tras el enjuague.
+103033,Romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Romero, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Astringente,NS+AL,"Aroma herbal fresco que deja sensación limpia y despejada tras el enjuague.
 Astringencia ligera: ayuda a que la piel se sienta menos brillante después del baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para rutina diurna o post-actividad.
 Perfil aromático que activa sin volverse invasivo ","Puede contener alérgenos aromáticos; no recomendado para piel muy reactiva. Evita contorno de ojos y mucosas. Prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,103033.webp,1
-De línea,103036,Rosa de Castilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Rosa de castilla, Base de rosas, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma floral elegante que convierte la ducha en un momento relajante.
+103036,Rosa de Castilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Rosa de castilla, Base de rosas, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma floral elegante que convierte la ducha en un momento relajante.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Deja tacto cómodo y una sensación de piel fresca al secar.
 Espuma ligera/cremosa ideal para una rutina nocturna tipo spa.
 Perfil aromático sofisticado que acompaña sin invadir.","Fragancia floral; puede contener alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,103036.webp,1
-De línea,103151,Té verde y Menta,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Té verde y Menta",Jabón líquido,Jabón líquido,NS+AL,"Aroma herbal fresco con notas mentoladas que hace más agradable la rutina de lavado de manos.
+103151,Té verde y Menta,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Té verde y Menta",Jabón líquido,Jabón líquido,NS+AL,"Aroma herbal fresco con notas mentoladas que hace más agradable la rutina de lavado de manos.
 Base limpiadora con glicerina que ayuda a retirar suciedad cotidiana con enjuague fácil.
 La combinación de té verde y menta aporta una sensación refrescante que acompaña la limpieza de la piel.
 Deja las manos con sensación ligera y fresca después del lavado.
 Ideal para quienes disfrutan aromas herbales revitalizantes durante el lavado frecuente de manos.",Los compuestos mentolados pueden provocar irritación en piel sensible o reactiva. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,103151.webp,1
-De línea,103041,Vainilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Extracto natural de vainilla, Base vainilla, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma gourmand suave y reconfortante que envuelve sin empalagar.
+103041,Vainilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Extracto natural de vainilla, Base vainilla, Aceites esenciales, Esencia, Pigmento",Jabón líquido,Aromáticos,NS+AL,"Aroma gourmand suave y reconfortante que envuelve sin empalagar.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma cremosa que deja tacto cómodo tras el secado.
 Ideal para rutina nocturna o climas secos por su perfil cálido.
 Opción sensorial relajante para quien busca un baño “tipo postre”.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,103041.webp,1
-De línea,103043,Vitamina E,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Vitamina E",Jabón líquido,Jabón líquido,S,"Aroma suave y limpio que hace más agradable la rutina de lavado de manos.
+103043,Vitamina E,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Vitamina E",Jabón líquido,Jabón líquido,S,"Aroma suave y limpio que hace más agradable la rutina de lavado de manos.
 Base limpiadora con glicerina: ayuda a remover suciedad cotidiana con enjuague fácil y sensación ligera en la piel.
 Inspirado en ingredientes asociados con el cuidado cotidiano de la piel, ayudando a mantener las manos con sensación de suavidad después del lavado.
 Espuma ligera que se distribuye fácilmente y permite una limpieza práctica durante el día.
 Ideal para lavado frecuente de manos cuando se busca una sensación de confort y suavidad en la piel.","Aunque es un producto suave, personas con piel muy sensible o alergia a ingredientes cosméticos deben usar con precaución. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.",1000 ml,90,900,86,860,77,770,103043.webp,1
-De línea,108001,Abre caminos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Ruda, Romero, Santa María (Tanacetum balsamita), Aceites esenciales, Esencia, Pigmento.",Jabón corporal,Aromáticos,NS+AL,"Aroma herbal intenso que deja sensación limpia y vigorizante.
+108001,Abre caminos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Ruda, Romero, Santa María (Tanacetum balsamita), Aceites esenciales, Esencia, Pigmento.",Jabón corporal,Aromáticos,NS+AL,"Aroma herbal intenso que deja sensación limpia y vigorizante.
 Limpieza amable con base de glicerina, enjuague fácil.
 Ideal para rutinas matutinas cuando buscas un efecto despeje.","Por los botánicos potentes, no recomendado para piel muy reactiva. Prueba de parche primero.",1000 ml,94,N/A,90,N/A,80,N/A,108001.webp,1
-De línea,108003,Almendras,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Albahaca, Aceites esenciales, Esencia, Pigmento.",Jabón corporal,Aromáticos,NS+AL,"Aroma suave y cálido tipo mazapán que acompaña sin invadir.
+108003,Almendras,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Albahaca, Aceites esenciales, Esencia, Pigmento.",Jabón corporal,Aromáticos,NS+AL,"Aroma suave y cálido tipo mazapán que acompaña sin invadir.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Aporta confort y sensación emoliente en piel normal a seca.
 Espuma cremosa que hace la rutina rápida y agradable.
 Ideal para baño nocturno por su perfil reconfortante.","Si tiene alergia a frutos secos o piel muy reactiva, mejor elija entre nuestros jabones ""Sencibles"" o pruebe otra fragancia de esta línea.",1000 ml,94,N/A,90,N/A,80,N/A,108003.webp,1
-De línea,108005,Aloe Vera,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Alore vera, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Piel sensible,S,"Humectación inmediata: ayuda a retener agua y reduce la sensación de tirantez.
+108005,Aloe Vera,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Alore vera, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Piel sensible,S,"Humectación inmediata: ayuda a retener agua y reduce la sensación de tirantez.
 Efecto calmante y refrescante tras ducha; acompaña pieles que se irritan fácil.
 Base de glicerina: limpieza suave, enjuague fácil, sin sensación pegajosa.
 Aporta confort en climas calurosos o después de exposición solar ligera.
 Espuma ligera pensada para uso cotidiano y pieles que buscan suavidad.",,1000 ml,94,N/A,90,N/A,80,N/A,108005.webp,1
-De línea,108147,Arandanos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Arandanos",Jabón corporal,Jabón corporal,S,"Aroma frutal dulce con notas frescas que hace más agradable la rutina de baño.
+108147,Arandanos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Arandanos",Jabón corporal,Jabón corporal,S,"Aroma frutal dulce con notas frescas que hace más agradable la rutina de baño.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 El perfil frutal aporta una sensación refrescante y agradable que acompaña la limpieza diaria de la piel.
 Espuma ligera que se distribuye fácilmente y permite una limpieza suave durante la ducha.
 Ideal para quienes disfrutan aromas frutales que dejan una sensación fresca y agradable después del baño.","Aunque es un producto suave, personas con piel muy sensible o alergias a fragancias deben usar con precaución. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.",1000 ml,90,900,86,860,77,770,108147.webp,1
-De línea,108009,Árnica,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Árnica, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma herbal intenso que acompaña rutinas post-día/post-entreno con sensación reconfortante.
+108009,Árnica,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Árnica, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma herbal intenso que acompaña rutinas post-día/post-entreno con sensación reconfortante.
 Base de glicerina: limpieza suave, enjuague fácil, sin sensación pegajosa.
 Aporta una sensación de frescura al finalizar el baño.
 Espuma ligera que no satura; ideal para uso en cuerpo.
 Deja la piel con tacto limpio y aroma verde tipo spa.","Puede contener alérgenos aromáticos. No recomendado para piel muy reactiva. Evita rostro/contorno de ojos y piel lesionada o irritada. Haz prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,108009.webp,1
-De línea,108148,Arroz  ,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Arroz  ",Jabón corporal,Jabón corporal,S,"Aroma suave y ligeramente dulce que hace más agradable la rutina de baño diaria.
+108148,Arroz  ,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Arroz  ",Jabón corporal,Jabón corporal,S,"Aroma suave y ligeramente dulce que hace más agradable la rutina de baño diaria.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 Inspirado en ingredientes tradicionalmente asociados con el cuidado suave de la piel, aportando sensación de limpieza delicada y confort después del lavado.
 Espuma ligera que se distribuye fácilmente y permite una limpieza suave sin sensación pesada.
 Ideal para rutinas de higiene diaria cuando se busca una experiencia de baño sencilla y reconfortante.","Aunque es un producto suave, personas con piel muy sensible o alergias a ingredientes vegetales deben usar con precaución. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.",1000 ml,90,900,86,860,77,770,108148.webp,1
-De línea,108149,Arroz  Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Arroz  Miel",Jabón corporal,Jabón corporal,S,"Aroma suave y ligeramente dulce que hace más agradable la rutina de baño diaria.
+108149,Arroz  Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Arroz  Miel",Jabón corporal,Jabón corporal,S,"Aroma suave y ligeramente dulce que hace más agradable la rutina de baño diaria.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 Combinación inspirada en ingredientes tradicionalmente asociados con el cuidado suave de la piel, que ayudan a dejar una sensación de confort después del lavado.
 Espuma ligera que se distribuye fácilmente sobre la piel y permite una limpieza delicada durante la ducha.
 Ideal para uso diario cuando se busca una sensación de suavidad y bienestar en la piel.",Personas con alergia a productos derivados de la miel deben evitar su uso. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,108149.webp,1
-De línea,108012,Avena miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena, Miel, Base miel, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma dulce y reconfortante que hace más agradable la rutina.
+108012,Avena miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena, Miel, Base miel, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma dulce y reconfortante que hace más agradable la rutina.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 La avena aporta suavidad y sensación de confort tras el baño.
 Espuma cremosa ideal para climas secos o uso nocturno.
 Deja tacto más flexible cuando se seca sin fricción.",Evitar en personas con alergia a productos de abeja o piel muy reactiva. Haz prueba de parche.,1000 ml,94,N/A,90,N/A,80,N/A,108012.webp,1
-De línea,108013,Avena para bebé,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena, Miel, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma suave “bebé” que aporta sensación de confort y limpieza fresca.
+108013,Avena para bebé,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena, Miel, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma suave “bebé” que aporta sensación de confort y limpieza fresca.
 Base de glicerina: limpieza gentil, enjuague fácil, sin sensación pegajosa.
 La avena ayuda a dejar la piel con tacto más suave tras el baño.
 Espuma ligera/cremosa que hace la rutina rápida y agradable.
 Ideal para quien busca un aroma tierno sin notas intensas.","En piel muy reactiva o con antecedentes de sensibilidad a fragancias, mejor elegir tu Avena sin perfume.",1000 ml,94,N/A,90,N/A,80,N/A,108013.webp,1
-De línea,108015,Café,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Café",Jabón corporal,Jabón corporal,NS,"Aroma cálido e intenso con notas tostadas que aporta una sensación energizante durante el baño.
+108015,Café,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Café",Jabón corporal,Jabón corporal,NS,"Aroma cálido e intenso con notas tostadas que aporta una sensación energizante durante el baño.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 El perfil del café se asocia con una sensación revitalizante que acompaña la rutina de ducha, especialmente por la mañana.
 Espuma ligera que se distribuye fácilmente y permite una limpieza práctica para uso diario.
 Ideal para quienes disfrutan aromas intensos que aportan sensación de energía y frescura después del baño.",Puede resultar intenso para piel muy sensible. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,108015.webp,1
-De línea,108020,Chocolate,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Cocoa, Base de chocolate, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma gourmand cálido tipo cacao que vuelve el baño reconfortante.
+108020,Chocolate,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Cocoa, Base de chocolate, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma gourmand cálido tipo cacao que vuelve el baño reconfortante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Deja tacto más flexible; buena opción para piel normal a seca.
 Espuma cremosa ideal para rutina nocturna o climas fríos.
 Perfil sensorial envolvente sin llegar a empalagar (si dosificas bien la fragancia).","Evita en piel muy reactiva y el contorno de ojos, usar máx. 2–3 veces/semana.",1000 ml,94,N/A,90,N/A,80,N/A,108020.webp,1
-De línea,108021,Cítricos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Cítricos",Jabón corporal,Jabón corporal,NS+AL,"Aroma cítrico fresco y vibrante que aporta una sensación revitalizante durante la ducha.
+108021,Cítricos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Cítricos",Jabón corporal,Jabón corporal,NS+AL,"Aroma cítrico fresco y vibrante que aporta una sensación revitalizante durante la ducha.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 Las notas cítricas se asocian con una sensación de limpieza profunda y frescura en la piel.
 Espuma ligera que se distribuye fácilmente y facilita una limpieza práctica para uso diario.
 Ideal para baños matutinos o después de actividad física gracias a su carácter refrescante.",Los compuestos aromáticos cítricos pueden provocar sensibilidad en piel reactiva o recién expuesta al sol. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,108021.webp,1
-De línea,108022,Coco,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
+108022,Coco,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Sensación emoliente que deja el tacto más flexible tras el secado.
 Espuma cremosa, ideal para rutina nocturna o climas secos.
 Perfil sensorial cálido que acompaña sin volverse invasivo.",No recomendado para piel muy reactiva. Evita contorno de ojos y haz prueba de parche.,1000 ml,94,N/A,90,N/A,80,N/A,108022.webp,1
-De línea,108066,Coco con miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Miel, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma tropical y cálido con toque cremoso–dulce que hace la ducha reconfortante.
+108066,Coco con miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Miel, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma tropical y cálido con toque cremoso–dulce que hace la ducha reconfortante.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma cremosa que deja tacto cómodo al secar.
 Sensación emoliente ideal para climas secos o rutina nocturna.
 Perfil sensorial envolvente que acompaña sin empalagar","Contiene derivados de abeja y fragancia; puede incluir alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,108066.webp,1
-De línea,108052,Eucalipto con Bugambilia y Menta,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Eucalipto, Menta, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Sensación fresca y vigorizante: menta + eucalipto para un baño que despeja.
+108052,Eucalipto con Bugambilia y Menta,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Eucalipto, Menta, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Sensación fresca y vigorizante: menta + eucalipto para un baño que despeja.
 Astringencia ligera: la piel se siente con menos brillo tras el lavado.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera ideal para rutina diurna o después de actividad.
 Toque floral de bugambilia que suaviza el perfil herbal sin invadir.","Evita contorno de ojos y mucosas. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",1000 ml,42,N/A,40,400,36,360,108052.webp,1
-De línea,108069,Frutos rojos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Extracto de frutos rojos, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma frutal jugoso (berries) que hace la ducha alegre y fresca.
+108069,Frutos rojos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Extracto de frutos rojos, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma frutal jugoso (berries) que hace la ducha alegre y fresca.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que deja tacto cómodo al secar.
 Perfil dulce y vibrante que acompaña sin empalagar.
 Ideal para rutina diurna o climas cálidos.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,108069.webp,1
-De línea,108070,"gengibre con limón, cúrcuma y canela","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, gengibre, Limón, Cúrcuma, Canela, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma cítrico–especiado que activa y deja sensación fresca.
+108070,"gengibre con limón, cúrcuma y canela","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, gengibre, Limón, Cúrcuma, Canela, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma cítrico–especiado que activa y deja sensación fresca.
 Astringencia ligera: piel con menos brillo tras el lavado.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que acompaña sin empalagar.
 Perfil energizante ideal para la mañana.","puede contener alérgenos aromáticos y compuestos fotosensibilizantes. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,108070.webp,1
-De línea,108071,"gengibre con naranja, cúrcuma y canela","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 gengibre con naranja, cúrcuma y canela",Jabón corporal,Jabón corporal,NS+AL,"Aroma cítrico especiado con notas cálidas que hace más estimulante la rutina de baño.
+108071,"gengibre con naranja, cúrcuma y canela","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 gengibre con naranja, cúrcuma y canela",Jabón corporal,Jabón corporal,NS+AL,"Aroma cítrico especiado con notas cálidas que hace más estimulante la rutina de baño.
 Base limpiadora con glicerina que ayuda a retirar suciedad cotidiana con enjuague fácil.
 La combinación de notas cítricas y especiadas aporta una sensación revitalizante que acompaña la limpieza de la piel.
 Espuma ligera que se distribuye fácilmente durante la ducha y deja una sensación fresca después del baño.
 Ideal para quienes disfrutan aromas intensos y energizantes en su rutina corporal.",Contiene especias y compuestos aromáticos que pueden provocar irritación en piel sensible o reactiva. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 gr,90,900,86,860,77,770,108071.webp,1
-De línea,108026,Lavanda,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Lavanda, Base de Lavanda, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma floral-relajante tipo spa, ideal para rutina nocturna.
+108026,Lavanda,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Lavanda, Base de Lavanda, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma floral-relajante tipo spa, ideal para rutina nocturna.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que deja tacto cómodo tras el secado.
 Acompaña una sensación de desconexión al final del día (sin claims terapéuticos).
 Perfil aromático suave si dosificas bien la fragancia.",Evitar en piel muy reactiva y contorno de ojos. Prueba de parche.,1000 ml,94,N/A,90,N/A,80,N/A,108026.webp,1
-De línea,108027,Limón,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de limón, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Astringente,NS+AL,"Aroma cítrico brillante que deja sensación fresca y limpia al enjuagar.
+108027,Limón,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de limón, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Astringente,NS+AL,"Aroma cítrico brillante que deja sensación fresca y limpia al enjuagar.
 Astringencia ligera: ayuda a que la piel se sienta menos brillante después del baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para rutina diurna en piel normal/mixta.
 Perfil aromático que activa la rutina sin volverse invasivo (si dosificas bien la fragancia).",No recomendado para piel muy reactiva. Evita el contorno de ojos. Haz prueba de parche.,1000 ml,94,N/A,90,N/A,80,N/A,108027.webp,1
-De línea,108029,Manzanilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Chamomilla, Base de manzanilla, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Piel sensible,AL,"Sensación de calma y confort tras el baño, pensada para rutinas suaves.
+108029,Manzanilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Chamomilla, Base de manzanilla, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Piel sensible,AL,"Sensación de calma y confort tras el baño, pensada para rutinas suaves.
 Base de glicerina: limpieza gentil, enjuague fácil, sin sensación pegajosa.
 Espuma ligera para uso diario en piel que se irrita con facilidad.
 Ayuda a disminuir la sensación de tirantez post-ducha.
 Perfil neutro y amable (ideal sin aromas intensos).",Precaución en personas con alergia a Asteraceae. Prueba de parche en piel muy reactiva.,1000 ml,94,N/A,90,N/A,80,N/A,108029.webp,1
-De línea,108031,Menta,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Menta",Jabón corporal,Jabón corporal,NS+AL,"Aroma fresco y mentolado que aporta una sensación energizante durante la rutina de baño.
+108031,Menta,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Menta",Jabón corporal,Jabón corporal,NS+AL,"Aroma fresco y mentolado que aporta una sensación energizante durante la rutina de baño.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 Las notas mentoladas generan una sensación refrescante que revitaliza la piel durante la ducha.
 Espuma ligera que se distribuye fácilmente y permite una limpieza práctica para uso diario.
 Ideal para baños matutinos o después de actividad física gracias a su efecto refrescante.",Los compuestos mentolados pueden provocar irritación en piel sensible o muy reactiva. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,108031.webp,1
-De línea,108137,"Menta, bugambilia y Eucalipto","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Menta, bugambilia y Eucalipto",Jabón corporal,Jabón corporal,NS+AL,"Aroma herbal fresco con notas mentoladas que aporta una sensación energizante durante el baño.
+108137,"Menta, bugambilia y Eucalipto","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Menta, bugambilia y Eucalipto",Jabón corporal,Jabón corporal,NS+AL,"Aroma herbal fresco con notas mentoladas que aporta una sensación energizante durante el baño.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 La combinación de notas herbales y mentoladas genera una sensación refrescante que revitaliza la piel durante la ducha.
 Espuma ligera que se distribuye fácilmente sobre la piel y permite una limpieza práctica para uso diario.
 Ideal para baños matutinos o después de actividad física gracias a su sensación de frescura.",Contiene compuestos aromáticos naturales que pueden provocar irritación en piel sensible o muy reactiva. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,108137.webp,1
-De línea,108032,Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Chamomilla, Miel, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma dulce y reconfortante que hace la ducha más agradable.
+108032,Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Chamomilla, Miel, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma dulce y reconfortante que hace la ducha más agradable.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Deja tacto más flexible y sensación de confort tras el secado.
 Espuma cremosa, ideal para rutina nocturna o climas secos.
 Perfil sensorial cálido que acompaña sin volverse invasivo.",Evitar en personas con alergia a productos de abeja y en piel muy reactiva. Se recomienda prueba de parche. No usar en contorno de ojos.,1000 ml,94,N/A,90,N/A,80,N/A,108032.webp,1
-De línea,108150,Miel Canela,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Miel Canela",Jabón corporal,Jabón corporal,NS+AL,"Aroma cálido y dulce con notas especiadas que hace más reconfortante la rutina de baño.
+108150,Miel Canela,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Miel Canela",Jabón corporal,Jabón corporal,NS+AL,"Aroma cálido y dulce con notas especiadas que hace más reconfortante la rutina de baño.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 La combinación de notas dulces y especiadas genera una sensación acogedora que acompaña la limpieza diaria de la piel.
 Espuma ligera que se distribuye fácilmente y permite una limpieza práctica durante la ducha.
 Ideal para quienes disfrutan aromas cálidos que dejan una sensación agradable después del baño.",La canela puede provocar irritación en piel sensible o reactiva. Personas con alergia a productos derivados de la miel deben evitar su uso. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,108150.webp,1
-De línea,108058,Neem con caléndula,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Neem, Caléndula Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Sensación purificante y de limpieza profunda al enjuagar (neem).
+108058,Neem con caléndula,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Neem, Caléndula Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Sensación purificante y de limpieza profunda al enjuagar (neem).
 Piel con menos brillo y apariencia más uniforme con uso constante.
 Toque de confort gracias a la caléndula, para una rutina más amable.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Espuma ligera pensada para piel mixta/grasa en rutina diurna.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,108058.webp,1
-De línea,108033,Romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Romero, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Astringente,NS+AL,"Aroma herbal fresco que deja sensación limpia y despejada tras el enjuague.
+108033,Romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Romero, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Astringente,NS+AL,"Aroma herbal fresco que deja sensación limpia y despejada tras el enjuague.
 Astringencia ligera: ayuda a que la piel se sienta menos brillante después del baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para rutina diurna o post-actividad.
 Perfil aromático que activa sin volverse invasivo ","Puede contener alérgenos aromáticos; no recomendado para piel muy reactiva. Evita contorno de ojos y mucosas. Prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,108033.webp,1
-De línea,108036,Rosa de Castilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Rosa de castilla, Base de rosas, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma floral elegante que convierte la ducha en un momento relajante.
+108036,Rosa de Castilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Rosa de castilla, Base de rosas, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma floral elegante que convierte la ducha en un momento relajante.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Deja tacto cómodo y una sensación de piel fresca al secar.
 Espuma ligera/cremosa ideal para una rutina nocturna tipo spa.
 Perfil aromático sofisticado que acompaña sin invadir.","Fragancia floral; puede contener alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,108036.webp,1
-De línea,108151,Té verde y Menta,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Té verde y Menta",Jabón corporal,Jabón corporal,NS+AL,"Aroma fresco y herbal con notas mentoladas que aporta una sensación revitalizante durante la ducha.
+108151,Té verde y Menta,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Té verde y Menta",Jabón corporal,Jabón corporal,NS+AL,"Aroma fresco y herbal con notas mentoladas que aporta una sensación revitalizante durante la ducha.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 La combinación de notas herbales y mentoladas genera una sensación de frescura que acompaña la limpieza diaria de la piel.
 Espuma ligera que se distribuye fácilmente y permite una limpieza práctica para uso cotidiano.
 Ideal para baños matutinos o después de actividad física gracias a su carácter refrescante.",Los compuestos aromáticos mentolados pueden provocar irritación en piel sensible o reactiva. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,108151.webp,1
-De línea,108040,Toronja y romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Toronja y romero",Jabón corporal,Jabón corporal,NS+AL,"Aroma cítrico herbal con notas frescas y ligeramente verdes que aporta una sensación revitalizante durante la ducha.
+108040,Toronja y romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Toronja y romero",Jabón corporal,Jabón corporal,NS+AL,"Aroma cítrico herbal con notas frescas y ligeramente verdes que aporta una sensación revitalizante durante la ducha.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 La combinación de notas cítricas y herbales genera una sensación de frescura que acompaña la limpieza diaria de la piel.
 Espuma ligera que se distribuye fácilmente y permite una limpieza práctica para uso cotidiano.
 Ideal para baños matutinos o después de actividad física gracias a su carácter refrescante.",Los compuestos aromáticos cítricos y herbales pueden provocar irritación en piel sensible o reactiva. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,108040.webp,1
-De línea,108041,Vainilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Extracto natural de vainilla, Base vainilla, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma gourmand suave y reconfortante que envuelve sin empalagar.
+108041,Vainilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Extracto natural de vainilla, Base vainilla, Aceites esenciales, Esencia, Pigmento",Jabón corporal,Aromáticos,NS+AL,"Aroma gourmand suave y reconfortante que envuelve sin empalagar.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma cremosa que deja tacto cómodo tras el secado.
 Ideal para rutina nocturna o climas secos por su perfil cálido.
 Opción sensorial relajante para quien busca un baño “tipo postre”.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,108041.webp,1
-De línea,108042,Vino tinto y rosas,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Vino tinto y rosas",Jabón corporal,Jabón corporal,S,"Aroma floral elegante con notas dulces y ligeramente afrutadas que hacen más placentera la rutina de baño.
+108042,Vino tinto y rosas,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150 Vino tinto y rosas",Jabón corporal,Jabón corporal,S,"Aroma floral elegante con notas dulces y ligeramente afrutadas que hacen más placentera la rutina de baño.
 Base limpiadora con glicerina: ayuda a mantener la piel limpia con enjuague fácil y sensación ligera después del uso.
 La combinación de notas florales y frutales crea una experiencia de ducha relajante y sofisticada.
 Espuma ligera que se distribuye fácilmente y permite una limpieza suave para uso diario.
 Ideal para quienes disfrutan aromas florales envolventes que dejan una sensación agradable después del baño.",Personas con sensibilidad a fragancias florales deben usar con precaución. Evitar contacto con ojos y mucosas. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,90,900,86,860,77,770,108042.webp,1
-De línea,108043,Vitamina E,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Vitaminta e, Aceites esenciales, Esencia, Pigmento.",Jabón corporal,Aromáticos,AL,"Limpieza suave con base de glicerina y enjuague fácil.
+108043,Vitamina E,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Vitaminta e, Aceites esenciales, Esencia, Pigmento.",Jabón corporal,Aromáticos,AL,"Limpieza suave con base de glicerina y enjuague fácil.
 Con vitamina E (antioxidante) que acompaña una sensación de suavidad tras el baño.
 Espuma ligera/cremosa que no satura la piel.
 Deja tacto cómodo y flexible al secar sin fricción.
 Opción neutra si vas con aroma discreto","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",1000 ml,94,N/A,90,N/A,80,N/A,108043.webp,1
-De línea,104001,Abre Caminos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Ruda, Romero, Santa María (Tanacetum balsamita), Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,NS+AL,"Limpieza profunda con sensación de frescura herbal.
+104001,Abre Caminos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Ruda, Romero, Santa María (Tanacetum balsamita), Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,NS+AL,"Limpieza profunda con sensación de frescura herbal.
 Ayuda a regular el exceso de grasa y mantener el cuero cabelludo equilibrado.
 Su espuma ligera elimina impurezas sin resecar, dejando el cabello suave, suelto y brillante.
 Ideal para revitalizar cuerpo y mente, aportando energía positiva al comenzar el día.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,161,N/A,153,N/A,137,N/A,104001.webp,1
-De línea,104003,Almendras,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Almendras, Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,AL,"Aporta suavidad y brillo natural al cabello desde el primer uso.
+104003,Almendras,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Almendras, Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,AL,"Aporta suavidad y brillo natural al cabello desde el primer uso.
 Su fórmula enriquecida con extracto de almendras hidrata, nutre y reduce el frizz, dejando una sensación ligera y sedosa.
 Ideal para cabello seco, maltratado o con puntas abiertas.
 Su aroma cálido y reconfortante invita a una rutina de cuidado relajante y sensorial.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,161,N/A,153,N/A,137,N/A,104003.webp,1
-De línea,104005,Aloe Vera,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Alore vera, Aceites esenciales, Esencia, Pigmento",Shampoo,Piel sensible,AL,"Brinda una sensación de hidratación y frescura inmediata al cuero cabelludo.
+104005,Aloe Vera,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Alore vera, Aceites esenciales, Esencia, Pigmento",Shampoo,Piel sensible,AL,"Brinda una sensación de hidratación y frescura inmediata al cuero cabelludo.
 Su espuma ligera limpia con suavidad, dejando el cabello suelto y fácil de desenredar.
 Ideal para cuero cabelludo sensible, seco o con tendencia a irritarse.
 El aloe aporta equilibrio natural y un toque refrescante que prolonga la sensación de limpieza.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,161,N/A,153,N/A,137,N/A,104005.webp,1
-De línea,104009,Árnica,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Árnica, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Refresca y revitaliza el cuero cabelludo, ayudando a mantenerlo limpio y equilibrado.
+104009,Árnica,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Árnica, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Refresca y revitaliza el cuero cabelludo, ayudando a mantenerlo limpio y equilibrado.
 Contribuye a fortalecer el cabello desde la raíz y a reducir la sensación de pesadez o grasa.
 Aporta una sensación herbal energizante, perfecta para quienes buscan un estímulo natural diario.
 Ideal para cabello con tendencia a caída o debilitamiento por estrés o grasa excesiva.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,161,N/A,153,N/A,137,N/A,104009.webp,1
-De línea,104059,Avena,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,AL,"Proporciona una limpieza suave y efecto calmante inmediato, sin resecar el cuero cabelludo.
+104059,Avena,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,AL,"Proporciona una limpieza suave y efecto calmante inmediato, sin resecar el cuero cabelludo.
 Su fórmula con extracto de avena ayuda a hidratar, aliviar la picazón y reducir la descamación.
 Ideal para cabello seco, maltratado o cuero cabelludo sensible.
 Deja una sensación de suavidad y confort natural, con un aroma delicado y relajante.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,161,N/A,153,N/A,137,N/A,104059.webp,1
-De línea,104060,Avena con manzanilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena, Manzanilla Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,AL,"Ofrece una limpieza suave y reconfortante, ideal para cuero cabelludo sensible, seco o irritado.
+104060,Avena con manzanilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Avena, Manzanilla Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,AL,"Ofrece una limpieza suave y reconfortante, ideal para cuero cabelludo sensible, seco o irritado.
 La combinación de avena y manzanilla hidrata, alivia y aporta brillo natural sin dejar sensación pesada.
 Su aroma delicado inspira tranquilidad y bienestar tras cada lavado.
 Perfecto para uso diario y para quienes prefieren rutinas suaves y naturales.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,161,N/A,153,N/A,137,N/A,104060.webp,1
-De línea,104014,Bergamota,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de bergamota, Base Bergamota, Extracto de gengibre, Aceites esenciales, Esencia, Pigmento.",Shampoo,Astringente,AL,"Favorece la limpieza profunda y el equilibrio del cuero cabelludo, reduciendo el exceso de grasa.
+104014,Bergamota,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de bergamota, Base Bergamota, Extracto de gengibre, Aceites esenciales, Esencia, Pigmento.",Shampoo,Astringente,AL,"Favorece la limpieza profunda y el equilibrio del cuero cabelludo, reduciendo el exceso de grasa.
 Ayuda a fortalecer el cabello desde la raíz y a mejorar su aspecto general con el uso continuo.
 Deja una sensación fresca, ligera y revitalizante tras cada lavado.
 Su fragancia cítrica y energizante aporta una experiencia sensorial estimulante y agradable.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,182,N/A,173,N/A,155,N/A,104014.webp,1
-De línea,104061,Bergamota con carbón activado y ruda,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de bergamota, Base Bergamota, Ruda, Carbón activado, Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,AL,"Favorece la limpieza profunda y el equilibrio del cuero cabelludo, reduciendo el exceso de grasa.
+104061,Bergamota con carbón activado y ruda,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de bergamota, Base Bergamota, Ruda, Carbón activado, Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,AL,"Favorece la limpieza profunda y el equilibrio del cuero cabelludo, reduciendo el exceso de grasa.
 Ayuda a fortalecer el cabello desde la raíz y a mejorar su aspecto general con el uso continuo.
 Deja una sensación fresca, ligera y revitalizante tras cada lavado.
 Su fragancia cítrica y energizante aporta una experiencia sensorial estimulante y agradable.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,182,N/A,173,N/A,155,N/A,104061.webp,1
-De línea,104062,Bergamota con manzanilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de bergamota, Base Bergamota, Manzanilla, Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,AL,"Favorece la limpieza profunda y el equilibrio del cuero cabelludo, reduciendo el exceso de grasa.
+104062,Bergamota con manzanilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de bergamota, Base Bergamota, Manzanilla, Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,AL,"Favorece la limpieza profunda y el equilibrio del cuero cabelludo, reduciendo el exceso de grasa.
 Ayuda a fortalecer el cabello desde la raíz y a mejorar su aspecto general con el uso continuo.
 Deja una sensación fresca, ligera y revitalizante tras cada lavado.
 Su fragancia cítrica y energizante aporta una experiencia sensorial estimulante y agradable.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,182,N/A,173,N/A,155,N/A,104062.webp,1
-De línea,104063,Bergamota con romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de bergamota, Base Bergamota, Romero, Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,AL,"Favorece la limpieza profunda y el equilibrio del cuero cabelludo, reduciendo el exceso de grasa.
+104063,Bergamota con romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de bergamota, Base Bergamota, Romero, Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,AL,"Favorece la limpieza profunda y el equilibrio del cuero cabelludo, reduciendo el exceso de grasa.
 Ayuda a fortalecer el cabello desde la raíz y a mejorar su aspecto general con el uso continuo.
 Deja una sensación fresca, ligera y revitalizante tras cada lavado.
 Su fragancia cítrica y energizante aporta una experiencia sensorial estimulante y agradable.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,182,N/A,173,N/A,155,N/A,104063.webp,1
-De línea,104064,Bergamota con romero y árnica,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de bergamota, Base Bergamota, Romero, Árnica, Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,AL,"Favorece la limpieza profunda y el equilibrio del cuero cabelludo, reduciendo el exceso de grasa.
+104064,Bergamota con romero y árnica,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de bergamota, Base Bergamota, Romero, Árnica, Aceites esenciales, Esencia, Pigmento.",Shampoo,Aromáticos,AL,"Favorece la limpieza profunda y el equilibrio del cuero cabelludo, reduciendo el exceso de grasa.
 Ayuda a fortalecer el cabello desde la raíz y a mejorar su aspecto general con el uso continuo.
 Deja una sensación fresca, ligera y revitalizante tras cada lavado.
 Su fragancia cítrica y energizante aporta una experiencia sensorial estimulante y agradable.","Puede contener alérgenos aromáticos. Evita el contacto con los ojos. En cuero cabelludo sensible, realiza prueba de parche; si irrita, suspende.",1000 ml,182,N/A,173,N/A,155,N/A,104064.webp,1
-De línea,104018,Carbón activado,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Carbón activado, Extracto de romero, Aceites esenciales, Esencia, Pigmento",Shampoo,Astringente,NS+AL,"Limpieza profunda con sensación purificante; ayuda a que la piel se sienta menos grasa al terminar.
+104018,Carbón activado,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Carbón activado, Extracto de romero, Aceites esenciales, Esencia, Pigmento",Shampoo,Astringente,NS+AL,"Limpieza profunda con sensación purificante; ayuda a que la piel se sienta menos grasa al terminar.
 Con uso constante, da una apariencia más mate y uniforme (sin prometer milagros).
 Base de glicerina: enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal en rutinas diurnas para piel mixta/grasa.
 Buen “reset” después de actividades o calor excesivo.","Puede resecar en piel seca o muy reactiva. Evita el contorno de ojos y zonas irritadas. Si sientes tirantez, reduce frecuencia (día por medio).",1000 ml,161,N/A,153,N/A,137,N/A,104018.webp,1
-De línea,104065,"Carbón activado con árnica, romero y caléndula","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Carbón activado, Árnica, Romero, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Limpieza profunda con sensación purificante; ayuda a que la piel se sienta menos grasa al terminar.
+104065,"Carbón activado con árnica, romero y caléndula","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Carbón activado, Árnica, Romero, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Limpieza profunda con sensación purificante; ayuda a que la piel se sienta menos grasa al terminar.
 Con uso constante, da una apariencia más mate y uniforme (sin prometer milagros).
 Base de glicerina: enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal en rutinas diurnas para piel mixta/grasa.
 Buen “reset” después de actividades o calor excesivo.","Puede resecar en piel seca o muy reactiva. Evita el contorno de ojos y zonas irritadas. Si sientes tirantez, reduce frecuencia (día por medio).",1000 ml,161,N/A,153,N/A,137,N/A,104065.webp,1
-De línea,104019,CBD,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de CBD",Shampoo,Shampoo,S,"roma suave y herbal que acompaña una rutina de lavado tranquila y agradable.
+104019,CBD,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de CBD",Shampoo,Shampoo,S,"roma suave y herbal que acompaña una rutina de lavado tranquila y agradable.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 El perfil del CBD se asocia con una sensación de confort en el cuero cabelludo durante el lavado.
 Ayuda a que el cabello se sienta limpio y ligero después de la rutina de lavado.
 Ideal para quienes buscan una experiencia de lavado suave y equilibrada.","Aunque es un producto suave, personas con sensibilidad a extractos vegetales deben usar con precaución. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.",1000 ml,300,3000,285,2850,255,2550,104019.webp,1
-De línea,104020,Chocolate,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Cocoa, Base de chocolate, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Aroma gourmand cálido tipo cacao que vuelve el baño reconfortante.
+104020,Chocolate,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Cocoa, Base de chocolate, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Aroma gourmand cálido tipo cacao que vuelve el baño reconfortante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Deja tacto más flexible; buena opción para piel normal a seca.
 Espuma cremosa ideal para rutina nocturna o climas fríos.
 Perfil sensorial envolvente sin llegar a empalagar (si dosificas bien la fragancia).","Evita en piel muy reactiva y el contorno de ojos, usar máx. 2–3 veces/semana.",1000 ml,161,N/A,153,N/A,137,N/A,104020.webp,1
-De línea,104021,Cítricos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Naranja, Toronja, Limón y Mandarina",Shampoo,Astringente,NS+AL,"Aroma brillante y fresco (limón/naranja/toronja) que activa la rutina matutina.
+104021,Cítricos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Naranja, Toronja, Limón y Mandarina",Shampoo,Astringente,NS+AL,"Aroma brillante y fresco (limón/naranja/toronja) que activa la rutina matutina.
 Astringencia ligera: deja sensación menos brillante después del lavado.
 Base de glicerina: limpieza suave, enjuague fácil, sin sensación pegajosa.
 Espuma ligera pensada para uso diurno en piel normal/mixta.
 Perfil refrescante ideal en climas cálidos o después de actividad.",No recomendado para piel muy reactiva. Evita contorno de ojos y haz prueba de parche.,1000 ml,161,N/A,153,N/A,137,N/A,104021.webp,1
-De línea,104022,Coco,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
+104022,Coco,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Sensación emoliente que deja el tacto más flexible tras el secado.
 Espuma cremosa, ideal para rutina nocturna o climas secos.
 Perfil sensorial cálido que acompaña sin volverse invasivo.",No recomendado para piel muy reactiva. Evita contorno de ojos y haz prueba de parche.,1000 ml,161,N/A,153,N/A,137,N/A,104022.webp,1
-De línea,104066,Coco con miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Miel, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
+104066,Coco con miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de coco, Miel, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Sensación emoliente que deja el tacto más flexible tras el secado.
 Espuma cremosa, ideal para rutina nocturna o climas secos.
 Perfil sensorial cálido que acompaña sin volverse invasivo.",No recomendado para piel muy reactiva. Evita contorno de ojos y haz prueba de parche.,1000 ml,161,N/A,153,N/A,137,N/A,104066.webp,1
-De línea,104136,"Elixir Anticaída (Cebolla, Gengibre, Sábila y Romero)","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Elixir Anticaída (Cebolla, Gengibre, Sábila y Romero)",Shampoo,Shampoo,NS+AL,"Aroma herbal intenso con notas frescas y ligeramente especiadas que aporta una sensación revitalizante durante el lavado del cabello.
+104136,"Elixir Anticaída (Cebolla, Gengibre, Sábila y Romero)","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Elixir Anticaída (Cebolla, Gengibre, Sábila y Romero)",Shampoo,Shampoo,NS+AL,"Aroma herbal intenso con notas frescas y ligeramente especiadas que aporta una sensación revitalizante durante el lavado del cabello.
 Base limpiadora con cocoamida y glicerina vegetal: ayuda a remover grasa y residuos del cuero cabelludo con enjuague fácil y sensación ligera.
 La mezcla botánica se asocia con una sensación estimulante en el cuero cabelludo, acompañando la rutina de cuidado capilar.
 Espuma ligera que se distribuye fácilmente en el cabello y permite una limpieza práctica durante el lavado.
 Ideal para quienes buscan una sensación de frescura y limpieza profunda en el cuero cabelludo.",Contiene extractos vegetales y compuestos aromáticos que pueden provocar irritación en cuero cabelludo sensible. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104136.webp,1
-De línea,104153,Elixir Antiedad (Nogal y Orégano),"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Elixir Antiedad (Nogal y Orégano)",Shampoo,Shampoo,NS+AL,"Aroma herbal profundo con notas cálidas y ligeramente especiadas que acompaña la rutina de lavado del cabello.
+104153,Elixir Antiedad (Nogal y Orégano),"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Elixir Antiedad (Nogal y Orégano)",Shampoo,Shampoo,NS+AL,"Aroma herbal profundo con notas cálidas y ligeramente especiadas que acompaña la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 La combinación de extractos vegetales aporta una sensación de limpieza equilibrante en el cuero cabelludo.
 Ayuda a que el cabello se sienta ligero y con apariencia más ordenada después del lavado.
 Ideal para quienes buscan una experiencia de lavado herbal con sensación de frescura y cuidado capilar.",Contiene extractos botánicos y compuestos aromáticos que pueden provocar irritación en cuero cabelludo sensible o reactivo. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104153.webp,1
-De línea,104069,Frutos rojos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Extracto de Frutos rojos, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Aroma frutal jugoso (berries) que hace la ducha alegre y fresca.
+104069,Frutos rojos,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Extracto de Frutos rojos, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Aroma frutal jugoso (berries) que hace la ducha alegre y fresca.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que deja tacto cómodo al secar.
 Perfil dulce y vibrante que acompaña sin empalagar.
 Ideal para rutina diurna o climas cálidos.","Puede contener alérgenos aromáticos. Evita el contorno de ojos. Piel muy reactiva: prueba de parche; si irrita, suspende.",1000 ml,161,N/A,153,N/A,137,N/A,104069.webp,1
-De línea,104070,"gengibre con limón, cúrcuma y canela","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, gengibre, Limón, Cúrcuma, Canela, Esencia, Pigmento",Shampoo,Shampoo,NS+AL,"Aroma cítrico especiado con notas cálidas que aporta una sensación energizante durante el lavado del cabello.
+104070,"gengibre con limón, cúrcuma y canela","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, gengibre, Limón, Cúrcuma, Canela, Esencia, Pigmento",Shampoo,Shampoo,NS+AL,"Aroma cítrico especiado con notas cálidas que aporta una sensación energizante durante el lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 La mezcla de notas cítricas y especiadas genera una sensación revitalizante que acompaña la rutina de cuidado capilar.
 Ideal para quienes disfrutan aromas intensos que aportan frescura y carácter durante el lavado.",Contiene especias y compuestos aromáticos que pueden provocar irritación en cuero cabelludo sensible o reactivo. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,161,N/A,153,N/A,137,N/A,104070.webp,1
-De línea,104071,"gengibre con naranja, cúrcuma y canela","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, gengibre, Naranja, Cúrcuma, Canela, Esencia, Pigmento",Shampoo,Shampoo,NS+AL,"Aroma cítrico especiado con notas cálidas que hace más estimulante la rutina de lavado del cabello.
+104071,"gengibre con naranja, cúrcuma y canela","Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, gengibre, Naranja, Cúrcuma, Canela, Esencia, Pigmento",Shampoo,Shampoo,NS+AL,"Aroma cítrico especiado con notas cálidas que hace más estimulante la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 La combinación de notas cítricas y especiadas aporta una sensación revitalizante que acompaña la limpieza del cuero cabelludo.
 Ideal para quienes disfrutan aromas intensos y frescos durante su rutina de cuidado capilar.",Contiene especias y compuestos aromáticos que pueden provocar irritación en cuero cabelludo sensible o reactivo. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,161,N/A,153,N/A,137,N/A,104071.webp,1
-De línea,104026,Lavanda,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Lavanda, Base de Lavanda, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Aroma floral-relajante tipo spa, ideal para rutina nocturna.
+104026,Lavanda,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Lavanda, Base de Lavanda, Aceites esenciales, Esencia, Pigmento",Shampoo,Aromáticos,NS+AL,"Aroma floral-relajante tipo spa, ideal para rutina nocturna.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera/cremosa que deja tacto cómodo tras el secado.
 Acompaña una sensación de desconexión al final del día (sin claims terapéuticos).
 Perfil aromático suave si dosificas bien la fragancia.",,1000 ml,161,N/A,153,N/A,137,N/A,104026.webp,1
-De línea,104027,Limón,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de limón, Aceites esenciales, Esencia, Pigmento",Shampoo,Astringente,NS+AL,"Aroma cítrico brillante que deja sensación fresca y limpia al enjuagar.
+104027,Limón,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Base de limón, Aceites esenciales, Esencia, Pigmento",Shampoo,Astringente,NS+AL,"Aroma cítrico brillante que deja sensación fresca y limpia al enjuagar.
 Astringencia ligera: ayuda a que la piel se sienta menos brillante después del baño.
 Base de glicerina: limpieza amable y enjuague fácil, sin sensación pegajosa.
 Espuma ligera, ideal para rutina diurna en piel normal/mixta.
 Perfil aromático que activa la rutina sin volverse invasivo (si dosificas bien la fragancia).",,1000 ml,161,N/A,153,N/A,137,N/A,104027.webp,1
-De línea,104029,Manzanilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Manzanilla",Shampoo,Shampoo,S,"Aroma herbal suave y delicado que hace más agradable la rutina de lavado del cabello.
+104029,Manzanilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Manzanilla",Shampoo,Shampoo,S,"Aroma herbal suave y delicado que hace más agradable la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 Las notas de manzanilla aportan una sensación de suavidad que acompaña la limpieza del cuero cabelludo.
 Ayuda a que el cabello se sienta ligero y confortable después del lavado.
 Ideal para quienes buscan una experiencia de lavado suave y equilibrada.",Personas sensibles a plantas de la familia Asteraceae (como manzanilla) deben usar con precaución. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104029.webp,1
-De línea,104154,Manzanilla Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Manzanilla Miel",Shampoo,Shampoo,S,"Aroma suave y ligeramente dulce que hace más agradable la rutina de lavado del cabello.
+104154,Manzanilla Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Manzanilla Miel",Shampoo,Shampoo,S,"Aroma suave y ligeramente dulce que hace más agradable la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 La combinación de manzanilla y miel aporta una sensación de suavidad que acompaña la limpieza del cuero cabelludo.
 Ayuda a que el cabello se sienta ligero y manejable después del lavado.
 Ideal para quienes buscan una experiencia de lavado suave con aroma delicado.",Personas sensibles a plantas de la familia Asteraceae (como manzanilla) o con alergia a productos derivados de la miel deben usar con precaución. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104154.webp,1
-De línea,104032,Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Miel",Shampoo,Shampoo,S,"Aroma dulce y cálido que hace más agradable la rutina de lavado del cabello.
+104032,Miel,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Miel",Shampoo,Shampoo,S,"Aroma dulce y cálido que hace más agradable la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 El perfil de la miel aporta una sensación de suavidad que deja el cabello más manejable después del lavado.
 Ayuda a que el cabello se sienta limpio y ligero tras la rutina de cuidado capilar.
 Ideal para quienes disfrutan aromas suaves y una experiencia de lavado reconfortante.",Personas con alergia a productos derivados de la miel deben evitar su uso. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104032.webp,1
-De línea,104150,Miel Canela,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Miel Canela",Shampoo,Shampoo,NS+AL,"Aroma cálido y dulce con notas especiadas que hace más agradable la rutina de lavado del cabello.
+104150,Miel Canela,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Miel Canela",Shampoo,Shampoo,NS+AL,"Aroma cálido y dulce con notas especiadas que hace más agradable la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 La combinación de miel y canela aporta una sensación reconfortante que acompaña la limpieza del cabello.
 Ayuda a que el cabello se sienta limpio y manejable después del lavado.
 Ideal para quienes disfrutan aromas cálidos y especiados en su rutina de cuidado capilar.",La canela puede provocar irritación en cuero cabelludo sensible o reactivo. Personas con alergia a productos derivados de la miel deben evitar su uso. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104150.webp,1
-De línea,104155,Miel con Romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Miel con Romero",Shampoo,Shampoo,NS+AL,"Aroma herbal dulce con notas frescas que hace más agradable la rutina de lavado del cabello.
+104155,Miel con Romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Miel con Romero",Shampoo,Shampoo,NS+AL,"Aroma herbal dulce con notas frescas que hace más agradable la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 La combinación de miel y romero aporta una sensación equilibrante que acompaña la limpieza del cuero cabelludo.
 Ayuda a que el cabello se sienta limpio y manejable después del lavado.
 Ideal para quienes disfrutan aromas herbales con un toque cálido durante su rutina de cuidado capilar.",Personas con alergia a productos derivados de la miel o sensibilidad a extractos herbales deben usar con precaución. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104155.webp,1
-De línea,104033,Romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Romero",Shampoo,Shampoo,NS+AL,"Aroma herbal fresco y profundo que hace más estimulante la rutina de lavado del cabello.
+104033,Romero,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Romero",Shampoo,Shampoo,NS+AL,"Aroma herbal fresco y profundo que hace más estimulante la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 Las notas de romero aportan una sensación revitalizante que acompaña la limpieza del cuero cabelludo.
 Ayuda a que el cabello se sienta ligero y con sensación de frescura después del lavado.
 Ideal para quienes disfrutan aromas herbales intensos en su rutina de cuidado capilar.",Personas con sensibilidad a extractos herbales deben usar con precaución. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104033.webp,1
-De línea,104157,Romero Canela,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Romero Canela",Shampoo,Shampoo,NS+AL,"Aroma herbal cálido con notas especiadas que hace más estimulante la rutina de lavado del cabello.
+104157,Romero Canela,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Romero Canela",Shampoo,Shampoo,NS+AL,"Aroma herbal cálido con notas especiadas que hace más estimulante la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 La combinación de romero y canela aporta una sensación revitalizante que acompaña la limpieza del cuero cabelludo.
 Ayuda a que el cabello se sienta ligero y con sensación de frescura después del lavado.
 Ideal para quienes disfrutan aromas herbales intensos con un toque especiado en su rutina de cuidado capilar.",La canela puede provocar irritación en cuero cabelludo sensible o reactivo. Personas con sensibilidad a extractos herbales deben usar con precaución. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104157.webp,1
-De línea,104158,Romero Keratina,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Romero Keratina",Shampoo,Shampoo,NS+AL,"Aroma herbal fresco que hace más estimulante la rutina de lavado del cabello.
+104158,Romero Keratina,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Romero Keratina",Shampoo,Shampoo,NS+AL,"Aroma herbal fresco que hace más estimulante la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 Las notas de romero aportan una sensación revitalizante que acompaña la limpieza del cuero cabelludo.
 La keratina contribuye a que el cabello se sienta más manejable y con apariencia más ordenada después del lavado.
 Ideal para quienes buscan una experiencia de lavado herbal que acompañe una sensación de cabello más flexible.",Personas con sensibilidad a extractos herbales o proteínas cosméticas deben usar con precaución. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104158.webp,1
-De línea,104156,Romero y Árnica,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Romero y Árnica",Shampoo,Shampoo,NS+AL,"Aroma herbal fresco con notas verdes que hace más estimulante la rutina de lavado del cabello.
+104156,Romero y Árnica,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Romero y Árnica",Shampoo,Shampoo,NS+AL,"Aroma herbal fresco con notas verdes que hace más estimulante la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 La combinación de romero y árnica aporta una sensación revitalizante que acompaña la limpieza del cuero cabelludo.
 Ayuda a que el cabello se sienta ligero y con sensación de frescura después del lavado.
 Ideal para quienes disfrutan aromas herbales intensos en su rutina de cuidado capilar.",Personas sensibles a plantas de la familia Asteraceae (como árnica) o a extractos herbales deben usar con precaución. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104156.webp,1
-De línea,104151,Té verde y Menta,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Té verde y Menta",Shampoo,Shampoo,NS+AL,"Aroma herbal fresco con notas mentoladas que hace más estimulante la rutina de lavado del cabello.
+104151,Té verde y Menta,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Té verde y Menta",Shampoo,Shampoo,NS+AL,"Aroma herbal fresco con notas mentoladas que hace más estimulante la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 La combinación de té verde y menta aporta una sensación refrescante que acompaña la limpieza del cuero cabelludo.
 Ayuda a que el cabello se sienta ligero y con sensación de frescura después del lavado.
 Ideal para quienes disfrutan aromas herbales revitalizantes en su rutina de cuidado capilar.",Los compuestos mentolados pueden provocar irritación en cuero cabelludo sensible o reactivo. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,1000 ml,160,1600,152,1520,136,1360,104151.webp,1
-De línea,104041,Vainilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Vainilla",Shampoo,Shampoo,S,"Aroma dulce y cálido con notas suaves que hace más agradable la rutina de lavado del cabello.
+104041,Vainilla,"Glicerina, Agua desionizada, LESS, Cocoamida, PEG 150, Aceite esencial de Vainilla",Shampoo,Shampoo,S,"Aroma dulce y cálido con notas suaves que hace más agradable la rutina de lavado del cabello.
 Base limpiadora que ayuda a retirar grasa y residuos del cuero cabelludo con enjuague fácil.
 Las notas de vainilla crean una experiencia de lavado reconfortante que deja un aroma agradable en el cabello.
 Ayuda a que el cabello se sienta limpio y ligero después del lavado.
 Ideal para quienes disfrutan aromas dulces y envolventes en su rutina de cuidado capilar.",Personas con sensibilidad a fragancias dulces o ingredientes aromáticos deben usar con precaución. Evitar contacto con ojos. Haz prueba de parche antes del primer uso. Suspende su uso si aparece irritación.,FALSO,160,1600,152,1520,136,1360,104041.webp,1
-Febrero,109134,Osito de coco,"Glicerina, LESS, Cocoamida, Aceite de coco, Base de coco, TEA",Decorativo,Decorativo,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
+109134,Osito de coco,"Glicerina, LESS, Cocoamida, Aceite de coco, Base de coco, TEA",Decorativo,Decorativo,NS+AL,"Aroma tropical cremoso que convierte la ducha en un momento reconfortante.
 Base de glicerina: limpieza amable, enjuague fácil, sin sensación pegajosa.
 Sensación emoliente que deja el tacto más flexible tras el secado.
 Espuma cremosa, ideal para rutina nocturna o climas secos.
-Perfil sensorial cálido que acompaña sin volverse invasivo.",No recomendado para piel muy reactiva. Evita contorno de ojos y haz prueba de parche.,20  gr,30,300,29,290,26,260,109099.webp,1
-Febrero,109131,Rosa con tallo,"Glicerina, LESS, Cocoamida, Aceite de coco, Rosa de castilla, Base de rosas, TEA",Decorativo,Decorativo,NS+AL,"Aroma floral elegante que convierte la ducha en un momento relajante.
+Perfil sensorial cálido que acompaña sin volverse invasivo.",No recomendado para piel muy reactiva. Evita contorno de ojos y haz prueba de parche.,20  gr,30,300,29,290,26,260,109134.webp,1
+109131,Rosa con tallo,"Glicerina, LESS, Cocoamida, Aceite de coco, Rosa de castilla, Base de rosas, TEA",Decorativo,Decorativo,NS+AL,"Aroma floral elegante que convierte la ducha en un momento relajante.
 Base de glicerina: limpieza suave y enjuague fácil, sin sensación pegajosa.
 Deja tacto cómodo y una sensación de piel fresca al secar.
 Espuma ligera/cremosa ideal para una rutina nocturna tipo spa.
-Perfil aromático sofisticado que acompaña sin invadir.","Fragancia floral; puede contener alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",20  gr,70,700,67,670,60,600,109099.webp,1
+Perfil aromático sofisticado que acompaña sin invadir.","Fragancia floral; puede contener alérgenos aromáticos. Evita el contorno de ojos. Si tu piel es muy reactiva, haz prueba de parche; si irrita, suspende.",20  gr,70,700,67,670,60,600,109131.webp,1
