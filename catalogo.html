@@ -302,7 +302,7 @@ function render(filter='all'){
   list.forEach(p=>grid.appendChild(productCard(p)));
   empty.style.display=list.length?'none':'block';
   if(!list.length){
-    empty.innerHTML='No hay productos para mostrar. Verifica que <b>catalogo_productos.csv</b> exista en la misma carpeta que este HTML y que las imágenes estén dentro de <b>assets/images/</b>.';
+    empty.innerHTML='No hay productos para mostrar por el momento.'; <!--Verifica que <b>catalogo_productos.csv</b> exista en la misma carpeta que este HTML y que las imágenes estén dentro de <b>assets/images/</b>.-->
   }
 }
 btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');render(b.dataset.filter);});
@@ -412,7 +412,7 @@ async function loadCSV(){
   }).catch(err=>{
     console.error(err);
     empty.style.display='block';
-    empty.innerHTML='⚠️ No se pudo cargar <b>catalogo_productos.csv</b>. Verifica que esté en la misma carpeta que este HTML, guardado como <b>CSV UTF-8</b>, y que las fotos estén en <b>assets/images/</b>.';
+    empty.innerHTML='⚠️ No se pudo cargar <b>catalogo_productos.csv</b>. '; <!--Verifica que esté en la misma carpeta que este HTML, guardado como <b>CSV UTF-8</b>, y que las fotos estén en <b>assets/images/</b>.-->
   });
 })();
 
